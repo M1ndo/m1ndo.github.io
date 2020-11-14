@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://ybenel.tk/favicon.ico"/>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Surrounded Sound In Pulse Audio | Ybenel</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Surrounded Sound In Pulse Audio" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you. Unfortunately if dolby supported Linux we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !" />
+<meta property="og:description" content="For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you. Unfortunately if dolby supported Linux we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !" />
+<meta property="og:site_name" content="Ybenel" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-09-24T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Surrounded Sound In Pulse Audio" />
+<meta name="twitter:site" content="@r2dr0dn" />
+<script type="application/ld+json">
+{"description":"For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you. Unfortunately if dolby supported Linux we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.png"}},"url":"/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html","@type":"BlogPosting","headline":"Surrounded Sound In Pulse Audio","dateModified":"2020-09-24T00:00:00+01:00","datePublished":"2020-09-24T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Ybenel" />
+
+
+
+
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans|Roboto|Roboto%20Slab|Roboto%20Mono|Dancing%20Script|Noto%20Sans%20SC|Noto%20Sans%20TC|Noto%20Serif%20SC|Noto%20Serif%20TC|Ma%20Shan%20Zheng">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/skin.css">
+
+<!-- Begin selecting skin -->
+
+  <script>
+    const hour = (new Date()).getHours();
+    let filename = "";
+    if (hour >= 5 && hour < 7) {
+      filename = "/assets/css/skin-sunrise.css";
+    } else if (hour >= 7 && hour < 17) {
+      filename = "/assets/css/skin-daylight.css";
+    } else if (hour >= 17 && hour < 19) {
+      filename = "/assets/css/skin-sunset.css";
+    } else {
+      filename = "/assets/css/skin-midnight.css";
+    }
+    const elem = document.createElement("link");
+    elem.setAttribute("rel", "stylesheet");
+    elem.setAttribute("type", "text/css");
+    elem.setAttribute("href", filename);
+    document.getElementsByTagName("head")[0].appendChild(elem);
+  </script>
+
+<!-- End selecting skin -->
+
+<script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+  </head>
+
+  <body>
+    <div class="site-container">
+      <header class="site-header">
+        <div class="wrapper">
+  <script>
+    function clickSidebarButton() {
+      const elem = document.getElementById("site-sidebar")
+      if (elem.style.display == "none" || elem.style.display == "") {
+        elem.style.display = "block";
+      } else {
+        elem.style.display = "none";
+      }
+    }
+  </script>
+  <a class="site-sidebar-button" onclick="clickSidebarButton()"><i class="far fa-user"></i>
+  </a>
+
+  <a class="site-title" rel="author" href="/">Ybenel</a>
+
+  
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger" title="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <ul class="trigger">
+              <li><a class="" href="/photos/">Photos</a></li>
+            
+              <li><a class="" href="https://music.ybenel.tk">Music</a></li>
+            
+              <li><a class="" href="/about/">About</a></li>
+            
+              <li class="dropdown" href="#">
+                <a href="javascript:void(0)" class="dropbtn">More</a>
+                <div class="dropdown-content">
+                    <a class="" href="/years/">Years</a>
+                    <a class="" href="/categories/">Categories</a>
+                    <a class="" href="/tags/">Tags</a>
+                </div>
+              </li>
+            </ul>
+    </nav>
+  
+</div>
+
+      </header>
+
+      <div class="site-body wrapper">
+        <aside class="site-sidebar" id="site-sidebar">
+          
+            <h3 class="toc-title">Table of Contents</h3>
+<nav class="toc-nav">
+  <ul class="toc">
+  <li><a href="#adding-configurations">Adding Configurations</a>
+    <ul>
+      <li><a href="#checking-requirements">Checking Requirements</a></li>
+      <li><a href="#adding-pulseaudio-config">Adding PulseAudio Config</a></li>
+      <li><a href="#understanding-the-config">understanding the config</a></li>
+      <li><a href="#adding-alsa-config">Adding Alsa Config</a></li>
+      <li><a href="#list-devices">List Devices</a></li>
+      <li><a href="#installing-pulseaudio-modules">Installing Pulseaudio Modules</a></li>
+      <li><a href="#loading-pulseaudio-modules">Loading PulseAudio Modules</a></li>
+      <li><a href="#restarting-pulseaudio">Restarting PulseAudio</a></li>
+      <li><a href="#change-output-source">Change Output Source</a></li>
+      <li><a href="#extra">Extra</a></li>
+    </ul>
+  </li>
+</ul>
+
+</nav>
+
+          
+        </aside>
+        <main class="site-main" id="site-main" aria-label="Content">
+          <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+
+    <h1 class="post-title p-name" itemprop="name headline">Surrounded Sound In Pulse Audio</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2020-09-24T00:00:00+01:00" itemprop="datePublished">
+        Sep 24, 2020
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">ybenel</span></span></p>
+
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you.
+Unfortunately if <strong>dolby</strong> supported <strong>Linux</strong> we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !</p>
+
+<h2 id="adding-configurations">Adding Configurations</h2>
+<h3 id="checking-requirements">Checking Requirements</h3>
+<p>Now before we start configuring pulse audio we need some <em>Requirments</em>.</p>
+<ul>
+  <li>Headset / Headphones Supports 5.1 / 7.1 Surround Sound</li>
+  <li>7.1 / 5.1 Surround Sound Speaker System
+If your headphones / Headset / whatever you are trying doesn’t support 5.1 / 7.1 surround sound , you won’t be able to notice any change, now we gonna start by testing our headphones/speakers.
+<code class="language-plaintext highlighter-rouge">speaker-test -D default -c 8</code>
+Now this will test if our device has 8 channel output (7.1) or 6 channel output (5.1), mine goes something like this .
+<img src="https://ybenel.tk/imgs/sound/speaker-test.png" alt="Speaker-Test" /></li>
+</ul>
+
+<p><strong>Note</strong>: If you only see 2 output channels that means your device doesn’t support 7.1/5.1 surround sound or it set to use only 2 channel output (it comes by default with pulse audio).</p>
+<h3 id="adding-pulseaudio-config">Adding PulseAudio Config</h3>
+<p>Now let’s create our config file located in <code class="language-plaintext highlighter-rouge">~/.config/pulse/daemon.conf</code> if pulse directory doesn’t exists just create a new one and now we will create daemon.conf and open it with some text editor and add the values below.</p>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">default</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">format</span> <span class="o">=</span> <span class="n">float32le</span>
+<span class="k">default</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">rate</span> <span class="o">=</span> <span class="mi">48000</span>
+<span class="n">alternate</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span>
+<span class="k">default</span><span class="o">-</span><span class="n">sample</span><span class="o">-</span><span class="n">channels</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="k">default</span><span class="o">-</span><span class="n">channel</span><span class="o">-</span><span class="n">map</span> <span class="o">=</span> <span class="n">front</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">center</span><span class="p">,</span><span class="n">lfe</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">right</span>
+<span class="k">default</span><span class="o">-</span><span class="n">fragments</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">default</span><span class="o">-</span><span class="n">fragment</span><span class="o">-</span><span class="n">size</span><span class="o">-</span><span class="n">msec</span> <span class="o">=</span> <span class="mi">125</span>
+<span class="n">resample</span><span class="o">-</span><span class="n">method</span> <span class="o">=</span> <span class="n">soxr</span><span class="o">-</span><span class="n">vhq</span>
+<span class="n">enable</span><span class="o">-</span><span class="n">lfe</span><span class="o">-</span><span class="n">remixing</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">high</span><span class="o">-</span><span class="n">priority</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">nice</span><span class="o">-</span><span class="n">level</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span>
+<span class="n">realtime</span><span class="o">-</span><span class="n">scheduling</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">realtime</span><span class="o">-</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">rlimit</span><span class="o">-</span><span class="n">rtprio</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">daemonize</span> <span class="o">=</span> <span class="n">no</span>
+</code></pre></div></div>
+<h3 id="understanding-the-config">understanding the config</h3>
+<h4 id="default-sample-format">default-sample-format</h4>
+<ul>
+  <li>is sampling format it depends on the endianness of the cpu, to check your cpu byte order <code class="language-plaintext highlighter-rouge">lscpu | grep 'Byte Order'</code> if it’s little endian just live the config as it is , if it’s big endian replace float32le with float32be.
+    <h4 id="default-sample-rate">default-sample-rate</h4>
+  </li>
+  <li>is the sample frequency , <code class="language-plaintext highlighter-rouge">alternate-sample-rate</code> the alternate sample frequency. Sinks and sources will use either the default-sample-rate value or this alternate value, typically 44.1 or 48kHz.
+    <h4 id="default-sample-channels">default-sample-channels</h4>
+  </li>
+  <li>number of channels if you have 5.1 surround sound system change the value to (6)
+    <h4 id="default-channel-map">default-channel-map</h4>
+    <p>-the channel map if you’re on 5.1 surround sound system use this <code class="language-plaintext highlighter-rouge">front-left,front-right,rear-left,rear-right,front-center,lfe</code></p>
+    <h4 id="resample-method">resample-method</h4>
+  </li>
+  <li>sample rate converter best to leave it as soxr very high quality all available converters are in (man pulse-daemon.conf) , for comparison benchmarks <a href="https://lastique.github.io/src_test/">Here</a>
+    <h4 id="daemonize">daemonize</h4>
+  </li>
+  <li>daemonize after start up default is no. <strong>note</strong> don’t change the following value , the following settings prevent glitches &amp; drop-outs during playback
+default-fragments
+hardware playback buffer subdivided into fragments default was (4)
+    <h4 id="default-fragment-size-msec">default-fragment-size-msec</h4>
+  </li>
+  <li>duration of single fragment default was (25ms)
+<code class="language-plaintext highlighter-rouge">high-priority</code> set as high priority process default to yes (Don’t change)
+    <h4 id="enable-lfe-remixing">enable-lfe-remixing</h4>
+  </li>
+  <li>if disabled upmixing or downmixing ignore lfe channel (Not Recommended To Disable)
+    <h4 id="nice-level">nice-level</h4>
+  </li>
+  <li>default -11, lowest value allowed: (20 - rlimit-nice), lower means more CPU-%
+    <h4 id="realtime-scheduling">realtime-scheduling</h4>
+  </li>
+  <li>default is yes (don’t change)
+    <h4 id="rlimit-rtprio">rlimit-rtprio</h4>
+  </li>
+  <li>default 9, values from -20 upto 19 allowed
+    <h4 id="realtime-priority">realtime-priority</h4>
+  </li>
+  <li>default 5, highest value allowed: rlimit-rtprio, higher means more priority</li>
+</ul>
+
+<h3 id="adding-alsa-config">Adding Alsa Config</h3>
+<ul>
+  <li>Now let’s add asla config (/etc/asound.conf or ~/.asoundrc), nothing really here to explain we just using hw plugin to work with pulse audio
+    <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># Use PulseAudio plugin hw
+</span><span class="n">pcm</span><span class="p">.</span><span class="o">!</span><span class="k">default</span> <span class="p">{</span>
+ <span class="n">type</span> <span class="n">plug</span>
+ <span class="n">slave</span><span class="p">.</span><span class="n">pcm</span> <span class="n">hw</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+    <h3 id="list-devices">List Devices</h3>
+  </li>
+  <li>Now let’s list our devices with (<code class="language-plaintext highlighter-rouge">pacmd list-sinks | grep "name:"</code>) and the output should be something like this
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>name: &lt;alsa_output.pci-0000_00_1b.0.analog-surround71&gt;
+</code></pre></div>    </div>
+    <p><strong>note</strong> it can be more than one device depends and what you’re connecting to your workstation .</p>
+  </li>
+  <li>Now we will copy default.pa config from (/etc/pulse/default.pa to ~/.config/pulse/)
+    <h3 id="installing-pulseaudio-modules">Installing Pulseaudio Modules</h3>
+  </li>
+  <li>Now we need to install a quick module <code class="language-plaintext highlighter-rouge">ladspa-bs2b</code> and <code class="language-plaintext highlighter-rouge">libbs2b</code>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>In Arch Linux <span class="o">(</span>AUR<span class="o">)</span>
+yay <span class="nt">-S</span> libbs2b
+
+In Debian / Ubuntu
+apt <span class="nb">install </span>bs2b-ladspa
+
+Other Distros <span class="o">(</span>Got No Idea<span class="o">)</span>
+</code></pre></div>    </div>
+    <h3 id="loading-pulseaudio-modules">Loading PulseAudio Modules</h3>
+  </li>
+  <li>Now let’s load the modules, open default.pa in ~/.config/pulse and add the following lines at the bottom</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp"># For 7.1 Surround Sound System
+</span><span class="n">load</span><span class="o">-</span><span class="n">module</span> <span class="n">module</span><span class="o">-</span><span class="n">remap</span><span class="o">-</span><span class="n">sink</span> <span class="n">sink_name</span><span class="o">=</span><span class="n">Remape</span> <span class="n">remix</span><span class="o">=</span><span class="n">yes</span> <span class="n">master</span><span class="o">=</span><span class="n">alsa_output</span><span class="p">.</span><span class="n">pci</span><span class="o">-</span><span class="mo">0000</span><span class="n">_00_1b</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="n">analog</span><span class="o">-</span><span class="n">surround71</span> <span class="n">channels</span><span class="o">=</span><span class="mi">8</span> <span class="n">master_channel_map</span><span class="o">=</span><span class="n">rear</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">center</span><span class="p">,</span><span class="n">lfe</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">right</span> <span class="n">channel_map</span><span class="o">=</span><span class="n">front</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">center</span><span class="p">,</span><span class="n">lfe</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">right</span>
+<span class="n">load</span><span class="o">-</span><span class="n">module</span> <span class="n">module</span><span class="o">-</span><span class="n">combine</span> <span class="n">channels</span><span class="o">=</span><span class="mi">8</span> <span class="n">channel_map</span><span class="o">=</span><span class="n">front</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">center</span><span class="p">,</span><span class="n">lfe</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">side</span><span class="o">-</span><span class="n">right</span>
+<span class="n">load</span><span class="o">-</span><span class="n">module</span> <span class="n">module</span><span class="o">-</span><span class="n">ladspa</span><span class="o">-</span><span class="n">sink</span> <span class="n">sink_name</span><span class="o">=</span><span class="n">Ybenel</span> <span class="n">plugin</span><span class="o">=</span><span class="n">bs2b</span> <span class="n">label</span><span class="o">=</span><span class="n">bs2b</span> <span class="n">control</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span><span class="mi">4</span><span class="p">.</span><span class="mi">5</span>
+
+<span class="cp"># For 5.1 Surround Sound System
+</span><span class="n">load</span><span class="o">-</span><span class="n">module</span> <span class="n">module</span><span class="o">-</span><span class="n">remap</span><span class="o">-</span><span class="n">sink</span> <span class="n">sink_name</span><span class="o">=</span><span class="n">Remape</span> <span class="n">remix</span><span class="o">=</span><span class="n">yes</span> <span class="n">master</span><span class="o">=</span><span class="n">alsa_output</span><span class="p">.</span><span class="n">pci</span><span class="o">-</span><span class="mo">0000</span><span class="n">_00_1b</span><span class="p">.</span><span class="mi">0</span><span class="p">.</span><span class="n">analog</span><span class="o">-</span><span class="n">surround71</span> <span class="n">channels</span><span class="o">=</span><span class="mi">6</span> <span class="n">master_channel_map</span><span class="o">=</span><span class="n">front</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">center</span><span class="p">,</span><span class="n">lfe</span> <span class="n">channel_map</span><span class="o">=</span><span class="n">front</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">center</span><span class="p">,</span><span class="n">lfe</span>
+<span class="n">load</span><span class="o">-</span><span class="n">module</span> <span class="n">module</span><span class="o">-</span><span class="n">combine</span> <span class="n">channels</span><span class="o">=</span><span class="mi">8</span> <span class="n">channel_map</span><span class="o">=</span><span class="n">front</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">left</span><span class="p">,</span><span class="n">rear</span><span class="o">-</span><span class="n">right</span><span class="p">,</span><span class="n">front</span><span class="o">-</span><span class="n">center</span><span class="p">,</span><span class="n">lfe</span>
+<span class="n">load</span><span class="o">-</span><span class="n">module</span> <span class="n">module</span><span class="o">-</span><span class="n">ladspa</span><span class="o">-</span><span class="n">sink</span> <span class="n">sink_name</span><span class="o">=</span><span class="n">Ybenel</span> <span class="n">plugin</span><span class="o">=</span><span class="n">bs2b</span> <span class="n">label</span><span class="o">=</span><span class="n">bs2b</span> <span class="n">control</span><span class="o">=</span><span class="mi">700</span><span class="p">,</span><span class="mi">4</span><span class="p">.</span><span class="mi">5</span>
+</code></pre></div></div>
+<ul>
+  <li>There’s another module that creates a virtual surround sink but it requires a hrir file , lucky you i found a good pack that has alot of samples</li>
+  <li>Download the archive from <a href="https://stuff.salscheider.org/hrir_listen.tar.gz">Here</a> unzip it and listem to the demos choose what you like and load the module</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is just an example replace the hrir path and file of your like</span>
+load-module module-virtual-surround-sink <span class="nv">hrir</span><span class="o">=</span>/home/ybenel/Music/surround/hrir_listen/hrirs/hrir-1038.wav
+</code></pre></div></div>
+<h3 id="restarting-pulseaudio">Restarting PulseAudio</h3>
+<ul>
+  <li>Now we need to restart pulse audio</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c">#Kill pulse audio</span>
+pulseaudio <span class="nt">--kill</span>
+  <span class="c">#In case pulse audio didn't start</span>
+pulseaudio <span class="nt">--start</span>
+</code></pre></div></div>
+
+<h3 id="change-output-source">Change Output Source</h3>
+<ul>
+  <li>Now let’s open <strong>pavucontrol</strong> , if it’s not installed in your os , it’s recommended to install it .</li>
+  <li>In the output tab you should see the modules are loaded .
+<img src="https://ybenel.tk/imgs/sound/pavucontrol_output.png" alt="pavucontrol_output" /></li>
+  <li>Go Back To The Playback Tab And You’ll see currently running apps and you’ll see the sink device that it’s been used just click it and you’ll see all available output options , choose what’s looks good in ur case.</li>
+</ul>
+
+<p><img src="https://ybenel.tk/imgs/sound/pavucontrol_playback1.png" alt="pavucontrol_playback" />
+<img src="https://ybenel.tk/imgs/sound/pavucontrol_playback.png" alt="pavucontrol_playback" /></p>
+
+<h3 id="extra">Extra</h3>
+<p><strong>Extra</strong> If you’re looking for some real time effects to add , you could use <code class="language-plaintext highlighter-rouge">pulseeffects</code> to mix , equalize , compress , whatever
+<img src="https://ybenel.tk/imgs/sound/pulseeffects.png" alt="pulseeffects" /></p>
+<ul>
+  <li>Other Cool Thing is Audacious Player That Has Some Really Good Plugins</li>
+</ul>
+
+<p><img src="https://ybenel.tk/imgs/sound/audacious.png" alt="audacious" /></p>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>Pulse Audio Is Really not bad and It’s much less complicated than Jack Or PipeWire it only needs some configurations and little tweaking and it’s great again.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-meta">
+        <i class="fas fa-folder"></i>
+        <ul class="post-taxonomies post-categories">
+          
+          
+            <li class="post-category">
+              
+              <a href="/categories/#pulseaudio">pulseaudio</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class="post-meta">
+        <i class="fas fa-tags"></i>
+        <ul class="post-taxonomies post-tags">
+          
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#pulseaudio">pulseaudio</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#alsa">alsa</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#sound">sound</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <nav class="post-pagination" role="navigation">
+      
+    
+      
+        <a class="post-next" href="/ctf/2020/10/19/writeups.html">
+          CTF Write Ups
+ <i class="fas fa-arrow-right"></i>
+        </a>
+      
+    </nav>
+  </footer>
+
+  
+  
+</article>
+
+          <footer class="site-footer">
+            <div class="footer-col-wrapper">
+
+  <div class="footer-col">
+    <div class="copyright">
+      
+      
+      
+        
+      
+      
+      <p>Copyright © 2020 Ybenel; All rights reserved.</p>
+      
+    </div>
+    <!-- <p>
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/ngzhio/jekyll-theme-hamilton">Hamilton</a>
+    </p> -->
+  </div>
+
+  <div class="footer-col">
+    <p>Here&#39;s My Website Where I Post Whatever The Fu*k I Want :D.</p>
+  </div>
+</div>
+
+          </footer>
+        </main>
+      </div>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2020-11-14T18:17:23+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Here's My Website Where I Post Whatever The Fu*k I Want :D.</subtitle><author><name>Ybenel</name></author><entry><title type="html">CTF Write Ups</title><link href="/ctf/2020/10/19/writeups.html" rel="alternate" type="text/html" title="CTF Write Ups" /><published>2020-10-19T00:00:00+01:00</published><updated>2020-10-19T00:00:00+01:00</updated><id>/ctf/2020/10/19/writeups</id><content type="html" xml:base="/ctf/2020/10/19/writeups.html">&lt;h1 id=&quot;hacktober-ctf-2020&quot;&gt;Hacktober CTF (2020)&lt;/h1&gt;
+&lt;p&gt;This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever!
+Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Programming&lt;/th&gt;
+      &lt;th&gt;Crypto&lt;/th&gt;
+      &lt;th&gt;Steganography&lt;/th&gt;
+      &lt;th&gt;Networking&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Message In a Array [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Hail Caesar! [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Ghost Hunter [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Evil Corp’s Child 3 [150pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Trick Or Treat [40pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Down The Wrong Path [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;You Believe In Ghosts? [30pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Hunted Mirror [125pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cover Your Bases [30pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Blasphemy [40pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Red Rum [250pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Bone To Pick [80pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Start Digging [100pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Stairway To Hell [250pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Password Check [400pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;el-journadas-ctf-2020&quot;&gt;El Journadas CTF (2020)&lt;/h1&gt;
+&lt;p&gt;This CTF Was Little Bit Good But Too Hard!
+We Could Not Solve All The Challenges But We Did Great !&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Crypto&lt;/th&gt;
+      &lt;th&gt;PWN&lt;/th&gt;
+      &lt;th&gt;Networking&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Time Coding [200pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;ROP Style [400pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Still with insecure protocols [200pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Hide your stuff at plain sight [400pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="ctf" /><category term="ctf" /><category term="writeup" /><summary type="html">Hacktober CTF (2020) This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever! Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!</summary></entry><entry><title type="html">Surrounded Sound In Pulse Audio</title><link href="/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html" rel="alternate" type="text/html" title="Surrounded Sound In Pulse Audio" /><published>2020-09-24T00:00:00+01:00</published><updated>2020-09-24T00:00:00+01:00</updated><id>/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio</id><content type="html" xml:base="/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html">&lt;p&gt;For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you.
+Unfortunately if &lt;strong&gt;dolby&lt;/strong&gt; supported &lt;strong&gt;Linux&lt;/strong&gt; we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !&lt;/p&gt;
+
+&lt;h2 id=&quot;adding-configurations&quot;&gt;Adding Configurations&lt;/h2&gt;
+&lt;h3 id=&quot;checking-requirements&quot;&gt;Checking Requirements&lt;/h3&gt;
+&lt;p&gt;Now before we start configuring pulse audio we need some &lt;em&gt;Requirments&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Headset / Headphones Supports 5.1 / 7.1 Surround Sound&lt;/li&gt;
+  &lt;li&gt;7.1 / 5.1 Surround Sound Speaker System
+If your headphones / Headset / whatever you are trying doesn’t support 5.1 / 7.1 surround sound , you won’t be able to notice any change, now we gonna start by testing our headphones/speakers.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speaker-test -D default -c 8&lt;/code&gt;
+Now this will test if our device has 8 channel output (7.1) or 6 channel output (5.1), mine goes something like this .
+&lt;img src=&quot;https://ybenel.tk/imgs/sound/speaker-test.png&quot; alt=&quot;Speaker-Test&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: If you only see 2 output channels that means your device doesn’t support 7.1/5.1 surround sound or it set to use only 2 channel output (it comes by default with pulse audio).&lt;/p&gt;
+&lt;h3 id=&quot;adding-pulseaudio-config&quot;&gt;Adding PulseAudio Config&lt;/h3&gt;
+&lt;p&gt;Now let’s create our config file located in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.config/pulse/daemon.conf&lt;/code&gt; if pulse directory doesn’t exists just create a new one and now we will create daemon.conf and open it with some text editor and add the values below.&lt;/p&gt;
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;float32le&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;48000&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;alternate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;44100&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;channel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fragments&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fragment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;125&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;resample&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;soxr&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vhq&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;enable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;remixing&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;nice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;level&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;11&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;realtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scheduling&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;realtime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;priority&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;rlimit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rtprio&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;daemonize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;no&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;understanding-the-config&quot;&gt;understanding the config&lt;/h3&gt;
+&lt;h4 id=&quot;default-sample-format&quot;&gt;default-sample-format&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;is sampling format it depends on the endianness of the cpu, to check your cpu byte order &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lscpu | grep 'Byte Order'&lt;/code&gt; if it’s little endian just live the config as it is , if it’s big endian replace float32le with float32be.
+    &lt;h4 id=&quot;default-sample-rate&quot;&gt;default-sample-rate&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;is the sample frequency , &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;alternate-sample-rate&lt;/code&gt; the alternate sample frequency. Sinks and sources will use either the default-sample-rate value or this alternate value, typically 44.1 or 48kHz.
+    &lt;h4 id=&quot;default-sample-channels&quot;&gt;default-sample-channels&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;number of channels if you have 5.1 surround sound system change the value to (6)
+    &lt;h4 id=&quot;default-channel-map&quot;&gt;default-channel-map&lt;/h4&gt;
+    &lt;p&gt;-the channel map if you’re on 5.1 surround sound system use this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;front-left,front-right,rear-left,rear-right,front-center,lfe&lt;/code&gt;&lt;/p&gt;
+    &lt;h4 id=&quot;resample-method&quot;&gt;resample-method&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;sample rate converter best to leave it as soxr very high quality all available converters are in (man pulse-daemon.conf) , for comparison benchmarks &lt;a href=&quot;https://lastique.github.io/src_test/&quot;&gt;Here&lt;/a&gt;
+    &lt;h4 id=&quot;daemonize&quot;&gt;daemonize&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;daemonize after start up default is no. &lt;strong&gt;note&lt;/strong&gt; don’t change the following value , the following settings prevent glitches &amp;amp; drop-outs during playback
+default-fragments
+hardware playback buffer subdivided into fragments default was (4)
+    &lt;h4 id=&quot;default-fragment-size-msec&quot;&gt;default-fragment-size-msec&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;duration of single fragment default was (25ms)
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;high-priority&lt;/code&gt; set as high priority process default to yes (Don’t change)
+    &lt;h4 id=&quot;enable-lfe-remixing&quot;&gt;enable-lfe-remixing&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;if disabled upmixing or downmixing ignore lfe channel (Not Recommended To Disable)
+    &lt;h4 id=&quot;nice-level&quot;&gt;nice-level&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;default -11, lowest value allowed: (20 - rlimit-nice), lower means more CPU-%
+    &lt;h4 id=&quot;realtime-scheduling&quot;&gt;realtime-scheduling&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;default is yes (don’t change)
+    &lt;h4 id=&quot;rlimit-rtprio&quot;&gt;rlimit-rtprio&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;default 9, values from -20 upto 19 allowed
+    &lt;h4 id=&quot;realtime-priority&quot;&gt;realtime-priority&lt;/h4&gt;
+  &lt;/li&gt;
+  &lt;li&gt;default 5, highest value allowed: rlimit-rtprio, higher means more priority&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;adding-alsa-config&quot;&gt;Adding Alsa Config&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Now let’s add asla config (/etc/asound.conf or ~/.asoundrc), nothing really here to explain we just using hw plugin to work with pulse audio
+    &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;# Use PulseAudio plugin hw
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pcm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plug&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;slave&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pcm&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hw&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;h3 id=&quot;list-devices&quot;&gt;List Devices&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now let’s list our devices with (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pacmd list-sinks | grep &quot;name:&quot;&lt;/code&gt;) and the output should be something like this
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name: &amp;lt;alsa_output.pci-0000_00_1b.0.analog-surround71&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;p&gt;&lt;strong&gt;note&lt;/strong&gt; it can be more than one device depends and what you’re connecting to your workstation .&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now we will copy default.pa config from (/etc/pulse/default.pa to ~/.config/pulse/)
+    &lt;h3 id=&quot;installing-pulseaudio-modules&quot;&gt;Installing Pulseaudio Modules&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now we need to install a quick module &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ladspa-bs2b&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;libbs2b&lt;/code&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;In Arch Linux &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;AUR&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+yay &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; libbs2b
+
+In Debian / Ubuntu
+apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;bs2b-ladspa
+
+Other Distros &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Got No Idea&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;h3 id=&quot;loading-pulseaudio-modules&quot;&gt;Loading PulseAudio Modules&lt;/h3&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Now let’s load the modules, open default.pa in ~/.config/pulse and add the following lines at the bottom&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;# For 7.1 Surround Sound System
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;remap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sink_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Remape&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alsa_output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pci&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_00_1b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;analog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;surround71&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master_channel_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channel_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;combine&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channel_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;side&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ladspa&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sink_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ybenel&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plugin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bs2b&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bs2b&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;control&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+
+&lt;span class=&quot;cp&quot;&gt;# For 5.1 Surround Sound System
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;remap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sink_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Remape&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;remix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;yes&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alsa_output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pci&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;0000&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_00_1b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;analog&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;surround71&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;master_channel_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channel_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;combine&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channels&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;channel_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;front&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lfe&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ladspa&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sink&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sink_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ybenel&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plugin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bs2b&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bs2b&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;control&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;There’s another module that creates a virtual surround sink but it requires a hrir file , lucky you i found a good pack that has alot of samples&lt;/li&gt;
+  &lt;li&gt;Download the archive from &lt;a href=&quot;https://stuff.salscheider.org/hrir_listen.tar.gz&quot;&gt;Here&lt;/a&gt; unzip it and listem to the demos choose what you like and load the module&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# This is just an example replace the hrir path and file of your like&lt;/span&gt;
+load-module module-virtual-surround-sink &lt;span class=&quot;nv&quot;&gt;hrir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/home/ybenel/Music/surround/hrir_listen/hrirs/hrir-1038.wav
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;restarting-pulseaudio&quot;&gt;Restarting PulseAudio&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Now we need to restart pulse audio&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c&quot;&gt;#Kill pulse audio&lt;/span&gt;
+pulseaudio &lt;span class=&quot;nt&quot;&gt;--kill&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;#In case pulse audio didn't start&lt;/span&gt;
+pulseaudio &lt;span class=&quot;nt&quot;&gt;--start&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;change-output-source&quot;&gt;Change Output Source&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Now let’s open &lt;strong&gt;pavucontrol&lt;/strong&gt; , if it’s not installed in your os , it’s recommended to install it .&lt;/li&gt;
+  &lt;li&gt;In the output tab you should see the modules are loaded .
+&lt;img src=&quot;https://ybenel.tk/imgs/sound/pavucontrol_output.png&quot; alt=&quot;pavucontrol_output&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;Go Back To The Playback Tab And You’ll see currently running apps and you’ll see the sink device that it’s been used just click it and you’ll see all available output options , choose what’s looks good in ur case.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/sound/pavucontrol_playback1.png&quot; alt=&quot;pavucontrol_playback&quot; /&gt;
+&lt;img src=&quot;https://ybenel.tk/imgs/sound/pavucontrol_playback.png&quot; alt=&quot;pavucontrol_playback&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;extra&quot;&gt;Extra&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Extra&lt;/strong&gt; If you’re looking for some real time effects to add , you could use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pulseeffects&lt;/code&gt; to mix , equalize , compress , whatever
+&lt;img src=&quot;https://ybenel.tk/imgs/sound/pulseeffects.png&quot; alt=&quot;pulseeffects&quot; /&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Other Cool Thing is Audacious Player That Has Some Really Good Plugins&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/sound/audacious.png&quot; alt=&quot;audacious&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Pulse Audio Is Really not bad and It’s much less complicated than Jack Or PipeWire it only needs some configurations and little tweaking and it’s great again.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="pulseaudio" /><category term="PulseAudio" /><category term="alsa" /><category term="sound" /><summary type="html">For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you. Unfortunately if dolby supported Linux we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !</summary></entry></feed>

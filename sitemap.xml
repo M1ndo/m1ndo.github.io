@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html</loc>
+<lastmod>2020-09-24T00:00:00+01:00</lastmod>
+</url>
+<url>
+<loc>/ctf/2020/10/19/writeups.html</loc>
+<lastmod>2020-10-19T00:00:00+01:00</lastmod>
+</url>
+<url>
+<loc>/about/</loc>
+</url>
+<url>
+<loc>/categories/</loc>
+</url>
+<url>
+<loc>/docs/</loc>
+</url>
+<url>
+<loc>/faq/</loc>
+</url>
+<url>
+<loc>/</loc>
+</url>
+<url>
+<loc>/photos.html</loc>
+</url>
+<url>
+<loc>/tags/</loc>
+</url>
+<url>
+<loc>/years/</loc>
+</url>
+</urlset>
