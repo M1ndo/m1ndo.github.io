@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ybenel.tk/favicon.ico"/>
+<link rel="shortcut icon" href="https://ybenel.cf/favicon.ico"/>
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>HTB - Delivery | Ybenel</title>
@@ -21,7 +21,7 @@
 <meta property="twitter:title" content="HTB - Delivery" />
 <meta name="twitter:site" content="@_ybenel" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"/htb/2021/01/10/HTB-Delivery.html"},"description":"Delivery Easy Box By Ippsec","url":"/htb/2021/01/10/HTB-Delivery.html","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"headline":"HTB - Delivery","dateModified":"2021-01-10T00:00:00+01:00","datePublished":"2021-01-10T00:00:00+01:00","@context":"https://schema.org"}</script>
+{"headline":"HTB - Delivery","dateModified":"2021-01-10T00:00:00+01:00","datePublished":"2021-01-10T00:00:00+01:00","description":"Delivery Easy Box By Ippsec","url":"/htb/2021/01/10/HTB-Delivery.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/htb/2021/01/10/HTB-Delivery.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -100,7 +100,7 @@
       <ul class="trigger">
               <li><a class="" href="/photos/">Photos</a></li>
             
-              <li><a class="" href="https://music.ybenel.tk">Music</a></li>
+              <li><a class="" href="https://music.ybenel.cf">Music</a></li>
             
               <li><a class="" href="/about/">About</a></li>
             
@@ -159,37 +159,37 @@
 <p>We start of with the nmap , nmap -sC -sV -p- -T4 -oN delivery.nmap delivery.htb
 We can see there’s 3 ports open.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic30.png" alt="nmap" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic30.png" alt="nmap" /></p>
 
 <p>Let’s browse http and see what’s there.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic0.png" alt="Static" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic0.png" alt="Static" /></p>
 
 <p>We get a static website, looking at the site source there’s nothing much there but look around contact us we get this .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic26.png" alt="Static_Contact" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic26.png" alt="Static_Contact" /></p>
 
 <p>We can see a note from the site owner?</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you'll be able to have access to our MatterMost server
 </code></pre></div></div>
 <p>so let’s look at the helpdisk at helpdesk.delivery.htb</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic29.png" alt="helpdisk" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic29.png" alt="helpdisk" /></p>
 
 <p>We see osticket support center,right of the top we check for any cves but they are all old and not affective so let’s create a new account .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic24.png" alt="helpdisk_signup" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic24.png" alt="helpdisk_signup" /></p>
 
 <p>Now After we created an account we get account verification but thinking logically we have entered a none existing email we cannot receive emails neither do anything.
 Hmmm there must be somewhere around it . let’s check the open ticket thing .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic9.png" alt="helpdisk_ticket_open" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic9.png" alt="helpdisk_ticket_open" /></p>
 
 <p>let’s fill those real quick .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic22.png" alt="helpdisk_ticket_fill" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic22.png" alt="helpdisk_ticket_fill" /></p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic25.png" alt="helpdisk_ticket_fill2" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic25.png" alt="helpdisk_ticket_fill2" /></p>
 
 <p>We Get Support ticket request created with a ticket id and an email ?
 At this point i was hmmmmmmmmmmmm an email , going back to the text we got earlier</p>
@@ -197,44 +197,44 @@ At this point i was hmmmmmmmmmmmm an email , going back to the text we got earli
 </code></pre></div></div>
 <p>Now before we go and create an account at mattermost let’s check out ticket status.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic7.png" alt="helpdisk_ticket_cr" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic7.png" alt="helpdisk_ticket_cr" /></p>
 
 <p>We get an confirmation error,that’s not great at this point you gotta think out of the box. what email that might exist probably everywhere .
 let’s submit a new ticket real quick and check again.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic18.png" alt="helpdisk_ticket_cr2" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic18.png" alt="helpdisk_ticket_cr2" /></p>
 
 <p>And We Get Another ticket_id and email address , let’s check our ticket status</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic19.png" alt="helpdisk_ticket_ck" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic19.png" alt="helpdisk_ticket_ck" /></p>
 
 <p>And some how magically We got in as Admin .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic6.png" alt="helpdisk_ticke_admin" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic6.png" alt="helpdisk_ticke_admin" /></p>
 
 <p>Now let’s go back to the mattermost and create an account with our ticket email</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic3.png" alt="helpdisk_mattermost" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic3.png" alt="helpdisk_mattermost" /></p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic4.png" alt="helpdisk_mattermost2" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic4.png" alt="helpdisk_mattermost2" /></p>
 
 <p>Also we get email verification , at this point you should really use your mind for a bit . we go back to our check ticket status and we get a reply</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic1.png" alt="helpdisk_mattermost1" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic1.png" alt="helpdisk_mattermost1" /></p>
 
 <p>It’s the verification code, sweet now we can verify our email address and simply login.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic16.png" alt="helpdisk_mattermost_login" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic16.png" alt="helpdisk_mattermost_login" /></p>
 
 <p>Now Let’s explore a bit, we click on internal and get into the channel we see there’s messages left by admin over there .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic2.png" alt="helpdisk_mattermost_msg" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic2.png" alt="helpdisk_mattermost_msg" /></p>
 
 <p>We see credentials , Swwwwwweet .let’s login via ssh .</p>
 
 <p>PS: I covered the credentials so you do the box instead of copying and pasting</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic27.png" alt="helpdisk_mattermost_ssh" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic27.png" alt="helpdisk_mattermost_ssh" /></p>
 
 <p>And There we go , now we can read the user.txt</p>
 
@@ -243,31 +243,31 @@ let’s submit a new ticket real quick and check again.</p>
 <p>At This point it’s pretty straight forward , let’s run linpeas.sh and see what’s going on but there’s nothing.
 let’s check <code class="language-plaintext highlighter-rouge">/opt</code> we can see mattermost installation let’s check it .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic12.png" alt="helpdisk_logged_in1" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic12.png" alt="helpdisk_logged_in1" /></p>
 
 <p>the first thing i do , is to check the configs since they usually store credentials , and sensitive information .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic15.png" alt="helpdisk_logged_in1" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic15.png" alt="helpdisk_logged_in1" /></p>
 
 <p>Oh the config.json is interesting , let’s check it out</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic5.png" alt="helpdisk_logged_config" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic5.png" alt="helpdisk_logged_config" /></p>
 
 <p>We can see there’s an mysql settings with some credentails , running ss -lnpt we see mysql is running .
 Let’s Logging And Check The database.
 PS: The password is a hint itself it says crack the mattermost password which is the root password</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic11.png" alt="helpdisk_logged_mysql" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic11.png" alt="helpdisk_logged_mysql" /></p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic20.png" alt="helpdisk_logged_mysql2" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic20.png" alt="helpdisk_logged_mysql2" /></p>
 
 <p>Ah there’s too many tables there , but we just interested in the Users tables.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic17.png" alt="helpdisk_logged_mysql" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic17.png" alt="helpdisk_logged_mysql" /></p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic28.png" alt="helpdisk_logged_mysql1" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic28.png" alt="helpdisk_logged_mysql1" /></p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic14.png" alt="helpdisk_logged_mysql2" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic14.png" alt="helpdisk_logged_mysql2" /></p>
 
 <p>We have the root hash it’s a bcrypt type. now before we crack it, remember from the mattermost internal channel the admin user gave us a valuable hint .</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases.
@@ -275,15 +275,15 @@ PS: The password is a hint itself it says crack the mattermost password which is
 <p>This is a usefull hint to let us know that we should generate a wordlist from hashcat rules in order to crack the root hash through “PleaseSubscribe!”
 Let’s go to our crackred and generate a wordlist .</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic21.png" alt="helpdisk_crackred" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic21.png" alt="helpdisk_crackred" /></p>
 
 <p>that’s not a big wordlist , it should crack really fast. let’s crack our hash.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic13.png" alt="helpdisk_crackred1" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic13.png" alt="helpdisk_crackred1" /></p>
 
 <p>And there we goo , we’ve cracked it,took about 2 seconds , now let’s su to root.</p>
 
-<p><img src="https://ybenel.tk/imgs/delivery/pic23.png" alt="helpdisk_root" /></p>
+<p><img src="https://ybenel.cf/imgs/delivery/pic23.png" alt="helpdisk_root" /></p>
 
 <p>And That’s it , that’s delivery hope you enjoyed the writeup take care and i’ll see you all other time.</p>
 

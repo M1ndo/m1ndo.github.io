@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="shortcut icon" href="https://ybenel.tk/favicon.ico"/>
+<link rel="shortcut icon" href="https://ybenel.cf/favicon.ico"/>
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Surrounded Sound In Pulse Audio | Ybenel</title>
@@ -21,7 +21,7 @@
 <meta property="twitter:title" content="Surrounded Sound In Pulse Audio" />
 <meta name="twitter:site" content="@_ybenel" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html"},"description":"For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you. Unfortunately if dolby supported Linux we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !","url":"/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"headline":"Surrounded Sound In Pulse Audio","dateModified":"2020-09-24T00:00:00+01:00","datePublished":"2020-09-24T00:00:00+01:00","@context":"https://schema.org"}</script>
+{"headline":"Surrounded Sound In Pulse Audio","dateModified":"2020-09-24T00:00:00+01:00","datePublished":"2020-09-24T00:00:00+01:00","description":"For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you. Unfortunately if dolby supported Linux we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !","url":"/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"/pulseaudio/2020/09/24/surround-soundsystem-pulseaudio.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -100,7 +100,7 @@
       <ul class="trigger">
               <li><a class="" href="/photos/">Photos</a></li>
             
-              <li><a class="" href="https://music.ybenel.tk">Music</a></li>
+              <li><a class="" href="https://music.ybenel.cf">Music</a></li>
             
               <li><a class="" href="/about/">About</a></li>
             
@@ -172,7 +172,7 @@ Unfortunately if <strong>dolby</strong> supported <strong>Linux</strong> we woul
 If your headphones / Headset / whatever you are trying doesn’t support 5.1 / 7.1 surround sound , you won’t be able to notice any change, now we gonna start by testing our headphones/speakers.
 <code class="language-plaintext highlighter-rouge">speaker-test -D default -c 8</code>
 Now this will test if our device has 8 channel output (7.1) or 6 channel output (5.1), mine goes something like this .
-<img src="https://ybenel.tk/imgs/sound/speaker-test.png" alt="Speaker-Test" /></li>
+<img src="https://ybenel.cf/imgs/sound/speaker-test.png" alt="Speaker-Test" /></li>
 </ul>
 
 <p><strong>Note</strong>: If you only see 2 output channels that means your device doesn’t support 7.1/5.1 surround sound or it set to use only 2 channel output (it comes by default with pulse audio).</p>
@@ -301,21 +301,21 @@ pulseaudio <span class="nt">--start</span>
 <ul>
   <li>Now let’s open <strong>pavucontrol</strong> , if it’s not installed in your os , it’s recommended to install it .</li>
   <li>In the output tab you should see the modules are loaded .
-<img src="https://ybenel.tk/imgs/sound/pavucontrol_output.png" alt="pavucontrol_output" /></li>
+<img src="https://ybenel.cf/imgs/sound/pavucontrol_output.png" alt="pavucontrol_output" /></li>
   <li>Go Back To The Playback Tab And You’ll see currently running apps and you’ll see the sink device that it’s been used just click it and you’ll see all available output options , choose what’s looks good in ur case.</li>
 </ul>
 
-<p><img src="https://ybenel.tk/imgs/sound/pavucontrol_playback1.png" alt="pavucontrol_playback" />
-<img src="https://ybenel.tk/imgs/sound/pavucontrol_playback.png" alt="pavucontrol_playback" /></p>
+<p><img src="https://ybenel.cf/imgs/sound/pavucontrol_playback1.png" alt="pavucontrol_playback" />
+<img src="https://ybenel.cf/imgs/sound/pavucontrol_playback.png" alt="pavucontrol_playback" /></p>
 
 <h3 id="extra">Extra</h3>
 <p><strong>Extra</strong> If you’re looking for some real time effects to add , you could use <code class="language-plaintext highlighter-rouge">pulseeffects</code> to mix , equalize , compress , whatever
-<img src="https://ybenel.tk/imgs/sound/pulseeffects.png" alt="pulseeffects" /></p>
+<img src="https://ybenel.cf/imgs/sound/pulseeffects.png" alt="pulseeffects" /></p>
 <ul>
   <li>Other Cool Thing is Audacious Player That Has Some Really Good Plugins</li>
 </ul>
 
-<p><img src="https://ybenel.tk/imgs/sound/audacious.png" alt="audacious" /></p>
+<p><img src="https://ybenel.cf/imgs/sound/audacious.png" alt="audacious" /></p>
 
 <h1 id="conclusion">Conclusion</h1>
 <p>Pulse Audio Is Really not bad and It’s much less complicated than Jack Or PipeWire it only needs some configurations and little tweaking and it’s great again.</p>
