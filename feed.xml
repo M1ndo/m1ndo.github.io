@@ -1,41 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-01-10T20:34:15+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Here Where I Post Whatever The Fu*k I Want :D.</subtitle><author><name>Ybenel</name></author><entry><title type="html">HTB - Delivery</title><link href="/htb/2021/01/10/HTB-Delivery.html" rel="alternate" type="text/html" title="HTB - Delivery" /><published>2021-01-10T00:00:00+01:00</published><updated>2021-01-10T00:00:00+01:00</updated><id>/htb/2021/01/10/HTB-Delivery</id><content type="html" xml:base="/htb/2021/01/10/HTB-Delivery.html">&lt;p&gt;Delivery Easy Box By Ippsec&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-04-17T13:23:47+00:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">Special Lyrics</title><link href="/rawan/2021/04/17/Nawar.html" rel="alternate" type="text/html" title="Special Lyrics" /><published>2021-04-17T00:00:00+00:00</published><updated>2021-04-17T00:00:00+00:00</updated><id>/rawan/2021/04/17/Nawar</id><content type="html" xml:base="/rawan/2021/04/17/Nawar.html">&lt;h3 id=&quot;special-lyrics-to-someone-special-&quot;&gt;Special Lyrics To Someone special .&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I Saw Your Pretty Face
+When passing by in the street
+As i looked my eyes popped out
+you where a beauty queen
+your hair it shone
+and your eyes did too
+oh my darling
+
+As i lay dreaming
+of what could be,
+i started wondering 
+what life had planned for me.
+i began thinking
+but most of all, my love,
+i dream't of life with you.
+Every morning i wake up 
+to your smile 
+i cannot help but wish 
+it will one day be true.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="Rawan" /><category term="song" /><category term="sound" /><category term="lyrics" /><category term="crush" /><summary type="html">Special Lyrics To Someone special .</summary></entry><entry><title type="html">HTB - Delivery</title><link href="/htb/2021/01/10/HTB-Delivery.html" rel="alternate" type="text/html" title="HTB - Delivery" /><published>2021-01-10T00:00:00+01:00</published><updated>2021-01-10T00:00:00+01:00</updated><id>/htb/2021/01/10/HTB-Delivery</id><content type="html" xml:base="/htb/2021/01/10/HTB-Delivery.html">&lt;p&gt;Delivery Easy Box By Ippsec&lt;/p&gt;
 
 &lt;h2 id=&quot;foothold&quot;&gt;Foothold&lt;/h2&gt;
 &lt;h3 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h3&gt;
 &lt;p&gt;We start of with the nmap , nmap -sC -sV -p- -T4 -oN delivery.nmap delivery.htb
 We can see there’s 3 ports open.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic30.png&quot; alt=&quot;nmap&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic30.png&quot; alt=&quot;nmap&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Let’s browse http and see what’s there.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic0.png&quot; alt=&quot;Static&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic0.png&quot; alt=&quot;Static&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We get a static website, looking at the site source there’s nothing much there but look around contact us we get this .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic26.png&quot; alt=&quot;Static_Contact&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic26.png&quot; alt=&quot;Static_Contact&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We can see a note from the site owner?&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you'll be able to have access to our MatterMost server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;so let’s look at the helpdisk at helpdesk.delivery.htb&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic29.png&quot; alt=&quot;helpdisk&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic29.png&quot; alt=&quot;helpdisk&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We see osticket support center,right of the top we check for any cves but they are all old and not affective so let’s create a new account .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic24.png&quot; alt=&quot;helpdisk_signup&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic24.png&quot; alt=&quot;helpdisk_signup&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now After we created an account we get account verification but thinking logically we have entered a none existing email we cannot receive emails neither do anything.
 Hmmm there must be somewhere around it . let’s check the open ticket thing .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic9.png&quot; alt=&quot;helpdisk_ticket_open&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic9.png&quot; alt=&quot;helpdisk_ticket_open&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;let’s fill those real quick .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic22.png&quot; alt=&quot;helpdisk_ticket_fill&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic22.png&quot; alt=&quot;helpdisk_ticket_fill&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic25.png&quot; alt=&quot;helpdisk_ticket_fill2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic25.png&quot; alt=&quot;helpdisk_ticket_fill2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We Get Support ticket request created with a ticket id and an email ?
 At this point i was hmmmmmmmmmmmm an email , going back to the text we got earlier&lt;/p&gt;
@@ -43,44 +64,44 @@ At this point i was hmmmmmmmmmmmm an email , going back to the text we got earli
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Now before we go and create an account at mattermost let’s check out ticket status.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic7.png&quot; alt=&quot;helpdisk_ticket_cr&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic7.png&quot; alt=&quot;helpdisk_ticket_cr&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We get an confirmation error,that’s not great at this point you gotta think out of the box. what email that might exist probably everywhere .
 let’s submit a new ticket real quick and check again.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic18.png&quot; alt=&quot;helpdisk_ticket_cr2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic18.png&quot; alt=&quot;helpdisk_ticket_cr2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And We Get Another ticket_id and email address , let’s check our ticket status&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic19.png&quot; alt=&quot;helpdisk_ticket_ck&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic19.png&quot; alt=&quot;helpdisk_ticket_ck&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And some how magically We got in as Admin .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic6.png&quot; alt=&quot;helpdisk_ticke_admin&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic6.png&quot; alt=&quot;helpdisk_ticke_admin&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now let’s go back to the mattermost and create an account with our ticket email&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic3.png&quot; alt=&quot;helpdisk_mattermost&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic3.png&quot; alt=&quot;helpdisk_mattermost&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic4.png&quot; alt=&quot;helpdisk_mattermost2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic4.png&quot; alt=&quot;helpdisk_mattermost2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Also we get email verification , at this point you should really use your mind for a bit . we go back to our check ticket status and we get a reply&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic1.png&quot; alt=&quot;helpdisk_mattermost1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic1.png&quot; alt=&quot;helpdisk_mattermost1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It’s the verification code, sweet now we can verify our email address and simply login.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic16.png&quot; alt=&quot;helpdisk_mattermost_login&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic16.png&quot; alt=&quot;helpdisk_mattermost_login&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now Let’s explore a bit, we click on internal and get into the channel we see there’s messages left by admin over there .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic2.png&quot; alt=&quot;helpdisk_mattermost_msg&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic2.png&quot; alt=&quot;helpdisk_mattermost_msg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We see credentials , Swwwwwweet .let’s login via ssh .&lt;/p&gt;
 
 &lt;p&gt;PS: I covered the credentials so you do the box instead of copying and pasting&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic27.png&quot; alt=&quot;helpdisk_mattermost_ssh&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic27.png&quot; alt=&quot;helpdisk_mattermost_ssh&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And There we go , now we can read the user.txt&lt;/p&gt;
 
@@ -89,31 +110,31 @@ let’s submit a new ticket real quick and check again.&lt;/p&gt;
 &lt;p&gt;At This point it’s pretty straight forward , let’s run linpeas.sh and see what’s going on but there’s nothing.
 let’s check &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/opt&lt;/code&gt; we can see mattermost installation let’s check it .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic12.png&quot; alt=&quot;helpdisk_logged_in1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic12.png&quot; alt=&quot;helpdisk_logged_in1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;the first thing i do , is to check the configs since they usually store credentials , and sensitive information .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic15.png&quot; alt=&quot;helpdisk_logged_in1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic15.png&quot; alt=&quot;helpdisk_logged_in1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Oh the config.json is interesting , let’s check it out&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic5.png&quot; alt=&quot;helpdisk_logged_config&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic5.png&quot; alt=&quot;helpdisk_logged_config&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We can see there’s an mysql settings with some credentails , running ss -lnpt we see mysql is running .
 Let’s Logging And Check The database.
 PS: The password is a hint itself it says crack the mattermost password which is the root password&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic11.png&quot; alt=&quot;helpdisk_logged_mysql&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic11.png&quot; alt=&quot;helpdisk_logged_mysql&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic20.png&quot; alt=&quot;helpdisk_logged_mysql2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic20.png&quot; alt=&quot;helpdisk_logged_mysql2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Ah there’s too many tables there , but we just interested in the Users tables.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic17.png&quot; alt=&quot;helpdisk_logged_mysql&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic17.png&quot; alt=&quot;helpdisk_logged_mysql&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic28.png&quot; alt=&quot;helpdisk_logged_mysql1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic28.png&quot; alt=&quot;helpdisk_logged_mysql1&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic14.png&quot; alt=&quot;helpdisk_logged_mysql2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic14.png&quot; alt=&quot;helpdisk_logged_mysql2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We have the root hash it’s a bcrypt type. now before we crack it, remember from the mattermost internal channel the admin user gave us a valuable hint .&lt;/p&gt;
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases.
@@ -121,15 +142,15 @@ PS: The password is a hint itself it says crack the mattermost password which is
 &lt;p&gt;This is a usefull hint to let us know that we should generate a wordlist from hashcat rules in order to crack the root hash through “PleaseSubscribe!”
 Let’s go to our crackred and generate a wordlist .&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic21.png&quot; alt=&quot;helpdisk_crackred&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic21.png&quot; alt=&quot;helpdisk_crackred&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;that’s not a big wordlist , it should crack really fast. let’s crack our hash.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic13.png&quot; alt=&quot;helpdisk_crackred1&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic13.png&quot; alt=&quot;helpdisk_crackred1&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And there we goo , we’ve cracked it,took about 2 seconds , now let’s su to root.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/delivery/pic23.png&quot; alt=&quot;helpdisk_root&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic23.png&quot; alt=&quot;helpdisk_root&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;And That’s it , that’s delivery hope you enjoyed the writeup take care and i’ll see you all other time.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Easy" /><summary type="html">Delivery Easy Box By Ippsec</summary></entry><entry><title type="html">CTF Write Ups</title><link href="/ctf/2020/10/19/writeups.html" rel="alternate" type="text/html" title="CTF Write Ups" /><published>2020-10-19T00:00:00+01:00</published><updated>2020-10-19T00:00:00+01:00</updated><id>/ctf/2020/10/19/writeups</id><content type="html" xml:base="/ctf/2020/10/19/writeups.html">&lt;h1 id=&quot;hacktober-ctf-2020&quot;&gt;Hacktober CTF (2020)&lt;/h1&gt;
 &lt;p&gt;This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever!
@@ -146,37 +167,37 @@ Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!&lt;/p&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;Message In a Array [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Hail Caesar! [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Ghost Hunter [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Evil Corp’s Child 3 [150pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Message In a Array [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Hail Caesar! [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Ghost Hunter [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Evil Corp’s Child 3 [150pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Trick Or Treat [40pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Down The Wrong Path [10pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;You Believe In Ghosts? [30pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Hunted Mirror [125pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Cover Your Bases [30pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Blasphemy [40pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Trick Or Treat [40pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Down The Wrong Path [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;You Believe In Ghosts? [30pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Red Rum [250pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Bone To Pick [80pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Start Digging [100pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Hunted Mirror [125pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cover Your Bases [30pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Blasphemy [40pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Stairway To Hell [250pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Red Rum [250pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Bone To Pick [80pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Start Digging [100pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Stairway To Hell [250pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Password Check [400pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Password Check [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
@@ -198,12 +219,12 @@ We Could Not Solve All The Challenges But We Did Great !&lt;/p&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;Time Coding [200pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;ROP Style [400pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Still with insecure protocols [200pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Time Coding [200pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;ROP Style [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Still with insecure protocols [200pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;Hide your stuff at plain sight [400pts] &lt;a href=&quot;https://blog.ybenel.tk&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Hide your stuff at plain sight [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
       &lt;td&gt; &lt;/td&gt;
     &lt;/tr&gt;
@@ -220,7 +241,7 @@ Unfortunately if &lt;strong&gt;dolby&lt;/strong&gt; supported &lt;strong&gt;Linu
 If your headphones / Headset / whatever you are trying doesn’t support 5.1 / 7.1 surround sound , you won’t be able to notice any change, now we gonna start by testing our headphones/speakers.
 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;speaker-test -D default -c 8&lt;/code&gt;
 Now this will test if our device has 8 channel output (7.1) or 6 channel output (5.1), mine goes something like this .
-&lt;img src=&quot;https://ybenel.tk/imgs/sound/speaker-test.png&quot; alt=&quot;Speaker-Test&quot; /&gt;&lt;/li&gt;
+&lt;img src=&quot;https://ybenel.cf/imgs/sound/speaker-test.png&quot; alt=&quot;Speaker-Test&quot; /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: If you only see 2 output channels that means your device doesn’t support 7.1/5.1 surround sound or it set to use only 2 channel output (it comes by default with pulse audio).&lt;/p&gt;
@@ -349,21 +370,21 @@ pulseaudio &lt;span class=&quot;nt&quot;&gt;--start&lt;/span&gt;
 &lt;ul&gt;
   &lt;li&gt;Now let’s open &lt;strong&gt;pavucontrol&lt;/strong&gt; , if it’s not installed in your os , it’s recommended to install it .&lt;/li&gt;
   &lt;li&gt;In the output tab you should see the modules are loaded .
-&lt;img src=&quot;https://ybenel.tk/imgs/sound/pavucontrol_output.png&quot; alt=&quot;pavucontrol_output&quot; /&gt;&lt;/li&gt;
+&lt;img src=&quot;https://ybenel.cf/imgs/sound/pavucontrol_output.png&quot; alt=&quot;pavucontrol_output&quot; /&gt;&lt;/li&gt;
   &lt;li&gt;Go Back To The Playback Tab And You’ll see currently running apps and you’ll see the sink device that it’s been used just click it and you’ll see all available output options , choose what’s looks good in ur case.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/sound/pavucontrol_playback1.png&quot; alt=&quot;pavucontrol_playback&quot; /&gt;
-&lt;img src=&quot;https://ybenel.tk/imgs/sound/pavucontrol_playback.png&quot; alt=&quot;pavucontrol_playback&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/sound/pavucontrol_playback1.png&quot; alt=&quot;pavucontrol_playback&quot; /&gt;
+&lt;img src=&quot;https://ybenel.cf/imgs/sound/pavucontrol_playback.png&quot; alt=&quot;pavucontrol_playback&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;extra&quot;&gt;Extra&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Extra&lt;/strong&gt; If you’re looking for some real time effects to add , you could use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pulseeffects&lt;/code&gt; to mix , equalize , compress , whatever
-&lt;img src=&quot;https://ybenel.tk/imgs/sound/pulseeffects.png&quot; alt=&quot;pulseeffects&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://ybenel.cf/imgs/sound/pulseeffects.png&quot; alt=&quot;pulseeffects&quot; /&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Other Cool Thing is Audacious Player That Has Some Really Good Plugins&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://ybenel.tk/imgs/sound/audacious.png&quot; alt=&quot;audacious&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/sound/audacious.png&quot; alt=&quot;audacious&quot; /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
 &lt;p&gt;Pulse Audio Is Really not bad and It’s much less complicated than Jack Or PipeWire it only needs some configurations and little tweaking and it’s great again.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="pulseaudio" /><category term="PulseAudio" /><category term="alsa" /><category term="sound" /><summary type="html">For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you. Unfortunately if dolby supported Linux we wouldn’t all this but it’s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let’s get started !</summary></entry></feed>
