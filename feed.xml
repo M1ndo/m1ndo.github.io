@@ -1,4 +1,198 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-07-24T19:05:52+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">How To Setup Mail In Emacs</title><link href="/emacs/2021/07/23/Emacs-Mail-Setup.html" rel="alternate" type="text/html" title="How To Setup Mail In Emacs" /><published>2021-07-23T00:00:00+01:00</published><updated>2021-07-23T00:00:00+01:00</updated><id>/emacs/2021/07/23/Emacs-Mail-Setup</id><content type="html" xml:base="/emacs/2021/07/23/Emacs-Mail-Setup.html">&lt;p&gt;If you’re an emacs user and love using emacs for literally everything , then you are in the right place.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-08-07T15:34:47+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">THM - CMSpit</title><link href="/thm/2021/08/05/THM-CMSpit.html" rel="alternate" type="text/html" title="THM - CMSpit" /><published>2021-08-05T00:00:00+01:00</published><updated>2021-08-05T00:00:00+01:00</updated><id>/thm/2021/08/05/THM-CMSpit</id><content type="html" xml:base="/thm/2021/08/05/THM-CMSpit.html">&lt;p&gt;CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.&lt;/p&gt;
+
+&lt;h2 id=&quot;cms-enumeration&quot;&gt;CMS Enumeration&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;As always we start of with nmap to see what ports are open.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;cp&quot;&gt;# Nmap 7.91 scan initiated Mon Aug  2 17:33:54 2021 as: nmap -sC -sV -oN initial.nmap 10.10.103.27
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Nmap&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scan&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;report&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;10.10.103.27&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Host&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;up&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mx&quot;&gt;0.64s&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;latency&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shown&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;998&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;closed&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ports&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PORT&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;STATE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SERVICE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;VERSION&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;ssh&lt;/span&gt;     &lt;span class=&quot;n&quot;&gt;OpenSSH&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;7.2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Ubuntu&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4u&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buntu2&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;.10&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ubuntu&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Linux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ssh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hostkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; 
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;2048&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;82&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RSA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;73&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;09&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;79&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ECDSA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ad&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;86&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;07&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;94&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;01&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ED25519&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;Apache&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpd&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.4.18&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ubuntu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Apache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.4.18&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ubuntu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Authenticate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Please&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_Requested&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;resource&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;was&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;login&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;trane&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Problem&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XML&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parsing&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;evox&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;about&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Service&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Linux&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CPE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cpe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linux&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linux_kernel&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;there’s 2 ports open , first is &lt;strong&gt;ssh&lt;/strong&gt; and the second one is &lt;strong&gt;http&lt;/strong&gt; running apache in a ubuntu machine.&lt;/li&gt;
+  &lt;li&gt;Going over to http://10.10.103.27 we can see it’s hosting &lt;strong&gt;Cockpit&lt;/strong&gt; CMS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/http_80.png&quot; alt=&quot;http_80&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Trying common default login credentials such as “admin:admin”,”admin:password” doesn’t work .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/failed_attempt.png&quot; alt=&quot;failed_attempt&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Next we enumerate further the CMS, checking first its login page source which reveals its version .
+&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/version_leak.png&quot; alt=&quot;version_leak&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Heading over to google , it looks like Cockpit suffers from NoSql Injection and remote code execution which is a breaking deal, and even it has msf module written for it so u could just fire up msf and there u go straight to RCE (we will get to that later).&lt;/li&gt;
+  &lt;li&gt;Also we see how we can enumeration users in two different ways .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/cockpit_vulne.png&quot; alt=&quot;cockpit_vulne&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;user-enumeration&quot;&gt;User Enumeration&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;First Method&lt;/strong&gt; /auth/forgotpassword Offers an easy way to enumerate users, however doing it manually is quite takes alot of effort and time .&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Specifying a none existing user will result into the following&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/user_enum_failed.png&quot; alt=&quot;user_enum_failed&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;While Specifying a user that exists results into the following&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/user_enum_success.png&quot; alt=&quot;user_enum_success&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;You can script it to do the whole work for u.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Second Method&lt;/strong&gt; Is by using /auth/requestreset and set the data to&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;user&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:{&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;$func&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;var_dump&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;this will dump all the users available on the cms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/available_users.png&quot; alt=&quot;available_users&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Second Method&lt;/strong&gt;  Which is the easiest way , is by using msf which is shown bellow .&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/users.png&quot; alt=&quot;users&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;cms-exploitation&quot;&gt;CMS Exploitation.&lt;/h2&gt;
+&lt;h3 id=&quot;getting-reset-token&quot;&gt;Getting Reset Token&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;To obtain reset token we use the same payload we used to gather the 4 users , like below .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/dump_resettoken.png&quot; alt=&quot;dump_resettoken&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We can also use the payload to dump data about admin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/dumping_information.png&quot; alt=&quot;dumping_information&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;changing-admin-password&quot;&gt;Changing Admin Password&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;To change the admin password we simply send a request to /auth/resetpassword with the token we obtained and the new password we want to set .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/password_reset.png&quot; alt=&quot;password_reset&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;login-to-admin-panel&quot;&gt;Login To Admin Panel&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;After changing the admin password , we can simply login .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/admin_panel.png&quot; alt=&quot;admin_panel&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To grab the &lt;strong&gt;webflag&lt;/strong&gt; we simply head over to /finder and we read webflag.php file&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;foothold&quot;&gt;Foothold&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;There’s 2 ways two obtain RCE as i know .&lt;/li&gt;
+  &lt;li&gt;To get RCE we simply create a new file and add malicious php code in it and execute it directly .
+&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/create_file.png&quot; alt=&quot;create_file&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/avada_code.png&quot; alt=&quot;avada_code&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/code_exec.png&quot; alt=&quot;code_exec&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;After we got code execution now we can procced to get a full reverse shell&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/reverse_shell.png&quot; alt=&quot;reverse_shell&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/reverse_shell1.png&quot; alt=&quot;reverse_shell1&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;And there we go we got a shell .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;user-enumeration-1&quot;&gt;User Enumeration&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;There’s one user on the box &lt;strong&gt;Stux&lt;/strong&gt; and we can access his home folder , listing hidden files we found few files that we can read .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/listing_files.png&quot; alt=&quot;listing_files&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There’s one interesting file &lt;em&gt;.dbshell&lt;/em&gt; , we can read it .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/catting_dbshell.png&quot; alt=&quot;catting_dbshell&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Right there we got &lt;strong&gt;stux&lt;/strong&gt; password and another flag.&lt;/li&gt;
+  &lt;li&gt;Now let’s su and get the &lt;strong&gt;user flag&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/su_catuser.png&quot; alt=&quot;su_catuser&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;privilege-escalation&quot;&gt;Privilege Escalation&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Without wasting time when i did the box i ran linpeas however it didn’t show anything interesting besides one little thing .&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;stux&lt;/strong&gt; Is allowed to run &lt;strong&gt;exiftool&lt;/strong&gt; with &lt;strong&gt;sudo&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Using &lt;a href=&quot;https://gtfobins.github.io/gtfobins/exiftool/#sudo&quot;&gt;GTFOBINs&lt;/a&gt; to abuse exiftool and to overwrite files as root didn’t work. so looked more at good and found that exiftool recently had vulnerability hat allows for arbitrary code execution when parsing a malicious image.&lt;/li&gt;
+  &lt;li&gt;We can craft a malicious image with our commands so it gets executed when its parsed with exiftool , there’s this &lt;a href=&quot;https://github.com/bilkoh/POC-CVE-2021-22204&quot;&gt;POC&lt;/a&gt; which is a perl script that will generate a one image with our commands .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/crafting_payload.png&quot; alt=&quot;crafting_payload&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now we just have to start a python server and upload our image to the box and execute it .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/up_and_run.png&quot; alt=&quot;up_and_run&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now we can check if successfully managed to obtain the root flag .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/check_test.png&quot; alt=&quot;check_test&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There we go, we got the root flag.&lt;/li&gt;
+  &lt;li&gt;Now let’s attempt to obtain a root shell, to do this i’ll generate an ssh-key and placing the key into root ssh folder .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/ssh_key2.png&quot; alt=&quot;ssh_key2&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;And let’s check if it works .&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/cmspit/final_root.png&quot; alt=&quot;final_root&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;And That’s Pretty Much The Box , Hope You Enjoyed Reading Take Care And i’ll see you all other time :)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="THM" /><category term="THM" /><category term="Medium" /><summary type="html">CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.</summary></entry><entry><title type="html">How To Setup Mail In Emacs</title><link href="/emacs/2021/07/23/Emacs-Mail-Setup.html" rel="alternate" type="text/html" title="How To Setup Mail In Emacs" /><published>2021-07-23T00:00:00+01:00</published><updated>2021-07-23T00:00:00+01:00</updated><id>/emacs/2021/07/23/Emacs-Mail-Setup</id><content type="html" xml:base="/emacs/2021/07/23/Emacs-Mail-Setup.html">&lt;p&gt;If you’re an emacs user and love using emacs for literally everything , then you are in the right place.
 In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.&lt;/p&gt;
 
 &lt;h2 id=&quot;installing-mu4e&quot;&gt;Installing Mu4e&lt;/h2&gt;
