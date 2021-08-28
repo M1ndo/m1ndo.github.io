@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-08-07T15:34:47+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">THM - CMSpit</title><link href="/thm/2021/08/05/THM-CMSpit.html" rel="alternate" type="text/html" title="THM - CMSpit" /><published>2021-08-05T00:00:00+01:00</published><updated>2021-08-05T00:00:00+01:00</updated><id>/thm/2021/08/05/THM-CMSpit</id><content type="html" xml:base="/thm/2021/08/05/THM-CMSpit.html">&lt;p&gt;CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-08-28T01:30:38+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">The End</title><link href="/theend/2021/08/27/Suicide.html" rel="alternate" type="text/html" title="The End" /><published>2021-08-27T00:00:00+01:00</published><updated>2021-08-27T00:00:00+01:00</updated><id>/theend/2021/08/27/Suicide</id><content type="html" xml:base="/theend/2021/08/27/Suicide.html">&lt;h3 id=&quot;lyrics-dedicated-to-those-whove-done-enough&quot;&gt;Lyrics Dedicated To Those Who’ve Done Enough.&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I&apos;ve always kept wondering what&apos;s with me .
+I have been through the nether
+I don&apos;t know how i survived
+Messing my life, changing like the tides
+   
+I thought i could look past all these mistakes
+but with no time to play games, my hearts could break
+It was never gonna last, gone before you wake
+I was moving i was shaking trying to fade away.
+Had my mind all in the clouds, did i die today ?
+
+Had to sit back, count my messes
+Cause it always had me stressing
+And it play with my emotions
+Had me so high I was floating
+
+Looking beyond the truth
+thinking i&apos;m getting used
+Blink back to my youth, i need a new groove
+Lying, cause I know she&apos;ll disapprove
+How I&apos;m flying so high, it&apos;s just me and you
+Can&apos;t tell by the red eyes, it was something new
+Nowadays it&apos;s the only thing we ever wanna do
+Our demise so true when the lies be coming true.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="TheEnd" /><category term="TheEnd" /><summary type="html">Lyrics Dedicated To Those Who’ve Done Enough.</summary></entry><entry><title type="html">THM - CMSpit</title><link href="/thm/2021/08/05/THM-CMSpit.html" rel="alternate" type="text/html" title="THM - CMSpit" /><published>2021-08-05T00:00:00+01:00</published><updated>2021-08-05T00:00:00+01:00</updated><id>/thm/2021/08/05/THM-CMSpit</id><content type="html" xml:base="/thm/2021/08/05/THM-CMSpit.html">&lt;p&gt;CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.&lt;/p&gt;
 
 &lt;h2 id=&quot;cms-enumeration&quot;&gt;CMS Enumeration&lt;/h2&gt;
 &lt;ul&gt;
