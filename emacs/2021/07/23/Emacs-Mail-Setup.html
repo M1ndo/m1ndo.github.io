@@ -21,7 +21,7 @@
 <meta property="twitter:title" content="How To Setup Mail In Emacs" />
 <meta name="twitter:site" content="@_ybenel" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"headline":"How To Setup Mail In Emacs","dateModified":"2021-07-23T00:00:00+01:00","datePublished":"2021-07-23T00:00:00+01:00","description":"If you’re an emacs user and love using emacs for literally everything , then you are in the right place. In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.","mainEntityOfPage":{"@type":"WebPage","@id":"/emacs/2021/07/23/Emacs-Mail-Setup.html"},"url":"/emacs/2021/07/23/Emacs-Mail-Setup.html","@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","headline":"How To Setup Mail In Emacs","dateModified":"2021-09-21T00:00:00+01:00","datePublished":"2021-07-23T00:00:00+01:00","description":"If you’re an emacs user and love using emacs for literally everything , then you are in the right place. In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.","mainEntityOfPage":{"@type":"WebPage","@id":"/emacs/2021/07/23/Emacs-Mail-Setup.html"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"url":"/emacs/2021/07/23/Emacs-Mail-Setup.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -136,16 +136,28 @@
 <nav class="toc-nav">
   <ul class="toc">
   <li><a href="#installing-mu4e">Installing Mu4e</a></li>
-  <li><a href="#installing-offlineimap-and-mu-git">Installing offlineimap and mu-git</a></li>
+  <li><a href="#installing-and-mu-git-and-mu4e">Installing and mu-git and mu4e</a></li>
+  <li><a href="#installing-isync-or-offlineimap">Installing Isync Or OfflineImap</a></li>
+  <li><a href="#configuring-isync">Configuring Isync</a></li>
   <li><a href="#configuring-offlineimap">Configuring OfflineImap</a>
     <ul>
       <li><a href="#setting-up-googleapi">Setting Up GoogleApi</a></li>
       <li><a href="#installing-gmail-oauth-tools">Installing gmail-oauth-tools</a></li>
       <li><a href="#adding-the-configuration-files">Adding The Configuration Files</a></li>
-      <li><a href="#getting-mail">Getting Mail</a></li>
     </ul>
   </li>
-  <li><a href="#getting-mu">Getting Mu</a></li>
+  <li><a href="#getting-mail">Getting Mail</a>
+    <ul>
+      <li><a href="#offlineimap">Offlineimap</a></li>
+      <li><a href="#mu">Mu</a></li>
+    </ul>
+  </li>
+  <li><a href="#setting-up-mu4e-in-emacs">Setting Up mu4e in emacs</a>
+    <ul>
+      <li><a href="#extra-configurations">Extra Configurations</a></li>
+      <li><a href="#screenshot">Screenshot</a></li>
+    </ul>
+  </li>
 </ul>
 
 </nav>
@@ -160,7 +172,9 @@
     <h1 class="post-title p-name" itemprop="name headline">How To Setup Mail In Emacs</h1>
     <p class="post-meta"><time class="dt-published" datetime="2021-07-23T00:00:00+01:00" itemprop="datePublished">
         Jul 23, 2021
-      </time>• 
+      </time>~<time class="dt-modified" datetime="2021-09-21T00:00:00+01:00" itemprop="dateModified">
+          Sep 21, 2021
+        </time>• 
           <span itemprop="author" itemscope itemtype="http://schema.org/Person">
             <span class="p-author h-card" itemprop="name">ybenel</span></span></p>
 
@@ -171,73 +185,302 @@
 In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.</p>
 
 <h2 id="installing-mu4e">Installing Mu4e</h2>
-<p>There’s a lot of ways to install mu4e in emacs , one of the easiest ways to do it if you have <strong>doom emacs</strong> installed is to edit packages.el and uncomment the mail option .
-the other way is to use the <strong>package-install</strong> in emacs, to do this open selection by pressing <strong>alt+x</strong> and then type package-install and hit return this will prompt to search for packages to install , simply type mu4e and hit return and it will be installed. once it’s done quit emacs and proceed with the following steps.</p>
+<p>There’s a lot of ways to install mu4e in emacs , one of the easiest ways to do it if you have <strong>doom emacs</strong> installed is to edit init.el and uncomment the mail option <em>mu4e</em>.
+the other way is to install it manually which we will cover it later on in mu installation.</p>
 
-<h2 id="installing-offlineimap-and-mu-git">Installing offlineimap and mu-git</h2>
-<p>Offlineimap is pre packaged in the official arch repositories, for mu-git there’s AUR build for it .
-To Install both offlineimap and mu-git simply run the following command .</p>
+<h2 id="installing-and-mu-git-and-mu4e">Installing and mu-git and mu4e</h2>
+<p>In order to index our mail we’ll be using <em>mu</em> which includes <em>mu4e</em> for emacs.
+There’s few different ways to install <em>mu</em> which changes from distribution to another.
+The current stable release is <strong>1.6.6</strong>, in case u installed 1.7.0 there’s a high chance you’ll be facing few problems and experiencing some bugs , so be sure which version you’re installing .
+In <strong>Arch</strong> Using <em>AUR</em> is pretty straight forward.</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yay <span class="nt">-S</span> offlineimap mu-git
+</code></pre></div></div>
+<p>In <strong>Debian</strong> the stable release is 1.4.15 which is really fine really, you can use the instable repositories to install 1.6.*</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>mu4e
+</code></pre></div></div>
+<p>In Case your distribution doesn’t have <em>mu</em> on their repositories you can install it from source which is really easy.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <span class="nt">-b</span> <span class="s2">"release/1.6"</span> https://github.com/djcb/mu/
+<span class="nb">cd </span>mu
+meson <span class="nt">--prefix</span><span class="o">=</span>/usr <span class="nt">--buildtype</span><span class="o">=</span>plain build
+ninja <span class="nt">-C</span> build <span class="nb">install</span>
+</code></pre></div></div>
+
+<h2 id="installing-isync-or-offlineimap">Installing Isync Or OfflineImap</h2>
+<p>Both <em>Isync</em> And <em>Offlineimap</em> are great programs to download our mail into our inbox.
+There isn’t really that much difference, it just depends on which one you’d like to install.
+To Install <em>Isync</em> Or <em>Offlineimap</em> On <strong>Arch</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pacman <span class="nt">-S</span> isync
+pacman <span class="nt">-S</span> offlineimap
+</code></pre></div></div>
+<p>To Install <em>Isync</em> or <em>Offlineimap</em> On <strong>Debian</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>isync
+apt <span class="nb">install </span>offlineimap
+</code></pre></div></div>
+
+<h2 id="configuring-isync">Configuring Isync</h2>
+<p>Configuring <em>Isync</em> is really easy however it depends on which options you’d like to set.
+By default if you gonna use <em>Gmail</em> like myself. you’d wanna set some google options first .
+If you have 2FA enabled, you should first set up an app password this will let’s you control your <em>Gmail only</em> will a custom generated password. First head up to <a href="https://myaccount.google.com/apppasswords">Set Up App Password</a>, Select app as <strong>Mail</strong> and device as <strong>Custom</strong> and give it a name, it will generate a custom password. 
+<strong>Disclaimer</strong> Your password should no be shared with anyone except yourself and <em>Isync</em>
+<strong>Extra</strong> As your password will be kept in <em>Isync</em> config file in plain text, you can avoid this and encrypt it using <strong>GPG</strong>. You can either use <strong>Pass</strong> utility if its installed on your device as a wrapper around <strong>GPG</strong> or use straight <strong>GPG</strong>.
+To Crypt your password using <strong>pass</strong> command.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pass insert gmail_app 
+Enter password <span class="k">for </span>test_gmail: <span class="k">*******</span>
+Retype password <span class="k">for </span>test_gmail: <span class="k">*******</span>
+</code></pre></div></div>
+<p>To Crypt your password using <strong>GPG</strong> command, First generate a new key if you don’t have one yet .</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This will prompt you for email and a name and a password (Use a valid real mail if you gonna share ur key will others)</span>
+<span class="c"># WARNING: DO NOT LOSE YOUR KEYS AND THE PASSWORD YOU USED TO CREATE THE KEYS OTHERWISE YOUR DATA WILL BE LOSE IF YOU LOSE THEM </span>
+<span class="c"># ALWAYS BACKUP YOUR .gnupg AND .password-store FOLDER TO A USB_DRIVE OR AN EXTERNAL DRIVE OR IN THE CLOUD</span>
+gpg <span class="nt">--full-generate-key</span>
+<span class="c"># After u create your own key, find it through the following command</span>
+gpg <span class="nt">-K</span> <span class="nt">--keyid-format</span><span class="o">=</span>long
+<span class="c"># You'll get something like this </span>
+<span class="c"># sec   rsa2048/84263A08F86B7E99 2020-06-17 [SC] [expires: 2022-06-17]</span>
+<span class="c">#       447FE384AAE41F357F5876FF84263A08F86B7E99</span>
+<span class="c"># uid                 [ultimate] Ybenel &lt;r2dr0dn@pm.me&gt;</span>
+<span class="c"># ssb   rsa2048/C8D9741AC03BE89C 2020-06-17 [E] [expires: 2022-06-17]</span>
+<span class="c"># Now you have your long key and ur short key, you can use whatever u want , now let's encrypt your file</span>
+<span class="nb">echo</span> <span class="s2">"YOUR APP PASSWORD"</span> <span class="o">&gt;</span> gmail_app
+gpg <span class="nt">-e</span> <span class="nt">-r</span> 84263A08F86B7E99 gmail_app 
+<span class="c"># This will create a new encrypted file called gmail_app.gpg, delete the gmail_app that contains plain text passowrd preferbly using shred</span>
+</code></pre></div></div>
+<p>Before quickly setting up our configuration file let’s create a mail folder, to do so .</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> ~/Mail/Gmail
+</code></pre></div></div>
+<p>Now we need to create our configuration file that is located in our HOME folder which will be called <strong>~/.mbsyncrc</strong> . And Let’s put our configurations .</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAPAccount gmail
+Host imap.gmail.com
+User USERMAIL@gmail.com
+PassCmd <span class="s2">"gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/gmail_app.gpg"</span>
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/Mail/Gmail/
+Inbox ~/Mail/Gmail/Inbox
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns <span class="k">*</span> <span class="o">![</span>Gmail]<span class="k">*</span> <span class="s2">"[Gmail]/Sent Mail"</span> <span class="s2">"[Gmail]/All Mail"</span>
+Create Both
+Expunge Both
+SyncState <span class="k">*</span>
+</code></pre></div></div>
+<p>If you use a plain text password replace <strong>PassCmd</strong> With <strong>Pass</strong> And Put your password .
+In <strong>Patterns</strong> This will download <em>Sent Mail</em> And <em>All Mail</em> and exclude everything else, you can add other folders as well as example , <strong>“[Gmail]/Spam”</strong> this will download the spam mail as well .
+<strong>Other Than GMAIL</strong> if you use another email service you can replace the above config with the correct info , and replace gmail with a custom name, as a quick example .</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>IMAPAccount cock 
+Host mail.cock.li
+User suckmycock11@cock.li
+PassCmd <span class="s2">"gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/cockli.gpg"</span>
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore cock-remote
+Account cock
+
+MaildirStore cock-local
+Subfolders Verbatim
+Path ~/Mail/cock/
+Inbox ~/Mail/cock/Inbox
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns <span class="k">*</span> <span class="o">![</span>Inbox]<span class="k">*</span> <span class="s2">"[Inbox]/Sent Mail"</span> <span class="s2">"[Inbox]/All Mail"</span>
+Create Both
+Expunge Both
+SyncState <span class="k">*</span>
 </code></pre></div></div>
 
 <h2 id="configuring-offlineimap">Configuring OfflineImap</h2>
-<p>In order to configure offlineimap to receive our gmail mail we need to have few essential requirements .</p>
+<p><em>Offlineimap</em> Configurations is no different than <em>Isync</em> however it does support OAUTH2 authentication mechanism which u can use or not use if u want to and what it does is just the same as App Password But With Token. Keep in mind OAUTH2 does really need more little effort if you wanna use it. Starting Off With</p>
 <h3 id="setting-up-googleapi">Setting Up GoogleApi</h3>
 <p>GoogleAPI Is required to enable GmailApi , This will allow us to read and edit mail from our gmail account, to enable simply head over google api and search for gmailapi and click enable once its enabled search for generate token and copy it to an empty file for later.</p>
 <h3 id="installing-gmail-oauth-tools">Installing gmail-oauth-tools</h3>
 <p>In order for us to use the token we got earlier we need to install and use gmail-oauth-tools this will generate a refresh token that we will use later in configuring offlineimap.
-To Install simply clone the repo .</p>
+To Install simply run .</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/google/gmail-oauth2-tools Public/oauth2-tools
 </code></pre></div></div>
 <p>And run the following command to get your refresh token</p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python2 Public/oauth2-tools/python/oauth2.py <span class="nt">--generate_oauth2_token</span> <span class="nt">--client_id</span><span class="o">=</span>YOUR_CLIENT_ID <span class="nt">--client_secret</span><span class="o">=</span>YOUR_CLIENT_SECRET
 </code></pre></div></div>
-<p>To Get Your CLIENT-ID Head over to <a href="https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf#L886-L894"></a> and read the steps .</p>
+<p>To Get Your CLIENT-ID Head over to <a href="https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf#L886-L894">Here</a> and read the steps .</p>
 
 <h3 id="adding-the-configuration-files">Adding The Configuration Files</h3>
-<p>To Configure OfflineIMAP Put The Following Configurations In <strong>$HOME/..offlineimaprc</strong></p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>general]
-accounts <span class="o">=</span> Gmail
-maxsyncaccounts <span class="o">=</span> 3
-<span class="c">#pythonfile = ~/.offlineimap.py</span>
+<p>To Configure OfflineIMAP Put The Following Configurations In <strong>~/.offlineimaprc</strong></p>
+<div class="language-ini highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">[general]</span>
+<span class="py">accounts</span> <span class="p">=</span> <span class="s">Gmail</span>
+<span class="py">maxsyncaccounts</span> <span class="p">=</span> <span class="s">3</span>
+<span class="c">#pythonfile = ~/.offlineimap.py
+</span>
+<span class="nn">[Account Gmail]</span>
+<span class="py">localrepository</span> <span class="p">=</span> <span class="s">Local</span>
+<span class="py">remoterepository</span> <span class="p">=</span> <span class="s">Remote</span>
 
-<span class="o">[</span>Account Gmail]
-localrepository <span class="o">=</span> Local
-remoterepository <span class="o">=</span> Remote
+<span class="nn">[Repository Local]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">Maildir</span>
+<span class="py">localfolders</span> <span class="p">=</span> <span class="s">~/Maildir</span>
+<span class="py">nametrans</span> <span class="p">=</span> <span class="s">lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Trash', 'All Mail', 'Sent Mail'] else f</span>
 
-<span class="o">[</span>Repository Local]
-<span class="nb">type</span> <span class="o">=</span> Maildir
-localfolders <span class="o">=</span> ~/Maildir
-nametrans <span class="o">=</span> lambda f: <span class="s1">'[Gmail]/'</span> + f <span class="k">if </span>f <span class="k">in</span> <span class="o">[</span><span class="s1">'Drafts'</span>, <span class="s1">'Starred'</span>, <span class="s1">'Important'</span>, <span class="s1">'Spam'</span>, <span class="s1">'Trash'</span>, <span class="s1">'All Mail'</span>, <span class="s1">'Sent Mail'</span><span class="o">]</span> <span class="k">else </span>f
-
-<span class="o">[</span>Repository Remote]
-<span class="nb">type</span> <span class="o">=</span> IMAP
-remotehost <span class="o">=</span> imap.gmail.com
-remoteuser <span class="o">=</span> USERMAIL@gmail.com
-auth_mechanisms <span class="o">=</span> XOAUTH2
-oauth2_client_id <span class="o">=</span> CLIENT_ID
-oauth2_client_secret <span class="o">=</span> CLIENT_SECRET
-oauth2_request_url <span class="o">=</span> https://accounts.google.com/o/oauth2/token
-oauth2_refresh_token <span class="o">=</span> REFRESH_TOKEN
-ssl <span class="o">=</span> <span class="nb">yes
-</span>maxconnections <span class="o">=</span> 1
-sslcacertfile <span class="o">=</span> /etc/ssl/certs/ca-certificates.crt
-ssl_version <span class="o">=</span> tls1_2
-folderfilter <span class="o">=</span> lambda foldername: foldername <span class="k">in</span> <span class="o">[</span><span class="s1">'INBOX'</span>, <span class="s1">'Important'</span><span class="o">]</span>
-nametrans <span class="o">=</span> lambda f: f.replace<span class="o">(</span><span class="s1">'[Gmail]/'</span>, <span class="s1">''</span><span class="o">)</span> <span class="k">if </span>f.startswith<span class="o">(</span><span class="s1">'[Gmail]/'</span><span class="o">)</span> <span class="k">else </span>f
+<span class="nn">[Repository Remote]</span>
+<span class="py">type</span> <span class="p">=</span> <span class="s">IMAP</span>
+<span class="py">remotehost</span> <span class="p">=</span> <span class="s">imap.gmail.com</span>
+<span class="py">remoteuser</span> <span class="p">=</span> <span class="s">USERMAIL@gmail.com</span>
+<span class="py">auth_mechanisms</span> <span class="p">=</span> <span class="s">XOAUTH2</span>
+<span class="py">oauth2_client_id</span> <span class="p">=</span> <span class="s">CLIENT_ID</span>
+<span class="py">oauth2_client_secret</span> <span class="p">=</span> <span class="s">CLIENT_SECRET</span>
+<span class="py">oauth2_request_url</span> <span class="p">=</span> <span class="s">https://accounts.google.com/o/oauth2/token</span>
+<span class="py">oauth2_refresh_token</span> <span class="p">=</span> <span class="s">REFRESH_TOKEN</span>
+<span class="py">ssl</span> <span class="p">=</span> <span class="s">yes</span>
+<span class="py">maxconnections</span> <span class="p">=</span> <span class="s">1</span>
+<span class="py">sslcacertfile</span> <span class="p">=</span> <span class="s">/etc/ssl/certs/ca-certificates.crt</span>
+<span class="py">ssl_version</span> <span class="p">=</span> <span class="s">tls1_2</span>
+<span class="py">folderfilter</span> <span class="p">=</span> <span class="s">lambda foldername: foldername in ['INBOX', 'All Mail', 'Sent Mail']</span>
+<span class="py">nametrans</span> <span class="p">=</span> <span class="s">lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f</span>
 </code></pre></div></div>
-<p>replace CLIENT-ID,CLIENT-SECRET,REFRESH-TOKEN with the tokens you’ve got.</p>
+<p>Replace <strong>CLIENT-ID,CLIENT-SECRET,REFRESH-TOKEN</strong> with the tokens you’ve got.
+In Case Of Using <strong>GPG ENCRYPTED PASSWORD</strong></p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#! /usr/bin/env python2
+# In side of offlineimap.py
+</span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">check_output</span>
 
-<h3 id="getting-mail">Getting Mail</h3>
+<span class="k">def</span> <span class="nf">get_pass</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">check_output</span><span class="p">(</span><span class="s">"gpg -dq ~/.password-store/gmail.gpg"</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="bp">True</span><span class="p">).</span><span class="n">strip</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Incomment pythonfile in [general]</span>
+<span class="c"># Remove oauth2* settings in [Repository Remote] and add</span>
+remotepasseval <span class="o">=</span> get_password<span class="o">()</span>
+</code></pre></div></div>
+<p>In Case of Using <strong>Plain Text Password</strong> Or <strong>Plain Password File</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Remove oauth2* settings in [Repository Remote] </span>
+<span class="c"># Add for plain text passowrd</span>
+remotepass <span class="o">=</span> mypassword
+<span class="c"># Or Password file</span>
+remotepassfile <span class="o">=</span> ~/gmail_app
+</code></pre></div></div>
+<h2 id="getting-mail">Getting Mail</h2>
 <p>Now Once You’ve done all the previous steps , there’s one last step to do and that is to get mail to your inbox, simply run the following command to start getting ur mail.</p>
+<h3 id="offlineimap">Offlineimap</h3>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>offlineimap
 </code></pre></div></div>
-
-<h2 id="getting-mu">Getting Mu</h2>
-<p>After getting your inbox and almost ready there’s only one last thing and that is to Initiat Mu, to execute mu simply run .</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mu init <span class="o">&amp;&amp;</span> mu index
+<h3 id="mu">Mu</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mu init <span class="nt">-m</span> ~/Mail <span class="nt">--my-address</span><span class="o">=</span>USERMAIL@gmail.com 
+mu index
 </code></pre></div></div>
-<p>And you’re finally done , all you gotta do now is to open up emacs and head over to mu4e and you’ll see all your mail there, make sure to hit update from time to time to update your inbox. And That’s pretty much it Thanks for reading :)</p>
+<p>And you’re finally done, you’ll now down all ur mail and it will be indexed automatically .</p>
+<h2 id="setting-up-mu4e-in-emacs">Setting Up mu4e in emacs</h2>
+<p>There isn’t much to do with  <strong>mu4e</strong> in <strong>emacs</strong> besides adding our configurations.
+My configurations is the following .</p>
+<div class="language-lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">add-to-list</span> <span class="ss">'load-path</span> <span class="s">"/usr/share/emacs/site-lisp/mu4e"</span><span class="p">)</span>
+<span class="p">(</span><span class="nv">with-eval-after-load</span> <span class="ss">'mu4e</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-context-policy</span> <span class="ss">'ask-if-none</span>
+        <span class="nv">mu4e-compose-context-policy</span> <span class="ss">'pick-first</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-change-filenames-when-moving</span> <span class="no">t</span><span class="p">)</span>
+  <span class="c1">;; refresh mail using isync every 10 minutes</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-update-interval</span> <span class="p">(</span><span class="nb">*</span> <span class="mi">10</span> <span class="mi">60</span><span class="p">))</span>
+  <span class="c1">;; Comment out mu4e-mu-binary if u have mu installed in /usr/bin/ or something</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-mu-binary</span> <span class="s">"~/Downloads/mu-1.6.6/mu/mu"</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-get-mail-command</span> <span class="s">"mbsync -a"</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-root-maildir</span> <span class="s">"~/Mail"</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">bind-key</span> <span class="s">"C-c C-m"</span> <span class="ss">'mu4e</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-html2text-command</span> <span class="s">"w3m -dump -T text/html -o display_link_number=true"</span><span class="p">)</span>
+  <span class="c1">;; (setq mu4e-html2text-command "html2markdown | grep -v '&amp;nbsp_place_holder;'")</span>
+
+  <span class="p">(</span><span class="nv">set-email-account!</span> <span class="s">"Personal"</span>
+                      <span class="o">'</span><span class="p">((</span><span class="nv">mu4e-sent-folder</span>          <span class="o">.</span> <span class="s">"/Gmail/[Gmail]/Sent Mail"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">mu4e-drafts-folder</span>        <span class="o">.</span> <span class="s">"/Gmail/[Gmail]/Drafts"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">mu4e-refile-folder</span>        <span class="o">.</span> <span class="s">"/Gmail/[Gmail]/All Mail"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">mu4e-trash-folder</span>         <span class="o">.</span> <span class="s">"/Gmail/[Gmail]/Trash"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">user-mail-address</span>         <span class="o">.</span> <span class="s">"USERMAIL@gmail.com"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">user-full-name</span>            <span class="o">.</span> <span class="s">"Dr Drunkenstein"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">mu4e-compose-signature</span>    <span class="o">.</span> <span class="s">"Signed By Mando"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">smtpmail-smtp-user</span>        <span class="o">.</span> <span class="s">"USERMAIL@gmail.com"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">smtpmail-smtp-server</span>      <span class="o">.</span> <span class="s">"smtp.gmail.com"</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">smtpmail-stream-type</span>      <span class="o">.</span> <span class="nv">ssl</span><span class="p">)</span>
+                        <span class="p">(</span><span class="nv">smtpmail-smtp-service</span>     <span class="o">.</span> <span class="mi">465</span><span class="p">))</span>
+                      <span class="no">t</span><span class="p">)</span>
+
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-maildir-shortcuts</span>
+        <span class="o">'</span><span class="p">((</span><span class="s">"/Gmail/inbox"</span>             <span class="o">.</span> <span class="nv">?i</span><span class="p">)</span>
+          <span class="p">(</span><span class="s">"/Gmail/[Gmail]/Sent Mail"</span> <span class="o">.</span> <span class="nv">?s</span><span class="p">)</span>
+          <span class="p">(</span><span class="s">"/Gmail/[Gmail]/Trash"</span>     <span class="o">.</span> <span class="nv">?t</span><span class="p">)</span>
+          <span class="p">(</span><span class="s">"/Gmail/[Gmail]/Drafts"</span>    <span class="o">.</span> <span class="nv">?d</span><span class="p">)</span>
+          <span class="p">(</span><span class="s">"/Gmail/[Gmail]/All Mail"</span>  <span class="o">.</span> <span class="nv">?a</span><span class="p">))))</span>
+</code></pre></div></div>
+<h3 id="extra-configurations">Extra Configurations</h3>
+<p>if you want mail notifications and modeline alert of how many mails u have unread , you’ll need an extra package called <strong>mu4e-alert</strong>.
+You can install it through <a href="https://melpa.org/#/mu4e-alert">Melpa</a>  using <strong>package-install</strong> or through <strong>use-package</strong>
+My Configurations for it is .</p>
+<div class="language-lisp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span><span class="nv">use-package!</span> <span class="nv">mu4e-alert</span>
+  <span class="ss">:after</span> <span class="nv">mu4e</span>
+  <span class="ss">:config</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">doom-modeline-mu4e</span> <span class="no">t</span><span class="p">)</span>
+
+  <span class="p">(</span><span class="nv">mu4e-alert-enable-mode-line-display</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">mu4e-alert-enable-notifications</span><span class="p">)</span>
+
+  <span class="p">(</span><span class="nv">mu4e-alert-set-default-style</span> <span class="ss">'libnotify</span><span class="p">)</span>
+  <span class="p">(</span><span class="nv">map!</span> <span class="ss">:leader</span>
+        <span class="p">(</span><span class="ss">:prefix</span> <span class="p">(</span><span class="s">"d"</span><span class="o">.</span> <span class="s">"mu4e"</span><span class="p">)</span>
+         <span class="ss">:desc</span> <span class="s">"Disable Mu4e Modeline Alert"</span> <span class="s">"d"</span> <span class="nf">#'</span><span class="nv">mu4e-alert-disable-mode-line-display</span>
+         <span class="ss">:desc</span> <span class="s">"Enable Mu4e Modeline Alert"</span> <span class="s">"i"</span> <span class="nf">#'</span><span class="nv">mu4e-alert-enable-mode-line-display</span><span class="p">))</span>
+
+  <span class="p">(</span><span class="nb">defvar</span> <span class="nv">+mu4e-alert-bell-cmd</span> <span class="o">'</span><span class="p">(</span><span class="s">"paplay"</span> <span class="o">.</span> <span class="s">"/usr/share/sounds/freedesktop/stereo/message.oga"</span><span class="p">)</span>
+    <span class="s">"Cons list with command to play a sound, and the sound file to play.
+                 Disabled when set to nil."</span><span class="p">)</span>
+
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-alert-email-notification-types</span> <span class="o">'</span><span class="p">(</span><span class="nv">subjects</span><span class="p">))</span>
+  <span class="p">(</span><span class="nb">defun</span> <span class="nv">+mu4e-alert-grouped-mail-notification-formatter-with-bell</span> <span class="p">(</span><span class="nv">mail-group</span> <span class="nv">_all-mails</span><span class="p">)</span>
+    <span class="s">"Default function to format MAIL-GROUP for notification.
+                 ALL-MAILS are the all the unread emails"</span>
+    <span class="p">(</span><span class="nb">when</span> <span class="nv">+mu4e-alert-bell-cmd</span>
+      <span class="p">(</span><span class="nv">start-process</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">+mu4e-alert-bell-cmd</span><span class="p">)</span> <span class="p">(</span><span class="nb">cdr</span> <span class="nv">+mu4e-alert-bell-cmd</span><span class="p">)))</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="p">(</span><span class="nb">length</span> <span class="nv">mail-group</span><span class="p">)</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">mail-count</span> <span class="p">(</span><span class="nb">length</span> <span class="nv">mail-group</span><span class="p">))</span>
+               <span class="p">(</span><span class="nv">first-mail</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">mail-group</span><span class="p">))</span>
+               <span class="p">(</span><span class="nv">title-prefix</span> <span class="p">(</span><span class="nb">format</span> <span class="s">"You have %d unread emails"</span>
+                                     <span class="nv">mail-count</span><span class="p">))</span>
+               <span class="p">(</span><span class="nv">field-value</span> <span class="p">(</span><span class="nv">mu4e-alert--get-group</span> <span class="nv">first-mail</span><span class="p">))</span>
+               <span class="p">(</span><span class="nv">title-suffix</span> <span class="p">(</span><span class="nb">format</span> <span class="p">(</span><span class="nv">pcase</span> <span class="nv">mu4e-alert-group-by</span>
+                                       <span class="p">(</span><span class="o">`</span><span class="ss">:from</span> <span class="s">"from %s:"</span><span class="p">)</span>
+                                       <span class="p">(</span><span class="o">`</span><span class="ss">:to</span> <span class="s">"to %s:"</span><span class="p">)</span>
+                                       <span class="p">(</span><span class="o">`</span><span class="ss">:maildir</span> <span class="s">"in %s:"</span><span class="p">)</span>
+                                       <span class="p">(</span><span class="o">`</span><span class="ss">:priority</span> <span class="s">"with %s priority:"</span><span class="p">)</span>
+                                       <span class="p">(</span><span class="o">`</span><span class="ss">:flags</span> <span class="s">"with %s flags:"</span><span class="p">))</span>
+                                     <span class="nv">field-value</span><span class="p">))</span>
+               <span class="p">(</span><span class="nv">title</span> <span class="p">(</span><span class="nb">format</span> <span class="s">"%s %s"</span> <span class="nv">title-prefix</span> <span class="nv">title-suffix</span><span class="p">)))</span>
+          <span class="p">(</span><span class="nb">list</span> <span class="ss">:title</span> <span class="nv">title</span>
+                <span class="ss">:body</span> <span class="p">(</span><span class="nv">s-join</span> <span class="s">"\n"</span>
+                              <span class="p">(</span><span class="nb">mapcar</span> <span class="p">(</span><span class="k">lambda</span> <span class="p">(</span><span class="nv">mail</span><span class="p">)</span>
+                                        <span class="p">(</span><span class="nb">format</span> <span class="s">"%s&lt;b&gt;%s&lt;/b&gt; • %s"</span>
+                                                <span class="p">(</span><span class="nb">cond</span>
+                                                 <span class="p">((</span><span class="nv">plist-get</span> <span class="nv">mail</span> <span class="ss">:in-reply-to</span><span class="p">)</span> <span class="s">"⮩ "</span><span class="p">)</span>
+                                                 <span class="p">((</span><span class="nv">string-match-p</span> <span class="s">"\\`Fwd:"</span>
+                                                                  <span class="p">(</span><span class="nv">plist-get</span> <span class="nv">mail</span> <span class="ss">:subject</span><span class="p">))</span> <span class="s">" ⮯ "</span><span class="p">)</span>
+                                                 <span class="p">(</span><span class="no">t</span> <span class="s">"  "</span><span class="p">))</span>
+                                                <span class="p">(</span><span class="nv">truncate-string-to-width</span> <span class="p">(</span><span class="nb">caar</span> <span class="p">(</span><span class="nv">plist-get</span> <span class="nv">mail</span> <span class="ss">:from</span><span class="p">))</span>
+                                                                          <span class="mi">20</span> <span class="no">nil</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)</span>
+                                                <span class="p">(</span><span class="nv">truncate-string-to-width</span>
+                                                 <span class="p">(</span><span class="nv">replace-regexp-in-string</span> <span class="s">"\\`Re: \\|\\`Fwd: "</span> <span class="s">""</span>
+                                                                           <span class="p">(</span><span class="nv">plist-get</span> <span class="nv">mail</span> <span class="ss">:subject</span><span class="p">))</span>
+                                                 <span class="mi">40</span> <span class="no">nil</span> <span class="no">nil</span> <span class="no">t</span><span class="p">)))</span>
+                                      <span class="nv">mail-group</span><span class="p">))))</span>
+      <span class="p">(</span><span class="k">let*</span> <span class="p">((</span><span class="nv">new-mail</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">mail-group</span><span class="p">))</span>
+             <span class="p">(</span><span class="nv">subject</span> <span class="p">(</span><span class="nv">plist-get</span> <span class="nv">new-mail</span> <span class="ss">:subject</span><span class="p">))</span>
+             <span class="p">(</span><span class="nv">sender</span> <span class="p">(</span><span class="nb">caar</span> <span class="p">(</span><span class="nv">plist-get</span> <span class="nv">new-mail</span> <span class="ss">:from</span><span class="p">))))</span>
+        <span class="p">(</span><span class="nb">list</span> <span class="ss">:title</span> <span class="nv">sender</span> <span class="ss">:body</span> <span class="nv">subject</span><span class="p">))))</span>
+  <span class="p">(</span><span class="k">setq</span> <span class="nv">mu4e-alert-grouped-mail-notification-formatter</span> <span class="nf">#'</span><span class="nv">+mu4e-alert-grouped-mail-notification-formatter-with-bell</span><span class="p">))</span>
+</code></pre></div></div>
+<p>And That’s it .</p>
+<h3 id="screenshot">Screenshot</h3>
+<p><img src="https://ybenel.cf/imgs/general/mu4e_emacs.png" alt="emacs_mu4e" /></p>
 
   </div>
 
@@ -270,7 +513,22 @@ nametrans <span class="o">=</span> lambda f: f.replace<span class="o">(</span><s
           
             <li class="post-tag">
               
+              <a href="/tags/#gmail">gmail</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#isync">isync</a>
+            </li>
+          
+            <li class="post-tag">
+              
               <a href="/tags/#mail">mail</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#mbsync">mbsync</a>
             </li>
           
             <li class="post-tag">
@@ -281,6 +539,11 @@ nametrans <span class="o">=</span> lambda f: f.replace<span class="o">(</span><s
             <li class="post-tag">
               
               <a href="/tags/#mu4e">mu4e</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#oauth2">oauth2</a>
             </li>
           
             <li class="post-tag">

