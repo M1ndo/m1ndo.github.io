@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-11-22T16:01:41+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">THM - CyberCrafted</title><link href="/thm/2021/11/22/THM-CyberCrafted.html" rel="alternate" type="text/html" title="THM - CyberCrafted" /><published>2021-11-22T00:00:00+01:00</published><updated>2021-11-22T00:00:00+01:00</updated><id>/thm/2021/11/22/THM-CyberCrafted</id><content type="html" xml:base="/thm/2021/11/22/THM-CyberCrafted.html">&lt;p&gt;A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-11-22T16:10:53+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">THM - CyberCrafted</title><link href="/thm/2021/11/22/THM-CyberCrafted.html" rel="alternate" type="text/html" title="THM - CyberCrafted" /><published>2021-11-22T00:00:00+01:00</published><updated>2021-11-22T00:00:00+01:00</updated><id>/thm/2021/11/22/THM-CyberCrafted</id><content type="html" xml:base="/thm/2021/11/22/THM-CyberCrafted.html">&lt;p&gt;A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.&lt;/p&gt;
 
 &lt;h2 id=&quot;user-enumeration&quot;&gt;User Enumeration&lt;/h2&gt;
 
@@ -690,405 +690,7 @@ Our demise so true when the lies be coming true.
 
 &lt;ul&gt;
   &lt;li&gt;And That’s Pretty Much The Box , Hope You Enjoyed Reading Take Care And i’ll see you all other time :)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="THM" /><category term="THM" /><category term="Medium" /><summary type="html">CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.</summary></entry><entry><title type="html">Emacs Mail Setup</title><link href="/2021/07/23/Emacs-Mail-Setup.html" rel="alternate" type="text/html" title="Emacs Mail Setup" /><published>2021-07-23T00:00:00+01:00</published><updated>2021-07-23T00:00:00+01:00</updated><id>/2021/07/23/Emacs-Mail-Setup</id><content type="html" xml:base="/2021/07/23/Emacs-Mail-Setup.html">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Strict//EN&quot;
-	&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd&quot;&gt;
-
-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
-
-&lt;head&gt;
-&lt;title&gt;2021-07-23-Emacs-Mail-Setup.html&lt;/title&gt;
-&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;application/xhtml+xml;charset=utf-8&quot;/&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; href=&quot;https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css&quot;  /&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; media=&quot;all&quot; href=&quot;https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/github.min.css&quot;  /&gt;&lt;meta name=&apos;viewport&apos; content=&apos;width=device-width, initial-scale=1, shrink-to-fit=no&apos;&gt;&lt;style&gt; body { box-sizing: border-box; max-width: 740px; width: 100%; margin: 40px auto; padding: 0 10px; } &lt;/style&gt;&lt;script id=&apos;MathJax-script&apos; async src=&apos;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&apos;&gt;&lt;/script&gt;&lt;script src=&apos;https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js&apos;&gt;&lt;/script&gt;&lt;script&gt;document.addEventListener(&apos;DOMContentLoaded&apos;, () =&gt; { document.body.classList.add(&apos;markdown-body&apos;); document.querySelectorAll(&apos;pre[lang] &gt; code&apos;).forEach((code) =&gt; { code.classList.add(code.parentElement.lang); }); document.querySelectorAll(&apos;pre &gt; code&apos;).forEach((code) =&gt; { hljs.highlightBlock(code); }); });&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;layout: post
-title: &amp;ldquo;How To Setup Mail In Emacs&amp;rdquo;
-categories: Emacs
-toc: true
-tags: [emacs, mail, offlineimap, mu, mu4e, mbsync, isync, oauth2, gmail]
-last_modified_at: 2021-09-21
-author:&lt;/p&gt;
-
-&lt;h2&gt;  - ybenel&lt;/h2&gt;
-
-&lt;p&gt;If you&amp;rsquo;re an emacs user and love using emacs for literally everything , then you are in the right place.
-In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.&lt;/p&gt;
-
-&lt;h2&gt;Installing Mu4e&lt;/h2&gt;
-
-&lt;p&gt;There&amp;rsquo;s a lot of ways to install mu4e in emacs , one of the easiest ways to do it if you have &lt;strong&gt;doom emacs&lt;/strong&gt; installed is to edit init.el and uncomment the mail option &lt;em&gt;mu4e&lt;/em&gt;.
-the other way is to install it manually which we will cover it later on in mu installation.&lt;/p&gt;
-
-&lt;h2&gt;Installing and mu-git and mu4e&lt;/h2&gt;
-
-&lt;p&gt;In order to index our mail we&amp;rsquo;ll be using &lt;em&gt;mu&lt;/em&gt; which includes &lt;em&gt;mu4e&lt;/em&gt; for emacs.
-There&amp;rsquo;s few different ways to install &lt;em&gt;mu&lt;/em&gt; which changes from distribution to another.
-The current stable release is &lt;strong&gt;1.6.6&lt;/strong&gt;, in case u installed 1.7.0 there&amp;rsquo;s a high chance you&amp;rsquo;ll be facing few problems and experiencing some bugs , so be sure which version you&amp;rsquo;re installing .
-In &lt;strong&gt;Arch&lt;/strong&gt; Using &lt;em&gt;AUR&lt;/em&gt; is pretty straight forward.
-&lt;code&gt;bash
-yay -S offlineimap mu-git
-&lt;/code&gt;
-In &lt;strong&gt;Debian&lt;/strong&gt; the stable release is 1.4.15 which is really fine really, you can use the instable repositories to install 1.6.&lt;em&gt;
-&lt;code&gt;bash
-apt install mu4e
-&lt;/code&gt;
-In Case your distribution doesn&amp;rsquo;t have &lt;/em&gt;mu* on their repositories you can install it from source which is really easy.
-&lt;code&gt;bash
-git clone -b &quot;release/1.6&quot; https://github.com/djcb/mu/
-cd mu
-meson --prefix=/usr --buildtype=plain build
-ninja -C build install
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2&gt;Installing Isync Or OfflineImap&lt;/h2&gt;
-
-&lt;p&gt;Both &lt;em&gt;Isync&lt;/em&gt; And &lt;em&gt;Offlineimap&lt;/em&gt; are great programs to download our mail into our inbox.
-There isn&amp;rsquo;t really that much difference, it just depends on which one you&amp;rsquo;d like to install.
-To Install &lt;em&gt;Isync&lt;/em&gt; Or &lt;em&gt;Offlineimap&lt;/em&gt; On &lt;strong&gt;Arch&lt;/strong&gt;
-&lt;code&gt;bash
-pacman -S isync
-pacman -S offlineimap
-&lt;/code&gt;
-To Install &lt;em&gt;Isync&lt;/em&gt; or &lt;em&gt;Offlineimap&lt;/em&gt; On &lt;strong&gt;Debian&lt;/strong&gt;
-&lt;code&gt;bash
-apt install isync
-apt install offlineimap
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2&gt;Configuring Isync&lt;/h2&gt;
-
-&lt;p&gt;Configuring &lt;em&gt;Isync&lt;/em&gt; is really easy however it depends on which options you&amp;rsquo;d like to set.
-By default if you gonna use &lt;em&gt;Gmail&lt;/em&gt; like myself. you&amp;rsquo;d wanna set some google options first .
-If you have 2FA enabled, you should first set up an app password this will let&amp;rsquo;s you control your &lt;em&gt;Gmail only&lt;/em&gt; will a custom generated password. First head up to &lt;a href=&quot;https://myaccount.google.com/apppasswords&quot;&gt;Set Up App Password&lt;/a&gt;, Select app as &lt;strong&gt;Mail&lt;/strong&gt; and device as &lt;strong&gt;Custom&lt;/strong&gt; and give it a name, it will generate a custom password.
-&lt;strong&gt;Disclaimer&lt;/strong&gt; Your password should no be shared with anyone except yourself and &lt;em&gt;Isync&lt;/em&gt;
-&lt;strong&gt;Extra&lt;/strong&gt; As your password will be kept in &lt;em&gt;Isync&lt;/em&gt; config file in plain text, you can avoid this and encrypt it using &lt;strong&gt;GPG&lt;/strong&gt;. You can either use &lt;strong&gt;Pass&lt;/strong&gt; utility if its installed on your device as a wrapper around &lt;strong&gt;GPG&lt;/strong&gt; or use straight &lt;strong&gt;GPG&lt;/strong&gt;.
-To Crypt your password using &lt;strong&gt;pass&lt;/strong&gt; command.
-&lt;code&gt;bash
-pass insert gmail_app
-Enter password for test_gmail: *******
-Retype password for test_gmail: *******
-&lt;/code&gt;
-To Crypt your password using &lt;strong&gt;GPG&lt;/strong&gt; command, First generate a new key if you don&amp;rsquo;t have one yet .
-```bash&lt;/p&gt;
-
-&lt;h1&gt;This will prompt you for email and a name and a password (Use a valid real mail if you gonna share ur key will others)&lt;/h1&gt;
-
-&lt;h1&gt;WARNING: DO NOT LOSE YOUR KEYS AND THE PASSWORD YOU USED TO CREATE THE KEYS OTHERWISE YOUR DATA WILL BE LOSE IF YOU LOSE THEM&lt;/h1&gt;
-
-&lt;h1&gt;ALWAYS BACKUP YOUR .gnupg AND .password-store FOLDER TO A USB_DRIVE OR AN EXTERNAL DRIVE OR IN THE CLOUD&lt;/h1&gt;
-
-&lt;p&gt;gpg &amp;ndash;full-generate-key&lt;/p&gt;
-
-&lt;h1&gt;After u create your own key, find it through the following command&lt;/h1&gt;
-
-&lt;p&gt;gpg -K &amp;ndash;keyid-format=long&lt;/p&gt;
-
-&lt;h1&gt;You&amp;rsquo;ll get something like this&lt;/h1&gt;
-
-&lt;h1&gt;sec   rsa2048/84263A08F86B7E99 2020-06-17 [SC] [expires: 2022-06-17]&lt;/h1&gt;
-
-&lt;h1&gt;447FE384AAE41F357F5876FF84263A08F86B7E99&lt;/h1&gt;
-
-&lt;h1&gt;uid                 [ultimate] Ybenel &lt;a href=&quot;&amp;#x6d;&amp;#x61;&amp;#x69;&amp;#108;&amp;#116;&amp;#x6f;&amp;#x3a;&amp;#114;&amp;#x32;&amp;#x64;&amp;#114;&amp;#x30;&amp;#x64;&amp;#110;&amp;#64;&amp;#x70;&amp;#x6d;&amp;#46;&amp;#x6d;&amp;#101;&quot;&gt;&amp;#114;&amp;#50;&amp;#100;&amp;#x72;&amp;#x30;&amp;#x64;&amp;#x6e;&amp;#x40;&amp;#x70;&amp;#x6d;&amp;#x2e;&amp;#109;&amp;#101;&lt;/a&gt;&lt;/h1&gt;
-
-&lt;h1&gt;ssb   rsa2048/C8D9741AC03BE89C 2020-06-17 [E] [expires: 2022-06-17]&lt;/h1&gt;
-
-&lt;h1&gt;Now you have your long key and ur short key, you can use whatever u want , now let&amp;rsquo;s encrypt your file&lt;/h1&gt;
-
-&lt;p&gt;echo &amp;ldquo;YOUR APP PASSWORD&amp;rdquo; &gt; gmail_app
-gpg -e -r 84263A08F86B7E99 gmail_app&lt;/p&gt;
-
-&lt;h1&gt;This will create a new encrypted file called gmail_app.gpg, delete the gmail_app that contains plain text passowrd preferbly using shred&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;
-Before quickly setting up our configuration file let&apos;s create a mail folder, to do so .
-&lt;/code&gt;bash
-mkdir -p ~/Mail/Gmail
-&lt;code&gt;
-Now we need to create our configuration file that is located in our HOME folder which will be called **~/.mbsyncrc** . And Let&apos;s put our configurations .
-&lt;/code&gt;bash
-IMAPAccount gmail
-Host imap.gmail.com
-User USERMAIL@gmail.com
-PassCmd &amp;ldquo;gpg -q &amp;ndash;for-your-eyes-only &amp;ndash;no-tty -d ~/.password-store/gmail_app.gpg&amp;rdquo;
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt&lt;/p&gt;
-
-&lt;p&gt;IMAPStore gmail-remote
-Account gmail&lt;/p&gt;
-
-&lt;p&gt;MaildirStore gmail-local
-Subfolders Verbatim
-Path ~/Mail/Gmail/
-Inbox ~/Mail/Gmail/Inbox&lt;/p&gt;
-
-&lt;p&gt;Channel gmail
-Far :gmail-remote:
-Near :gmail-local:
-Patterns * ![Gmail]* &amp;ldquo;[Gmail]/Sent Mail&amp;rdquo; &amp;ldquo;[Gmail]/All Mail&amp;rdquo;
-Create Both
-Expunge Both
-SyncState *
-&lt;code&gt;
-If you use a plain text password replace **PassCmd** With **Pass** And Put your password .
-In **Patterns** This will download *Sent Mail* And *All Mail* and exclude everything else, you can add other folders as well as example , **&quot;[Gmail]/Spam&quot;** this will download the spam mail as well .
-**Other Than GMAIL** if you use another email service you can replace the above config with the correct info , and replace gmail with a custom name, as a quick example .
-&lt;/code&gt;bash
-IMAPAccount cock
-Host mail.cock.li
-User suckmycock11@cock.li
-PassCmd &amp;ldquo;gpg -q &amp;ndash;for-your-eyes-only &amp;ndash;no-tty -d ~/.password-store/cockli.gpg&amp;rdquo;
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt&lt;/p&gt;
-
-&lt;p&gt;IMAPStore cock-remote
-Account cock&lt;/p&gt;
-
-&lt;p&gt;MaildirStore cock-local
-Subfolders Verbatim
-Path ~/Mail/cock/
-Inbox ~/Mail/cock/Inbox&lt;/p&gt;
-
-&lt;p&gt;Channel gmail
-Far :gmail-remote:
-Near :gmail-local:
-Patterns * ![Inbox]* &amp;ldquo;[Inbox]/Sent Mail&amp;rdquo; &amp;ldquo;[Inbox]/All Mail&amp;rdquo;
-Create Both
-Expunge Both
-SyncState *
-```&lt;/p&gt;
-
-&lt;h2&gt;Configuring OfflineImap&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;Offlineimap&lt;/em&gt; Configurations is no different than &lt;em&gt;Isync&lt;/em&gt; however it does support OAUTH2 authentication mechanism which u can use or not use if u want to and what it does is just the same as App Password But With Token. Keep in mind OAUTH2 does really need more little effort if you wanna use it. Starting Off With&lt;/p&gt;
-
-&lt;h3&gt;Setting Up GoogleApi&lt;/h3&gt;
-
-&lt;p&gt;GoogleAPI Is required to enable GmailApi , This will allow us to read and edit mail from our gmail account, to enable simply head over google api and search for gmailapi and click enable once its enabled search for generate token and copy it to an empty file for later.&lt;/p&gt;
-
-&lt;h3&gt;Installing gmail-oauth-tools&lt;/h3&gt;
-
-&lt;p&gt;In order for us to use the token we got earlier we need to install and use gmail-oauth-tools this will generate a refresh token that we will use later in configuring offlineimap.
-To Install simply run .
-&lt;code&gt;bash
-git clone https://github.com/google/gmail-oauth2-tools Public/oauth2-tools
-&lt;/code&gt;
-And run the following command to get your refresh token
-&lt;code&gt;bash
-python2 Public/oauth2-tools/python/oauth2.py --generate_oauth2_token --client_id=YOUR_CLIENT_ID --client_secret=YOUR_CLIENT_SECRET
-&lt;/code&gt;
-To Get Your CLIENT-ID Head over to &lt;a href=&quot;https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf#L886-L894&quot;&gt;Here&lt;/a&gt; and read the steps .&lt;/p&gt;
-
-&lt;h3&gt;Adding The Configuration Files&lt;/h3&gt;
-
-&lt;p&gt;To Configure OfflineIMAP Put The Following Configurations In &lt;strong&gt;~/.offlineimaprc&lt;/strong&gt;
-```ini
-[general]
-accounts = Gmail
-maxsyncaccounts = 3&lt;/p&gt;
-
-&lt;h1&gt;pythonfile = ~/.offlineimap.py&lt;/h1&gt;
-
-&lt;p&gt;[Account Gmail]
-localrepository = Local
-remoterepository = Remote&lt;/p&gt;
-
-&lt;p&gt;[Repository Local]
-type = Maildir
-localfolders = ~/Maildir
-nametrans = lambda f: &amp;lsquo;[Gmail]/&amp;rsquo; + f if f in [&amp;lsquo;Drafts&amp;rsquo;, &amp;lsquo;Starred&amp;rsquo;, &amp;lsquo;Important&amp;rsquo;, &amp;lsquo;Spam&amp;rsquo;, &amp;lsquo;Trash&amp;rsquo;, &amp;lsquo;All Mail&amp;rsquo;, &amp;lsquo;Sent Mail&amp;rsquo;] else f&lt;/p&gt;
-
-&lt;p&gt;[Repository Remote]
-type = IMAP
-remotehost = imap.gmail.com
-remoteuser = USERMAIL@gmail.com
-auth_mechanisms = XOAUTH2
-oauth2_client_id = CLIENT_ID
-oauth2_client_secret = CLIENT_SECRET
-oauth2_request_url = https://accounts.google.com/o/oauth2/token
-oauth2_refresh_token = REFRESH_TOKEN
-ssl = yes
-maxconnections = 1
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-ssl_version = tls1_2
-folderfilter = lambda foldername: foldername in [&amp;lsquo;INBOX&amp;rsquo;, &amp;lsquo;All Mail&amp;rsquo;, &amp;lsquo;Sent Mail&amp;rsquo;]
-nametrans = lambda f: f.replace(&amp;lsquo;[Gmail]/&amp;rsquo;, &amp;lsquo;&amp;rsquo;) if f.startswith(&amp;lsquo;[Gmail]/&amp;rsquo;) else f
-&lt;code&gt;
-Replace **CLIENT-ID,CLIENT-SECRET,REFRESH-TOKEN** with the tokens you&apos;ve got.
-In Case Of Using **GPG ENCRYPTED PASSWORD**
-&lt;/code&gt;python&lt;/p&gt;
-
-&lt;h1&gt;! /usr/bin/env python2&lt;/h1&gt;
-
-&lt;h1&gt;In side of offlineimap.py&lt;/h1&gt;
-
-&lt;p&gt;from subprocess import check_output&lt;/p&gt;
-
-&lt;p&gt;def get_pass():
-    return check_output(&amp;ldquo;gpg -dq ~/.password-store/gmail.gpg&amp;rdquo;, shell=True).strip(&amp;ldquo;\n&amp;rdquo;)
-&lt;code&gt;
-&lt;/code&gt;bash&lt;/p&gt;
-
-&lt;h1&gt;Incomment pythonfile in [general]&lt;/h1&gt;
-
-&lt;h1&gt;Remove oauth2* settings in [Repository Remote] and add&lt;/h1&gt;
-
-&lt;p&gt;remotepasseval = get_password()
-&lt;code&gt;
-In Case of Using **Plain Text Password** Or **Plain Password File**
-&lt;/code&gt;bash&lt;/p&gt;
-
-&lt;h1&gt;Remove oauth2* settings in [Repository Remote]&lt;/h1&gt;
-
-&lt;h1&gt;Add for plain text passowrd&lt;/h1&gt;
-
-&lt;p&gt;remotepass = mypassword&lt;/p&gt;
-
-&lt;h1&gt;Or Password file&lt;/h1&gt;
-
-&lt;p&gt;remotepassfile = ~/gmail_app
-```&lt;/p&gt;
-
-&lt;h2&gt;Getting Mail&lt;/h2&gt;
-
-&lt;p&gt;Now Once You&amp;rsquo;ve done all the previous steps , there&amp;rsquo;s one last step to do and that is to get mail to your inbox, simply run the following command to start getting ur mail.&lt;/p&gt;
-
-&lt;h3&gt;Offlineimap&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;bash
-offlineimap
-&lt;/code&gt;&lt;/p&gt;
-
-&lt;h3&gt;Mu&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;bash
-mu init -m ~/Mail --my-address=USERMAIL@gmail.com
-mu index
-&lt;/code&gt;
-And you&amp;rsquo;re finally done, you&amp;rsquo;ll now down all ur mail and it will be indexed automatically .&lt;/p&gt;
-
-&lt;h2&gt;Setting Up mu4e in emacs&lt;/h2&gt;
-
-&lt;p&gt;There isn&amp;rsquo;t much to do with  &lt;strong&gt;mu4e&lt;/strong&gt; in &lt;strong&gt;emacs&lt;/strong&gt; besides adding our configurations.
-My configurations is the following .
-```lisp
-(add-to-list &amp;lsquo;load-path &amp;ldquo;/usr/share/emacs/site-lisp/mu4e&amp;rdquo;)
-(with-eval-after-load &apos;mu4e
-  (setq mu4e-context-policy &apos;ask-if-none
-        mu4e-compose-context-policy &apos;pick-first)
-  (setq mu4e-change-filenames-when-moving t)
-  ;; refresh mail using isync every 10 minutes
-  (setq mu4e-update-interval (* 10 60))
-  ;; Comment out mu4e-mu-binary if u have mu installed in /usr/bin/ or something
-  (setq mu4e-mu-binary &amp;ldquo;~/Downloads/mu-1.6.6/mu/mu&amp;rdquo;)
-  (setq mu4e-get-mail-command &amp;ldquo;mbsync -a&amp;rdquo;)
-  (setq mu4e-root-maildir &amp;ldquo;~/Mail&amp;rdquo;)
-  (bind-key &amp;ldquo;C-c C-m&amp;rdquo; &apos;mu4e)
-  (setq mu4e-html2text-command &amp;ldquo;w3m -dump -T text/html -o display_link_number=true&amp;rdquo;)
-  ;; (setq mu4e-html2text-command &amp;ldquo;html2markdown | grep -v &amp;rsquo;&amp;amp;nbsp_place_holder;&amp;lsquo;&amp;rdquo;)&lt;/p&gt;
-
-&lt;p&gt;  (set-email-account! &amp;ldquo;Personal&amp;rdquo;
-                      &amp;lsquo;((mu4e-sent-folder          . &amp;ldquo;/Gmail/[Gmail]/Sent Mail&amp;rdquo;)
-                        (mu4e-drafts-folder        . &amp;ldquo;/Gmail/[Gmail]/Drafts&amp;rdquo;)
-                        (mu4e-refile-folder        . &amp;ldquo;/Gmail/[Gmail]/All Mail&amp;rdquo;)
-                        (mu4e-trash-folder         . &amp;ldquo;/Gmail/[Gmail]/Trash&amp;rdquo;)
-                        (user-mail-address         . &amp;ldquo;USERMAIL@gmail.com&amp;rdquo;)
-                        (user-full-name            . &amp;ldquo;Dr Drunkenstein&amp;rdquo;)
-                        (mu4e-compose-signature    . &amp;ldquo;Signed By Mando&amp;rdquo;)
-                        (smtpmail-smtp-user        . &amp;ldquo;USERMAIL@gmail.com&amp;rdquo;)
-                        (smtpmail-smtp-server      . &amp;ldquo;smtp.gmail.com&amp;rdquo;)
-                        (smtpmail-stream-type      . ssl)
-                        (smtpmail-smtp-service     . 465))
-                      t)&lt;/p&gt;
-
-&lt;p&gt;  (setq mu4e-maildir-shortcuts
-        &amp;lsquo;((&amp;ldquo;/Gmail/inbox&amp;rdquo;             . ?i)
-          (&amp;ldquo;/Gmail/[Gmail]/Sent Mail&amp;rdquo; . ?s)
-          (&amp;ldquo;/Gmail/[Gmail]/Trash&amp;rdquo;     . ?t)
-          (&amp;ldquo;/Gmail/[Gmail]/Drafts&amp;rdquo;    . ?d)
-          (&amp;ldquo;/Gmail/[Gmail]/All Mail&amp;rdquo;  . ?a))))
-```&lt;/p&gt;
-
-&lt;h3&gt;Extra Configurations&lt;/h3&gt;
-
-&lt;p&gt;if you want mail notifications and modeline alert of how many mails u have unread , you&amp;rsquo;ll need an extra package called &lt;strong&gt;mu4e-alert&lt;/strong&gt;.
-You can install it through &lt;a href=&quot;https://melpa.org/#/mu4e-alert&quot;&gt;Melpa&lt;/a&gt;  using &lt;strong&gt;package-install&lt;/strong&gt; or through &lt;strong&gt;use-package&lt;/strong&gt;
-My Configurations for it is .
-```lisp
-(use-package! mu4e-alert
-  :after mu4e
-  :config
-  (setq doom-modeline-mu4e t)&lt;/p&gt;
-
-&lt;p&gt;  (mu4e-alert-enable-mode-line-display)
-  (mu4e-alert-enable-notifications)&lt;/p&gt;
-
-&lt;p&gt;  (mu4e-alert-set-default-style &amp;lsquo;libnotify)
-  (map! :leader
-        (:prefix (&amp;ldquo;d&amp;rdquo;. &amp;ldquo;mu4e&amp;rdquo;)
-         :desc &amp;ldquo;Disable Mu4e Modeline Alert&amp;rdquo; &amp;ldquo;d&amp;rdquo; #&apos;mu4e-alert-disable-mode-line-display
-         :desc &amp;ldquo;Enable Mu4e Modeline Alert&amp;rdquo; &amp;ldquo;i&amp;rdquo; #&apos;mu4e-alert-enable-mode-line-display))&lt;/p&gt;
-
-&lt;p&gt;  (defvar +mu4e-alert-bell-cmd &amp;lsquo;(&amp;ldquo;paplay&amp;rdquo; . &amp;ldquo;/usr/share/sounds/freedesktop/stereo/message.oga&amp;rdquo;)
-    &amp;ldquo;Cons list with command to play a sound, and the sound file to play.
-                 Disabled when set to nil.&amp;rdquo;)&lt;/p&gt;
-
-&lt;p&gt;  (setq mu4e-alert-email-notification-types &amp;lsquo;(subjects))
-  (defun +mu4e-alert-grouped-mail-notification-formatter-with-bell (mail-group _all-mails)
-    &amp;ldquo;Default function to format MAIL-GROUP for notification.
-                 ALL-MAILS are the all the unread emails&amp;rdquo;
-    (when +mu4e-alert-bell-cmd
-      (start-process (car +mu4e-alert-bell-cmd) (cdr +mu4e-alert-bell-cmd)))
-    (if (&gt; (length mail-group) 1)
-        (let&lt;em&gt; ((mail-count (length mail-group))
-               (first-mail (car mail-group))
-               (title-prefix (format &amp;ldquo;You have %d unread emails&amp;rdquo;
-                                     mail-count))
-               (field-value (mu4e-alert&amp;ndash;get-group first-mail))
-               (title-suffix (format (pcase mu4e-alert-group-by
-                                       (&lt;code&gt;:from &quot;from %s:&quot;)
-                                       (&lt;/code&gt;:to &amp;ldquo;to %s:&amp;rdquo;)
-                                       (&lt;code&gt;:maildir &quot;in %s:&quot;)
-                                       (&lt;/code&gt;:priority &amp;ldquo;with %s priority:&amp;rdquo;)
-                                       (&lt;code&gt;:flags &quot;with %s flags:&quot;))
-                                     field-value))
-               (title (format &quot;%s %s&quot; title-prefix title-suffix)))
-          (list :title title
-                :body (s-join &quot;\n&quot;
-                              (mapcar (lambda (mail)
-                                        (format &quot;%s&amp;lt;b&amp;gt;%s&amp;lt;/b&amp;gt; • %s&quot;
-                                                (cond
-                                                 ((plist-get mail :in-reply-to) &quot;⮩ &quot;)
-                                                 ((string-match-p &quot;\\&lt;/code&gt;Fwd:&amp;ldquo;
-                                                                  (plist-get mail :subject)) &amp;rdquo; ⮯ &amp;ldquo;)
-                                                 (t &quot;  &amp;rdquo;))
-                                                (truncate-string-to-width (caar (plist-get mail :from))
-                                                                          20 nil nil t)
-                                                (truncate-string-to-width
-                                                 (replace-regexp-in-string &amp;ldquo;\&lt;code&gt;Re: \\|\\&lt;/code&gt;Fwd: &amp;rdquo; &amp;ldquo;&amp;rdquo;
-                                                                           (plist-get mail :subject))
-                                                 40 nil nil t)))
-                                      mail-group))))
-      (let&lt;/em&gt; ((new-mail (car mail-group))
-             (subject (plist-get new-mail :subject))
-             (sender (caar (plist-get new-mail :from))))
-        (list :title sender :body subject))))
-  (setq mu4e-alert-grouped-mail-notification-formatter #&amp;rsquo;+mu4e-alert-grouped-mail-notification-formatter-with-bell))
-```
-And That&amp;rsquo;s it .&lt;/p&gt;
-
-&lt;h3&gt;Screenshot&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;&quot; alt=&quot;emacs_mu4e&quot; /&gt;&lt;/p&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;</content><author><name>Ybenel</name></author><summary type="html"></summary></entry><entry><title type="html">How To Setup Mail In Emacs</title><link href="/emacs/2021/07/23/Emacs-Mail-Setup.html" rel="alternate" type="text/html" title="How To Setup Mail In Emacs" /><published>2021-07-23T00:00:00+01:00</published><updated>2021-09-21T00:00:00+01:00</updated><id>/emacs/2021/07/23/Emacs-Mail-Setup</id><content type="html" xml:base="/emacs/2021/07/23/Emacs-Mail-Setup.html">&lt;p&gt;If you’re an emacs user and love using emacs for literally everything , then you are in the right place.
+&lt;/ul&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="THM" /><category term="THM" /><category term="Medium" /><summary type="html">CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.</summary></entry><entry><title type="html">How To Setup Mail In Emacs</title><link href="/emacs/2021/07/23/Emacs-Mail-Setup.html" rel="alternate" type="text/html" title="How To Setup Mail In Emacs" /><published>2021-07-23T00:00:00+01:00</published><updated>2021-09-21T00:00:00+01:00</updated><id>/emacs/2021/07/23/Emacs-Mail-Setup</id><content type="html" xml:base="/emacs/2021/07/23/Emacs-Mail-Setup.html">&lt;p&gt;If you’re an emacs user and love using emacs for literally everything , then you are in the right place.
 In This Short Tutorial we are gonna learn how to setup Mu4e In Emacs From Scratch.&lt;/p&gt;
 
 &lt;h2 id=&quot;installing-mu4e&quot;&gt;Installing Mu4e&lt;/h2&gt;
@@ -1715,4 +1317,81 @@ Let’s go to our crackred and generate a wordlist .&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic23.png&quot; alt=&quot;helpdisk_root&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;And That’s it , that’s delivery hope you enjoyed the writeup take care and i’ll see you all other time.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Easy" /><summary type="html">Delivery Easy Box By Ippsec</summary></entry></feed>
+&lt;p&gt;And That’s it , that’s delivery hope you enjoyed the writeup take care and i’ll see you all other time.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Easy" /><summary type="html">Delivery Easy Box By Ippsec</summary></entry><entry><title type="html">CTF Write Ups</title><link href="/ctf/2020/10/19/writeups.html" rel="alternate" type="text/html" title="CTF Write Ups" /><published>2020-10-19T00:00:00+01:00</published><updated>2020-10-19T00:00:00+01:00</updated><id>/ctf/2020/10/19/writeups</id><content type="html" xml:base="/ctf/2020/10/19/writeups.html">&lt;h1 id=&quot;hacktober-ctf-2020&quot;&gt;Hacktober CTF (2020)&lt;/h1&gt;
+&lt;p&gt;This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever!
+Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Programming&lt;/th&gt;
+      &lt;th&gt;Crypto&lt;/th&gt;
+      &lt;th&gt;Steganography&lt;/th&gt;
+      &lt;th&gt;Networking&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Message In a Array [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Hail Caesar! [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Ghost Hunter [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Evil Corp’s Child 3 [150pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Trick Or Treat [40pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Down The Wrong Path [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;You Believe In Ghosts? [30pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Hunted Mirror [125pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Cover Your Bases [30pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Blasphemy [40pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Red Rum [250pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Bone To Pick [80pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Start Digging [100pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Stairway To Hell [250pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Password Check [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h1 id=&quot;el-journadas-ctf-2020&quot;&gt;El Journadas CTF (2020)&lt;/h1&gt;
+&lt;p&gt;This CTF Was Little Bit Good But Too Hard!
+We Could Not Solve All The Challenges But We Did Great !&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Crypto&lt;/th&gt;
+      &lt;th&gt;PWN&lt;/th&gt;
+      &lt;th&gt;Networking&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Time Coding [200pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;ROP Style [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;Still with insecure protocols [200pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Hide your stuff at plain sight [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="ctf" /><category term="ctf" /><category term="writeup" /><summary type="html">Hacktober CTF (2020) This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever! Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!</summary></entry></feed>
