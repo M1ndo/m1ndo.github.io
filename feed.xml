@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-01-09T19:34:34+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where Knowledge is peace of cake.</subtitle><author><name>Ybenel</name></author><entry><title type="html">THM - CyberCrafted</title><link href="/thm/2021/11/22/THM-CyberCrafted.html" rel="alternate" type="text/html" title="THM - CyberCrafted" /><published>2021-11-22T00:00:00+01:00</published><updated>2021-11-22T00:00:00+01:00</updated><id>/thm/2021/11/22/THM-CyberCrafted</id><content type="html" xml:base="/thm/2021/11/22/THM-CyberCrafted.html">&lt;p&gt;A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-01-14T17:19:06+01:00</updated><id>/feed.xml</id><title type="html">Ybenel</title><subtitle>Where All Magic Shows</subtitle><author><name>Ybenel</name></author><entry><title type="html">Chnahowa Emacs?</title><link href="/emacs/2022/01/14/Emacs.html" rel="alternate" type="text/html" title="Chnahowa Emacs?" /><published>2022-01-14T00:00:00+01:00</published><updated>2020-01-11T00:00:00+01:00</updated><id>/emacs/2022/01/14/Emacs</id><content type="html" xml:base="/emacs/2022/01/14/Emacs.html">&lt;p&gt;Reasons To Use Emacs (Bdarija)&lt;/p&gt;
+
+&lt;h1 id=&quot;emacs&quot;&gt;Emacs&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/general/emacs.png&quot; alt=&quot;img&quot; /&gt;
+&lt;img src=&quot;https://ybenel.cf/imgs/general/screen.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;chnahowa-emacs&quot;&gt;Chnahowa Emacs?&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.gnu.org/s/emacs/&quot;&gt;Emacs&lt;/a&gt; howa wahed text editor li t9dar tktab fih aya haja bghiti, mn code awla ktoba, notes o bzaf dyal lhwayj.
+Khraj awal mara f 1972 mn Richard Stallman, Omn ba3d the GNU foundation bdat development ta3o as GNU/Emacs f 1985 (36 3am)
+Li kaykhalih mn a9dam text editors. walakin machi hit 9dim ya3ni rah mab9ach khdam awla mat lih lhot, development dyal rah ba9a khdama. O daba Rah mclassi the best,Orah hsan mn bzaf ta3 editors khrin bhal Vscode ola Atom, VIm etc , o lfadl kayrja3 l Elisp awla Emacs Lisp.&lt;/p&gt;
+
+&lt;h1 id=&quot;3lach-nkhadmo-b-emacs&quot;&gt;3lach nkhadmo b Emacs?&lt;/h1&gt;
+
+&lt;p&gt;Emacs howa text editor lwahid li t9dar dir fih aya haja, ya3ni aya customizations taht lik frask t9dar dirha fih. o mali kangol customizations makan3nich theme awla UI dyalo, kan3ni aya function t9dar dir liha implementation f emacs . bach nwadh ktar, bghiti dir fih mail client diro, bghiti t organize hyatk kayn &lt;a href=&quot;https://orgmode.org/&quot;&gt;Org-Mode&lt;/a&gt; li radi nchofo mn ba3d o 3lih bzaf ta3 extensions li katzid fih , bghiti t farj f videos ola tsma3 music , bghiti development environment &lt;strong&gt;hell yeah&lt;/strong&gt;, bghiti li habitih kayn .&lt;/p&gt;
+
+&lt;h1 id=&quot;kifach-ndiro-ninstalliw-emacs&quot;&gt;Kifach NDiro NInstalliw Emacs?&lt;/h1&gt;
+
+&lt;p&gt;Li zwin howa ana emacs t9dar t installiha f aya Os, linux/bsd/mac/windows o makathtajch wahed l effort lkbir bach tinstalliha.
+So aji nchofo kifach n installiw emacs. anchiw l GNU &lt;a href=&quot;https://www.gnu.org/software/emacs/download.html&quot;&gt;website&lt;/a&gt; onchofo kifach ndiro download l emacs f distribution ta3na.&lt;/p&gt;
+
+&lt;h1 id=&quot;kifach-ndiro-configure-l-emacs&quot;&gt;Kifach Ndiro Configure L Emacs&lt;/h1&gt;
+
+&lt;p&gt;Bzaf ta3 nas li baghin jarbo emacs o khayfin mn configurations, fha9i9a rah machi dak s3ib, hitach kaynin chi configurations li radi nchofo bhal &lt;strong&gt;Doom Emacs&lt;/strong&gt;,&lt;strong&gt;SpaceMacs&lt;/strong&gt; li kaysahlo 3lik chhal mn haja o kayn &lt;strong&gt;vanilla emacs&lt;/strong&gt; li hiya configurations ta3k from scratch .
+Configuration ta3 emacs katkon f Elisp o li hiya interpretation ta3 lisp, ila konti mwalf 3la lisp maradich tl9a hta mochkill o radi tmot 3la emacs,
+o hta ila makontich mwalf 3liha mali radi tjarbha , ana mt2akd radi tchof kifach t3alm elisp hit lhwayj li t9dar dir f emacs are beyond imagination .
+Ila bghiti Tjarb &lt;em&gt;Emacs&lt;/em&gt; Imkan lik tjarb &lt;a href=&quot;https://github.com/m1ndo/dotfiles&quot;&gt;Config&lt;/a&gt; Dyali.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="Emacs" /><category term="Emacs" /><category term="Church Of Emacs" /><summary type="html">Reasons To Use Emacs (Bdarija)</summary></entry><entry><title type="html">THM - CyberCrafted</title><link href="/thm/2021/11/22/THM-CyberCrafted.html" rel="alternate" type="text/html" title="THM - CyberCrafted" /><published>2021-11-22T00:00:00+01:00</published><updated>2021-11-22T00:00:00+01:00</updated><id>/thm/2021/11/22/THM-CyberCrafted</id><content type="html" xml:base="/thm/2021/11/22/THM-CyberCrafted.html">&lt;p&gt;A Medium Linux Machine That Consist Of Exploiting A Minecraft Server.&lt;/p&gt;
 
 &lt;h2 id=&quot;user-enumeration&quot;&gt;User Enumeration&lt;/h2&gt;
 
@@ -1317,81 +1344,4 @@ Let’s go to our crackred and generate a wordlist .&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://ybenel.cf/imgs/delivery/pic23.png&quot; alt=&quot;helpdisk_root&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;And That’s it , that’s delivery hope you enjoyed the writeup take care and i’ll see you all other time.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Easy" /><summary type="html">Delivery Easy Box By Ippsec</summary></entry><entry><title type="html">CTF Write Ups</title><link href="/ctf/2020/10/19/writeups.html" rel="alternate" type="text/html" title="CTF Write Ups" /><published>2020-10-19T00:00:00+01:00</published><updated>2020-10-19T00:00:00+01:00</updated><id>/ctf/2020/10/19/writeups</id><content type="html" xml:base="/ctf/2020/10/19/writeups.html">&lt;h1 id=&quot;hacktober-ctf-2020&quot;&gt;Hacktober CTF (2020)&lt;/h1&gt;
-&lt;p&gt;This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever!
-Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Programming&lt;/th&gt;
-      &lt;th&gt;Crypto&lt;/th&gt;
-      &lt;th&gt;Steganography&lt;/th&gt;
-      &lt;th&gt;Networking&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Message In a Array [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Hail Caesar! [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Ghost Hunter [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Evil Corp’s Child 3 [150pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Trick Or Treat [40pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Down The Wrong Path [10pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;You Believe In Ghosts? [30pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Hunted Mirror [125pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Cover Your Bases [30pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Blasphemy [40pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Red Rum [250pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Bone To Pick [80pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Start Digging [100pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Stairway To Hell [250pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Password Check [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h1 id=&quot;el-journadas-ctf-2020&quot;&gt;El Journadas CTF (2020)&lt;/h1&gt;
-&lt;p&gt;This CTF Was Little Bit Good But Too Hard!
-We Could Not Solve All The Challenges But We Did Great !&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Crypto&lt;/th&gt;
-      &lt;th&gt;PWN&lt;/th&gt;
-      &lt;th&gt;Networking&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Time Coding [200pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;ROP Style [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Still with insecure protocols [200pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Hide your stuff at plain sight [400pts] &lt;a href=&quot;https://blog.ybenel.cf&quot;&gt;Link&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="ctf" /><category term="ctf" /><category term="writeup" /><summary type="html">Hacktober CTF (2020) This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever! Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!</summary></entry></feed>
+&lt;p&gt;And That’s it , that’s delivery hope you enjoyed the writeup take care and i’ll see you all other time.&lt;/p&gt;</content><author><name>[&quot;ybenel&quot;]</name></author><category term="HTB" /><category term="HTB" /><category term="Easy" /><summary type="html">Delivery Easy Box By Ippsec</summary></entry></feed>
