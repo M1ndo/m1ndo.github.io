@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Misconfiguration on ybenel</title>
+    <link>https://ybenel.cf/tags/misconfiguration/</link>
+    <description>ybenel (Misconfiguration)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Jan 2021 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/tags/misconfiguration/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTB - Delivery</title>
+      <link>https://ybenel.cf/post/htb-delivery/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/htb-delivery/</guid>
+      <description>&lt;p&gt;Delivery Easy Box By Ippsec&lt;/p&gt;
+&lt;h2 id=&#34;foothold&#34; &gt;Foothold
+&lt;span&gt;
+    &lt;a href=&#34;#foothold&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;enumeration&#34; &gt;Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;We start of with the nmap , nmap -sC -sV -p- -T4 -oN delivery.nmap delivery.htb
+We can see there&amp;rsquo;s 3 ports open.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic30.png&#34; alt=&#34;nmap&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s browse http and see what&amp;rsquo;s there.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic0.png&#34; alt=&#34;Static&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We get a static website, looking at the site source there&amp;rsquo;s nothing much there but look around contact us we get this .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic26.png&#34; alt=&#34;Static_Contact&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We can see a note from the site owner?&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you&amp;#39;ll be able to have access to our MatterMost server
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;so let&amp;rsquo;s look at the helpdisk at helpdesk.delivery.htb&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic29.png&#34; alt=&#34;helpdisk&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We see osticket support center,right of the top we check for any cves but they are all old and not affective so let&amp;rsquo;s create a new account .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic24.png&#34; alt=&#34;helpdisk_signup&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now After we created an account we get account verification but thinking logically we have entered a none existing email we cannot receive emails neither do anything.
+Hmmm there must be somewhere around it . let&amp;rsquo;s check the open ticket thing .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic9.png&#34; alt=&#34;helpdisk_ticket_open&#34;&gt;&lt;/p&gt;
+&lt;p&gt;let&amp;rsquo;s fill those real quick .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic22.png&#34; alt=&#34;helpdisk_ticket_fill&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic25.png&#34; alt=&#34;helpdisk_ticket_fill2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We Get Support ticket request created with a ticket id and an email ?
+At this point i was hmmmmmmmmmmmm an email , going back to the text we got earlier&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Once you have an @delivery.htb email address, you&amp;#39;ll be able to have access to our MatterMost server
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now before we go and create an account at mattermost let&amp;rsquo;s check out ticket status.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic7.png&#34; alt=&#34;helpdisk_ticket_cr&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We get an confirmation error,that&amp;rsquo;s not great at this point you gotta think out of the box. what email that might exist probably everywhere .
+let&amp;rsquo;s submit a new ticket real quick and check again.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic18.png&#34; alt=&#34;helpdisk_ticket_cr2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And We Get Another ticket_id and email address , let&amp;rsquo;s check our ticket status&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic19.png&#34; alt=&#34;helpdisk_ticket_ck&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And some how magically We got in as Admin .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic6.png&#34; alt=&#34;helpdisk_ticke_admin&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s go back to the mattermost and create an account with our ticket email&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic3.png&#34; alt=&#34;helpdisk_mattermost&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic4.png&#34; alt=&#34;helpdisk_mattermost2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Also we get email verification , at this point you should really use your mind for a bit . we go back to our check ticket status and we get a reply&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic1.png&#34; alt=&#34;helpdisk_mattermost1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s the verification code, sweet now we can verify our email address and simply login.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic16.png&#34; alt=&#34;helpdisk_mattermost_login&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now Let&amp;rsquo;s explore a bit, we click on internal and get into the channel we see there&amp;rsquo;s messages left by admin over there .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic2.png&#34; alt=&#34;helpdisk_mattermost_msg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We see credentials , Swwwwwweet .let&amp;rsquo;s login via ssh .&lt;/p&gt;
+&lt;p&gt;PS: I covered the credentials so you do the box instead of copying and pasting&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic27.png&#34; alt=&#34;helpdisk_mattermost_ssh&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And There we go , now we can read the user.txt&lt;/p&gt;
+&lt;h2 id=&#34;privilege-escalation&#34; &gt;Privilege Escalation
+&lt;span&gt;
+    &lt;a href=&#34;#privilege-escalation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;At This point it&amp;rsquo;s pretty straight forward , let&amp;rsquo;s run linpeas.sh and see what&amp;rsquo;s going on but there&amp;rsquo;s nothing.
+let&amp;rsquo;s check &lt;code&gt;/opt&lt;/code&gt; we can see mattermost installation let&amp;rsquo;s check it .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic12.png&#34; alt=&#34;helpdisk_logged_in1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;the first thing i do , is to check the configs since they usually store credentials , and sensitive information .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic15.png&#34; alt=&#34;helpdisk_logged_in1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Oh the config.json is interesting , let&amp;rsquo;s check it out&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic5.png&#34; alt=&#34;helpdisk_logged_config&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We can see there&amp;rsquo;s an mysql settings with some credentails , running ss -lnpt we see mysql is running .
+Let&amp;rsquo;s Logging And Check The database.
+PS: The password is a hint itself it says crack the mattermost password which is the root password&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic11.png&#34; alt=&#34;helpdisk_logged_mysql&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic20.png&#34; alt=&#34;helpdisk_logged_mysql2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Ah there&amp;rsquo;s too many tables there , but we just interested in the Users tables.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic17.png&#34; alt=&#34;helpdisk_logged_mysql&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic28.png&#34; alt=&#34;helpdisk_logged_mysql1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic14.png&#34; alt=&#34;helpdisk_logged_mysql2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We have the root hash it&amp;rsquo;s a bcrypt type. now before we crack it, remember from the mattermost internal channel the admin user gave us a valuable hint .&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This is a usefull hint to let us know that we should generate a wordlist from hashcat rules in order to crack the root hash through &amp;ldquo;PleaseSubscribe!&amp;rdquo;
+Let&amp;rsquo;s go to our crackred and generate a wordlist .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic21.png&#34; alt=&#34;helpdisk_crackred&#34;&gt;&lt;/p&gt;
+&lt;p&gt;that&amp;rsquo;s not a big wordlist , it should crack really fast. let&amp;rsquo;s crack our hash.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic13.png&#34; alt=&#34;helpdisk_crackred1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And there we goo , we&amp;rsquo;ve cracked it,took about 2 seconds , now let&amp;rsquo;s su to root.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic23.png&#34; alt=&#34;helpdisk_root&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And That&amp;rsquo;s it , that&amp;rsquo;s delivery hope you enjoyed the writeup take care and i&amp;rsquo;ll see you all other time.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

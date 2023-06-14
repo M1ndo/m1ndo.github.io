@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>HTB - Delivery - ybenel</title>
+
+<meta name="description" content="Delivery Easy Box By Ippsec">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://ybenel.cf/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://ybenel.cf/favicon.png">
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="https://ybenel.cf/css/style.min.498349ff6e7919343de1acfbcd45cfd0c7f847781d60c671960a5c0adec35e48.css" integrity="sha256-SYNJ/255GTQ94az7zUXP0Mf4R3gdYMZxlgpcCt7DXkg=">
+    
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="https://ybenel.cf/js/script.min.74bf1a3fcf1af396efa4acf3e660e876b61a2153ab9cbe1893ac24ea6d4f94ee.js" type="text/javascript" charset="utf-8" integrity="sha256-dL8aP88a85bvpKzz5mDodrYaIVOrnL4Yk6wk6m1PlO4="></script>
+    
+
+
+
+
+
+
+
+<meta property="og:title" content="HTB - Delivery" />
+<meta property="og:description" content="Delivery Easy Box By Ippsec" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ybenel.cf/post/htb-delivery/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-01-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-10T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTB - Delivery"/>
+<meta name="twitter:description" content="Delivery Easy Box By Ippsec"/>
+
+
+
+
+
+
+
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12S7XTXXWH"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12S7XTXXWH', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <h1 class="site-title">
+    <a href="/">ybenel</a>
+</h1>
+    <ul class="social-icons">
+
+
+    
+        <li>
+            <a href="https://github.com/m1ndo" title="Github" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://twitter.com/_ybenel" title="Twitter" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+    <li>
+            <a href="https://ybenel.cf/index.xml" title="RSS" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+</div>
+
+    <nav>
+        
+        
+        <a class="" href="https://ybenel.cf/about/" title="">About</a>
+        
+        <a class="" href="https://ybenel.cf/categories/" title="">categories</a>
+        
+        <a class="" href="https://ybenel.cf/tags/" title="">Tags</a>
+        
+        <a class="" href="https://ybenel.cf/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">HTB - Delivery</h1>
+
+                
+            </header>
+        </div>
+        <div class="content e-content">
+            <p>Delivery Easy Box By Ippsec</p>
+<h2 id="foothold" >Foothold
+<span>
+    <a href="#foothold">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h2><h3 id="enumeration" >Enumeration
+<span>
+    <a href="#enumeration">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h3><p>We start of with the nmap , nmap -sC -sV -p- -T4 -oN delivery.nmap delivery.htb
+We can see there&rsquo;s 3 ports open.</p>
+<p><img src="/imgs/delivery/pic30.png" alt="nmap"></p>
+<p>Let&rsquo;s browse http and see what&rsquo;s there.</p>
+<p><img src="/imgs/delivery/pic0.png" alt="Static"></p>
+<p>We get a static website, looking at the site source there&rsquo;s nothing much there but look around contact us we get this .</p>
+<p><img src="/imgs/delivery/pic26.png" alt="Static_Contact"></p>
+<p>We can see a note from the site owner?</p>
+<pre tabindex="0"><code>For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you&#39;ll be able to have access to our MatterMost server
+</code></pre><p>so let&rsquo;s look at the helpdisk at helpdesk.delivery.htb</p>
+<p><img src="/imgs/delivery/pic29.png" alt="helpdisk"></p>
+<p>We see osticket support center,right of the top we check for any cves but they are all old and not affective so let&rsquo;s create a new account .</p>
+<p><img src="/imgs/delivery/pic24.png" alt="helpdisk_signup"></p>
+<p>Now After we created an account we get account verification but thinking logically we have entered a none existing email we cannot receive emails neither do anything.
+Hmmm there must be somewhere around it . let&rsquo;s check the open ticket thing .</p>
+<p><img src="/imgs/delivery/pic9.png" alt="helpdisk_ticket_open"></p>
+<p>let&rsquo;s fill those real quick .</p>
+<p><img src="/imgs/delivery/pic22.png" alt="helpdisk_ticket_fill"></p>
+<p><img src="/imgs/delivery/pic25.png" alt="helpdisk_ticket_fill2"></p>
+<p>We Get Support ticket request created with a ticket id and an email ?
+At this point i was hmmmmmmmmmmmm an email , going back to the text we got earlier</p>
+<pre tabindex="0"><code>Once you have an @delivery.htb email address, you&#39;ll be able to have access to our MatterMost server
+</code></pre><p>Now before we go and create an account at mattermost let&rsquo;s check out ticket status.</p>
+<p><img src="/imgs/delivery/pic7.png" alt="helpdisk_ticket_cr"></p>
+<p>We get an confirmation error,that&rsquo;s not great at this point you gotta think out of the box. what email that might exist probably everywhere .
+let&rsquo;s submit a new ticket real quick and check again.</p>
+<p><img src="/imgs/delivery/pic18.png" alt="helpdisk_ticket_cr2"></p>
+<p>And We Get Another ticket_id and email address , let&rsquo;s check our ticket status</p>
+<p><img src="/imgs/delivery/pic19.png" alt="helpdisk_ticket_ck"></p>
+<p>And some how magically We got in as Admin .</p>
+<p><img src="/imgs/delivery/pic6.png" alt="helpdisk_ticke_admin"></p>
+<p>Now let&rsquo;s go back to the mattermost and create an account with our ticket email</p>
+<p><img src="/imgs/delivery/pic3.png" alt="helpdisk_mattermost"></p>
+<p><img src="/imgs/delivery/pic4.png" alt="helpdisk_mattermost2"></p>
+<p>Also we get email verification , at this point you should really use your mind for a bit . we go back to our check ticket status and we get a reply</p>
+<p><img src="/imgs/delivery/pic1.png" alt="helpdisk_mattermost1"></p>
+<p>It&rsquo;s the verification code, sweet now we can verify our email address and simply login.</p>
+<p><img src="/imgs/delivery/pic16.png" alt="helpdisk_mattermost_login"></p>
+<p>Now Let&rsquo;s explore a bit, we click on internal and get into the channel we see there&rsquo;s messages left by admin over there .</p>
+<p><img src="/imgs/delivery/pic2.png" alt="helpdisk_mattermost_msg"></p>
+<p>We see credentials , Swwwwwweet .let&rsquo;s login via ssh .</p>
+<p>PS: I covered the credentials so you do the box instead of copying and pasting</p>
+<p><img src="/imgs/delivery/pic27.png" alt="helpdisk_mattermost_ssh"></p>
+<p>And There we go , now we can read the user.txt</p>
+<h2 id="privilege-escalation" >Privilege Escalation
+<span>
+    <a href="#privilege-escalation">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h2><p>At This point it&rsquo;s pretty straight forward , let&rsquo;s run linpeas.sh and see what&rsquo;s going on but there&rsquo;s nothing.
+let&rsquo;s check <code>/opt</code> we can see mattermost installation let&rsquo;s check it .</p>
+<p><img src="/imgs/delivery/pic12.png" alt="helpdisk_logged_in1"></p>
+<p>the first thing i do , is to check the configs since they usually store credentials , and sensitive information .</p>
+<p><img src="/imgs/delivery/pic15.png" alt="helpdisk_logged_in1"></p>
+<p>Oh the config.json is interesting , let&rsquo;s check it out</p>
+<p><img src="/imgs/delivery/pic5.png" alt="helpdisk_logged_config"></p>
+<p>We can see there&rsquo;s an mysql settings with some credentails , running ss -lnpt we see mysql is running .
+Let&rsquo;s Logging And Check The database.
+PS: The password is a hint itself it says crack the mattermost password which is the root password</p>
+<p><img src="/imgs/delivery/pic11.png" alt="helpdisk_logged_mysql"></p>
+<p><img src="/imgs/delivery/pic20.png" alt="helpdisk_logged_mysql2"></p>
+<p>Ah there&rsquo;s too many tables there , but we just interested in the Users tables.</p>
+<p><img src="/imgs/delivery/pic17.png" alt="helpdisk_logged_mysql"></p>
+<p><img src="/imgs/delivery/pic28.png" alt="helpdisk_logged_mysql1"></p>
+<p><img src="/imgs/delivery/pic14.png" alt="helpdisk_logged_mysql2"></p>
+<p>We have the root hash it&rsquo;s a bcrypt type. now before we crack it, remember from the mattermost internal channel the admin user gave us a valuable hint .</p>
+<pre tabindex="0"><code>PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases.
+</code></pre><p>This is a usefull hint to let us know that we should generate a wordlist from hashcat rules in order to crack the root hash through &ldquo;PleaseSubscribe!&rdquo;
+Let&rsquo;s go to our crackred and generate a wordlist .</p>
+<p><img src="/imgs/delivery/pic21.png" alt="helpdisk_crackred"></p>
+<p>that&rsquo;s not a big wordlist , it should crack really fast. let&rsquo;s crack our hash.</p>
+<p><img src="/imgs/delivery/pic13.png" alt="helpdisk_crackred1"></p>
+<p>And there we goo , we&rsquo;ve cracked it,took about 2 seconds , now let&rsquo;s su to root.</p>
+<p><img src="/imgs/delivery/pic23.png" alt="helpdisk_root"></p>
+<p>And That&rsquo;s it , that&rsquo;s delivery hope you enjoyed the writeup take care and i&rsquo;ll see you all other time.</p>
+        </div>
+        
+
+    
+
+
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">
+            <a class="u-url" href="/post/htb-delivery/"><time datetime="2021-01-10">Sun Jan 10 2021</time></a>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="https://ybenel.cf/post/htb-delivery/">https://ybenel.cf/post/htb-delivery/</a>
+    <a href="https://ybenel.cf" class="p-name p-author post-hidden-author h-card" rel="me">ybenel</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="https://ybenel.cf/categories/htb/">HTB</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/easy/">#Easy</a></li>
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/misconfiguration/">#Misconfiguration</a></li>
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/ctf-like/">#ctf-like</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+    </article>
+
+    
+        
+        
+    
+
+    
+        
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/post/htb-armageddon/">HTB - Armageddon</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/post/2020-ctf-writeups/">CTF Write Ups</a>
+            
+        </div>
+    </div>
+
+
+
+
+    
+
+    
+        
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ybenel" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+
+
+    
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© ybenel (M1ndo), 2023<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+    
+
+
+
+    <button class="theme-switcher">
+        Dark theme
+    </button>
+
+
+<script>
+const STORAGE_KEY = 'user-color-scheme'
+const defaultTheme = "dark"
+
+let currentTheme
+let switchButton
+let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+const autoChangeScheme = e => {
+    currentTheme = e.matches ? 'dark' : 'light'
+    document.documentElement.setAttribute('data-theme', currentTheme)
+    changeButtonText()
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    switchButton = document.querySelector('.theme-switcher')
+    currentTheme = detectCurrentScheme()
+    if (currentTheme == 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark')
+    }
+    if (currentTheme == 'auto') {
+        autoChangeScheme(autoDefinedScheme);
+        autoDefinedScheme.addListener(autoChangeScheme);
+    }
+
+    if (switchButton) {
+        changeButtonText()
+        switchButton.addEventListener('click', switchTheme, false)
+    }
+  
+    showContent()
+})
+
+function detectCurrentScheme() {
+    if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+        return localStorage.getItem(STORAGE_KEY)
+    } 
+    if (defaultTheme) {
+        return defaultTheme
+    } 
+    if (!window.matchMedia) {
+        return 'light'
+    } 
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+    }
+    return 'light'
+}
+
+function changeButtonText()
+{   
+    if (switchButton) {
+        switchButton.textContent = currentTheme == 'dark' ?  "Light theme" : "Dark theme"
+    }
+}
+
+function switchTheme(e) {
+    if (currentTheme == 'dark') {
+        if (localStorage !== null)
+            localStorage.setItem(STORAGE_KEY, 'light')
+        document.documentElement.setAttribute('data-theme', 'light')
+        currentTheme = 'light'
+    } else {
+        if (localStorage !== null)
+            localStorage.setItem(STORAGE_KEY, 'dark')
+        document.documentElement.setAttribute('data-theme', 'dark')
+        currentTheme = 'dark'
+    }
+    changeButtonText()
+}
+
+function showContent() {
+    document.body.style.visibility = 'visible';
+    document.body.style.opacity = 1;
+}
+</script>   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://ybenel.cf class="p-name u-url url fn" rel="me">ybenel (M1ndo)</a> 
+
+    
+
+     
+        <img class="u-photo" src="/imgs/mcd.png" />
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>

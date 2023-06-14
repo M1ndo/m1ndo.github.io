@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>video on ybenel</title>
+    <link>https://ybenel.cf/tags/video/</link>
+    <description>ybenel (video)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Nov 2022 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/tags/video/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ffmpeg Tricks</title>
+      <link>https://ybenel.cf/post/ffmpeg_tricks/</link>
+      <pubDate>Sat, 05 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/ffmpeg_tricks/</guid>
+      <description>&lt;p&gt;Ffmpeg Tricks I&amp;rsquo;ve gathered over the years.&lt;/p&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div class=&#34;heading&#34;&gt;Table of Contents&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#ffmpeg-tricks&#34;&gt;Ffmpeg Tricks&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#upscale-video&#34;&gt;Upscale Video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reduce-file-size&#34;&gt;Reduce File Size&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#mp4-to-vp9--webm&#34;&gt;Mp4 To VP9 (Webm)&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#constate-quality&#34;&gt;Constate Quality&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#contrained-quality-with-bitrate&#34;&gt;Contrained Quality With Bitrate&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#lossless-encoding&#34;&gt;Lossless Encoding&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#speed-and-quality&#34;&gt;Speed And Quality&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#personal-preference&#34;&gt;Personal Preference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#adding-audio-to-a-video&#34;&gt;Adding Audio To A Video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cut-split-a-video-in-n-segments&#34;&gt;Cut/Split a video in N segments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#change-frame-rate&#34;&gt;Change Frame rate&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#change-fps-while-encoding&#34;&gt;Change fps while encoding&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#add-text-watermark-to-video&#34;&gt;Add text watermark to video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#video-compression&#34;&gt;Video Compression&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#speed-slow-down-video&#34;&gt;Speed/Slow Down Video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cut-video&#34;&gt;Cut Video&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#30-fps-to-60fps&#34;&gt;30 fps to 60fps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;
+&lt;h2 id=&#34;ffmpeg-tricks&#34; &gt;Ffmpeg Tricks
+&lt;span&gt;
+    &lt;a href=&#34;#ffmpeg-tricks&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;upscale-video&#34; &gt;Upscale Video
+&lt;span&gt;
+    &lt;a href=&#34;#upscale-video&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Upscale Video To 4k&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input.mp4 -vf scale&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;3840x2160:flags&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;lanczos output.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reduce-file-size&#34; &gt;Reduce File Size
+&lt;span&gt;
+    &lt;a href=&#34;#reduce-file-size&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Time in Seconds / File Size in GigaBits &amp;ndash;&amp;gt; Used as bitrate&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input.mp4 -b &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;S/G&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; output.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;mp4-to-vp9--webm&#34; &gt;Mp4 To VP9 (Webm)
+&lt;span&gt;
+    &lt;a href=&#34;#mp4-to-vp9--webm&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;constate-quality&#34; &gt;Constate Quality
+&lt;span&gt;
+    &lt;a href=&#34;#constate-quality&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;H264&lt;/strong&gt; Quality Options from 0 to 64 (crf 28 best)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i in.mp4 -c:v libvpx-vp9 -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt; -b:v &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; out.webm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;contrained-quality-with-bitrate&#34; &gt;Contrained Quality With Bitrate
+&lt;span&gt;
+    &lt;a href=&#34;#contrained-quality-with-bitrate&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;A popular option from &lt;strong&gt;h264&lt;/strong&gt; encoding, a quality value is given between 0 and 63 with lower values meaning higher quality. It is recommended to use a value between &lt;em&gt;15&lt;/em&gt; and &lt;em&gt;35&lt;/em&gt;. To use constant quality &lt;code&gt;-b:v&lt;/code&gt; must be set and at zero: &lt;code&gt;-b:v 0&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i in.mp4 -c:v libvpx-vp9 -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt; -b:v 1500k out.webm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;With &lt;strong&gt;max&lt;/strong&gt; and &lt;strong&gt;mix&lt;/strong&gt; bitrate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--listend--&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i in.mp4 -c:v libvpx-vp9 -minrate 400k -b:v 1500k -maxrate 2200k out.webm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;lossless-encoding&#34; &gt;Lossless Encoding
+&lt;span&gt;
+    &lt;a href=&#34;#lossless-encoding&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i in.mp4 -c:v libvpx-vp9 -lossless &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; out.webm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;speed-and-quality&#34; &gt;Speed And Quality
+&lt;span&gt;
+    &lt;a href=&#34;#speed-and-quality&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-deadline&lt;/code&gt; is the main option for VP9 encoding speed, as per media encoding lore the slower options do a more efficient encode.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;good&lt;/code&gt; (default) is the recommended.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;best&lt;/code&gt; has the finest compression (slow).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;realtime&lt;/code&gt; live and fast encoding.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-cpu-used&lt;/code&gt; is how efficient the compression will be, when using a deadline of good or best the value that can be set must be between 0 and 5.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Default it is 0, 1 or 2 will increase speed but cost in quality and rate control. A value of 4 or 5 disables rate-distortion optimization thus having a greater impact on quality.
+To further utilize modern CPU’s when encoding row-based multithreading can be turned on with &lt;code&gt;-row-mt 1&lt;/code&gt; this can help dramatically.
+More encoding speed can be achieved with specifying the CPU threads to use when encoding with &lt;code&gt;-threads&lt;/code&gt; an example being: &lt;code&gt;-threads 16&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i in.mp4 -c:v libvpx-vp9 -row-mt &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -threads &lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt; -cpu-used &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; -deadline good -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;21&lt;/span&gt; -b:v &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; out.webm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;personal-preference&#34; &gt;Personal Preference
+&lt;span&gt;
+    &lt;a href=&#34;#personal-preference&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input.mp4 -c:v libvpx-vp9 -row-mt &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -threads &lt;span style=&#34;color:#ae81ff&#34;&gt;48&lt;/span&gt; -cpu-used &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; -deadline good -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt; -b:v &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; out.webm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;adding-audio-to-a-video&#34; &gt;Adding Audio To A Video
+&lt;span&gt;
+    &lt;a href=&#34;#adding-audio-to-a-video&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i video.mp4 -i audio.mp3 -c copy -map 0:v:0 -map 1:a:0 output.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;cut-split-a-video-in-n-segments&#34; &gt;Cut/Split a video in N segments
+&lt;span&gt;
+    &lt;a href=&#34;#cut-split-a-video-in-n-segments&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Change N to the number of minutes / hours / seconds&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i videotocut.mp4 -c copy -map &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; -segment_time 00:0N:00 -f segment segment%03d.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;change-frame-rate&#34; &gt;Change Frame rate
+&lt;span&gt;
+    &lt;a href=&#34;#change-frame-rate&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Change frame rate with ffmpeg with &lt;code&gt;-filter:v fps=fps=25&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--listend--&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# 60 Fps Video Make it to 30 fps video&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i inputvideo.mp4 -filter:v fps&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;fps&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt; inputvideo_30fps.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;change-fps-while-encoding&#34; &gt;Change fps while encoding
+&lt;span&gt;
+    &lt;a href=&#34;#change-fps-while-encoding&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i inputvideo.mp4 -filter:v fps&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;fps&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt; -c:v libx264 -preset fast -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;23&lt;/span&gt; output.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;add-text-watermark-to-video&#34; &gt;Add text watermark to video
+&lt;span&gt;
+    &lt;a href=&#34;#add-text-watermark-to-video&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;adding a text watermark with &lt;code&gt;drawtext&lt;/code&gt; from ffmpeg in bottom left&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;input.mp4&amp;#34;&lt;/span&gt; -vf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;drawtext=text=&amp;#39;a watermark&amp;#39;:x=10:y=H-th-10:fontfile=/pathto/font.ttf:fontsize=10:fontcolor=white:shadowcolor=black:shadowx=2:shadowy=2&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;output.mp4&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;video-compression&#34; &gt;Video Compression
+&lt;span&gt;
+    &lt;a href=&#34;#video-compression&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Using ffmpeg &lt;code&gt;--preset&lt;/code&gt; and &lt;code&gt;-crf&lt;/code&gt; to determine best output size, preset is the encoding the compression rate, the &lt;strong&gt;slower&lt;/strong&gt; the &lt;strong&gt;better&lt;/strong&gt; therefor more quality in a smaller size.
+&lt;code&gt;veryslow&lt;/code&gt; &lt;code&gt;slower&lt;/code&gt; &lt;code&gt;slow&lt;/code&gt;
+CRF means constant rate factor, essentially it is the bitrate amount without it being specific. Lower value = higher quality. 0 is lossless but a value of 17 or 18 is still visually lossless. 21 or 22 i find to be best but once you start going above 25 the quality drops away.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i inputfilename.mp4 -c:v libx264 -preset veryslow -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;21&lt;/span&gt; outputfilename.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Something little quicker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--listend--&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i inputfilename.mp4 -c:v libx264 -preset slower -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt; outputfilename.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;speed-slow-down-video&#34; &gt;Speed/Slow Down Video
+&lt;span&gt;
+    &lt;a href=&#34;#speed-slow-down-video&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;To Speed Up .&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input.mkv -filter:v &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;setpts=0.5*PTS&amp;#34;&lt;/span&gt; output.mkv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Using blending&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i typingspeed.mkv -vf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tblend=average,framestep=2,tblend=average,framestep=2,setpts=0.25*PTS&amp;#34;&lt;/span&gt; -r &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt; output.mkv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Minterpolate Using ffmpeg ==&amp;gt; creates a 96 fps video&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input -filter:v minterpolate -r &lt;span style=&#34;color:#ae81ff&#34;&gt;96&lt;/span&gt; output
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;then speed it up&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input -vf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;tblend=average,framestep=2,tblend=average,framestep=2,tblend=average,framestep=2,tblend=average,framestep=2,setpts=0.25*PTS&amp;#34;&lt;/span&gt; -r &lt;span style=&#34;color:#ae81ff&#34;&gt;96&lt;/span&gt; -b:v 30M -crf &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; -an output
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;move commands&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fmpeg -i input.avi -filter:v &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minterpolate=&amp;#39;fps=120&amp;#39;,setpts=4*PTS&amp;#34;&lt;/span&gt; output.avi
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i typingspeed.mkv -filter:v &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minterpolate=&amp;#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120&amp;#39;&amp;#34;&lt;/span&gt; output.mkv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;cut-video&#34; &gt;Cut Video
+&lt;span&gt;
+    &lt;a href=&#34;#cut-video&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i comeback-2022-02-24_17.38.33.mkv -ss 00:00:08 -to 00:03:47 -async &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -c copy comeback.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;to cut microseconds add (dot.XXX) 00:00:08.100&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;30-fps-to-60fps&#34; &gt;30 fps to 60fps
+&lt;span&gt;
+    &lt;a href=&#34;#30-fps-to-60fps&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Four step search
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input.mp4 -filter:v &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minterpolate=&amp;#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=60:me=fss&amp;#39;&amp;#34;&lt;/span&gt; out.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Diamond search
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffmpeg -i input.mp4 -filter:v  &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;minterpolate=&amp;#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=60:me=ds&amp;#39;&amp;#34;&lt;/span&gt; out.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

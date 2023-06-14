@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NoSQL-Injection on ybenel</title>
+    <link>https://ybenel.cf/tags/nosql-injection/</link>
+    <description>ybenel (NoSQL-Injection)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Aug 2021 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/tags/nosql-injection/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>THM - CMSpit</title>
+      <link>https://ybenel.cf/post/thm-cmspit/</link>
+      <pubDate>Thu, 05 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/thm-cmspit/</guid>
+      <description>&lt;p&gt;CMSpit Is a medium linux machine that consist of identifying vulnerabilties related to web CMS framework that includes information gathering,user enumeration,privilege escalation.&lt;/p&gt;
+&lt;h2 id=&#34;cms-enumeration&#34; &gt;CMS Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#cms-enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;As always we start of with nmap to see what ports are open.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Nmap 7.91 scan initiated Mon Aug  2 17:33:54 2021 as: nmap -sC -sV -oN initial.nmap 10.10.103.27
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;Nmap scan report &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10.10.103.27&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Host is up (&lt;span style=&#34;color:#ae81ff&#34;&gt;0.64&lt;/span&gt;s latency).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Not shown: &lt;span style=&#34;color:#ae81ff&#34;&gt;998&lt;/span&gt; closed ports
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PORT   STATE SERVICE VERSION
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;22&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;tcp open  ssh     OpenSSH &lt;span style=&#34;color:#ae81ff&#34;&gt;7.2&lt;/span&gt;p2 Ubuntu &lt;span style=&#34;color:#ae81ff&#34;&gt;4u&lt;/span&gt;buntu2&lt;span style=&#34;color:#ae81ff&#34;&gt;.10&lt;/span&gt; (Ubuntu Linux; protocol &lt;span style=&#34;color:#ae81ff&#34;&gt;2.0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; ssh&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;hostkey: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;2048&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;7f&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;f9:&lt;span style=&#34;color:#ae81ff&#34;&gt;40&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;23&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;25&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;cd:&lt;span style=&#34;color:#ae81ff&#34;&gt;29&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;b:&lt;span style=&#34;color:#ae81ff&#34;&gt;28&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;a9:d9:&lt;span style=&#34;color:#ae81ff&#34;&gt;82&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;f5:&lt;span style=&#34;color:#ae81ff&#34;&gt;49&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;e4 (RSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ae81ff&#34;&gt;256&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;a:f4:&lt;span style=&#34;color:#ae81ff&#34;&gt;29&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;ed:&lt;span style=&#34;color:#ae81ff&#34;&gt;55&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;43&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;19&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;e7:&lt;span style=&#34;color:#ae81ff&#34;&gt;73&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;a7:&lt;span style=&#34;color:#ae81ff&#34;&gt;09&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;79&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;30&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;a8:&lt;span style=&#34;color:#ae81ff&#34;&gt;49&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;b (ECDSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;_  &lt;span style=&#34;color:#ae81ff&#34;&gt;256&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2f&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;43&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;ad:a3:d1:&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;b:&lt;span style=&#34;color:#ae81ff&#34;&gt;64&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;86&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;33&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;07&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;d:&lt;span style=&#34;color:#ae81ff&#34;&gt;94&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;f9:dc:a4:&lt;span style=&#34;color:#ae81ff&#34;&gt;01&lt;/span&gt; (ED25519)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;tcp open  http    Apache httpd &lt;span style=&#34;color:#ae81ff&#34;&gt;2.4.18&lt;/span&gt; ((Ubuntu))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;_http&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;server&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;header: Apache&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2.4.18&lt;/span&gt; (Ubuntu)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; http&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;title: Authenticate Please&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;_Requested resource was &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;auth&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;login&lt;span style=&#34;color:#f92672&#34;&gt;?&lt;/span&gt;to&lt;span style=&#34;color:#f92672&#34;&gt;=/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt;_http&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;trane&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;info: Problem with XML parsing of &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;evox&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;about
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Service Info: OS: Linux; CPE: cpe:&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;o:linux:linux_kernel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;there&amp;rsquo;s 2 ports open , first is &lt;strong&gt;ssh&lt;/strong&gt; and the second one is &lt;strong&gt;http&lt;/strong&gt; running apache in a ubuntu machine.&lt;/li&gt;
+&lt;li&gt;Going over to http://10.10.103.27 we can see it&amp;rsquo;s hosting &lt;strong&gt;Cockpit&lt;/strong&gt; CMS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/http_80.png&#34; alt=&#34;http_80&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Trying common default login credentials such as &amp;ldquo;admin:admin&amp;rdquo;,&amp;ldquo;admin:password&amp;rdquo; doesn&amp;rsquo;t work .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/failed_attempt.png&#34; alt=&#34;failed_attempt&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Next we enumerate further the CMS, checking first its login page source which reveals its version .
+&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/version_leak.png&#34; alt=&#34;version_leak&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Heading over to google , it looks like Cockpit suffers from NoSql Injection and remote code execution which is a breaking deal, and even it has msf module written for it so u could just fire up msf and there u go straight to RCE (we will get to that later).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also we see how we can enumeration users in two different ways .&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/cockpit_vulne.png&#34; alt=&#34;cockpit_vulne&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;user-enumeration&#34; &gt;User Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#user-enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;First Method&lt;/strong&gt; /auth/forgotpassword Offers an easy way to enumerate users, however doing it manually is quite takes alot of effort and time .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Specifying a none existing user will result into the following&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/user_enum_failed.png&#34; alt=&#34;user_enum_failed&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;While Specifying a user that exists results into the following&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/user_enum_success.png&#34; alt=&#34;user_enum_success&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;You can script it to do the whole work for u.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Second Method&lt;/strong&gt; Is by using /auth/requestreset and set the data to&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;user&amp;#34;&lt;/span&gt;:{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;$func&amp;#34;&lt;/span&gt;:&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;var_dump&amp;#34;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;this will dump all the users available on the cms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/available_users.png&#34; alt=&#34;available_users&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Second Method&lt;/strong&gt;  Which is the easiest way , is by using msf which is shown bellow .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/users.png&#34; alt=&#34;users&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cms-exploitation&#34; &gt;CMS Exploitation.
+&lt;span&gt;
+    &lt;a href=&#34;#cms-exploitation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;getting-reset-token&#34; &gt;Getting Reset Token
+&lt;span&gt;
+    &lt;a href=&#34;#getting-reset-token&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;To obtain reset token we use the same payload we used to gather the 4 users , like below .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/dump_resettoken.png&#34; alt=&#34;dump_resettoken&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;We can also use the payload to dump data about admin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/dumping_information.png&#34; alt=&#34;dumping_information&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;changing-admin-password&#34; &gt;Changing Admin Password
+&lt;span&gt;
+    &lt;a href=&#34;#changing-admin-password&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;To change the admin password we simply send a request to /auth/resetpassword with the token we obtained and the new password we want to set .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/password_reset.png&#34; alt=&#34;password_reset&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;login-to-admin-panel&#34; &gt;Login To Admin Panel
+&lt;span&gt;
+    &lt;a href=&#34;#login-to-admin-panel&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;After changing the admin password , we can simply login .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/admin_panel.png&#34; alt=&#34;admin_panel&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To grab the &lt;strong&gt;webflag&lt;/strong&gt; we simply head over to /finder and we read webflag.php file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;foothold&#34; &gt;Foothold
+&lt;span&gt;
+    &lt;a href=&#34;#foothold&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s 2 ways two obtain RCE as i know .&lt;/li&gt;
+&lt;li&gt;To get RCE we simply create a new file and add malicious php code in it and execute it directly .
+&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/create_file.png&#34; alt=&#34;create_file&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/avada_code.png&#34; alt=&#34;avada_code&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/code_exec.png&#34; alt=&#34;code_exec&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;After we got code execution now we can procced to get a full reverse shell&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/reverse_shell.png&#34; alt=&#34;reverse_shell&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/reverse_shell1.png&#34; alt=&#34;reverse_shell1&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;And there we go we got a shell .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;user-enumeration-1&#34; &gt;User Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#user-enumeration-1&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s one user on the box &lt;strong&gt;Stux&lt;/strong&gt; and we can access his home folder , listing hidden files we found few files that we can read .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/listing_files.png&#34; alt=&#34;listing_files&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s one interesting file &lt;em&gt;.dbshell&lt;/em&gt; , we can read it .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/catting_dbshell.png&#34; alt=&#34;catting_dbshell&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Right there we got &lt;strong&gt;stux&lt;/strong&gt; password and another flag.&lt;/li&gt;
+&lt;li&gt;Now let&amp;rsquo;s su and get the &lt;strong&gt;user flag&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/su_catuser.png&#34; alt=&#34;su_catuser&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;privilege-escalation&#34; &gt;Privilege Escalation
+&lt;span&gt;
+    &lt;a href=&#34;#privilege-escalation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Without wasting time when i did the box i ran linpeas however it didn&amp;rsquo;t show anything interesting besides one little thing .&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;stux&lt;/strong&gt; Is allowed to run &lt;strong&gt;exiftool&lt;/strong&gt; with &lt;strong&gt;sudo&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Using &lt;a href=&#34;https://gtfobins.github.io/gtfobins/exiftool/#sudo&#34;&gt;GTFOBINs&lt;/a&gt; to abuse exiftool and to overwrite files as root didn&amp;rsquo;t work. so looked more at good and found that exiftool recently had vulnerability hat allows for arbitrary code execution when parsing a malicious image.&lt;/li&gt;
+&lt;li&gt;We can craft a malicious image with our commands so it gets executed when its parsed with exiftool , there&amp;rsquo;s this &lt;a href=&#34;https://github.com/bilkoh/POC-CVE-2021-22204&#34;&gt;POC&lt;/a&gt; which is a perl script that will generate a one image with our commands .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/crafting_payload.png&#34; alt=&#34;crafting_payload&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Now we just have to start a python server and upload our image to the box and execute it .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/up_and_run.png&#34; alt=&#34;up_and_run&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Now we can check if successfully managed to obtain the root flag .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/check_test.png&#34; alt=&#34;check_test&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;There we go, we got the root flag.&lt;/li&gt;
+&lt;li&gt;Now let&amp;rsquo;s attempt to obtain a root shell, to do this i&amp;rsquo;ll generate an ssh-key and placing the key into root ssh folder .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/ssh_key2.png&#34; alt=&#34;ssh_key2&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;And let&amp;rsquo;s check if it works .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/cmspit/final_root.png&#34; alt=&#34;final_root&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;And That&amp;rsquo;s Pretty Much The Box , Hope You Enjoyed Reading Take Care And i&amp;rsquo;ll see you all other time :)&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

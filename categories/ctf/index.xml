@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ctf on ybenel</title>
+    <link>https://ybenel.cf/categories/ctf/</link>
+    <description>ybenel (ctf)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Oct 2020 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/categories/ctf/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CTF Write Ups</title>
+      <link>https://ybenel.cf/post/2020-ctf-writeups/</link>
+      <pubDate>Mon, 19 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/2020-ctf-writeups/</guid>
+      <description>&lt;p&gt;2020 CTF Writeups By Me&lt;/p&gt;
+&lt;h1 id=&#34;hacktober-ctf-2020&#34; &gt;Hacktober CTF (2020)
+&lt;span&gt;
+    &lt;a href=&#34;#hacktober-ctf-2020&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h1&gt;&lt;p&gt;This CTF Was Quite Unpleasant Due To Sick Challenges And Worse Staff Ever!
+Guessing Guessing Guessing !!! This Is Not CTF AnyMore !!&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Programming&lt;/th&gt;
+&lt;th&gt;Crypto&lt;/th&gt;
+&lt;th&gt;Steganography&lt;/th&gt;
+&lt;th&gt;Networking&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Message In a Array [10pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Hail Caesar! [10pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Ghost Hunter [10pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Evil Corp&amp;rsquo;s Child 3 [150pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Trick Or Treat [40pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Down The Wrong Path [10pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;You Believe In Ghosts? [30pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hunted Mirror [125pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Cover Your Bases [30pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Blasphemy [40pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Red Rum [250pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Bone To Pick [80pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Start Digging [100pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Stairway To Hell [250pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Password Check [400pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&#34;el-journadas-ctf-2020&#34; &gt;El Journadas CTF (2020)
+&lt;span&gt;
+    &lt;a href=&#34;#el-journadas-ctf-2020&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h1&gt;&lt;p&gt;This CTF Was Little Bit Good But Too Hard!
+We Could Not Solve All The Challenges But We Did Great !&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Crypto&lt;/th&gt;
+&lt;th&gt;PWN&lt;/th&gt;
+&lt;th&gt;Networking&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Time Coding [200pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;ROP Style [400pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;Still with insecure protocols [200pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hide your stuff at plain sight [400pts] &lt;a href=&#34;https://blog.ybenel.cf&#34;&gt;Link&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

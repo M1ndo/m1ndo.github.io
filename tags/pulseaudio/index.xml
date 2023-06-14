@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pulseaudio on ybenel</title>
+    <link>https://ybenel.cf/tags/pulseaudio/</link>
+    <description>ybenel (Pulseaudio)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Sep 2020 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/tags/pulseaudio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Surrounded Sound In Pulse Audio</title>
+      <link>https://ybenel.cf/post/pulseaudio-surrounded-setup/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/pulseaudio-surrounded-setup/</guid>
+      <description>&lt;p&gt;Setting up surrounded 7.1 Sound In Pulse Audio&lt;/p&gt;
+&lt;p&gt;For many of you who are music nerds and look to enjoy music / movies / audio clips in a surrounded sound system this guide is right for you.
+Unfortunately if &lt;strong&gt;dolby&lt;/strong&gt; supported &lt;strong&gt;Linux&lt;/strong&gt; we wouldn&amp;rsquo;t all this but it&amp;rsquo;s a good practice to understand how pulse audio works and discover new ways of mixing up audio, so let&amp;rsquo;s get started !&lt;/p&gt;
+&lt;h2 id=&#34;adding-configurations&#34; &gt;Adding Configurations
+&lt;span&gt;
+    &lt;a href=&#34;#adding-configurations&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;checking-requirements&#34; &gt;Checking Requirements
+&lt;span&gt;
+    &lt;a href=&#34;#checking-requirements&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Now before we start configuring pulse audio we need some &lt;em&gt;Requirments&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Headset / Headphones Supports 5.1 / 7.1 Surround Sound&lt;/li&gt;
+&lt;li&gt;7.1 / 5.1 Surround Sound Speaker System
+If your headphones / Headset / whatever you are trying doesn&amp;rsquo;t support 5.1 / 7.1 surround sound , you won&amp;rsquo;t be able to notice any change, now we gonna start by testing our headphones/speakers.
+&lt;code&gt;speaker-test -D default -c 8&lt;/code&gt;
+Now this will test if our device has 8 channel output (7.1) or 6 channel output (5.1), mine goes something like this .
+&lt;img src=&#34;https://ybenel.cf/imgs/sound/speaker-test.png&#34; alt=&#34;Speaker-Test&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: If you only see 2 output channels that means your device doesn&amp;rsquo;t support 7.1/5.1 surround sound or it set to use only 2 channel output (it comes by default with pulse audio).&lt;/p&gt;
+&lt;h3 id=&#34;adding-pulseaudio-config&#34; &gt;Adding PulseAudio Config
+&lt;span&gt;
+    &lt;a href=&#34;#adding-pulseaudio-config&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Now let&amp;rsquo;s create our config file located in &lt;code&gt;~/.config/pulse/daemon.conf&lt;/code&gt; if pulse directory doesn&amp;rsquo;t exists just create a new one and now we will create daemon.conf and open it with some text editor and add the values below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sample&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;format &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; float32le
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sample&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;48000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;alternate&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sample&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rate &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;44100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sample&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;channels &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;channel&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;map &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;center,lfe,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;fragments &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;fragment&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;size&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;msec &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;125&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;resample&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;method &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; soxr&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;vhq
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;enable&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;lfe&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;remixing &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;high&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;priority &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;nice&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;level &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;realtime&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;scheduling &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; yes
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;realtime&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;priority &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rlimit&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;rtprio &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;daemonize &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; no
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;understanding-the-config&#34; &gt;understanding the config
+&lt;span&gt;
+    &lt;a href=&#34;#understanding-the-config&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;default-sample-format&#34; &gt;default-sample-format
+&lt;span&gt;
+    &lt;a href=&#34;#default-sample-format&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;is sampling format it depends on the endianness of the cpu, to check your cpu byte order &lt;code&gt;lscpu | grep &#39;Byte Order&#39;&lt;/code&gt; if it&amp;rsquo;s little endian just live the config as it is , if it&amp;rsquo;s big endian replace float32le with float32be.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;default-sample-rate&#34; &gt;default-sample-rate
+&lt;span&gt;
+    &lt;a href=&#34;#default-sample-rate&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;is the sample frequency , &lt;code&gt;alternate-sample-rate&lt;/code&gt; the alternate sample frequency. Sinks and sources will use either the default-sample-rate value or this alternate value, typically 44.1 or 48kHz.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;default-sample-channels&#34; &gt;default-sample-channels
+&lt;span&gt;
+    &lt;a href=&#34;#default-sample-channels&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;number of channels if you have 5.1 surround sound system change the value to (6)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;default-channel-map&#34; &gt;default-channel-map
+&lt;span&gt;
+    &lt;a href=&#34;#default-channel-map&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;-the channel map if you&amp;rsquo;re on 5.1 surround sound system use this &lt;code&gt;front-left,front-right,rear-left,rear-right,front-center,lfe&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&#34;resample-method&#34; &gt;resample-method
+&lt;span&gt;
+    &lt;a href=&#34;#resample-method&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;sample rate converter best to leave it as soxr very high quality all available converters are in (man pulse-daemon.conf) , for comparison benchmarks &lt;a href=&#34;https://lastique.github.io/src_test/&#34;&gt;Here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;daemonize&#34; &gt;daemonize
+&lt;span&gt;
+    &lt;a href=&#34;#daemonize&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;daemonize after start up default is no. &lt;strong&gt;note&lt;/strong&gt; don&amp;rsquo;t change the following value , the following settings prevent glitches &amp;amp; drop-outs during playback
+default-fragments
+hardware playback buffer subdivided into fragments default was (4)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;default-fragment-size-msec&#34; &gt;default-fragment-size-msec
+&lt;span&gt;
+    &lt;a href=&#34;#default-fragment-size-msec&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;duration of single fragment default was (25ms)
+&lt;code&gt;high-priority&lt;/code&gt; set as high priority process default to yes (Don&amp;rsquo;t change)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;enable-lfe-remixing&#34; &gt;enable-lfe-remixing
+&lt;span&gt;
+    &lt;a href=&#34;#enable-lfe-remixing&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;if disabled upmixing or downmixing ignore lfe channel (Not Recommended To Disable)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;nice-level&#34; &gt;nice-level
+&lt;span&gt;
+    &lt;a href=&#34;#nice-level&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;default -11, lowest value allowed: (20 - rlimit-nice), lower means more CPU-%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;realtime-scheduling&#34; &gt;realtime-scheduling
+&lt;span&gt;
+    &lt;a href=&#34;#realtime-scheduling&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;default is yes (don&amp;rsquo;t change)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;rlimit-rtprio&#34; &gt;rlimit-rtprio
+&lt;span&gt;
+    &lt;a href=&#34;#rlimit-rtprio&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;default 9, values from -20 upto 19 allowed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;realtime-priority&#34; &gt;realtime-priority
+&lt;span&gt;
+    &lt;a href=&#34;#realtime-priority&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;default 5, highest value allowed: rlimit-rtprio, higher means more priority&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;adding-alsa-config&#34; &gt;Adding Alsa Config
+&lt;span&gt;
+    &lt;a href=&#34;#adding-alsa-config&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Now let&amp;rsquo;s add asla config (/etc/asound.conf or ~/.asoundrc), nothing really here to explain we just using hw plugin to work with pulse audio&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Use PulseAudio plugin hw
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;pcm.&lt;span style=&#34;color:#f92672&#34;&gt;!&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;default&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   type plug
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   slave.pcm hw
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;list-devices&#34; &gt;List Devices
+&lt;span&gt;
+    &lt;a href=&#34;#list-devices&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Now let&amp;rsquo;s list our devices with (&lt;code&gt;pacmd list-sinks | grep &amp;quot;name:&amp;quot;&lt;/code&gt;) and the output should be something like this&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;name: &amp;lt;alsa_output.pci-0000_00_1b.0.analog-surround71&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;note&lt;/strong&gt; it can be more than one device depends and what you&amp;rsquo;re connecting to your workstation .&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Now we will copy default.pa config from (/etc/pulse/default.pa to ~/.config/pulse/)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;installing-pulseaudio-modules&#34; &gt;Installing Pulseaudio Modules
+&lt;span&gt;
+    &lt;a href=&#34;#installing-pulseaudio-modules&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Now we need to install a quick module &lt;code&gt;ladspa-bs2b&lt;/code&gt; and &lt;code&gt;libbs2b&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  In Arch Linux &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;AUR&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yay -S libbs2b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  In Debian / Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;apt install bs2b-ladspa
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  Other Distros &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;Got No Idea&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;loading-pulseaudio-modules&#34; &gt;Loading PulseAudio Modules
+&lt;span&gt;
+    &lt;a href=&#34;#loading-pulseaudio-modules&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Now let&amp;rsquo;s load the modules, open default.pa in ~/.config/pulse and add the following lines at the bottom&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# For 7.1 Surround Sound System
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;load&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;module module&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;remap&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sink sink_name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Remape remix&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;yes master&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;alsa_output.pci&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0000&lt;/span&gt;_00_1b&lt;span style=&#34;color:#ae81ff&#34;&gt;.0&lt;/span&gt;.analog&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;surround71 channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt; master_channel_map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;center,lfe,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right channel_map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;center,lfe,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;module module&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;combine channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt; channel_map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;center,lfe,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,side&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;module module&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;ladspa&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sink sink_name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Ybenel plugin&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;bs2b label&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;bs2b control&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;700&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;4.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# For 5.1 Surround Sound System
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;load&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;module module&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;remap&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sink sink_name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Remape remix&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;yes master&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;alsa_output.pci&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0000&lt;/span&gt;_00_1b&lt;span style=&#34;color:#ae81ff&#34;&gt;.0&lt;/span&gt;.analog&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;surround71 channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt; master_channel_map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;center,lfe channel_map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;center,lfe
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;module module&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;combine channels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt; channel_map&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;left,rear&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;right,front&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;center,lfe
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;module module&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;ladspa&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;sink sink_name&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Ybenel plugin&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;bs2b label&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;bs2b control&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;700&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;4.5&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;There&amp;rsquo;s another module that creates a virtual surround sink but it requires a hrir file , lucky you i found a good pack that has alot of samples&lt;/li&gt;
+&lt;li&gt;Download the archive from &lt;a href=&#34;https://stuff.salscheider.org/hrir_listen.tar.gz&#34;&gt;Here&lt;/a&gt; unzip it and listem to the demos choose what you like and load the module&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# This is just an example replace the hrir path and file of your like&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;load-module module-virtual-surround-sink hrir&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/home/ybenel/Music/surround/hrir_listen/hrirs/hrir-1038.wav
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;restarting-pulseaudio&#34; &gt;Restarting PulseAudio
+&lt;span&gt;
+    &lt;a href=&#34;#restarting-pulseaudio&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Now we need to restart pulse audio&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;#Kill pulse audio&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --kill
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;#In case pulse audio didn&amp;#39;t start&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pulseaudio --start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;change-output-source&#34; &gt;Change Output Source
+&lt;span&gt;
+    &lt;a href=&#34;#change-output-source&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Now let&amp;rsquo;s open &lt;strong&gt;pavucontrol&lt;/strong&gt; , if it&amp;rsquo;s not installed in your os , it&amp;rsquo;s recommended to install it .&lt;/li&gt;
+&lt;li&gt;In the output tab you should see the modules are loaded .
+&lt;img src=&#34;https://ybenel.cf/imgs/sound/pavucontrol_output.png&#34; alt=&#34;pavucontrol_output&#34;&gt;&lt;/li&gt;
+&lt;li&gt;Go Back To The Playback Tab And You&amp;rsquo;ll see currently running apps and you&amp;rsquo;ll see the sink device that it&amp;rsquo;s been used just click it and you&amp;rsquo;ll see all available output options , choose what&amp;rsquo;s looks good in ur case.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/sound/pavucontrol_playback1.png&#34; alt=&#34;pavucontrol_playback&#34;&gt;
+&lt;img src=&#34;https://ybenel.cf/imgs/sound/pavucontrol_playback.png&#34; alt=&#34;pavucontrol_playback&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;extra&#34; &gt;Extra
+&lt;span&gt;
+    &lt;a href=&#34;#extra&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Extra&lt;/strong&gt; If you&amp;rsquo;re looking for some real time effects to add , you could use &lt;code&gt;pulseeffects&lt;/code&gt; to mix , equalize , compress , whatever
+&lt;img src=&#34;https://ybenel.cf/imgs/sound/pulseeffects.png&#34; alt=&#34;pulseeffects&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Other Cool Thing is Audacious Player That Has Some Really Good Plugins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/sound/audacious.png&#34; alt=&#34;audacious&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34; &gt;Conclusion
+&lt;span&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h1&gt;&lt;p&gt;Pulse Audio Is Really not bad and It&amp;rsquo;s much less complicated than Jack Or PipeWire it only needs some configurations and little tweaking and it&amp;rsquo;s great again.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

