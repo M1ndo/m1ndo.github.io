@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Easy on ybenel</title>
-    <link>http://localhost:8000/categories/easy/</link>
+    <link>https://ybenel.cf/categories/easy/</link>
     <description>ybenel (Easy)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 16 Jun 2023 00:00:00 +0000</lastBuildDate>
     
-    <atom:link href="http://localhost:8000/categories/easy/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ybenel.cf/categories/easy/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>HTB - Topology</title>
-      <link>http://localhost:8000/post/htb_topology/</link>
+      <link>https://ybenel.cf/post/htb_topology/</link>
       <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:8000/post/htb_topology/</guid>
+      <guid>https://ybenel.cf/post/htb_topology/</guid>
       <description>&lt;p&gt;Topology is an easy box that starts off by finding a local file discloser vulnerability,
 In a LaTeX template, which allows us to get gain access by obtaining a password file with an encrypted password
 that&amp;rsquo;s reused by a user on the box.
@@ -72,7 +72,7 @@ For ROOT there&amp;rsquo;s a setuid binary which we simply use to obtain root pr
     &lt;/a&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;Checking the http site, we just get a static site with a bunch &lt;strong&gt;users&lt;/strong&gt; and an &lt;strong&gt;email&lt;/strong&gt; and a list of &lt;strong&gt;projects&lt;/strong&gt;.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_webpage.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_webpage.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Default Web Page&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -87,7 +87,7 @@ For ROOT there&amp;rsquo;s a setuid binary which we simply use to obtain root pr
 &lt;p&gt;Vhost discovery.&lt;/p&gt;
 &lt;p&gt;We also will look for any other subdomains that might be hidden. Like our other projects or something better.
 For that we&amp;rsquo;ll use &lt;strong&gt;Ffuf&lt;/strong&gt;.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_vhost.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_vhost.png&#34;/&gt;&lt;figcaption&gt;
                 &lt;h4&gt;FUZZ With FFUF&lt;/h4&gt;
             &lt;/figcaption&gt;
     &lt;/figure&gt;
@@ -102,24 +102,24 @@ For that we&amp;rsquo;ll use &lt;strong&gt;Ffuf&lt;/strong&gt;.&lt;/p&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;&lt;a href=&#34;http://stats.topology.htb&#34;&gt;http://stats.topology.htb&lt;/a&gt; which is just a static webpage with jpg images.
 &lt;a href=&#34;http://dev.topology.htb&#34;&gt;http://dev.topology.htb&lt;/a&gt; requires &lt;strong&gt;credentials&lt;/strong&gt; in order to access it.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_dev.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_dev.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;(Dev Sub) Require AUTH&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://latex.topology.htb&#34;&gt;http://latex.topology.htb&lt;/a&gt; is an open directory listing which has couple files.&lt;/p&gt;
-&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_latex_dir.png&#34;/&gt;&lt;figcaption&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_latex_dir.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Listing Directory&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 The interesting one is &lt;code&gt;equation.php&lt;/code&gt; which allows us to run latex commands and it compiles it then convert it into a png.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_gen.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_gen.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;TEX Input Prompt&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_gen_out.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_gen_out.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Generated Image&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -141,7 +141,7 @@ there&amp;rsquo;s couple commands we can use to read a file.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;{}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However if we tried any of these commands, we&amp;rsquo;ll instead get an illegal command output,
 So we can verify there&amp;rsquo;s some sort of input validation checking, that will try to protect it.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_illegal.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_illegal.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Input Filtration&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -149,7 +149,7 @@ So we can verify there&amp;rsquo;s some sort of input validation checking, that 
 &lt;p&gt;&lt;em&gt;Except&lt;/em&gt; in the directory listing we see couple TeX files presented, so there might be a package used that
 has the ability to read files.
 Check &lt;code&gt;header.tex&lt;/code&gt; we can see the following packages used.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_header.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_header.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Preamble Header&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -161,7 +161,7 @@ If you used LaTeX before and listings package you might be familiar with &lt;cod
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;%% OR Without the setting options.
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\lsinputlisting&lt;/span&gt;{myexample.py}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So let&amp;rsquo;s try it.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_lsinput_error.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_lsinput_error.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;LaTeX Errors&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -188,7 +188,7 @@ In the backend its something like this.&lt;/p&gt;
 So let&amp;rsquo;s escape it.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n^2}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a&#34;&gt;\lstinputlisting&lt;/span&gt;{/etc/passwd}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n*2}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and voila!
-&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_filediscloser.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_filediscloser.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;!--list-separator--&gt;
 &lt;h5 id=&#34;obtaining-access&#34; &gt;Obtaining Access.
 &lt;span&gt;
@@ -200,13 +200,13 @@ So let&amp;rsquo;s escape it.&lt;/p&gt;
 We can use our file discoloser vulnerability to obtain the password.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;http://latex.topology.htb/equation.php?eqn=&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n^2}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a&#34;&gt;\lstinputlisting&lt;/span&gt;{/var/www/dev/.htpasswd}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n*2}&amp;amp;submit=
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now Let&amp;rsquo;s convert our image to text.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/toplogy_imageToText.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/toplogy_imageToText.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Converting Image To Text&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 And finally let&amp;rsquo;s crack it with hashcat.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_passwordcrack.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_passwordcrack.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Cracking With Hashcat&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -218,7 +218,7 @@ And finally let&amp;rsquo;s crack it with hashcat.
     &lt;/a&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;Using the cracked password we find, we&amp;rsquo;re able to ssh into the machine.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/ssh_topology.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/ssh_topology.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;SSH-In&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;
@@ -231,7 +231,7 @@ And finally let&amp;rsquo;s crack it with hashcat.
 &lt;/span&gt;
 &lt;/h3&gt;&lt;p&gt;Root is pretty straight forward, there&amp;rsquo;s a setuid binary (bash)
 we could use to gain root privileges and read the root flag.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/topology/topology_root.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_root.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Becoming Root&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;

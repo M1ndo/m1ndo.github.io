@@ -245,13 +245,13 @@ the other way is to install it manually which we will cover it later on in mu in
 There&rsquo;s few different ways to install <em>mu</em> which changes from distribution to another.
 The current stable release is <strong>1.6.6</strong>, in case u installed 1.7.0 there&rsquo;s a high chance you&rsquo;ll be facing few problems and experiencing some bugs , so be sure which version you&rsquo;re installing .
 In <strong>Arch</strong> Using <em>AUR</em> is pretty straight forward.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yay -S offlineimap mu-git
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>yay -S offlineimap mu-git
 </span></span></code></pre></div><p>In <strong>Debian</strong> the stable release is 1.4.15 which is really fine really, you can use the instable repositories to install 1.6.*</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install mu4e
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install mu4e
 </span></span></code></pre></div><p>In Case your distribution doesn&rsquo;t have <em>mu</em> on their repositories you can install it from source which is really easy.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone -b <span style="color:#e6db74">&#34;release/1.6&#34;</span> https://github.com/djcb/mu/
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone -b <span style="color:#0086d2">&#34;release/1.6&#34;</span> https://github.com/djcb/mu/
 </span></span><span style="display:flex;"><span>cd mu
-</span></span><span style="display:flex;"><span>meson --prefix<span style="color:#f92672">=</span>/usr --buildtype<span style="color:#f92672">=</span>plain build
+</span></span><span style="display:flex;"><span>meson --prefix=/usr --buildtype=plain build
 </span></span><span style="display:flex;"><span>ninja -C build install
 </span></span></code></pre></div><h2 id="installing-isync-or-offlineimap" >Installing Isync Or OfflineImap
 <span>
@@ -262,10 +262,10 @@ In <strong>Arch</strong> Using <em>AUR</em> is pretty straight forward.</p>
 </h2><p>Both <em>Isync</em> And <em>Offlineimap</em> are great programs to download our mail into our inbox.
 There isn&rsquo;t really that much difference, it just depends on which one you&rsquo;d like to install.
 To Install <em>Isync</em> Or <em>Offlineimap</em> On <strong>Arch</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S isync
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S isync
 </span></span><span style="display:flex;"><span>pacman -S offlineimap
 </span></span></code></pre></div><p>To Install <em>Isync</em> or <em>Offlineimap</em> On <strong>Debian</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install isync
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install isync
 </span></span><span style="display:flex;"><span>apt install offlineimap
 </span></span></code></pre></div><h2 id="configuring-isync" >Configuring Isync
 <span>
@@ -279,32 +279,32 @@ If you have 2FA enabled, you should first set up an app password this will let&r
 <strong>Disclaimer</strong> Your password should no be shared with anyone except yourself and <em>Isync</em>
 <strong>Extra</strong> As your password will be kept in <em>Isync</em> config file in plain text, you can avoid this and encrypt it using <strong>GPG</strong>. You can either use <strong>Pass</strong> utility if its installed on your device as a wrapper around <strong>GPG</strong> or use straight <strong>GPG</strong>.
 To Crypt your password using <strong>pass</strong> command.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pass insert gmail_app 
-</span></span><span style="display:flex;"><span>Enter password <span style="color:#66d9ef">for</span> test_gmail: *******
-</span></span><span style="display:flex;"><span>Retype password <span style="color:#66d9ef">for</span> test_gmail: *******
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pass insert gmail_app 
+</span></span><span style="display:flex;"><span>Enter password <span style="color:#fb660a;font-weight:bold">for</span> test_gmail: *******
+</span></span><span style="display:flex;"><span>Retype password <span style="color:#fb660a;font-weight:bold">for</span> test_gmail: *******
 </span></span></code></pre></div><p>To Crypt your password using <strong>GPG</strong> command, First generate a new key if you don&rsquo;t have one yet .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># This will prompt you for email and a name and a password (Use a valid real mail if you gonna share ur key will others)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># WARNING: DO NOT LOSE YOUR KEYS AND THE PASSWORD YOU USED TO CREATE THE KEYS OTHERWISE YOUR DATA WILL BE LOSE IF YOU LOSE THEM </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ALWAYS BACKUP YOUR .gnupg AND .password-store FOLDER TO A USB_DRIVE OR AN EXTERNAL DRIVE OR IN THE CLOUD</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># This will prompt you for email and a name and a password (Use a valid real mail if you gonna share ur key will others)</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># WARNING: DO NOT LOSE YOUR KEYS AND THE PASSWORD YOU USED TO CREATE THE KEYS OTHERWISE YOUR DATA WILL BE LOSE IF YOU LOSE THEM </span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># ALWAYS BACKUP YOUR .gnupg AND .password-store FOLDER TO A USB_DRIVE OR AN EXTERNAL DRIVE OR IN THE CLOUD</span>
 </span></span><span style="display:flex;"><span>gpg --full-generate-key
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># After u create your own key, find it through the following command</span>
-</span></span><span style="display:flex;"><span>gpg -K --keyid-format<span style="color:#f92672">=</span>long
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># You&#39;ll get something like this </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># sec   rsa2048/84263A08F86B7E99 2020-06-17 [SC] [expires: 2022-06-17]</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#       447FE384AAE41F357F5876FF84263A08F86B7E99</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># uid                 [ultimate] Ybenel &lt;ybenel@ybenel.cf&gt;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># ssb   rsa2048/C8D9741AC03BE89C 2020-06-17 [E] [expires: 2022-06-17]</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Now you have your long key and ur short key, you can use whatever u want , now let&#39;s encrypt your file</span>
-</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;YOUR APP PASSWORD&#34;</span> &gt; gmail_app
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># After u create your own key, find it through the following command</span>
+</span></span><span style="display:flex;"><span>gpg -K --keyid-format=long
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># You&#39;ll get something like this </span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># sec   rsa2048/84263A08F86B7E99 2020-06-17 [SC] [expires: 2022-06-17]</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic">#       447FE384AAE41F357F5876FF84263A08F86B7E99</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># uid                 [ultimate] Ybenel &lt;ybenel@ybenel.cf&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># ssb   rsa2048/C8D9741AC03BE89C 2020-06-17 [E] [expires: 2022-06-17]</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Now you have your long key and ur short key, you can use whatever u want , now let&#39;s encrypt your file</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#0086d2">&#34;YOUR APP PASSWORD&#34;</span> &gt; gmail_app
 </span></span><span style="display:flex;"><span>gpg -e -r 84263A08F86B7E99 gmail_app 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># This will create a new encrypted file called gmail_app.gpg, delete the gmail_app that contains plain text passowrd preferbly using shred</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># This will create a new encrypted file called gmail_app.gpg, delete the gmail_app that contains plain text passowrd preferbly using shred</span>
 </span></span></code></pre></div><p>Before quickly setting up our configuration file let&rsquo;s create a mail folder, to do so .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/Mail/Gmail
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir -p ~/Mail/Gmail
 </span></span></code></pre></div><p>Now we need to create our configuration file that is located in our HOME folder which will be called <strong>~/.mbsyncrc</strong> . And Let&rsquo;s put our configurations .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>IMAPAccount gmail
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>IMAPAccount gmail
 </span></span><span style="display:flex;"><span>Host imap.gmail.com
 </span></span><span style="display:flex;"><span>User USERMAIL@gmail.com
-</span></span><span style="display:flex;"><span>PassCmd <span style="color:#e6db74">&#34;gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/gmail_app.gpg&#34;</span>
+</span></span><span style="display:flex;"><span>PassCmd <span style="color:#0086d2">&#34;gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/gmail_app.gpg&#34;</span>
 </span></span><span style="display:flex;"><span>SSLType IMAPS
 </span></span><span style="display:flex;"><span>CertificateFile /etc/ssl/certs/ca-certificates.crt
 </span></span><span style="display:flex;"><span>
@@ -319,17 +319,17 @@ To Crypt your password using <strong>pass</strong> command.</p>
 </span></span><span style="display:flex;"><span>Channel gmail
 </span></span><span style="display:flex;"><span>Far :gmail-remote:
 </span></span><span style="display:flex;"><span>Near :gmail-local:
-</span></span><span style="display:flex;"><span>Patterns * !<span style="color:#f92672">[</span>Gmail<span style="color:#f92672">]</span>* <span style="color:#e6db74">&#34;[Gmail]/Sent Mail&#34;</span> <span style="color:#e6db74">&#34;[Gmail]/All Mail&#34;</span>
+</span></span><span style="display:flex;"><span>Patterns * ![Gmail]* <span style="color:#0086d2">&#34;[Gmail]/Sent Mail&#34;</span> <span style="color:#0086d2">&#34;[Gmail]/All Mail&#34;</span>
 </span></span><span style="display:flex;"><span>Create Both
 </span></span><span style="display:flex;"><span>Expunge Both
 </span></span><span style="display:flex;"><span>SyncState *
 </span></span></code></pre></div><p>If you use a plain text password replace <strong>PassCmd</strong> With <strong>Pass</strong> And Put your password .
 In <strong>Patterns</strong> This will download <em>Sent Mail</em> And <em>All Mail</em> and exclude everything else, you can add other folders as well as example , <strong>&quot;[Gmail]/Spam&quot;</strong> this will download the spam mail as well .
 <strong>Other Than GMAIL</strong> if you use another email service you can replace the above config with the correct info , and replace gmail with a custom name, as a quick example .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>IMAPAccount cock 
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>IMAPAccount cock 
 </span></span><span style="display:flex;"><span>Host mail.cock.li
 </span></span><span style="display:flex;"><span>User suckmycock11@cock.li
-</span></span><span style="display:flex;"><span>PassCmd <span style="color:#e6db74">&#34;gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/cockli.gpg&#34;</span>
+</span></span><span style="display:flex;"><span>PassCmd <span style="color:#0086d2">&#34;gpg -q --for-your-eyes-only --no-tty -d ~/.password-store/cockli.gpg&#34;</span>
 </span></span><span style="display:flex;"><span>SSLType IMAPS
 </span></span><span style="display:flex;"><span>CertificateFile /etc/ssl/certs/ca-certificates.crt
 </span></span><span style="display:flex;"><span>
@@ -344,7 +344,7 @@ In <strong>Patterns</strong> This will download <em>Sent Mail</em> And <em>All M
 </span></span><span style="display:flex;"><span>Channel gmail
 </span></span><span style="display:flex;"><span>Far :gmail-remote:
 </span></span><span style="display:flex;"><span>Near :gmail-local:
-</span></span><span style="display:flex;"><span>Patterns * !<span style="color:#f92672">[</span>Inbox<span style="color:#f92672">]</span>* <span style="color:#e6db74">&#34;[Inbox]/Sent Mail&#34;</span> <span style="color:#e6db74">&#34;[Inbox]/All Mail&#34;</span>
+</span></span><span style="display:flex;"><span>Patterns * ![Inbox]* <span style="color:#0086d2">&#34;[Inbox]/Sent Mail&#34;</span> <span style="color:#0086d2">&#34;[Inbox]/All Mail&#34;</span>
 </span></span><span style="display:flex;"><span>Create Both
 </span></span><span style="display:flex;"><span>Expunge Both
 </span></span><span style="display:flex;"><span>SyncState *
@@ -370,9 +370,9 @@ In <strong>Patterns</strong> This will download <em>Sent Mail</em> And <em>All M
 </span>
 </h3><p>In order for us to use the token we got earlier we need to install and use gmail-oauth-tools this will generate a refresh token that we will use later in configuring offlineimap.
 To Install simply run .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/google/gmail-oauth2-tools Public/oauth2-tools
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/google/gmail-oauth2-tools Public/oauth2-tools
 </span></span></code></pre></div><p>And run the following command to get your refresh token</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python2 Public/oauth2-tools/python/oauth2.py --generate_oauth2_token --client_id<span style="color:#f92672">=</span>YOUR_CLIENT_ID --client_secret<span style="color:#f92672">=</span>YOUR_CLIENT_SECRET
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python2 Public/oauth2-tools/python/oauth2.py --generate_oauth2_token --client_id=YOUR_CLIENT_ID --client_secret=YOUR_CLIENT_SECRET
 </span></span></code></pre></div><p>To Get Your CLIENT-ID Head over to <a href="https://github.com/OfflineIMAP/offlineimap/blob/master/offlineimap.conf#L886-L894">Here</a> and read the steps .</p>
 <h3 id="adding-the-configuration-files" >Adding The Configuration Files
 <span>
@@ -381,52 +381,52 @@ To Install simply run .</p>
     </a>
 </span>
 </h3><p>To Configure OfflineIMAP Put The Following Configurations In <strong>~/.offlineimaprc</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#66d9ef">[general]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">accounts</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">Gmail</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maxsyncaccounts</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">3</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#pythonfile = ~/.offlineimap.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ini" data-lang="ini"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">[general]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">accounts</span> = <span style="color:#0086d2">Gmail</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">maxsyncaccounts</span> = <span style="color:#0086d2">3</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic">#pythonfile = ~/.offlineimap.py</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Account Gmail]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">localrepository</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">Local</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">remoterepository</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">Remote</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">[Account Gmail]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">localrepository</span> = <span style="color:#0086d2">Local</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">remoterepository</span> = <span style="color:#0086d2">Remote</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Repository Local]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">Maildir</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">localfolders</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">~/Maildir</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nametrans</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">lambda f: &#39;[Gmail]/&#39; + f if f in [&#39;Drafts&#39;, &#39;Starred&#39;, &#39;Important&#39;, &#39;Spam&#39;, &#39;Trash&#39;, &#39;All Mail&#39;, &#39;Sent Mail&#39;] else f</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">[Repository Local]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">type</span> = <span style="color:#0086d2">Maildir</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">localfolders</span> = <span style="color:#0086d2">~/Maildir</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">nametrans</span> = <span style="color:#0086d2">lambda f: &#39;[Gmail]/&#39; + f if f in [&#39;Drafts&#39;, &#39;Starred&#39;, &#39;Important&#39;, &#39;Spam&#39;, &#39;Trash&#39;, &#39;All Mail&#39;, &#39;Sent Mail&#39;] else f</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">[Repository Remote]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">IMAP</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">remotehost</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">imap.gmail.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">remoteuser</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">USERMAIL@gmail.com</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">auth_mechanisms</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">XOAUTH2</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oauth2_client_id</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">CLIENT_ID</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oauth2_client_secret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">CLIENT_SECRET</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oauth2_request_url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">https://accounts.google.com/o/oauth2/token</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">oauth2_refresh_token</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">REFRESH_TOKEN</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ssl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">yes</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maxconnections</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sslcacertfile</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/etc/ssl/certs/ca-certificates.crt</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ssl_version</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">tls1_2</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">folderfilter</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">lambda foldername: foldername in [&#39;INBOX&#39;, &#39;All Mail&#39;, &#39;Sent Mail&#39;]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">nametrans</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">lambda f: f.replace(&#39;[Gmail]/&#39;, &#39;&#39;) if f.startswith(&#39;[Gmail]/&#39;) else f</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">[Repository Remote]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">type</span> = <span style="color:#0086d2">IMAP</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">remotehost</span> = <span style="color:#0086d2">imap.gmail.com</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">remoteuser</span> = <span style="color:#0086d2">USERMAIL@gmail.com</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">auth_mechanisms</span> = <span style="color:#0086d2">XOAUTH2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">oauth2_client_id</span> = <span style="color:#0086d2">CLIENT_ID</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">oauth2_client_secret</span> = <span style="color:#0086d2">CLIENT_SECRET</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">oauth2_request_url</span> = <span style="color:#0086d2">https://accounts.google.com/o/oauth2/token</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">oauth2_refresh_token</span> = <span style="color:#0086d2">REFRESH_TOKEN</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">ssl</span> = <span style="color:#0086d2">yes</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">maxconnections</span> = <span style="color:#0086d2">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">sslcacertfile</span> = <span style="color:#0086d2">/etc/ssl/certs/ca-certificates.crt</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">ssl_version</span> = <span style="color:#0086d2">tls1_2</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">folderfilter</span> = <span style="color:#0086d2">lambda foldername: foldername in [&#39;INBOX&#39;, &#39;All Mail&#39;, &#39;Sent Mail&#39;]</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0086;font-weight:bold">nametrans</span> = <span style="color:#0086d2">lambda f: f.replace(&#39;[Gmail]/&#39;, &#39;&#39;) if f.startswith(&#39;[Gmail]/&#39;) else f</span>
 </span></span></code></pre></div><p>Replace <strong>CLIENT-ID,CLIENT-SECRET,REFRESH-TOKEN</strong> with the tokens you&rsquo;ve got.
 In Case Of Using <strong>GPG ENCRYPTED PASSWORD</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#! /usr/bin/env python2</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># In side of offlineimap.py</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> subprocess <span style="color:#f92672">import</span> check_output
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic">#! /usr/bin/env python2</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># In side of offlineimap.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">from</span> subprocess <span style="color:#fb660a;font-weight:bold">import</span> check_output
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_pass</span>():
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> check_output(<span style="color:#e6db74">&#34;gpg -dq ~/.password-store/gmail.gpg&#34;</span>, shell<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Incomment pythonfile in [general]</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Remove oauth2* settings in [Repository Remote] and add</span>
-</span></span><span style="display:flex;"><span>remotepasseval <span style="color:#f92672">=</span> get_password<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">def</span> <span style="color:#ff0086;font-weight:bold">get_pass</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#fb660a;font-weight:bold">return</span> check_output(<span style="color:#0086d2">&#34;gpg -dq ~/.password-store/gmail.gpg&#34;</span>, shell=<span style="color:#fb660a;font-weight:bold">True</span>).strip(<span style="color:#0086d2">&#34;</span><span style="color:#0086d2">\n</span><span style="color:#0086d2">&#34;</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Incomment pythonfile in [general]</span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Remove oauth2* settings in [Repository Remote] and add</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a">remotepasseval</span> = get_password()
 </span></span></code></pre></div><p>In Case of Using <strong>Plain Text Password</strong> Or <strong>Plain Password File</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Remove oauth2* settings in [Repository Remote] </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Add for plain text passowrd</span>
-</span></span><span style="display:flex;"><span>remotepass <span style="color:#f92672">=</span> mypassword
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Or Password file</span>
-</span></span><span style="display:flex;"><span>remotepassfile <span style="color:#f92672">=</span> ~/gmail_app
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Remove oauth2* settings in [Repository Remote] </span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Add for plain text passowrd</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a">remotepass</span> = mypassword
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Or Password file</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a">remotepassfile</span> = ~/gmail_app
 </span></span></code></pre></div><h2 id="getting-mail" >Getting Mail
 <span>
     <a href="#getting-mail">
@@ -440,14 +440,14 @@ In Case Of Using <strong>GPG ENCRYPTED PASSWORD</strong></p>
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>offlineimap
+</h3><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>offlineimap
 </span></span></code></pre></div><h3 id="mu" >Mu
 <span>
     <a href="#mu">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mu init -m ~/Mail --my-address<span style="color:#f92672">=</span>USERMAIL@gmail.com 
+</h3><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mu init -m ~/Mail --my-address=USERMAIL@gmail.com 
 </span></span><span style="display:flex;"><span>mu index
 </span></span></code></pre></div><p>And you&rsquo;re finally done, you&rsquo;ll now down all ur mail and it will be indexed automatically .</p>
 <h2 id="setting-up-mu4e-in-emacs" >Setting Up mu4e in emacs
@@ -458,41 +458,41 @@ In Case Of Using <strong>GPG ENCRYPTED PASSWORD</strong></p>
 </span>
 </h2><p>There isn&rsquo;t much to do with  <strong>mu4e</strong> in <strong>emacs</strong> besides adding our configurations.
 My configurations is the following .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(add-to-list <span style="color:#e6db74">&#39;load-path</span> <span style="color:#e6db74">&#34;/usr/share/emacs/site-lisp/mu4e&#34;</span>)
-</span></span><span style="display:flex;"><span>(with-eval-after-load <span style="color:#e6db74">&#39;mu4e</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-context-policy <span style="color:#e6db74">&#39;ask-if-none</span>
-</span></span><span style="display:flex;"><span>        mu4e-compose-context-policy <span style="color:#e6db74">&#39;pick-first</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-change-filenames-when-moving <span style="color:#66d9ef">t</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">;; refresh mail using isync every 10 minutes</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-update-interval (<span style="color:#a6e22e">*</span> <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">60</span>))
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">;; Comment out mu4e-mu-binary if u have mu installed in /usr/bin/ or something</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-mu-binary <span style="color:#e6db74">&#34;~/Downloads/mu-1.6.6/mu/mu&#34;</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-get-mail-command <span style="color:#e6db74">&#34;mbsync -a&#34;</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-root-maildir <span style="color:#e6db74">&#34;~/Mail&#34;</span>)
-</span></span><span style="display:flex;"><span>  (bind-key <span style="color:#e6db74">&#34;C-c C-m&#34;</span> <span style="color:#e6db74">&#39;mu4e</span>)
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-html2text-command <span style="color:#e6db74">&#34;w3m -dump -T text/html -o display_link_number=true&#34;</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">;; (setq mu4e-html2text-command &#34;html2markdown | grep -v &#39;&amp;nbsp_place_holder;&#39;&#34;)</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(<span style="color:#fb660a">add-to-list</span> <span style="color:#0086d2">&#39;load-path</span> <span style="color:#0086d2">&#34;/usr/share/emacs/site-lisp/mu4e&#34;</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#fb660a">with-eval-after-load</span> <span style="color:#0086d2">&#39;mu4e</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-context-policy</span> <span style="color:#0086d2">&#39;ask-if-none</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#fb660a">mu4e-compose-context-policy</span> <span style="color:#0086d2">&#39;pick-first</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-change-filenames-when-moving</span> <span style="color:#0086d2">t</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#080;background-color:#0f140f;font-style:italic">;; refresh mail using isync every 10 minutes</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-update-interval</span> (<span style="color:#ff0086;font-weight:bold">*</span> <span style="color:#0086f7;font-weight:bold">10</span> <span style="color:#0086f7;font-weight:bold">60</span>))
+</span></span><span style="display:flex;"><span>  <span style="color:#080;background-color:#0f140f;font-style:italic">;; Comment out mu4e-mu-binary if u have mu installed in /usr/bin/ or something</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-mu-binary</span> <span style="color:#0086d2">&#34;~/Downloads/mu-1.6.6/mu/mu&#34;</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-get-mail-command</span> <span style="color:#0086d2">&#34;mbsync -a&#34;</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-root-maildir</span> <span style="color:#0086d2">&#34;~/Mail&#34;</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a">bind-key</span> <span style="color:#0086d2">&#34;C-c C-m&#34;</span> <span style="color:#0086d2">&#39;mu4e</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-html2text-command</span> <span style="color:#0086d2">&#34;w3m -dump -T text/html -o display_link_number=true&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#080;background-color:#0f140f;font-style:italic">;; (setq mu4e-html2text-command &#34;html2markdown | grep -v &#39;&amp;nbsp_place_holder;&#39;&#34;)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (set-email-account! <span style="color:#e6db74">&#34;Personal&#34;</span>
-</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">&#39;</span>((mu4e-sent-folder          <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;/Gmail/[Gmail]/Sent Mail&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (mu4e-drafts-folder        <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;/Gmail/[Gmail]/Drafts&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (mu4e-refile-folder        <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;/Gmail/[Gmail]/All Mail&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (mu4e-trash-folder         <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;/Gmail/[Gmail]/Trash&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (user-mail-address         <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;USERMAIL@gmail.com&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (user-full-name            <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;Dr Drunkenstein&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (mu4e-compose-signature    <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;Signed By Mando&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (smtpmail-smtp-user        <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;USERMAIL@gmail.com&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (smtpmail-smtp-server      <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;smtp.gmail.com&#34;</span>)
-</span></span><span style="display:flex;"><span>                        (smtpmail-stream-type      <span style="color:#f92672">.</span> ssl)
-</span></span><span style="display:flex;"><span>                        (smtpmail-smtp-service     <span style="color:#f92672">.</span> <span style="color:#ae81ff">465</span>))
-</span></span><span style="display:flex;"><span>                      <span style="color:#66d9ef">t</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a">set-email-account!</span> <span style="color:#0086d2">&#34;Personal&#34;</span>
+</span></span><span style="display:flex;"><span>                      &#39;((<span style="color:#fb660a">mu4e-sent-folder</span>          . <span style="color:#0086d2">&#34;/Gmail/[Gmail]/Sent Mail&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">mu4e-drafts-folder</span>        . <span style="color:#0086d2">&#34;/Gmail/[Gmail]/Drafts&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">mu4e-refile-folder</span>        . <span style="color:#0086d2">&#34;/Gmail/[Gmail]/All Mail&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">mu4e-trash-folder</span>         . <span style="color:#0086d2">&#34;/Gmail/[Gmail]/Trash&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">user-mail-address</span>         . <span style="color:#0086d2">&#34;USERMAIL@gmail.com&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">user-full-name</span>            . <span style="color:#0086d2">&#34;Dr Drunkenstein&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">mu4e-compose-signature</span>    . <span style="color:#0086d2">&#34;Signed By Mando&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">smtpmail-smtp-user</span>        . <span style="color:#0086d2">&#34;USERMAIL@gmail.com&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">smtpmail-smtp-server</span>      . <span style="color:#0086d2">&#34;smtp.gmail.com&#34;</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">smtpmail-stream-type</span>      . <span style="color:#fb660a">ssl</span>)
+</span></span><span style="display:flex;"><span>                        (<span style="color:#fb660a">smtpmail-smtp-service</span>     . <span style="color:#0086f7;font-weight:bold">465</span>))
+</span></span><span style="display:flex;"><span>                      <span style="color:#0086d2">t</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-maildir-shortcuts
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#39;</span>((<span style="color:#e6db74">&#34;/Gmail/inbox&#34;</span>             <span style="color:#f92672">.</span> ?i)
-</span></span><span style="display:flex;"><span>          (<span style="color:#e6db74">&#34;/Gmail/[Gmail]/Sent Mail&#34;</span> <span style="color:#f92672">.</span> ?s)
-</span></span><span style="display:flex;"><span>          (<span style="color:#e6db74">&#34;/Gmail/[Gmail]/Trash&#34;</span>     <span style="color:#f92672">.</span> ?t)
-</span></span><span style="display:flex;"><span>          (<span style="color:#e6db74">&#34;/Gmail/[Gmail]/Drafts&#34;</span>    <span style="color:#f92672">.</span> ?d)
-</span></span><span style="display:flex;"><span>          (<span style="color:#e6db74">&#34;/Gmail/[Gmail]/All Mail&#34;</span>  <span style="color:#f92672">.</span> ?a))))
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-maildir-shortcuts</span>
+</span></span><span style="display:flex;"><span>        &#39;((<span style="color:#0086d2">&#34;/Gmail/inbox&#34;</span>             . <span style="color:#fb660a">?i</span>)
+</span></span><span style="display:flex;"><span>          (<span style="color:#0086d2">&#34;/Gmail/[Gmail]/Sent Mail&#34;</span> . <span style="color:#fb660a">?s</span>)
+</span></span><span style="display:flex;"><span>          (<span style="color:#0086d2">&#34;/Gmail/[Gmail]/Trash&#34;</span>     . <span style="color:#fb660a">?t</span>)
+</span></span><span style="display:flex;"><span>          (<span style="color:#0086d2">&#34;/Gmail/[Gmail]/Drafts&#34;</span>    . <span style="color:#fb660a">?d</span>)
+</span></span><span style="display:flex;"><span>          (<span style="color:#0086d2">&#34;/Gmail/[Gmail]/All Mail&#34;</span>  . <span style="color:#fb660a">?a</span>))))
 </span></span></code></pre></div><h3 id="extra-configurations" >Extra Configurations
 <span>
     <a href="#extra-configurations">
@@ -502,65 +502,65 @@ My configurations is the following .</p>
 </h3><p>if you want mail notifications and modeline alert of how many mails u have unread , you&rsquo;ll need an extra package called <strong>mu4e-alert</strong>.
 You can install it through <a href="https://melpa.org/#/mu4e-alert">Melpa</a>  using <strong>package-install</strong> or through <strong>use-package</strong>
 My Configurations for it is .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(use-package! mu4e-alert
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">:after</span> mu4e
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">:config</span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> doom-modeline-mu4e <span style="color:#66d9ef">t</span>)
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(<span style="color:#fb660a">use-package!</span> <span style="color:#fb660a">mu4e-alert</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#0086d2">:after</span> <span style="color:#fb660a">mu4e</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#0086d2">:config</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">doom-modeline-mu4e</span> <span style="color:#0086d2">t</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (mu4e-alert-enable-mode-line-display)
-</span></span><span style="display:flex;"><span>  (mu4e-alert-enable-notifications)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a">mu4e-alert-enable-mode-line-display</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a">mu4e-alert-enable-notifications</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (mu4e-alert-set-default-style <span style="color:#e6db74">&#39;libnotify</span>)
-</span></span><span style="display:flex;"><span>  (map! <span style="color:#e6db74">:leader</span>
-</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">:prefix</span> (<span style="color:#e6db74">&#34;d&#34;</span><span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;mu4e&#34;</span>)
-</span></span><span style="display:flex;"><span>         <span style="color:#e6db74">:desc</span> <span style="color:#e6db74">&#34;Disable Mu4e Modeline Alert&#34;</span> <span style="color:#e6db74">&#34;d&#34;</span> <span style="color:#a6e22e">#&#39;</span>mu4e-alert-disable-mode-line-display
-</span></span><span style="display:flex;"><span>         <span style="color:#e6db74">:desc</span> <span style="color:#e6db74">&#34;Enable Mu4e Modeline Alert&#34;</span> <span style="color:#e6db74">&#34;i&#34;</span> <span style="color:#a6e22e">#&#39;</span>mu4e-alert-enable-mode-line-display))
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a">mu4e-alert-set-default-style</span> <span style="color:#0086d2">&#39;libnotify</span>)
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a">map!</span> <span style="color:#0086d2">:leader</span>
+</span></span><span style="display:flex;"><span>        (<span style="color:#0086d2">:prefix</span> (<span style="color:#0086d2">&#34;d&#34;</span>. <span style="color:#0086d2">&#34;mu4e&#34;</span>)
+</span></span><span style="display:flex;"><span>         <span style="color:#0086d2">:desc</span> <span style="color:#0086d2">&#34;Disable Mu4e Modeline Alert&#34;</span> <span style="color:#0086d2">&#34;d&#34;</span> <span style="color:#ff0086;font-weight:bold">#&#39;</span><span style="color:#fb660a">mu4e-alert-disable-mode-line-display</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#0086d2">:desc</span> <span style="color:#0086d2">&#34;Enable Mu4e Modeline Alert&#34;</span> <span style="color:#0086d2">&#34;i&#34;</span> <span style="color:#ff0086;font-weight:bold">#&#39;</span><span style="color:#fb660a">mu4e-alert-enable-mode-line-display</span>))
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (defvar +mu4e-alert-bell-cmd <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;paplay&#34;</span> <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;/usr/share/sounds/freedesktop/stereo/message.oga&#34;</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Cons list with command to play a sound, and the sound file to play.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                 Disabled when set to nil.&#34;</span>)
+</span></span><span style="display:flex;"><span>  (defvar <span style="color:#fb660a">+mu4e-alert-bell-cmd</span> &#39;(<span style="color:#0086d2">&#34;paplay&#34;</span> . <span style="color:#0086d2">&#34;/usr/share/sounds/freedesktop/stereo/message.oga&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086d2">&#34;Cons list with command to play a sound, and the sound file to play.
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">                 Disabled when set to nil.&#34;</span>)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-alert-email-notification-types <span style="color:#f92672">&#39;</span>(subjects))
-</span></span><span style="display:flex;"><span>  (defun +mu4e-alert-grouped-mail-notification-formatter-with-bell (mail-group _all-mails)
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Default function to format MAIL-GROUP for notification.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                 ALL-MAILS are the all the unread emails&#34;</span>
-</span></span><span style="display:flex;"><span>    (when +mu4e-alert-bell-cmd
-</span></span><span style="display:flex;"><span>      (start-process (<span style="color:#a6e22e">car</span> +mu4e-alert-bell-cmd) (<span style="color:#a6e22e">cdr</span> +mu4e-alert-bell-cmd)))
-</span></span><span style="display:flex;"><span>    (<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">&gt;</span> (<span style="color:#a6e22e">length</span> mail-group) <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>        (<span style="color:#66d9ef">let*</span> ((mail-count (<span style="color:#a6e22e">length</span> mail-group))
-</span></span><span style="display:flex;"><span>               (first-mail (<span style="color:#a6e22e">car</span> mail-group))
-</span></span><span style="display:flex;"><span>               (title-prefix (<span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;You have %d unread emails&#34;</span>
-</span></span><span style="display:flex;"><span>                                     mail-count))
-</span></span><span style="display:flex;"><span>               (field-value (mu4e-alert--get-group first-mail))
-</span></span><span style="display:flex;"><span>               (title-suffix (<span style="color:#a6e22e">format</span> (pcase mu4e-alert-group-by
-</span></span><span style="display:flex;"><span>                                       (<span style="color:#f92672">`</span><span style="color:#e6db74">:from</span> <span style="color:#e6db74">&#34;from %s:&#34;</span>)
-</span></span><span style="display:flex;"><span>                                       (<span style="color:#f92672">`</span><span style="color:#e6db74">:to</span> <span style="color:#e6db74">&#34;to %s:&#34;</span>)
-</span></span><span style="display:flex;"><span>                                       (<span style="color:#f92672">`</span><span style="color:#e6db74">:maildir</span> <span style="color:#e6db74">&#34;in %s:&#34;</span>)
-</span></span><span style="display:flex;"><span>                                       (<span style="color:#f92672">`</span><span style="color:#e6db74">:priority</span> <span style="color:#e6db74">&#34;with %s priority:&#34;</span>)
-</span></span><span style="display:flex;"><span>                                       (<span style="color:#f92672">`</span><span style="color:#e6db74">:flags</span> <span style="color:#e6db74">&#34;with %s flags:&#34;</span>))
-</span></span><span style="display:flex;"><span>                                     field-value))
-</span></span><span style="display:flex;"><span>               (title (<span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;%s %s&#34;</span> title-prefix title-suffix)))
-</span></span><span style="display:flex;"><span>          (<span style="color:#a6e22e">list</span> <span style="color:#e6db74">:title</span> title
-</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">:body</span> (s-join <span style="color:#e6db74">&#34;\n&#34;</span>
-</span></span><span style="display:flex;"><span>                              (<span style="color:#a6e22e">mapcar</span> (lambda (mail)
-</span></span><span style="display:flex;"><span>                                        (<span style="color:#a6e22e">format</span> <span style="color:#e6db74">&#34;%s&lt;b&gt;%s&lt;/b&gt; • %s&#34;</span>
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-alert-email-notification-types</span> &#39;(<span style="color:#fb660a">subjects</span>))
+</span></span><span style="display:flex;"><span>  (defun <span style="color:#fb660a">+mu4e-alert-grouped-mail-notification-formatter-with-bell</span> (<span style="color:#fb660a">mail-group</span> <span style="color:#fb660a">_all-mails</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086d2">&#34;Default function to format MAIL-GROUP for notification.
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">                 ALL-MAILS are the all the unread emails&#34;</span>
+</span></span><span style="display:flex;"><span>    (when <span style="color:#fb660a">+mu4e-alert-bell-cmd</span>
+</span></span><span style="display:flex;"><span>      (<span style="color:#fb660a">start-process</span> (<span style="color:#ff0086;font-weight:bold">car</span> <span style="color:#fb660a">+mu4e-alert-bell-cmd</span>) (<span style="color:#ff0086;font-weight:bold">cdr</span> <span style="color:#fb660a">+mu4e-alert-bell-cmd</span>)))
+</span></span><span style="display:flex;"><span>    (<span style="color:#fb660a;font-weight:bold">if</span> (<span style="color:#ff0086;font-weight:bold">&gt;</span> (<span style="color:#ff0086;font-weight:bold">length</span> <span style="color:#fb660a">mail-group</span>) <span style="color:#0086f7;font-weight:bold">1</span>)
+</span></span><span style="display:flex;"><span>        (<span style="color:#fb660a;font-weight:bold">let*</span> ((<span style="color:#fb660a">mail-count</span> (<span style="color:#ff0086;font-weight:bold">length</span> <span style="color:#fb660a">mail-group</span>))
+</span></span><span style="display:flex;"><span>               (<span style="color:#fb660a">first-mail</span> (<span style="color:#ff0086;font-weight:bold">car</span> <span style="color:#fb660a">mail-group</span>))
+</span></span><span style="display:flex;"><span>               (<span style="color:#fb660a">title-prefix</span> (<span style="color:#ff0086;font-weight:bold">format</span> <span style="color:#0086d2">&#34;You have %d unread emails&#34;</span>
+</span></span><span style="display:flex;"><span>                                     <span style="color:#fb660a">mail-count</span>))
+</span></span><span style="display:flex;"><span>               (<span style="color:#fb660a">field-value</span> (<span style="color:#fb660a">mu4e-alert--get-group</span> <span style="color:#fb660a">first-mail</span>))
+</span></span><span style="display:flex;"><span>               (<span style="color:#fb660a">title-suffix</span> (<span style="color:#ff0086;font-weight:bold">format</span> (<span style="color:#fb660a">pcase</span> <span style="color:#fb660a">mu4e-alert-group-by</span>
+</span></span><span style="display:flex;"><span>                                       (`<span style="color:#0086d2">:from</span> <span style="color:#0086d2">&#34;from %s:&#34;</span>)
+</span></span><span style="display:flex;"><span>                                       (`<span style="color:#0086d2">:to</span> <span style="color:#0086d2">&#34;to %s:&#34;</span>)
+</span></span><span style="display:flex;"><span>                                       (`<span style="color:#0086d2">:maildir</span> <span style="color:#0086d2">&#34;in %s:&#34;</span>)
+</span></span><span style="display:flex;"><span>                                       (`<span style="color:#0086d2">:priority</span> <span style="color:#0086d2">&#34;with %s priority:&#34;</span>)
+</span></span><span style="display:flex;"><span>                                       (`<span style="color:#0086d2">:flags</span> <span style="color:#0086d2">&#34;with %s flags:&#34;</span>))
+</span></span><span style="display:flex;"><span>                                     <span style="color:#fb660a">field-value</span>))
+</span></span><span style="display:flex;"><span>               (<span style="color:#fb660a">title</span> (<span style="color:#ff0086;font-weight:bold">format</span> <span style="color:#0086d2">&#34;%s %s&#34;</span> <span style="color:#fb660a">title-prefix</span> <span style="color:#fb660a">title-suffix</span>)))
+</span></span><span style="display:flex;"><span>          (list <span style="color:#0086d2">:title</span> <span style="color:#fb660a">title</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#0086d2">:body</span> (<span style="color:#fb660a">s-join</span> <span style="color:#0086d2">&#34;\n&#34;</span>
+</span></span><span style="display:flex;"><span>                              (<span style="color:#ff0086;font-weight:bold">mapcar</span> (lambda (<span style="color:#fb660a">mail</span>)
+</span></span><span style="display:flex;"><span>                                        (<span style="color:#ff0086;font-weight:bold">format</span> <span style="color:#0086d2">&#34;%s&lt;b&gt;%s&lt;/b&gt; • %s&#34;</span>
 </span></span><span style="display:flex;"><span>                                                (cond
-</span></span><span style="display:flex;"><span>                                                 ((plist-get mail <span style="color:#e6db74">:in-reply-to</span>) <span style="color:#e6db74">&#34;⮩ &#34;</span>)
-</span></span><span style="display:flex;"><span>                                                 ((string-match-p <span style="color:#e6db74">&#34;\\`Fwd:&#34;</span>
-</span></span><span style="display:flex;"><span>                                                                  (plist-get mail <span style="color:#e6db74">:subject</span>)) <span style="color:#e6db74">&#34; ⮯ &#34;</span>)
-</span></span><span style="display:flex;"><span>                                                 (<span style="color:#66d9ef">t</span> <span style="color:#e6db74">&#34;  &#34;</span>))
-</span></span><span style="display:flex;"><span>                                                (truncate-string-to-width (<span style="color:#a6e22e">caar</span> (plist-get mail <span style="color:#e6db74">:from</span>))
-</span></span><span style="display:flex;"><span>                                                                          <span style="color:#ae81ff">20</span> <span style="color:#66d9ef">nil</span> <span style="color:#66d9ef">nil</span> <span style="color:#66d9ef">t</span>)
-</span></span><span style="display:flex;"><span>                                                (truncate-string-to-width
-</span></span><span style="display:flex;"><span>                                                 (replace-regexp-in-string <span style="color:#e6db74">&#34;\\`Re: \\|\\`Fwd: &#34;</span> <span style="color:#e6db74">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>                                                                           (plist-get mail <span style="color:#e6db74">:subject</span>))
-</span></span><span style="display:flex;"><span>                                                 <span style="color:#ae81ff">40</span> <span style="color:#66d9ef">nil</span> <span style="color:#66d9ef">nil</span> <span style="color:#66d9ef">t</span>)))
-</span></span><span style="display:flex;"><span>                                      mail-group))))
-</span></span><span style="display:flex;"><span>      (<span style="color:#66d9ef">let*</span> ((new-mail (<span style="color:#a6e22e">car</span> mail-group))
-</span></span><span style="display:flex;"><span>             (subject (plist-get new-mail <span style="color:#e6db74">:subject</span>))
-</span></span><span style="display:flex;"><span>             (sender (<span style="color:#a6e22e">caar</span> (plist-get new-mail <span style="color:#e6db74">:from</span>))))
-</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">list</span> <span style="color:#e6db74">:title</span> sender <span style="color:#e6db74">:body</span> subject))))
-</span></span><span style="display:flex;"><span>  (<span style="color:#66d9ef">setq</span> mu4e-alert-grouped-mail-notification-formatter <span style="color:#a6e22e">#&#39;</span>+mu4e-alert-grouped-mail-notification-formatter-with-bell))
+</span></span><span style="display:flex;"><span>                                                 ((<span style="color:#fb660a">plist-get</span> <span style="color:#fb660a">mail</span> <span style="color:#0086d2">:in-reply-to</span>) <span style="color:#0086d2">&#34;⮩ &#34;</span>)
+</span></span><span style="display:flex;"><span>                                                 ((<span style="color:#fb660a">string-match-p</span> <span style="color:#0086d2">&#34;\\`Fwd:&#34;</span>
+</span></span><span style="display:flex;"><span>                                                                  (<span style="color:#fb660a">plist-get</span> <span style="color:#fb660a">mail</span> <span style="color:#0086d2">:subject</span>)) <span style="color:#0086d2">&#34; ⮯ &#34;</span>)
+</span></span><span style="display:flex;"><span>                                                 (<span style="color:#0086d2">t</span> <span style="color:#0086d2">&#34;  &#34;</span>))
+</span></span><span style="display:flex;"><span>                                                (<span style="color:#fb660a">truncate-string-to-width</span> (<span style="color:#ff0086;font-weight:bold">caar</span> (<span style="color:#fb660a">plist-get</span> <span style="color:#fb660a">mail</span> <span style="color:#0086d2">:from</span>))
+</span></span><span style="display:flex;"><span>                                                                          <span style="color:#0086f7;font-weight:bold">20</span> <span style="color:#0086d2">nil</span> <span style="color:#0086d2">nil</span> <span style="color:#0086d2">t</span>)
+</span></span><span style="display:flex;"><span>                                                (<span style="color:#fb660a">truncate-string-to-width</span>
+</span></span><span style="display:flex;"><span>                                                 (<span style="color:#fb660a">replace-regexp-in-string</span> <span style="color:#0086d2">&#34;\\`Re: \\|\\`Fwd: &#34;</span> <span style="color:#0086d2">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>                                                                           (<span style="color:#fb660a">plist-get</span> <span style="color:#fb660a">mail</span> <span style="color:#0086d2">:subject</span>))
+</span></span><span style="display:flex;"><span>                                                 <span style="color:#0086f7;font-weight:bold">40</span> <span style="color:#0086d2">nil</span> <span style="color:#0086d2">nil</span> <span style="color:#0086d2">t</span>)))
+</span></span><span style="display:flex;"><span>                                      <span style="color:#fb660a">mail-group</span>))))
+</span></span><span style="display:flex;"><span>      (<span style="color:#fb660a;font-weight:bold">let*</span> ((<span style="color:#fb660a">new-mail</span> (<span style="color:#ff0086;font-weight:bold">car</span> <span style="color:#fb660a">mail-group</span>))
+</span></span><span style="display:flex;"><span>             (<span style="color:#fb660a">subject</span> (<span style="color:#fb660a">plist-get</span> <span style="color:#fb660a">new-mail</span> <span style="color:#0086d2">:subject</span>))
+</span></span><span style="display:flex;"><span>             (<span style="color:#fb660a">sender</span> (<span style="color:#ff0086;font-weight:bold">caar</span> (<span style="color:#fb660a">plist-get</span> <span style="color:#fb660a">new-mail</span> <span style="color:#0086d2">:from</span>))))
+</span></span><span style="display:flex;"><span>        (list <span style="color:#0086d2">:title</span> <span style="color:#fb660a">sender</span> <span style="color:#0086d2">:body</span> <span style="color:#fb660a">subject</span>))))
+</span></span><span style="display:flex;"><span>  (<span style="color:#fb660a;font-weight:bold">setq</span> <span style="color:#fb660a">mu4e-alert-grouped-mail-notification-formatter</span> <span style="color:#ff0086;font-weight:bold">#&#39;</span><span style="color:#fb660a">+mu4e-alert-grouped-mail-notification-formatter-with-bell</span>))
 </span></span></code></pre></div><p>And That&rsquo;s it .</p>
 <h3 id="screenshot" >Screenshot
 <span>

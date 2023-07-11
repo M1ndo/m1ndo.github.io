@@ -3,19 +3,55 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ybenel.cf/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/categories/building/</loc>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/categories/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/compile/</loc>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/tags/emacs/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/categories/emacs/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/post/howtobuild_emacs/</loc>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/performance/</loc>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/post/</loc>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/speed/</loc>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/</loc>
+    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/categories/easy/</loc>
+    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/file-discoloser/</loc>
+    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/hashcat/</loc>
+    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/categories/htb/</loc>
+    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/post/htb_topology/</loc>
+    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/tags/latex/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
+    <lastmod>2023-06-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/categories/latex/</loc>
     <lastmod>2023-06-13T00:00:00+00:00</lastmod>
@@ -24,12 +60,6 @@
     <lastmod>2023-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/tags/org-mode/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ybenel.cf/post/</loc>
-    <lastmod>2023-06-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ybenel.cf/tags/</loc>
     <lastmod>2023-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/tags/tricks/</loc>
@@ -72,9 +102,6 @@
     <lastmod>2021-11-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/tags/hard/</loc>
-    <lastmod>2021-09-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ybenel.cf/categories/htb/</loc>
     <lastmod>2021-09-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/post/htb-pikaboo/</loc>
@@ -138,9 +165,6 @@
     <lastmod>2021-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/tags/easy/</loc>
-    <lastmod>2021-03-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ybenel.cf/tags/hashcat/</loc>
     <lastmod>2021-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/post/htb-armageddon/</loc>

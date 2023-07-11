@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Performance on ybenel</title>
-    <link>http://localhost:8000/tags/performance/</link>
+    <link>https://ybenel.cf/tags/performance/</link>
     <description>ybenel (Performance)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0000</lastBuildDate>
     
-    <atom:link href="http://localhost:8000/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ybenel.cf/tags/performance/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>How To Build Emacs</title>
-      <link>http://localhost:8000/post/howtobuild_emacs/</link>
+      <link>https://ybenel.cf/post/howtobuild_emacs/</link>
       <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:8000/post/howtobuild_emacs/</guid>
+      <guid>https://ybenel.cf/post/howtobuild_emacs/</guid>
       <description>&lt;p&gt;This tutorial will demonstrate how to compile Emacs from source in order to enhance performance and achieve lightning-fast speeds. These instructions are applicable to all versions of Emacs.&lt;/p&gt;
 &lt;h2 id=&#34;what-s-enabled-dot&#34; &gt;What&amp;rsquo;s Enabled.
 &lt;span&gt;
@@ -81,7 +81,7 @@ any Arch based this will work for you. Other distributions will also show how to
 it can be a worthwhile endeavor to significantly improve its performance.
 Despite this, many people choose to forgo building from source due to the time investment,
 even though it would result in a much faster Emacs in the end.
-&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/general/ybenel-full-20230415-163241.png&#34;/&gt;&lt;figcaption&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/general/ybenel-full-20230415-163241.png&#34;/&gt;&lt;figcaption&gt;
             &lt;h4&gt;Overview Of Emacs&lt;/h4&gt;
         &lt;/figcaption&gt;
 &lt;/figure&gt;

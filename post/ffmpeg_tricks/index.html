@@ -269,7 +269,7 @@ if (!doNotTrack) {
     </a>
 </span>
 </h3><p>Upscale Video To 4k</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mp4 -vf scale<span style="color:#f92672">=</span>3840x2160:flags<span style="color:#f92672">=</span>lanczos output.mp4
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mp4 -vf <span style="color:#fb660a">scale</span>=3840x2160:flags=lanczos output.mp4
 </span></span></code></pre></div><h3 id="reduce-file-size" >Reduce File Size
 <span>
     <a href="#reduce-file-size">
@@ -277,7 +277,7 @@ if (!doNotTrack) {
     </a>
 </span>
 </h3><p>Time in Seconds / File Size in GigaBits &ndash;&gt; Used as bitrate</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mp4 -b <span style="color:#66d9ef">$(</span>S/G<span style="color:#66d9ef">)</span> output.mp4
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mp4 -b <span style="color:#fb660a;font-weight:bold">$(</span>S/G<span style="color:#fb660a;font-weight:bold">)</span> output.mp4
 </span></span></code></pre></div><h3 id="mp4-to-vp9--webm" >Mp4 To VP9 (Webm)
 <span>
     <a href="#mp4-to-vp9--webm">
@@ -291,7 +291,7 @@ if (!doNotTrack) {
     </a>
 </span>
 </h4><p><strong>H264</strong> Quality Options from 0 to 64 (crf 28 best)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -crf <span style="color:#ae81ff">28</span> -b:v <span style="color:#ae81ff">0</span> out.webm
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -crf <span style="color:#0086f7;font-weight:bold">28</span> -b:v <span style="color:#0086f7;font-weight:bold">0</span> out.webm
 </span></span></code></pre></div><h4 id="contrained-quality-with-bitrate" >Contrained Quality With Bitrate
 <span>
     <a href="#contrained-quality-with-bitrate">
@@ -299,19 +299,19 @@ if (!doNotTrack) {
     </a>
 </span>
 </h4><p>A popular option from <strong>h264</strong> encoding, a quality value is given between 0 and 63 with lower values meaning higher quality. It is recommended to use a value between <em>15</em> and <em>35</em>. To use constant quality <code>-b:v</code> must be set and at zero: <code>-b:v 0</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -crf <span style="color:#ae81ff">28</span> -b:v 1500k out.webm
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -crf <span style="color:#0086f7;font-weight:bold">28</span> -b:v 1500k out.webm
 </span></span></code></pre></div><ul>
 <li>With <strong>max</strong> and <strong>mix</strong> bitrate</li>
 </ul>
 <!--listend-->
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -minrate 400k -b:v 1500k -maxrate 2200k out.webm
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -minrate 400k -b:v 1500k -maxrate 2200k out.webm
 </span></span></code></pre></div><h4 id="lossless-encoding" >Lossless Encoding
 <span>
     <a href="#lossless-encoding">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -lossless <span style="color:#ae81ff">1</span> out.webm
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -lossless <span style="color:#0086f7;font-weight:bold">1</span> out.webm
 </span></span></code></pre></div><h4 id="speed-and-quality" >Speed And Quality
 <span>
     <a href="#speed-and-quality">
@@ -328,21 +328,21 @@ if (!doNotTrack) {
 <p>Default it is 0, 1 or 2 will increase speed but cost in quality and rate control. A value of 4 or 5 disables rate-distortion optimization thus having a greater impact on quality.
 To further utilize modern CPU’s when encoding row-based multithreading can be turned on with <code>-row-mt 1</code> this can help dramatically.
 More encoding speed can be achieved with specifying the CPU threads to use when encoding with <code>-threads</code> an example being: <code>-threads 16</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -row-mt <span style="color:#ae81ff">1</span> -threads <span style="color:#ae81ff">16</span> -cpu-used <span style="color:#ae81ff">2</span> -deadline good -crf <span style="color:#ae81ff">21</span> -b:v <span style="color:#ae81ff">0</span> out.webm
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i in.mp4 -c:v libvpx-vp9 -row-mt <span style="color:#0086f7;font-weight:bold">1</span> -threads <span style="color:#0086f7;font-weight:bold">16</span> -cpu-used <span style="color:#0086f7;font-weight:bold">2</span> -deadline good -crf <span style="color:#0086f7;font-weight:bold">21</span> -b:v <span style="color:#0086f7;font-weight:bold">0</span> out.webm
 </span></span></code></pre></div><h4 id="personal-preference" >Personal Preference
 <span>
     <a href="#personal-preference">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mp4 -c:v libvpx-vp9 -row-mt <span style="color:#ae81ff">1</span> -threads <span style="color:#ae81ff">48</span> -cpu-used <span style="color:#ae81ff">5</span> -deadline good -crf <span style="color:#ae81ff">28</span> -b:v <span style="color:#ae81ff">0</span> out.webm
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mp4 -c:v libvpx-vp9 -row-mt <span style="color:#0086f7;font-weight:bold">1</span> -threads <span style="color:#0086f7;font-weight:bold">48</span> -cpu-used <span style="color:#0086f7;font-weight:bold">5</span> -deadline good -crf <span style="color:#0086f7;font-weight:bold">28</span> -b:v <span style="color:#0086f7;font-weight:bold">0</span> out.webm
 </span></span></code></pre></div><h3 id="adding-audio-to-a-video" >Adding Audio To A Video
 <span>
     <a href="#adding-audio-to-a-video">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i video.mp4 -i audio.mp3 -c copy -map 0:v:0 -map 1:a:0 output.mp4
+</h3><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i video.mp4 -i audio.mp3 -c copy -map 0:v:0 -map 1:a:0 output.mp4
 </span></span></code></pre></div><h3 id="cut-split-a-video-in-n-segments" >Cut/Split a video in N segments
 <span>
     <a href="#cut-split-a-video-in-n-segments">
@@ -350,7 +350,7 @@ More encoding speed can be achieved with specifying the CPU threads to use when 
     </a>
 </span>
 </h3><p>Change N to the number of minutes / hours / seconds</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i videotocut.mp4 -c copy -map <span style="color:#ae81ff">0</span> -segment_time 00:0N:00 -f segment segment%03d.mp4
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i videotocut.mp4 -c copy -map <span style="color:#0086f7;font-weight:bold">0</span> -segment_time 00:0N:00 -f segment segment%03d.mp4
 </span></span></code></pre></div><h3 id="change-frame-rate" >Change Frame rate
 <span>
     <a href="#change-frame-rate">
@@ -361,15 +361,15 @@ More encoding speed can be achieved with specifying the CPU threads to use when 
 <li>Change frame rate with ffmpeg with <code>-filter:v fps=fps=25</code></li>
 </ul>
 <!--listend-->
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 60 Fps Video Make it to 30 fps video</span>
-</span></span><span style="display:flex;"><span>ffmpeg -i inputvideo.mp4 -filter:v fps<span style="color:#f92672">=</span>fps<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> inputvideo_30fps.mp4
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># 60 Fps Video Make it to 30 fps video</span>
+</span></span><span style="display:flex;"><span>ffmpeg -i inputvideo.mp4 -filter:v <span style="color:#fb660a">fps</span>=<span style="color:#fb660a">fps</span>=<span style="color:#0086f7;font-weight:bold">30</span> inputvideo_30fps.mp4
 </span></span></code></pre></div><h4 id="change-fps-while-encoding" >Change fps while encoding
 <span>
     <a href="#change-fps-while-encoding">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i inputvideo.mp4 -filter:v fps<span style="color:#f92672">=</span>fps<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span> -c:v libx264 -preset fast -crf <span style="color:#ae81ff">23</span> output.mp4
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i inputvideo.mp4 -filter:v <span style="color:#fb660a">fps</span>=<span style="color:#fb660a">fps</span>=<span style="color:#0086f7;font-weight:bold">30</span> -c:v libx264 -preset fast -crf <span style="color:#0086f7;font-weight:bold">23</span> output.mp4
 </span></span></code></pre></div><h3 id="add-text-watermark-to-video" >Add text watermark to video
 <span>
     <a href="#add-text-watermark-to-video">
@@ -377,7 +377,7 @@ More encoding speed can be achieved with specifying the CPU threads to use when 
     </a>
 </span>
 </h3><p>adding a text watermark with <code>drawtext</code> from ffmpeg in bottom left</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i <span style="color:#e6db74">&#34;input.mp4&#34;</span> -vf <span style="color:#e6db74">&#34;drawtext=text=&#39;a watermark&#39;:x=10:y=H-th-10:fontfile=/pathto/font.ttf:fontsize=10:fontcolor=white:shadowcolor=black:shadowx=2:shadowy=2&#34;</span> <span style="color:#e6db74">&#34;output.mp4&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i <span style="color:#0086d2">&#34;input.mp4&#34;</span> -vf <span style="color:#0086d2">&#34;drawtext=text=&#39;a watermark&#39;:x=10:y=H-th-10:fontfile=/pathto/font.ttf:fontsize=10:fontcolor=white:shadowcolor=black:shadowx=2:shadowy=2&#34;</span> <span style="color:#0086d2">&#34;output.mp4&#34;</span>
 </span></span></code></pre></div><h3 id="video-compression" >Video Compression
 <span>
     <a href="#video-compression">
@@ -387,12 +387,12 @@ More encoding speed can be achieved with specifying the CPU threads to use when 
 </h3><p>Using ffmpeg <code>--preset</code> and <code>-crf</code> to determine best output size, preset is the encoding the compression rate, the <strong>slower</strong> the <strong>better</strong> therefor more quality in a smaller size.
 <code>veryslow</code> <code>slower</code> <code>slow</code>
 CRF means constant rate factor, essentially it is the bitrate amount without it being specific. Lower value = higher quality. 0 is lossless but a value of 17 or 18 is still visually lossless. 21 or 22 i find to be best but once you start going above 25 the quality drops away.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i inputfilename.mp4 -c:v libx264 -preset veryslow -crf <span style="color:#ae81ff">21</span> outputfilename.mp4
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i inputfilename.mp4 -c:v libx264 -preset veryslow -crf <span style="color:#0086f7;font-weight:bold">21</span> outputfilename.mp4
 </span></span></code></pre></div><ul>
 <li>Something little quicker</li>
 </ul>
 <!--listend-->
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i inputfilename.mp4 -c:v libx264 -preset slower -crf <span style="color:#ae81ff">22</span> outputfilename.mp4
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i inputfilename.mp4 -c:v libx264 -preset slower -crf <span style="color:#0086f7;font-weight:bold">22</span> outputfilename.mp4
 </span></span></code></pre></div><h3 id="speed-slow-down-video" >Speed/Slow Down Video
 <span>
     <a href="#speed-slow-down-video">
@@ -400,23 +400,23 @@ CRF means constant rate factor, essentially it is the bitrate amount without it 
     </a>
 </span>
 </h3><p>To Speed Up .</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mkv -filter:v <span style="color:#e6db74">&#34;setpts=0.5*PTS&#34;</span> output.mkv
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input.mkv -filter:v <span style="color:#0086d2">&#34;setpts=0.5*PTS&#34;</span> output.mkv
 </span></span></code></pre></div><p>Using blending</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i typingspeed.mkv -vf <span style="color:#e6db74">&#34;tblend=average,framestep=2,tblend=average,framestep=2,setpts=0.25*PTS&#34;</span> -r <span style="color:#ae81ff">60</span> output.mkv
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i typingspeed.mkv -vf <span style="color:#0086d2">&#34;tblend=average,framestep=2,tblend=average,framestep=2,setpts=0.25*PTS&#34;</span> -r <span style="color:#0086f7;font-weight:bold">60</span> output.mkv
 </span></span></code></pre></div><p>Minterpolate Using ffmpeg ==&gt; creates a 96 fps video</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input -filter:v minterpolate -r <span style="color:#ae81ff">96</span> output
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input -filter:v minterpolate -r <span style="color:#0086f7;font-weight:bold">96</span> output
 </span></span></code></pre></div><p>then speed it up</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input -vf <span style="color:#e6db74">&#34;tblend=average,framestep=2,tblend=average,framestep=2,tblend=average,framestep=2,tblend=average,framestep=2,setpts=0.25*PTS&#34;</span> -r <span style="color:#ae81ff">96</span> -b:v 30M -crf <span style="color:#ae81ff">10</span> -an output
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i input -vf <span style="color:#0086d2">&#34;tblend=average,framestep=2,tblend=average,framestep=2,tblend=average,framestep=2,tblend=average,framestep=2,setpts=0.25*PTS&#34;</span> -r <span style="color:#0086f7;font-weight:bold">96</span> -b:v 30M -crf <span style="color:#0086f7;font-weight:bold">10</span> -an output
 </span></span></code></pre></div><p>move commands</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fmpeg -i input.avi -filter:v <span style="color:#e6db74">&#34;minterpolate=&#39;fps=120&#39;,setpts=4*PTS&#34;</span> output.avi
-</span></span><span style="display:flex;"><span>ffmpeg -i typingspeed.mkv -filter:v <span style="color:#e6db74">&#34;minterpolate=&#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120&#39;&#34;</span> output.mkv
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>fmpeg -i input.avi -filter:v <span style="color:#0086d2">&#34;minterpolate=&#39;fps=120&#39;,setpts=4*PTS&#34;</span> output.avi
+</span></span><span style="display:flex;"><span>ffmpeg -i typingspeed.mkv -filter:v <span style="color:#0086d2">&#34;minterpolate=&#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120&#39;&#34;</span> output.mkv
 </span></span></code></pre></div><h3 id="cut-video" >Cut Video
 <span>
     <a href="#cut-video">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i comeback-2022-02-24_17.38.33.mkv -ss 00:00:08 -to 00:03:47 -async <span style="color:#ae81ff">1</span> -c copy comeback.mp4
+</h3><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ffmpeg -i comeback-2022-02-24_17.38.33.mkv -ss 00:00:08 -to 00:03:47 -async <span style="color:#0086f7;font-weight:bold">1</span> -c copy comeback.mp4
 </span></span></code></pre></div><ul>
 <li>to cut microseconds add (dot.XXX) 00:00:08.100</li>
 </ul>
@@ -426,11 +426,11 @@ CRF means constant rate factor, essentially it is the bitrate amount without it 
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Four step search
-</span></span><span style="display:flex;"><span>ffmpeg -i input.mp4 -filter:v <span style="color:#e6db74">&#34;minterpolate=&#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=60:me=fss&#39;&#34;</span> out.mp4
+</h3><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Four step search
+</span></span><span style="display:flex;"><span>ffmpeg -i input.mp4 -filter:v <span style="color:#0086d2">&#34;minterpolate=&#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=60:me=fss&#39;&#34;</span> out.mp4
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>Diamond search
-</span></span><span style="display:flex;"><span>ffmpeg -i input.mp4 -filter:v  <span style="color:#e6db74">&#34;minterpolate=&#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=60:me=ds&#39;&#34;</span> out.mp4
+</span></span><span style="display:flex;"><span>ffmpeg -i input.mp4 -filter:v  <span style="color:#0086d2">&#34;minterpolate=&#39;mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=60:me=ds&#39;&#34;</span> out.mp4
 </span></span></code></pre></div>
         </div>
         

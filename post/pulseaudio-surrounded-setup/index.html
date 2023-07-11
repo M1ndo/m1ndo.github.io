@@ -254,21 +254,21 @@ Now this will test if our device has 8 channel output (7.1) or 6 channel output 
     </a>
 </span>
 </h3><p>Now let&rsquo;s create our config file located in <code>~/.config/pulse/daemon.conf</code> if pulse directory doesn&rsquo;t exists just create a new one and now we will create daemon.conf and open it with some text editor and add the values below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>sample<span style="color:#f92672">-</span>format <span style="color:#f92672">=</span> float32le
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>sample<span style="color:#f92672">-</span>rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">48000</span>
-</span></span><span style="display:flex;"><span>alternate<span style="color:#f92672">-</span>sample<span style="color:#f92672">-</span>rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">44100</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>sample<span style="color:#f92672">-</span>channels <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>channel<span style="color:#f92672">-</span>map <span style="color:#f92672">=</span> front<span style="color:#f92672">-</span>left,front<span style="color:#f92672">-</span>right,rear<span style="color:#f92672">-</span>left,rear<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>center,lfe,side<span style="color:#f92672">-</span>left,side<span style="color:#f92672">-</span>right
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>fragments <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">default</span><span style="color:#f92672">-</span>fragment<span style="color:#f92672">-</span>size<span style="color:#f92672">-</span>msec <span style="color:#f92672">=</span> <span style="color:#ae81ff">125</span>
-</span></span><span style="display:flex;"><span>resample<span style="color:#f92672">-</span>method <span style="color:#f92672">=</span> soxr<span style="color:#f92672">-</span>vhq
-</span></span><span style="display:flex;"><span>enable<span style="color:#f92672">-</span>lfe<span style="color:#f92672">-</span>remixing <span style="color:#f92672">=</span> yes
-</span></span><span style="display:flex;"><span>high<span style="color:#f92672">-</span>priority <span style="color:#f92672">=</span> yes
-</span></span><span style="display:flex;"><span>nice<span style="color:#f92672">-</span>level <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">11</span>
-</span></span><span style="display:flex;"><span>realtime<span style="color:#f92672">-</span>scheduling <span style="color:#f92672">=</span> yes
-</span></span><span style="display:flex;"><span>realtime<span style="color:#f92672">-</span>priority <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
-</span></span><span style="display:flex;"><span>rlimit<span style="color:#f92672">-</span>rtprio <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
-</span></span><span style="display:flex;"><span>daemonize <span style="color:#f92672">=</span> no
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">default</span>-sample-format = float32le
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">default</span>-sample-rate = <span style="color:#0086f7;font-weight:bold">48000</span>
+</span></span><span style="display:flex;"><span>alternate-sample-rate = <span style="color:#0086f7;font-weight:bold">44100</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">default</span>-sample-channels = <span style="color:#0086f7;font-weight:bold">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">default</span>-channel-map = front-left,front-right,rear-left,rear-right,front-center,lfe,side-left,side-right
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">default</span>-fragments = <span style="color:#0086f7;font-weight:bold">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">default</span>-fragment-size-msec = <span style="color:#0086f7;font-weight:bold">125</span>
+</span></span><span style="display:flex;"><span>resample-method = soxr-vhq
+</span></span><span style="display:flex;"><span>enable-lfe-remixing = yes
+</span></span><span style="display:flex;"><span>high-priority = yes
+</span></span><span style="display:flex;"><span>nice-level = -<span style="color:#0086f7;font-weight:bold">11</span>
+</span></span><span style="display:flex;"><span>realtime-scheduling = yes
+</span></span><span style="display:flex;"><span>realtime-priority = <span style="color:#0086f7;font-weight:bold">9</span>
+</span></span><span style="display:flex;"><span>rlimit-rtprio = <span style="color:#0086f7;font-weight:bold">9</span>
+</span></span><span style="display:flex;"><span>daemonize = no
 </span></span></code></pre></div><h3 id="understanding-the-config" >understanding the config
 <span>
     <a href="#understanding-the-config">
@@ -393,8 +393,8 @@ hardware playback buffer subdivided into fragments default was (4)</li>
 </h3><ul>
 <li>Now let&rsquo;s add asla config (/etc/asound.conf or ~/.asoundrc), nothing really here to explain we just using hw plugin to work with pulse audio</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e"># Use PulseAudio plugin hw
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>pcm.<span style="color:#f92672">!</span><span style="color:#66d9ef">default</span> {
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic"># Use PulseAudio plugin hw
+</span></span></span><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic"></span>pcm.!<span style="color:#fb660a;font-weight:bold">default</span> {
 </span></span><span style="display:flex;"><span>   type plug
 </span></span><span style="display:flex;"><span>   slave.pcm hw
 </span></span><span style="display:flex;"><span>}
@@ -421,13 +421,13 @@ hardware playback buffer subdivided into fragments default was (4)</li>
 </h3><ul>
 <li>Now we need to install a quick module <code>ladspa-bs2b</code> and <code>libbs2b</code></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  In Arch Linux <span style="color:#f92672">(</span>AUR<span style="color:#f92672">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  In Arch Linux (AUR)
 </span></span><span style="display:flex;"><span>yay -S libbs2b
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  In Debian / Ubuntu
 </span></span><span style="display:flex;"><span>apt install bs2b-ladspa
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  Other Distros <span style="color:#f92672">(</span>Got No Idea<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>  Other Distros (Got No Idea)
 </span></span></code></pre></div><h3 id="loading-pulseaudio-modules" >Loading PulseAudio Modules
 <span>
     <a href="#loading-pulseaudio-modules">
@@ -437,21 +437,21 @@ hardware playback buffer subdivided into fragments default was (4)</li>
 </h3><ul>
 <li>Now let&rsquo;s load the modules, open default.pa in ~/.config/pulse and add the following lines at the bottom</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e"># For 7.1 Surround Sound System
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>load<span style="color:#f92672">-</span>module module<span style="color:#f92672">-</span>remap<span style="color:#f92672">-</span>sink sink_name<span style="color:#f92672">=</span>Remape remix<span style="color:#f92672">=</span>yes master<span style="color:#f92672">=</span>alsa_output.pci<span style="color:#f92672">-</span><span style="color:#ae81ff">0000</span>_00_1b<span style="color:#ae81ff">.0</span>.analog<span style="color:#f92672">-</span>surround71 channels<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span> master_channel_map<span style="color:#f92672">=</span>rear<span style="color:#f92672">-</span>left,rear<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>left,front<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>center,lfe,side<span style="color:#f92672">-</span>left,side<span style="color:#f92672">-</span>right channel_map<span style="color:#f92672">=</span>front<span style="color:#f92672">-</span>left,front<span style="color:#f92672">-</span>right,rear<span style="color:#f92672">-</span>left,rear<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>center,lfe,side<span style="color:#f92672">-</span>left,side<span style="color:#f92672">-</span>right
-</span></span><span style="display:flex;"><span>load<span style="color:#f92672">-</span>module module<span style="color:#f92672">-</span>combine channels<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span> channel_map<span style="color:#f92672">=</span>front<span style="color:#f92672">-</span>left,front<span style="color:#f92672">-</span>right,rear<span style="color:#f92672">-</span>left,rear<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>center,lfe,side<span style="color:#f92672">-</span>left,side<span style="color:#f92672">-</span>right
-</span></span><span style="display:flex;"><span>load<span style="color:#f92672">-</span>module module<span style="color:#f92672">-</span>ladspa<span style="color:#f92672">-</span>sink sink_name<span style="color:#f92672">=</span>Ybenel plugin<span style="color:#f92672">=</span>bs2b label<span style="color:#f92672">=</span>bs2b control<span style="color:#f92672">=</span><span style="color:#ae81ff">700</span>,<span style="color:#ae81ff">4.5</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic"># For 7.1 Surround Sound System
+</span></span></span><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic"></span>load-module module-remap-sink sink_name=Remape remix=yes master=alsa_output.pci-<span style="color:#0086f7;font-weight:bold">0000</span>_00_1b<span style="color:#0086f7;font-weight:bold">.0</span>.analog-surround71 channels=<span style="color:#0086f7;font-weight:bold">8</span> master_channel_map=rear-left,rear-right,front-left,front-right,front-center,lfe,side-left,side-right channel_map=front-left,front-right,rear-left,rear-right,front-center,lfe,side-left,side-right
+</span></span><span style="display:flex;"><span>load-module module-combine channels=<span style="color:#0086f7;font-weight:bold">8</span> channel_map=front-left,front-right,rear-left,rear-right,front-center,lfe,side-left,side-right
+</span></span><span style="display:flex;"><span>load-module module-ladspa-sink sink_name=Ybenel plugin=bs2b label=bs2b control=<span style="color:#0086f7;font-weight:bold">700</span>,<span style="color:#0086f7;font-weight:bold">4.5</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># For 5.1 Surround Sound System
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>load<span style="color:#f92672">-</span>module module<span style="color:#f92672">-</span>remap<span style="color:#f92672">-</span>sink sink_name<span style="color:#f92672">=</span>Remape remix<span style="color:#f92672">=</span>yes master<span style="color:#f92672">=</span>alsa_output.pci<span style="color:#f92672">-</span><span style="color:#ae81ff">0000</span>_00_1b<span style="color:#ae81ff">.0</span>.analog<span style="color:#f92672">-</span>surround71 channels<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span> master_channel_map<span style="color:#f92672">=</span>front<span style="color:#f92672">-</span>left,front<span style="color:#f92672">-</span>right,rear<span style="color:#f92672">-</span>left,rear<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>center,lfe channel_map<span style="color:#f92672">=</span>front<span style="color:#f92672">-</span>left,front<span style="color:#f92672">-</span>right,rear<span style="color:#f92672">-</span>left,rear<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>center,lfe
-</span></span><span style="display:flex;"><span>load<span style="color:#f92672">-</span>module module<span style="color:#f92672">-</span>combine channels<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span> channel_map<span style="color:#f92672">=</span>front<span style="color:#f92672">-</span>left,front<span style="color:#f92672">-</span>right,rear<span style="color:#f92672">-</span>left,rear<span style="color:#f92672">-</span>right,front<span style="color:#f92672">-</span>center,lfe
-</span></span><span style="display:flex;"><span>load<span style="color:#f92672">-</span>module module<span style="color:#f92672">-</span>ladspa<span style="color:#f92672">-</span>sink sink_name<span style="color:#f92672">=</span>Ybenel plugin<span style="color:#f92672">=</span>bs2b label<span style="color:#f92672">=</span>bs2b control<span style="color:#f92672">=</span><span style="color:#ae81ff">700</span>,<span style="color:#ae81ff">4.5</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic"># For 5.1 Surround Sound System
+</span></span></span><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic"></span>load-module module-remap-sink sink_name=Remape remix=yes master=alsa_output.pci-<span style="color:#0086f7;font-weight:bold">0000</span>_00_1b<span style="color:#0086f7;font-weight:bold">.0</span>.analog-surround71 channels=<span style="color:#0086f7;font-weight:bold">6</span> master_channel_map=front-left,front-right,rear-left,rear-right,front-center,lfe channel_map=front-left,front-right,rear-left,rear-right,front-center,lfe
+</span></span><span style="display:flex;"><span>load-module module-combine channels=<span style="color:#0086f7;font-weight:bold">8</span> channel_map=front-left,front-right,rear-left,rear-right,front-center,lfe
+</span></span><span style="display:flex;"><span>load-module module-ladspa-sink sink_name=Ybenel plugin=bs2b label=bs2b control=<span style="color:#0086f7;font-weight:bold">700</span>,<span style="color:#0086f7;font-weight:bold">4.5</span>
 </span></span></code></pre></div><ul>
 <li>There&rsquo;s another module that creates a virtual surround sink but it requires a hrir file , lucky you i found a good pack that has alot of samples</li>
 <li>Download the archive from <a href="https://stuff.salscheider.org/hrir_listen.tar.gz">Here</a> unzip it and listem to the demos choose what you like and load the module</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># This is just an example replace the hrir path and file of your like</span>
-</span></span><span style="display:flex;"><span>load-module module-virtual-surround-sink hrir<span style="color:#f92672">=</span>/home/ybenel/Music/surround/hrir_listen/hrirs/hrir-1038.wav
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"># This is just an example replace the hrir path and file of your like</span>
+</span></span><span style="display:flex;"><span>load-module module-virtual-surround-sink <span style="color:#fb660a">hrir</span>=/home/ybenel/Music/surround/hrir_listen/hrirs/hrir-1038.wav
 </span></span></code></pre></div><h3 id="restarting-pulseaudio" >Restarting PulseAudio
 <span>
     <a href="#restarting-pulseaudio">
@@ -461,9 +461,9 @@ hardware playback buffer subdivided into fragments default was (4)</li>
 </h3><ul>
 <li>Now we need to restart pulse audio</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  <span style="color:#75715e">#Kill pulse audio</span>
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  <span style="color:#080;background-color:#0f140f;font-style:italic">#Kill pulse audio</span>
 </span></span><span style="display:flex;"><span>pulseaudio --kill
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">#In case pulse audio didn&#39;t start</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#080;background-color:#0f140f;font-style:italic">#In case pulse audio didn&#39;t start</span>
 </span></span><span style="display:flex;"><span>pulseaudio --start
 </span></span></code></pre></div><h3 id="change-output-source" >Change Output Source
 <span>

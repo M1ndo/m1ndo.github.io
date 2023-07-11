@@ -243,24 +243,24 @@ if (!doNotTrack) {
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span># #+LaTeX_CLASS: org-plain-latex
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span># #+LaTeX_CLASS: org-plain-latex
 </span></span><span style="display:flex;"><span>#+LaTeX_CLASS_OPTIONS: [letterpaper]
 </span></span><span style="display:flex;"><span>#+LaTeX_CLASS_OPTIONS: [11pt,twoside=false]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">% book
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span># #+LaTeX_CLASS: book
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic">% book
+</span></span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"></span># #+LaTeX_CLASS: book
 </span></span><span style="display:flex;"><span># #+LaTeX_CLASS_OPTIONS: [letterpaper]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">% Koma Article
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span># #+LaTeX_CLASS: koma-article
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic">% Koma Article
+</span></span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"></span># #+LaTeX_CLASS: koma-article
 </span></span><span style="display:flex;"><span># #+LaTeX_CLASS_OPTIONS: [11pt,twoside=false,twocolumn]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">% Koma book
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span># #+LaTeX_CLASS: koma-book
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic">% Koma book
+</span></span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"></span># #+LaTeX_CLASS: koma-book
 </span></span><span style="display:flex;"><span># #+LaTeX_CLASS_OPTIONS: [11pt,twoside=false,twocolumn]
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">% Memoir
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span># #+LaTeX_CLASS: memoir
+</span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic">% Memoir
+</span></span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"></span># #+LaTeX_CLASS: memoir
 </span></span><span style="display:flex;"><span># #+LaTeX_CLASS_OPTIONS: [11pt,oneside,onecolumn,openright,extrafontsizes]
 </span></span></code></pre></div><h3 id="table-of-contents-dot" >Table Of Contents.
 <span>
@@ -268,36 +268,36 @@ if (!doNotTrack) {
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\tableofcontents</span> is how to include table of contents.
-</span></span><span style="display:flex;"><span>We can customize our table of contents before we include it using <span style="color:#66d9ef">\usepackage</span>{tocloft}.
+</h3><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\tableofcontents</span> is how to include table of contents.
+</span></span><span style="display:flex;"><span>We can customize our table of contents before we include it using <span style="color:#fb660a;font-weight:bold">\usepackage</span>{tocloft}.
 </span></span><span style="display:flex;"><span>Then customize each level from chapter, section, subsection, subsubsection.
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\tocloftpagestyle</span>{fancy}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\renewcommand</span>{<span style="color:#66d9ef">\cftsecafterpnum</span>}{<span style="color:#66d9ef">\vskip</span>2pt}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\renewcommand</span>{<span style="color:#66d9ef">\cftsecfont</span>}{<span style="color:#66d9ef">\sffamily\bfseries\itshape</span>}
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\tocloftpagestyle</span>{fancy}
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\renewcommand</span>{<span style="color:#fb660a;font-weight:bold">\cftsecafterpnum</span>}{<span style="color:#fb660a;font-weight:bold">\vskip</span>2pt}
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\renewcommand</span>{<span style="color:#fb660a;font-weight:bold">\cftsecfont</span>}{<span style="color:#fb660a;font-weight:bold">\sffamily\bfseries\itshape</span>}
 </span></span><span style="display:flex;"><span>...[snip]...
 </span></span></code></pre></div><p>Or using the <em>tcolorbox</em> library to create a custom table of contents box.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{tcolorbox}[breakable,enhanced jigsaw,title={Table Of Contents},fonttitle=<span style="color:#66d9ef">\bfseries\Large</span>,
-</span></span><span style="display:flex;"><span>  colback=yellow!10!white,colframe=red!50!black,before=<span style="color:#66d9ef">\par\bigskip\noindent</span>,
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\begin</span>{tcolorbox}[breakable,enhanced jigsaw,title={Table Of Contents},fonttitle=<span style="color:#fb660a;font-weight:bold">\bfseries\Large</span>,
+</span></span><span style="display:flex;"><span>  colback=yellow!10!white,colframe=red!50!black,before=<span style="color:#fb660a;font-weight:bold">\par\bigskip\noindent</span>,
 </span></span><span style="display:flex;"><span>  interior style={fill overzoom image=goldshade.png,fill image opacity=0.25},
 </span></span><span style="display:flex;"><span>  colbacktitle=red!50!yellow!75!black,
-</span></span><span style="display:flex;"><span>  enlargepage flexible=<span style="color:#66d9ef">\baselineskip</span>,pad at break*=3mm,
+</span></span><span style="display:flex;"><span>  enlargepage flexible=<span style="color:#fb660a;font-weight:bold">\baselineskip</span>,pad at break*=3mm,
 </span></span><span style="display:flex;"><span>  height fixed for=first and middle,
 </span></span><span style="display:flex;"><span>  watermark color=yellow!75!red!25!white,
-</span></span><span style="display:flex;"><span>  watermark text={<span style="color:#66d9ef">\bfseries\large</span> I&#39;m batman},
-</span></span><span style="display:flex;"><span>  attach boxed title to top center={yshift=-0.25mm-<span style="color:#66d9ef">\tcboxedtitleheight</span>/2,yshifttext=2mm-<span style="color:#66d9ef">\tcboxedtitleheight</span>/2},
+</span></span><span style="display:flex;"><span>  watermark text={<span style="color:#fb660a;font-weight:bold">\bfseries\large</span> I&#39;m batman},
+</span></span><span style="display:flex;"><span>  attach boxed title to top center={yshift=-0.25mm-<span style="color:#fb660a;font-weight:bold">\tcboxedtitleheight</span>/2,yshifttext=2mm-<span style="color:#fb660a;font-weight:bold">\tcboxedtitleheight</span>/2},
 </span></span><span style="display:flex;"><span>  boxed title style={enhanced,boxrule=0.5mm,
-</span></span><span style="display:flex;"><span>    frame code={ <span style="color:#66d9ef">\path</span><span style="color:#a6e22e">[tcb fill frame]</span> ([xshift=-4mm]frame.west) -- (frame.north west)
+</span></span><span style="display:flex;"><span>    frame code={ <span style="color:#fb660a;font-weight:bold">\path</span><span style="color:#ff0086;font-weight:bold">[tcb fill frame]</span> ([xshift=-4mm]frame.west) -- (frame.north west)
 </span></span><span style="display:flex;"><span>      -- (frame.north east) -- ([xshift=4mm]frame.east)
 </span></span><span style="display:flex;"><span>      -- (frame.south east) -- (frame.south west) -- cycle; },
-</span></span><span style="display:flex;"><span>    interior code={ <span style="color:#66d9ef">\path</span><span style="color:#a6e22e">[tcb fill interior]</span> ([xshift=-2mm]interior.west)
+</span></span><span style="display:flex;"><span>    interior code={ <span style="color:#fb660a;font-weight:bold">\path</span><span style="color:#ff0086;font-weight:bold">[tcb fill interior]</span> ([xshift=-2mm]interior.west)
 </span></span><span style="display:flex;"><span>      -- (interior.north west) -- (interior.north east)
 </span></span><span style="display:flex;"><span>      -- ([xshift=2mm]interior.east) -- (interior.south east) -- (interior.south west)
 </span></span><span style="display:flex;"><span>      -- cycle;}  },
 </span></span><span style="display:flex;"><span>  drop fuzzy shadow]
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">\makeatletter</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">\@</span>starttoc{toc} <span style="color:#75715e">% Replace it with \@starttoc{lot} for tables and \@starttoc{lof} for figures.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">\makeatother</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{tcolorbox}
+</span></span><span style="display:flex;"><span>  <span style="color:#fb660a;font-weight:bold">\makeatletter</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#fb660a;font-weight:bold">\@</span>starttoc{toc} <span style="color:#080;background-color:#0f140f;font-style:italic">% Replace it with \@starttoc{lot} for tables and \@starttoc{lof} for figures.
+</span></span></span><span style="display:flex;"><span><span style="color:#080;background-color:#0f140f;font-style:italic"></span>  <span style="color:#fb660a;font-weight:bold">\makeatother</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\end</span>{tcolorbox}
 </span></span></code></pre></div><h3 id="text-tricks" >Text Tricks
 <span>
     <a href="#text-tricks">
@@ -334,21 +334,21 @@ if (!doNotTrack) {
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\setlength</span>{<span style="color:#66d9ef">\parindent</span>}{4mm} or using *em* or *pt*
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\setlength</span>{<span style="color:#fb660a;font-weight:bold">\parindent</span>}{4mm} or using *em* or *pt*
 </span></span></code></pre></div><h4 id="paragraph-spacing" >Paragraph spacing
 <span>
     <a href="#paragraph-spacing">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\setlength</span>{<span style="color:#66d9ef">\parskip</span>}{4mm} or using *em* or *pt*
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\setlength</span>{<span style="color:#fb660a;font-weight:bold">\parskip</span>}{4mm} or using *em* or *pt*
 </span></span></code></pre></div><h4 id="line-spacing" >Line spacing
 <span>
     <a href="#line-spacing">
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\renewcommand</span>{<span style="color:#66d9ef">\baselinestretch</span>}{1.5}
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\renewcommand</span>{<span style="color:#fb660a;font-weight:bold">\baselinestretch</span>}{1.5}
 </span></span></code></pre></div><p>This value is somewhat confusing, because:</p>
 <table>
 <thead>
@@ -388,11 +388,11 @@ if (!doNotTrack) {
     </a>
 </span>
 </h4><p>There are 3 ways to make a line break</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\begin</span>{lstlisting}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\\</span> Generates A Line Break
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\hfill</span> <span style="color:#66d9ef">\break</span> Another Way of Generating
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\newline</span> A Third Way
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\end</span>{lstlisting}
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\begin</span>{lstlisting}
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\\</span> Generates A Line Break
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\hfill</span> <span style="color:#fb660a;font-weight:bold">\break</span> Another Way of Generating
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\newline</span> A Third Way
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\end</span>{lstlisting}
 </span></span></code></pre></div><h4 id="page-breaks" >Page Breaks
 <span>
     <a href="#page-breaks">
@@ -400,8 +400,8 @@ if (!doNotTrack) {
     </a>
 </span>
 </h4><p>To do a page break, there are two ways to do so.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\clearpage</span> which puts on a new page
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\newpage</span> which does the same thing
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\clearpage</span> which puts on a new page
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\newpage</span> which does the same thing
 </span></span></code></pre></div><h4 id="horizontal-blank-spaces" >Horizontal Blank Spaces
 <span>
     <a href="#horizontal-blank-spaces">
@@ -409,11 +409,11 @@ if (!doNotTrack) {
     </a>
 </span>
 </h4><p>Horizontal spaces of arbitrary length may be inserted with.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\hspace</span>{size_value} inserts a horizontal blank spaces
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\hfill</span> insert a blank space will stretch accordingly to fill the space available.
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\hspace</span>{size_value} inserts a horizontal blank spaces
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\hfill</span> insert a blank space will stretch accordingly to fill the space available.
 </span></span><span style="display:flex;"><span>Something Similar to hfill
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\hrulefill</span> which insert blank spaces as horizontal ruler
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\dotfill</span> inserts blank spaces of dots
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\hrulefill</span> which insert blank spaces as horizontal ruler
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\dotfill</span> inserts blank spaces of dots
 </span></span><span style="display:flex;"><span>==&gt; view the example below
 </span></span></code></pre></div><h4 id="vertical-blank-spaces" >Vertical Blank Spaces
 <span>
@@ -422,12 +422,12 @@ if (!doNotTrack) {
     </a>
 </span>
 </h4><p>Vertical blank spaces have the same syntax as horizontal ones.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\vspace</span>{size_value} inserts a vertical spaces according to specified length.
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\vfill</span> insert a blank space that stretch accordingly to fill the vertical space available.
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\vspace</span>{size_value} inserts a vertical spaces according to specified length.
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\vfill</span> insert a blank space that stretch accordingly to fill the vertical space available.
 </span></span><span style="display:flex;"><span>something Similar To Insert blank vertical space
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\smallskip</span> adds 3pt space plus or minus 1 (depends on document type,space available)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\medskip</span> adds 6pt space plus or minus 2 (depends on document type,space available)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\bigskip</span> adds 12pt space plus or minus 4 (depends on document type,space available)
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\smallskip</span> adds 3pt space plus or minus 1 (depends on document type,space available)
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\medskip</span> adds 6pt space plus or minus 2 (depends on document type,space available)
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\bigskip</span> adds 12pt space plus or minus 4 (depends on document type,space available)
 </span></span><span style="display:flex;"><span>==&gt; view the example below
 </span></span></code></pre></div><h4 id="additional-line-breaking" >Additional Line Breaking
 <span>
@@ -435,9 +435,9 @@ if (!doNotTrack) {
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\\*</span> breaks the line at the point of the command and additionally prohibits a page break after the forced line break.
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\break</span> breaks the line without filling the current line. This will result in very bad formatting if you do not fill the line yourself.
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\linebreak</span><span style="color:#a6e22e">[number]</span>
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\\*</span> breaks the line at the point of the command and additionally prohibits a page break after the forced line break.
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\break</span> breaks the line without filling the current line. This will result in very bad formatting if you do not fill the line yourself.
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\linebreak</span><span style="color:#ff0086;font-weight:bold">[number]</span>
 </span></span><span style="display:flex;"><span>It breaks the line at the point of the command. The number provided as an argument represents the priority of the command in a range of 0 to 4. (0 means it will be easily ignored and 4 means do it anyway). When this line break option is used, LaTeX will try to produce the best line breaks possible.
 </span></span></code></pre></div><h3 id="lengths-and-units" >Lengths and units
 <span>
@@ -501,7 +501,7 @@ if (!doNotTrack) {
     </a>
 </span>
 </h4><p>Lengths are units of distance relative to some document elements. Lengths can be changed by the command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#66d9ef">\setlength</span>{<span style="color:#66d9ef">\lengthname</span>}{value_in_specified_unit}
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\setlength</span>{<span style="color:#fb660a;font-weight:bold">\lengthname</span>}{value_in_specified_unit}
 </span></span></code></pre></div><p>Below is a table with some of the most common lengths and their description.</p>
 <table>
 <thead>
@@ -588,8 +588,8 @@ if (!doNotTrack) {
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h3><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">{</span> † ‡ • … ‰ ‱ ‹ › ※ ‽ ⁄ ⁎ ⁒ ₡ ₤ ₦ ₩ ₫ € ₱ ℃ № ℗ ℞ ℠ ™ Ω ℧ ℮ ← ↑ → ↓ 〈 〉 ␢ ␣ ◦ ◯ ♪ ⟨ ⟩ Ḡ ḡ <span style="color:#f92672">}</span>
-</span></span><span style="display:flex;"><span>&lt;&lt; <span style="color:#f92672">=</span>&gt; <span style="color:#f92672">==</span>&gt; &lt;<span style="color:#f92672">=</span> &lt;<span style="color:#f92672">==</span> &gt;&gt; $ %&amp;<span style="color:#f92672">()</span> ↗ ↛ ? ?? ffi !? ¿ ?! ¡ !! ⸨ ⸩ ′′′′ « » ⸙ ~ -&gt; &lt;-
+</h3><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>{ † ‡ • … ‰ ‱ ‹ › ※ ‽ ⁄ ⁎ ⁒ ₡ ₤ ₦ ₩ ₫ € ₱ ℃ № ℗ ℞ ℠ ™ Ω ℧ ℮ ← ↑ → ↓ 〈 〉 ␢ ␣ ◦ ◯ ♪ ⟨ ⟩ Ḡ ḡ }
+</span></span><span style="display:flex;"><span>&lt;&lt; =&gt; ==&gt; &lt;= &lt;== &gt;&gt; $ %&amp;() ↗ ↛ ? ?? ffi !? ¿ ?! ¡ !! ⸨ ⸩ ′′′′ « » ⸙ ~ -&gt; &lt;-
 </span></span></code></pre></div><h3 id="chat-block" >Chat Block
 <span>
     <a href="#chat-block">
@@ -599,9 +599,9 @@ if (!doNotTrack) {
 </h3><p>Chat Box (Dialogue Type Like)
 Using snippet (&quot;&lt;ch&quot;) inside of org-mode.
 as we can use any TeX Syntax inside of chat block</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>#+begin_chat
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\textcolor</span><span style="color:#a6e22e">[HTML]</span>{008b8b}{Jone} This is a nice chat<span style="color:#66d9ef">\\</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">\textcolor</span><span style="color:#a6e22e">[HTML]</span>{b22222}{Maria} Yes Thank you
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>#+begin_chat
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\textcolor</span><span style="color:#ff0086;font-weight:bold">[HTML]</span>{008b8b}{Jone} This is a nice chat<span style="color:#fb660a;font-weight:bold">\\</span>
+</span></span><span style="display:flex;"><span><span style="color:#fb660a;font-weight:bold">\textcolor</span><span style="color:#ff0086;font-weight:bold">[HTML]</span>{b22222}{Maria} Yes Thank you
 </span></span><span style="display:flex;"><span>#+end_chat
 </span></span></code></pre></div><div class="chat">
 <p>\textcolor[HTML]{008b8b}{Jone} This is a nice chat<br />
@@ -621,7 +621,7 @@ Can Be Set With LaTeX Attribute.
 <li><code>\tcblower</code> To be used for doing the lowerpart.</li>
 </ul>
 <!--listend-->
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>#+ATTR_LATEX: :title Custom Text Box
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>#+ATTR_LATEX: :title Custom Text Box
 </span></span><span style="display:flex;"><span>#+begin_ybox
 </span></span><span style="display:flex;"><span>Lmfao This Text Box Sucks.
 </span></span><span style="display:flex;"><span>#+end_ybox
@@ -668,15 +668,15 @@ what stty raw -echo &amp;&amp; nc -lnvp 9110</p>
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>#+begin_src &lt;language&gt; &lt;options&gt;
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>#+begin_src &lt;language&gt; &lt;options&gt;
 </span></span><span style="display:flex;"><span>Refer to org-mode source blocks for a detailed manual.
 </span></span><span style="display:flex;"><span>#+end_src
 </span></span></code></pre></div><p>Code Highlights in LaTeX is being done automatically using engraved backend <a href="https://github.com/tecosaur/engrave-faces/">Engrave-Faces</a></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(argc a<span style="color:#f92672">**</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;Hello World&#34;</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+<div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic">#include</span> <span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic">&lt;stdio.h&gt;</span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff0007;background-color:#0f140f;font-weight:bold;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#cdcaa9;font-weight:bold">int</span> <span style="color:#ff0086;font-weight:bold">main</span>(argc a**) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff0086;font-weight:bold">printf</span>(<span style="color:#0086d2">&#34;Hello World&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#fb660a;font-weight:bold">return</span> <span style="color:#0086f7;font-weight:bold">0</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h4 id="example-block" >Example Block
 <span>
@@ -684,7 +684,7 @@ what stty raw -echo &amp;&amp; nc -lnvp 9110</p>
         <svg viewBox="0 0 28 23" height="100%" width="19" xmlns="http://www.w3.org/2000/svg"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/></svg>
     </a>
 </span>
-</h4><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>In This example will be going straight forward \Leftarrow
+</h4><div class="highlight"><pre tabindex="0" style="color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>In This example will be going straight forward \Leftarrow
 </span></span></code></pre></div><h4 id="quote-block" >Quote Block
 <span>
     <a href="#quote-block">
@@ -782,7 +782,9 @@ computer to do. &mdash; Donald Knuth</p>
     
         
     <div class="pagination post-pagination">
-        <div class="left pagination-item disabled">
+        <div class="left pagination-item ">
+            
+                <a href="/post/htb_topology/">HTB - Topology</a>
             
         </div>
         <div class="right pagination-item ">
