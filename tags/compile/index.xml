@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Compile on ybenel</title>
+    <link>http://localhost:8000/tags/compile/</link>
+    <description>ybenel (Compile)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Jul 2023 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="http://localhost:8000/tags/compile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How To Build Emacs</title>
+      <link>http://localhost:8000/post/howtobuild_emacs/</link>
+      <pubDate>Mon, 10 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:8000/post/howtobuild_emacs/</guid>
+      <description>&lt;p&gt;This tutorial will demonstrate how to compile Emacs from source in order to enhance performance and achieve lightning-fast speeds. These instructions are applicable to all versions of Emacs.&lt;/p&gt;
+&lt;h2 id=&#34;what-s-enabled-dot&#34; &gt;What&amp;rsquo;s Enabled.
+&lt;span&gt;
+    &lt;a href=&#34;#what-s-enabled-dot&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;I personally have couple features i have enabled and disabled.
+Enabled features are.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using &lt;strong&gt;MOLD&lt;/strong&gt; Linker.&lt;/li&gt;
+&lt;li&gt;JIT (Just in Time) And AOT (Ahead Of Time) Compilation With All Cores.&lt;/li&gt;
+&lt;li&gt;GPM (Mouse Support)&lt;/li&gt;
+&lt;li&gt;Lucid (Graphical Toolkit Better than PGTK)&lt;/li&gt;
+&lt;li&gt;Xinput2&lt;/li&gt;
+&lt;li&gt;ALSA&lt;/li&gt;
+&lt;li&gt;Sitter (Tree Sitter)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Most of the disabled features i don&amp;rsquo;t need which include.
+My personal &lt;strong&gt;PKGBUILD&lt;/strong&gt; is available Here that includes custom patches ( Mold With AOT ).
+&lt;strong&gt;AUR&lt;/strong&gt; version will be available later after the release of this article.&lt;/p&gt;
+&lt;h2 id=&#34;the-build&#34; &gt;The Build
+&lt;span&gt;
+    &lt;a href=&#34;#the-build&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;Building Emacs slightly changes depending on which Linux distribution,
+you&amp;rsquo;re using. For my case I use Arch, so if you are using
+any Arch based this will work for you. Other distributions will also show how to do it.&lt;/p&gt;
+&lt;h3 id=&#34;arch&#34; &gt;Arch
+&lt;span&gt;
+    &lt;a href=&#34;#arch&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Using my AUR package will automatically build it.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;yay -S emacs29-lucid-native-comp-git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With my &lt;strong&gt;PKGBUILD&lt;/strong&gt; install missing dependencies and install.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;makepkg -si
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;manually--other-distros&#34; &gt;Manually (Other Distros)
+&lt;span&gt;
+    &lt;a href=&#34;#manually--other-distros&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;Clone Emacs29 (Or Your Version)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone -b emacs-29 git://git.sv.gnu.org/emacs.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir -p emacs-git/build &amp;amp;&amp;amp; cd emacs-git/build
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;../configure --prefix=/usr --sysconfdir=/etc --libexecdir=/usr/lib --localstatedir=/var --mandir=/usr/share/man --with-gameuser=:games --with-modules --without-libotf --without-m17n-flt --without-gconf --with-native-compilation=yes --with-native-compilation=aot --with-x-toolkit=lucid --with-xft --with-xaw3d --without-cairo --with-sound=alsa --with-tree-sitter --without-compress-install --program-transform-name=s/&lt;span style=&#34;color:#0086d2&#34;&gt;\(&lt;/span&gt;[ec]tags&lt;span style=&#34;color:#0086d2&#34;&gt;\)&lt;/span&gt;/&lt;span style=&#34;color:#0086d2&#34;&gt;\1&lt;/span&gt;.emacs/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then running &lt;strong&gt;Mold&lt;/strong&gt; (Make sure you have it installed)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mold -run make &lt;span style=&#34;color:#fb660a&#34;&gt;NATIVE_FULL_AOT&lt;/span&gt;=&lt;span style=&#34;color:#0086f7;font-weight:bold&#34;&gt;1&lt;/span&gt; -j&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;$(&lt;/span&gt;nproc&lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Installing Emacs.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;make install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;conclusion&#34; &gt;Conclusion.
+&lt;span&gt;
+    &lt;a href=&#34;#conclusion&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;Although building Emacs from source can be time-consuming depending on the hardware,
+it can be a worthwhile endeavor to significantly improve its performance.
+Despite this, many people choose to forgo building from source due to the time investment,
+even though it would result in a much faster Emacs in the end.
+&lt;figure&gt;&lt;img src=&#34;http://localhost:8000/imgs/general/ybenel-full-20230415-163241.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Overview Of Emacs&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
