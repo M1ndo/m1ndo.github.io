@@ -36,8 +36,7 @@ Enabled features are.&lt;/p&gt;
 &lt;li&gt;Sitter (Tree Sitter)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Most of the disabled features i don&amp;rsquo;t need which include.
-My personal &lt;strong&gt;PKGBUILD&lt;/strong&gt; is available Here that includes custom patches ( Mold With AOT ).
-&lt;strong&gt;AUR&lt;/strong&gt; version will be available later after the release of this article.&lt;/p&gt;
+My personal &lt;strong&gt;PKGBUILD&lt;/strong&gt; is available in the &lt;a href=&#34;https://aur.archlinux.org/packages/emacs29-lucid-native-comp-git&#34;&gt;AUR&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;the-build&#34; &gt;The Build
 &lt;span&gt;
     &lt;a href=&#34;#the-build&#34;&gt;
