@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Article on ybenel</title>
+    <link>https://ybenel.cf/tags/article/</link>
+    <description>ybenel (Article)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 17 Oct 2023 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="https://ybenel.cf/tags/article/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Custom KSounds In Neptune</title>
+      <link>https://ybenel.cf/post/neptune_tutorial/</link>
+      <pubDate>Tue, 17 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://ybenel.cf/post/neptune_tutorial/</guid>
+      <description>&lt;p&gt;A quick detailed guide showing how to set custom key sounds in Neptune works for all platforms.&lt;/p&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div class=&#34;heading&#34;&gt;Table of Contents&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#choosing-your-custom-keysounds-dot&#34;&gt;Choosing your custom keysounds.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-the-custom-key-sound-directory&#34;&gt;Creating the custom key sound directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#renaming-sounds-keys-dot&#34;&gt;Renaming sounds keys.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sound-key-events-dot&#34;&gt;Sound Key events.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#creating-a-config-dot-json-file&#34;&gt;Creating a config.json file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#fallback-keys-dot&#34;&gt;Fallback Keys.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#playing-the-custom-sound-dot&#34;&gt;Playing the custom sound.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;!--endtoc--&gt;
+&lt;h2 id=&#34;choosing-your-custom-keysounds-dot&#34; &gt;Choosing your custom keysounds.
+&lt;span&gt;
+    &lt;a href=&#34;#choosing-your-custom-keysounds-dot&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;When choosing a keysound for a key it should be either in &lt;strong&gt;wav&lt;/strong&gt; or &lt;strong&gt;ogg (vorbis)&lt;/strong&gt; format.
+For example I&amp;rsquo;ve downloaded a bunch of sounds from &lt;a href=&#34;https://freesound.org&#34;&gt;https://freesound.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Some of them are waveform and some are not .wav&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/general/neptut.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Files we will use in our custom sound&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;So I&amp;rsquo;ll have to convert those that are not to .wav or .ogg&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/general/neptut2.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Files either be .wav or .ogg&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;creating-the-custom-key-sound-directory&#34; &gt;Creating the custom key sound directory
+&lt;span&gt;
+    &lt;a href=&#34;#creating-the-custom-key-sound-directory&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;Browse to Neptune directory based on the platform you&amp;rsquo;re using.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For Linux:  &lt;code&gt;~/.local/share/Neptune&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For Windows: &lt;code&gt;%AppData%\Neptune (C:\Users\Ybenel\Local\Appdata\Roaming\Neptune)&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;For MacOs: &lt;code&gt;Library\Application Support\Neptune&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now we&amp;rsquo;ll have to create a directory with the name of keysound.
+and now we&amp;rsquo;ll move our files there.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/general/neptut3.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;How the directory should look like&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;renaming-sounds-keys-dot&#34; &gt;Renaming sounds keys.
+&lt;span&gt;
+    &lt;a href=&#34;#renaming-sounds-keys-dot&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;Now as we moved our files. we&amp;rsquo;re going to have to rename them to the appropriate keys so Neptune can recognize them and play them when we hit that key.
+One of our sounds &lt;code&gt;typewriter-ding_near_mono.wav&lt;/code&gt; when i want to hit &lt;strong&gt;enter&lt;/strong&gt; I&amp;rsquo;d like to play this sound.&lt;/p&gt;
+&lt;p&gt;So what I&amp;rsquo;ll do is to just rename it to &lt;strong&gt;enter.wav&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;typewriter-ding_near_mono.wav (Click enter key ) -&amp;gt; renamed to enter.wav 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you want to rename to a key on your keyboard but you don&amp;rsquo;t know its name.
+You can run the following command in Neptune and I&amp;rsquo;ll show you the key you pressed.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Neptune -cli -verbose
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/general/neptut4.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;The name of each key pressed&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;As you can see when i hit the enter key on my keyboard and it displayed &lt;code&gt;keychar&lt;/code&gt; which is the key name that we will use.&lt;/p&gt;
+&lt;p&gt;Another way is to read this &lt;a href=&#34;https://raw.githubusercontent.com/M1ndo/Neptune/main/pkg/neptune/keycode.go&#34;&gt;file&lt;/a&gt; and use the names presented after the code to name your files.
+Like &lt;code&gt;left_arrow&lt;/code&gt; &lt;code&gt;num_lock&lt;/code&gt; &lt;code&gt;lbracket&lt;/code&gt; and so on.&lt;/p&gt;
+&lt;h2 id=&#34;sound-key-events-dot&#34; &gt;Sound Key events.
+&lt;span&gt;
+    &lt;a href=&#34;#sound-key-events-dot&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;After you have renamed all your keys. and you want to add a key event for each key pressed and released.
+Make sure that file is also in the same directory.
+and rename it to that key you already have named with &lt;code&gt;-up&lt;/code&gt;.
+For Example.&lt;/p&gt;
+&lt;p&gt;You have &lt;code&gt;backspace.wav&lt;/code&gt; this will be played when you press the key,
+And &lt;code&gt;backspace-up.wav&lt;/code&gt; will be played when your release that key.&lt;/p&gt;
+&lt;h2 id=&#34;creating-a-config-dot-json-file&#34; &gt;Creating a config.json file
+&lt;span&gt;
+    &lt;a href=&#34;#creating-a-config-dot-json-file&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;When u read config.json you&amp;rsquo;d think we need to write configuration of each keys but that&amp;rsquo;s not true, we need to create it to help Neptune recognize that our Custom Folder is a SoundKey .
+However, keeping the file empty works for keysounds that don&amp;rsquo;t have release key-event.&lt;/p&gt;
+&lt;p&gt;If you have a &lt;strong&gt;key-event&lt;/strong&gt; you just need to add this to the file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0086d2&#34;&gt;&amp;#34;My Awesome SoundKey (Optional)&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;&amp;#34;support-events&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#fb660a;font-weight:bold&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;fallback-keys-dot&#34; &gt;Fallback Keys.
+&lt;span&gt;
+    &lt;a href=&#34;#fallback-keys-dot&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;Fallback keys are keysounds that will be played for each key that doesn&amp;rsquo;t have its sound-key. it works sounds that support key-events or those that doesn&amp;rsquo;t.
+You can have as much fallback key-sounds as you want, as long as they have &amp;ldquo;fallback&amp;rdquo; key word on them.
+If you have multiple fallback keys that will be played randomly for each key.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#fff;background-color:#111;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fallback.wav
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fallback2.wav
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fallback3.ogg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fallbackgg.wav
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fallback100.wav
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fallback1000.wav
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fallbacksss.wav
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;playing-the-custom-sound-dot&#34; &gt;Playing the custom sound.
+&lt;span&gt;
+    &lt;a href=&#34;#playing-the-custom-sound-dot&#34;&gt;
+        &lt;svg viewBox=&#34;0 0 28 23&#34; height=&#34;100%&#34; width=&#34;19&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;path d=&#34;M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-miterlimit=&#34;10&#34; stroke-width=&#34;2&#34;/&gt;&lt;/svg&gt;
+    &lt;/a&gt;
+&lt;/span&gt;
+&lt;/h2&gt;&lt;p&gt;Now that we have created a custom key sound that will play sounds only for certain keys,  which should look this.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/general/neptut5.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;How a keysound would look like&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;We can then verify its recognized on Neptune either using CLI or GUI.
+&lt;figure&gt;&lt;img src=&#34;https://ybenel.cf/imgs/general/neptut6.png&#34;/&gt;&lt;figcaption&gt;
+            &lt;h4&gt;Custom Sound Directory OverLook&lt;/h4&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s it now we can play it either on CLI or GUI.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a demo videoCapitol&lt;/p&gt;
+
+
+
+
+
+
+&lt;style&gt;
+.__h_video {
+   position: relative;
+   padding-bottom: 56.23%;
+   height: 0;
+   overflow: hidden;
+   width: 100%;
+   background: #000;
+}
+.__h_video img {
+   width: 100%;
+   height: auto;
+   color: #000;
+}
+.__h_video .play {
+   height: 72px;
+   width: 72px;
+   left: 50%;
+   top: 50%;
+   margin-left: -36px;
+   margin-top: -36px;
+   position: absolute;
+   cursor: pointer;
+}
+&lt;/style&gt;
+
+
+&lt;div class=&#34;s_video_simple __h_video&#34;&gt;
+&lt;a href=&#34;https://vimeo.com/8.75190186e&amp;#43;08&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;
+
+
+&lt;img src=&#34;https://i.vimeocdn.com/video/1739626142-7fed4bd2679a1de667768f21ba2c1e3e04021bbee972dd8692a2e5ef5df89ab8-d_295x166&#34; srcset=&#34;https://i.vimeocdn.com/video/1739626142-7fed4bd2679a1de667768f21ba2c1e3e04021bbee972dd8692a2e5ef5df89ab8-d_295x166 1x, https://i.vimeocdn.com/video/1739626142-7fed4bd2679a1de667768f21ba2c1e3e04021bbee972dd8692a2e5ef5df89ab8-d_295x166 2x&#34; alt=&#34;customSound&#34;&gt;
+&lt;div class=&#34;play&#34;&gt;&lt;svg version=&#34;1&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 61 61&#34;&gt;&lt;circle cx=&#34;30.5&#34; cy=&#34;30.5&#34; r=&#34;30.5&#34; opacity=&#34;.8&#34; fill=&#34;#000&#34;&gt;&lt;/circle&gt;&lt;path d=&#34;M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z&#34; fill=&#34;#fff&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

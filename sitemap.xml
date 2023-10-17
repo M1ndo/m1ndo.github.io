@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ybenel.cf/</loc>
-    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/article/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/post/neptune_tutorial/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/DonateToNeptune/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/neptune/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/post/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ybenel.cf/tags/</loc>
+    <lastmod>2023-10-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/categories/building/</loc>
     <lastmod>2023-07-10T00:00:00+00:00</lastmod>
@@ -26,13 +44,7 @@
     <loc>https://ybenel.cf/tags/performance/</loc>
     <lastmod>2023-07-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ybenel.cf/post/</loc>
-    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://ybenel.cf/tags/speed/</loc>
-    <lastmod>2023-07-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ybenel.cf/tags/</loc>
     <lastmod>2023-07-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ybenel.cf/categories/easy/</loc>
